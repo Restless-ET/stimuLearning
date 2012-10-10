@@ -1,0 +1,8 @@
+Operator:
+  options:
+    symfony:
+      filter: false
+  actAs:
+    Timestampable: ~
+  columns:
+    starting_market_size: { type: integer, notnull: true }

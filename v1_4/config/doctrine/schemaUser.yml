@@ -1,0 +1,15 @@
+User:
+  options:
+    symfony:
+      filter: false
+  actAs:
+    Timestampable: ~
+  columns:
+    name: { type: string(150), notnull: true }
+    username: { type: string(50), notnull: true }
+    password: { type: string(255), notnull: true }
+    email: { type: string(255), email: true }
+    last_login: datetime
+    operator_id: integer
+  relations:
+    Operator:

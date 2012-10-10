@@ -1,0 +1,15 @@
+Scenario:
+  options:
+    symfony:
+      filter: false
+  actAs:
+    Timestampable: ~
+  columns:
+    description: { type: string(50), notnull: true }
+    simulation_lifespan: integer
+    
+  ## Market Share Evolution Parameters ##
+    starting_level: { type: decimal, notnull: true }
+    saturation_level: { type: decimal, notnull: true }
+    alpha: { type: integer, notnull: true }
+    beta: { type: float, notnull: true }
