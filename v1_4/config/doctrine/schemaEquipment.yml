@@ -12,26 +12,26 @@ Equipment:
       type: enum
       values:
         - ~
-        - Construção civil #1
-        - Cabos de cobre #1
-        - Cabos de fibra #0.8
-        - Electrónica #0.9
-        - Componentes ópticos avançados #0.7
-        - Componentes ópticos passivos #0.8
+        - Construção civil (1)
+        - Cabos de cobre (1)
+        - Cabos de fibra (0.8)
+        - Electrónica (0.9)
+        - Componentes ópticos avançados (0.7)
+        - Componentes ópticos passivos (0.8)
     tecnology_age:
       type: enum
       values:
         - ~
-        - Velha #0.5
-        - Madura #0.1
-        - Nova #0.01
-        - Emergente #0.001
+        - Velha (0.5)
+        - Madura (0.1)
+        - Nova (0.01)
+        - Emergente (0.001)
     setup_speed:
       type: enum
       values:
         - ~
-        - Muito rápida #5
-        - Rápida #10
-        - Lenta #20
-        - Muito lenta #40
+        - Muito rápida (5)
+        - Rápida (10)
+        - Lenta (20)
+        - Muito lenta (40)
         
