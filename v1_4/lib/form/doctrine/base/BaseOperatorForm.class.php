@@ -17,6 +17,8 @@ abstract class BaseOperatorForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'                   => new sfWidgetFormInputHidden(),
       'starting_market_size' => new sfWidgetFormInputText(),
+      'user_id'              => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('User'), 'add_empty' => false)),
+      'scenario_id'          => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Scenario'), 'add_empty' => false)),
       'created_at'           => new sfWidgetFormDateTime(),
       'updated_at'           => new sfWidgetFormDateTime(),
     ));
@@ -24,6 +26,8 @@ abstract class BaseOperatorForm extends BaseFormDoctrine
     $this->setValidators(array(
       'id'                   => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'starting_market_size' => new sfValidatorInteger(),
+      'user_id'              => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('User'))),
+      'scenario_id'          => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Scenario'))),
       'created_at'           => new sfValidatorDateTime(),
       'updated_at'           => new sfValidatorDateTime(),
     ));

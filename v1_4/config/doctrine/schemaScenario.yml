@@ -5,11 +5,45 @@ Scenario:
   actAs:
     Timestampable: ~
   columns:
-    description: { type: string(50), notnull: true }
-    simulation_lifespan: integer
-    
+    description: { type: string(100), notnull: true }
+    simulation_status:
+      type: enum
+      values:
+        - Unstarted
+        - Paused
+        - Running
+        - Finished
+      default: Unstarted
+    market_clients_total: { type: integer, notnull: true } # auto-generated
+    tick_alias:
+      type: enum
+      values:
+        - ~
+        - Day
+        - Month
+        - Year
+      notnull: true
+    simulation_lifespan: { type: integer, notnull: true }
+    decision_points: { type: integer, notnull: true }
+    ticks_between_decision_points: { type: integer, notnull: true } # hidden
+    time_between_ticks: { type: integer, notnull: true } # in minutes
+  ## Financial Parameters ##
+    tariffs_erosion_rate: { type: float, scale: 4, notnull: true }
+    depreciation_rate: { type: float, scale: 4, notnull: true }
+    interest_rate: { type: float, scale: 4, notnull: true }
+    elasticity: { type: decimal, notnull: true }
+    bankrupcy_limit: { type: decimal, notnull: true }
   ## Market Share Evolution Parameters ##
     starting_level: { type: decimal, notnull: true }
     saturation_level: { type: decimal, notnull: true }
     alpha: { type: integer, notnull: true }
     beta: { type: float, notnull: true }
+  ## Quality Vector Weights ##
+    number_of_services_weight: { type: decimal, notnull: true }
+    download_weight: { type: decimal, notnull: true }
+    upload_weight: { type: decimal, notnull: true }
+    rate_weight: { type: decimal, notnull: true }
+    fee_weight: { type: decimal, notnull: true }
+    occupation_rate_weight: { type: decimal, notnull: true }
+    containment_factor_weight: { type: decimal, notnull: true }
+    reference_occupation_rate: { type: decimal, notnull: true }

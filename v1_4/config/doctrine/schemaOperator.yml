@@ -6,3 +6,11 @@ Operator:
     Timestampable: ~
   columns:
     starting_market_size: { type: integer, notnull: true }
+    
+    user_id: { type: integer, notnull: true }
+    scenario_id: { type: integer, notnull: true }
+  relations:
+    User:
+      foreignAlias: Operators
+    Scenario:
+      foreignAlias: Operators

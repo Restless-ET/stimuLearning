@@ -9,24 +9,24 @@
  * @property string $username
  * @property string $password
  * @property string $email
+ * @property boolean $is_admin
  * @property datetime $last_login
- * @property integer $operator_id
- * @property Operator $Operator
+ * @property Doctrine_Collection $Operators
  * 
- * @method string   getName()        Returns the current record's "name" value
- * @method string   getUsername()    Returns the current record's "username" value
- * @method string   getPassword()    Returns the current record's "password" value
- * @method string   getEmail()       Returns the current record's "email" value
- * @method datetime getLastLogin()   Returns the current record's "last_login" value
- * @method integer  getOperatorId()  Returns the current record's "operator_id" value
- * @method Operator getOperator()    Returns the current record's "Operator" value
- * @method User     setName()        Sets the current record's "name" value
- * @method User     setUsername()    Sets the current record's "username" value
- * @method User     setPassword()    Sets the current record's "password" value
- * @method User     setEmail()       Sets the current record's "email" value
- * @method User     setLastLogin()   Sets the current record's "last_login" value
- * @method User     setOperatorId()  Sets the current record's "operator_id" value
- * @method User     setOperator()    Sets the current record's "Operator" value
+ * @method string              getName()       Returns the current record's "name" value
+ * @method string              getUsername()   Returns the current record's "username" value
+ * @method string              getPassword()   Returns the current record's "password" value
+ * @method string              getEmail()      Returns the current record's "email" value
+ * @method boolean             getIsAdmin()    Returns the current record's "is_admin" value
+ * @method datetime            getLastLogin()  Returns the current record's "last_login" value
+ * @method Doctrine_Collection getOperators()  Returns the current record's "Operators" collection
+ * @method User                setName()       Sets the current record's "name" value
+ * @method User                setUsername()   Sets the current record's "username" value
+ * @method User                setPassword()   Sets the current record's "password" value
+ * @method User                setEmail()      Sets the current record's "email" value
+ * @method User                setIsAdmin()    Sets the current record's "is_admin" value
+ * @method User                setLastLogin()  Sets the current record's "last_login" value
+ * @method User                setOperators()  Sets the current record's "Operators" collection
  * 
  * @package    stimuLearning
  * @subpackage model
@@ -58,11 +58,12 @@ abstract class BaseUser extends sfDoctrineRecord
              'email' => true,
              'length' => 255,
              ));
+        $this->hasColumn('is_admin', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
         $this->hasColumn('last_login', 'datetime', null, array(
              'type' => 'datetime',
-             ));
-        $this->hasColumn('operator_id', 'integer', null, array(
-             'type' => 'integer',
              ));
 
         $this->option('symfony', array(
@@ -73,9 +74,9 @@ abstract class BaseUser extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Operator', array(
-             'local' => 'operator_id',
-             'foreign' => 'id'));
+        $this->hasMany('Operator as Operators', array(
+             'local' => 'id',
+             'foreign' => 'user_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);
