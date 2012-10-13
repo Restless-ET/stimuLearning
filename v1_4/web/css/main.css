@@ -1,0 +1,203 @@
+/*
+Reset CSS
+Copyright (c) 2008, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.6.0
+*/
+html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:text-top;}sub{vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}input,textarea,select{*font-size:100%;}legend{color:#000;}del,ins{text-decoration:none;}
+
+/*
+Fonts CSS
+Copyright (c) 2008, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.6.0
+*/
+body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-small;}select,input,button,textarea{font:99% arial,helvetica,clean,sans-serif;}table{font-size:inherit;font:100%;}pre,code,kbd,samp,tt{font-family:monospace;*font-size:108%;line-height:100%;}
+
+
+
+#container
+{
+  width: 100%;
+}
+
+#content
+{
+  padding: 25px;
+  padding-top: 0;
+}
+
+#title a
+{
+  font-size: x-large;	
+	color: black;
+}
+
+#menu
+{
+  padding: 10px;
+  padding-left: 20px;
+  margin-bottom: 20px;
+  background-color: #444444;
+  text-align: right;
+}
+
+#menu li
+{
+  margin-right: 15px;
+  display: inline;
+}
+
+#menu li a{
+	color: white;
+	text-decoration: none;
+}
+
+#menu li a:hover{
+	/*font-weight:bold;*/
+	text-decoration: underline;
+}
+
+#menu li.active a{
+	font-weight:bold;
+	text-decoration: underline;
+}
+
+
+#content h1
+{
+  padding: 0;
+  background: transparent;
+  margin-bottom: 20px;
+  font-size: 140%;
+}
+
+#searchfilterscontent h1
+{
+  padding: 0;
+  background: transparent;
+  margin-bottom: 20px;
+  font-size: 140%;
+}
+
+td, th
+{
+  padding: 7px;
+}
+
+th
+{
+  font-weight: bold;
+}
+
+#footer
+{
+  clear: both;
+  padding: 25px;
+  font-family: arial,sans-serif;
+  font-size: 80%;
+  float: right;
+  color: #666;
+}
+
+#footer img
+{
+  vertical-align: bottom;
+}
+
+#sf_admin_container fieldset h2
+{
+  font-size: 110%;
+  font-family: arial,sans-serif;
+  font-style: italic;
+}
+
+.sf_admin_form_field_logo div div
+{
+  margin-left: 120px;
+}
+
+#sf_admin_container .sf_admin_form_field_logo div div label
+{
+  display: inline;
+  float: none;
+}
+
+
+#header {
+	padding: 5px;
+	background: url("/images/banner_gsbl_v7.jpg") no-repeat scroll left top #EEEEEE;
+    height: 90px;
+}
+
+.sitelogo {
+    float: left;
+    margin: 13px 13px;
+    position: relative;
+}
+
+#system_info {
+	position: absolute;
+	right: 25px;
+	top: 25px;
+	text-align: right;
+	font-weight: bold;
+}
+
+#center {
+height:410px;
+left:50%;
+margin:-205px 0 0 -191px;
+padding:0;
+position:absolute;
+text-align:center;
+top:50%;
+vertical-align:middle;
+width:382px;
+}
+
+#sf_admin_header {
+	display: none;
+}
+
+.special_pagination {
+	display: none;
+}
+
+#menu {
+	font-size: 13px;
+}
+
+.sub-menu {
+	padding-right: 180px;
+	font-size: 12px;
+}
+
+.popup {
+	vertical-align: middle;
+}
+
+.invisible {
+	display: none;
+}
+
+#sf_admin_container label {
+  width: 18em;
+}
+#sf_admin_container .sf_admin_form_row .content {
+	padding-left: 19em;
+}
+
+#sf_admin_container .help {
+  padding-left: 19em;
+}
+
+#sf_admin_container ul.error_list {
+  background-color: #FFF;
+}
+
+#sf_admin_container ul.error_list li {
+  color: red;
+}
