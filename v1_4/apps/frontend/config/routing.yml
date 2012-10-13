@@ -1,3 +1,39 @@
+equipment:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Equipment
+    module:               equipment
+    prefix_path:          /equipment
+    column:               id
+    with_wildcard_routes: true
+
+operator:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Operator
+    module:               operator
+    prefix_path:          /operator
+    column:               id
+    with_wildcard_routes: true
+
+user:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                User
+    module:               user
+    prefix_path:          /user
+    column:               id
+    with_wildcard_routes: true
+
+scenario:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Scenario
+    module:               scenario
+    prefix_path:          /scenario
+    column:               id
+    with_wildcard_routes: true
+
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 

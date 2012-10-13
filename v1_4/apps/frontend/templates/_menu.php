@@ -2,9 +2,9 @@
 <?php if($sf_user->isAuthenticated()): ?>
   <?php $currentModule = sfContext::getInstance()->getModuleName(); ?>
   <ul>
-  <?php if(!$sf_user->hasCredential(array('atleta', 'oficial'), false)): ?>
-    <li<?php if($currentModule == 'atletas'): ?> class="active"<?php endif; ?>>
-      <?php echo link_to('Atletas', '@atletas') ?>
+  <?php if($sf_user->hasCredential('admin')): ?>
+    <li<?php if($currentModule == 'user'): ?> class="active"<?php endif; ?>>
+      <?php echo link_to('Users', '@user') ?>
     </li>
     <li<?php if($currentModule == 'oficiais'): ?> class="active"<?php endif; ?>>
       <?php echo link_to('Oficiais', '@oficiais') ?>
@@ -39,7 +39,7 @@
     <li>|</li>
   <?php if($sf_user->hasCredential('atleta')): ?>
     <li<?php if ($currentModule == 'atletas'): ?> class="active"<?php endif; ?>>
-      <?php echo link_to('Meus Detalhes', 'atletas/edit?id='.$sf_user->getAttribute('id')) ?>
+      <?php echo link_to('Meus Operadores', 'atletas/edit?id='.$sf_user->getAttribute('id')) ?>
     </li>
   <?php elseif ($sf_user->hasCredential('clube')): ?>
     <li<?php if ($currentModule == 'clubes'): ?> class="active"<?php endif; ?>>
@@ -76,18 +76,6 @@
       </li>
       <li<?php if($currentModule == 'configuracoesclube'): ?> class="active"<?php endif; ?>>
         <?php echo link_to('Clubes', 'configuracoesclube/edit?id=1') ?>
-      </li>
-      <li<?php if($currentModule == 'configuracoesoficial'): ?> class="active"<?php endif; ?>>
-        <?php echo link_to('Oficiais', 'configuracoesoficial/edit?id=1') ?>
-      </li>
-      <li<?php if($currentModule == 'funcoesoficial'): ?> class="active"<?php endif; ?>>
-        <?php echo link_to('Funções Oficiais', '@funcoes_oficial') ?>
-      </li>
-      <li<?php if($currentModule == 'configuracoesdirigente'): ?> class="active"<?php endif; ?>>
-        <?php echo link_to('Dirigentes', 'configuracoesdirigente/edit?id=1') ?>
-      </li>
-      <li<?php if($currentModule == 'funcoesdirigente'): ?> class="active"<?php endif; ?>>
-        <?php echo link_to('Funções Dirigentes', '@funcoes_dirigente') ?>
       </li>
     </ul>
   </div>

@@ -21,6 +21,16 @@ class defaultActions extends sfActions
   }
   
   /**
+   * Executes login action
+   *
+   * @param sfRequest $request A request object
+   */
+  public function executeLogin(sfWebRequest $request)
+  {
+
+  }
+  
+  /**
    * Executes error404 action
    *
    * @param sfRequest $request A request object
