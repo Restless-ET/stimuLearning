@@ -12,9 +12,9 @@ default:
     #language:     en
     #robots:       index, follow
 
-  stylesheets:    [main.css]
+  stylesheets:    [overcast/jquery-ui.custom.css, /sfDoctrinePlugin/css/global.css, /sfDoctrinePlugin/css/default.css, reset.css, main.css]
 
-  javascripts:    []
+  javascripts:    [lib/jquery-1.4.2.min.js, lib/jquery-ui.custom.min.js, i18n/jquery.ui.datepicker-pt-BR.js]
 
   has_layout:     true
   layout:         layout

@@ -4,7 +4,8 @@
 prod:
   .settings:
     no_script_name:         true
-    logging_enabled:        false
+    logging_enabled:        true
+    error_reporting:        <?php echo (E_ALL | E_STRICT )."\n" ?>
 
 dev:
   .settings:
@@ -23,6 +24,11 @@ test:
     etag:                   false
 
 all:
+  .actions:
+    error_404_module:       default   # To be called when a 404 error is raised
+    error_404_action:       error404  # Or when the requested URL doesn't match any route
+  
+  
   .settings:
     # Form security secret (CSRF protection)
     csrf_secret:            dfbdc5e6c31a2e106225b57c219fec491be1d009
