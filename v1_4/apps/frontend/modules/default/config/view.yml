@@ -1,0 +1,6 @@
+default:
+  has_layout:     true
+  stylesheets:    [reset.css,main.css]
+
+error404Success:
+  layout: 404
