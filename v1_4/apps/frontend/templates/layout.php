@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="/favicon.ico" />
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
-    
+
     <script type="text/javascript">
 
     var currentTime = new Date ('<?php echo date("d M Y H:i:s")?>');
@@ -31,7 +31,7 @@
     }
 
   </script>
-    
+
   </head>
   <body>
     <div id="container">
@@ -51,9 +51,9 @@
       <span id="clock"><?php echo date("H:i:s")?></span>
     </div>
       </div>
-     <?php include_partial('global/menu'); ?>
+     <?php //include_partial('global/menu'); ?>
       <div id="content">
-        <?php include_partial('global/title'); ?>
+        <?php //include_partial('global/title'); ?>
 
         <?php echo $sf_content ?>
       </div>

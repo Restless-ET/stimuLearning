@@ -1,7 +1,7 @@
 User:
   artur:
     username: adsmelo
-    password: f867c349c727df418e4c96bb633246f7  #md5("adsmelo")
+    password: a1cf055d4f7e1ec07170363a1805fbdd  #md5("adsmelo")
     name:     Artur Daniel Santos Melo
     email:    adsmelo@ua.pt
     is_admin: true

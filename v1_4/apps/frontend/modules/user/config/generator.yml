@@ -14,7 +14,8 @@ generator:
     config:
       actions: ~
       fields:  ~
-      list:    ~
+      list:
+        display: [name, username, email, is_admin, last_login]
       filter:
         class: false
       form:    ~
