@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<buildpath>
-	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
-	<buildpathentry excluding="lib/vendor/symfony/lib/plugins/sfDoctrinePlugin/data/generator/sfDoctrineModule/admin/skeleton/|lib/vendor/symfony/lib/plugins/sfDoctrinePlugin/data/generator/sfDoctrineModule/default/skeleton/|lib/vendor/symfony/lib/plugins/sfPropelPlugin/|lib/vendor/symfony/lib/task/generator/skeleton/" kind="src" path=""/>
-</buildpath>
