@@ -6,30 +6,13 @@
     <li<?php if($currentModule == 'user'): ?> class="active"<?php endif; ?>>
       <?php echo link_to('Users', '@user') ?>
     </li>
-    <li<?php if($currentModule == 'oficiais'): ?> class="active"<?php endif; ?>>
-      <?php echo link_to('Oficiais', '@oficiais') ?>
+    <li<?php if($currentModule == 'scenario'): ?> class="active"<?php endif; ?>>
+      <?php echo link_to('Scenarios', '@scenario') ?>
     </li>
-    <?php if($sf_user->hasCredential('admin')): ?>
-      <li<?php if($currentModule == 'clubes'): ?> class="active"<?php endif; ?>>
-        <?php echo link_to('Clubes', '@clubes') ?>
-      </li>
-    <?php endif; ?>
-    <li<?php if($currentModule == 'dirigentes'): ?> class="active"<?php endif; ?>>
-      <?php echo link_to('Dirigentes', '@dirigentes') ?>
+    <li<?php if($currentModule == 'operator'): ?> class="active"<?php endif; ?>>
+      <?php echo link_to('Operators', '@operator') ?>
     </li>
   <?php endif; ?>
-  <?php if($sf_user->hasCredential(array('atleta', 'oficial'), false) && $sf_user->getAttribute('subscription_until', '1970-01-01') <= $sf_user->getAttribute('season_start')): ?>
-    <li<?php if($currentModule == 'utilizador'): ?> class="active"<?php endif; ?>>
-      <?php echo link_to('Renovar Filiação', 'utilizador/renewal?id='.$sf_user->getAttribute('id')) ?>
-    </li>
-  <?php else: ?>
-    <li<?php if(in_array($currentModule, array('provas', 'inscricoesatletas', 'inscricoesequipas', 'inscricoesoficiais'))): ?> class="active"<?php endif; ?>>
-      <?php echo link_to('Provas', '@provas') ?>
-    </li>
-  <?php endif; ?>
-    <li<?php if($currentModule == 'movimentos'): ?> class="active"<?php endif; ?>>
-      <?php echo link_to('Movimentos', '@movimentos') ?>
-    </li>
   <?php if($sf_user->hasCredential('admin_edit')): ?>
     <li<?php if(in_array($currentModule, array('configuracoes', 'administradores', 'associacoes', 'configuracoesatleta', 'configuracoesoficial',
          'configuracoesdirigente', 'configuracoesclube', 'funcoesoficial', 'funcoesdirigente', 'filiacoesatleta'))): ?> class="active"<?php endif; ?>>
@@ -41,17 +24,9 @@
     <li<?php if ($currentModule == 'atletas'): ?> class="active"<?php endif; ?>>
       <?php echo link_to('Meus Operadores', 'atletas/edit?id='.$sf_user->getAttribute('id')) ?>
     </li>
-  <?php elseif ($sf_user->hasCredential('clube')): ?>
-    <li<?php if ($currentModule == 'clubes'): ?> class="active"<?php endif; ?>>
-      <?php echo link_to('Meus Detalhes', 'clubes/edit?id='.$sf_user->getAttribute('id')) ?>
-    </li>
-  <?php elseif ($sf_user->hasCredential('oficial')): ?>
-    <li<?php if ($currentModule == 'oficiais'): ?> class="active"<?php endif; ?>>
-      <?php echo link_to('Meus Detalhes', 'oficiais/edit?id='.$sf_user->getAttribute('id')) ?>
-    </li>
   <?php endif; ?>
     <li<?php if(sfContext::getInstance()->getActionName()=='changePassword'): ?> class="active"<?php endif; ?>>
-      <?php echo link_to('Mudar Password', '@changePassword') ?></li>
+      <?php //echo link_to('Mudar Password', '@changePassword') ?></li>
     <li><?php echo link_to('Sair', '@logout') ?></li>
   </ul>
   <?php if($sf_user->hasCredential('superadmin') && in_array($currentModule, array('configuracoes', 'administradores', 'associacoes', 'configuracoesatleta',

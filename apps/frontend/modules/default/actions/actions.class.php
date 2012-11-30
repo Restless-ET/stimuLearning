@@ -93,6 +93,23 @@ class defaultActions extends sfActions
   }
 
   /**
+   * Executes logout action
+   *
+   * @param sfRequest $request A request object
+   *
+   * @return sfView::NONE
+   */
+  public function executeLogout(sfWebRequest $request)
+  {
+    $this->getUser()->clearCredentials();
+    $this->getUser()->getAttributeHolder()->clear();
+    $this->getUser()->setAuthenticated(false);
+    $this->redirect('@homepage');
+
+    return sfView::NONE;
+  }
+
+  /**
    * Executes error404 action
    *
    * @param sfRequest $request A request object

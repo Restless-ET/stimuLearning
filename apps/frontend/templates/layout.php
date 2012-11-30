@@ -51,7 +51,7 @@
       <span id="clock"><?php echo date("H:i:s")?></span>
     </div>
       </div>
-     <?php //include_partial('global/menu'); ?>
+     <?php include_partial('global/menu'); ?>
       <div id="content">
         <?php //include_partial('global/title'); ?>
 
