@@ -5,3 +5,8 @@ User:
     name:     Artur Daniel Santos Melo
     email:    adsmelo@ua.pt
     is_admin: true
+  hugo:
+    username: hsfelix
+    password: 5cdcac9d87ddeb638fa66bded7b4365c  #md5("hsfelix")
+    name:     Hugo Silveirinha Félix
+    email:    hsfelix@ua.pt
