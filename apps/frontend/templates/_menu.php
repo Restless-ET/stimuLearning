@@ -2,15 +2,15 @@
 <?php if($sf_user->isAuthenticated()): ?>
   <?php $currentModule = sfContext::getInstance()->getModuleName(); ?>
   <ul>
-  <?php if($sf_user->hasCredential('admin')): ?>
-    <li<?php if($currentModule == 'user'): ?> class="active"<?php endif; ?>>
-      <?php echo link_to('Users', '@user') ?>
-    </li>
     <li<?php if($currentModule == 'scenario'): ?> class="active"<?php endif; ?>>
       <?php echo link_to('Scenarios', '@scenario') ?>
     </li>
     <li<?php if($currentModule == 'operator'): ?> class="active"<?php endif; ?>>
       <?php echo link_to('Operators', '@operator') ?>
+    </li>
+  <?php if($sf_user->hasCredential('admin')): ?>
+    <li<?php if($currentModule == 'user'): ?> class="active"<?php endif; ?>>
+      <?php echo link_to('Users', '@user') ?>
     </li>
   <?php endif; ?>
   <?php if($sf_user->hasCredential('admin_edit')): ?>

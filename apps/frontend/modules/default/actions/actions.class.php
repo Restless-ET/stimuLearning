@@ -23,7 +23,7 @@ class defaultActions extends sfActions
     }
     else
     {
-      $this->redirect('@user');
+      $this->redirect('@scenario');
     }
 
     //$this->forward('default', 'error404');
