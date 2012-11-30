@@ -30,6 +30,7 @@
  * @property decimal $occupation_rate_weight
  * @property decimal $containment_factor_weight
  * @property decimal $reference_occupation_rate
+ * @property Doctrine_Collection $DecisionPoints
  * @property Doctrine_Collection $Operators
  * 
  * @method string              getDescription()                   Returns the current record's "description" value
@@ -57,6 +58,7 @@
  * @method decimal             getOccupationRateWeight()          Returns the current record's "occupation_rate_weight" value
  * @method decimal             getContainmentFactorWeight()       Returns the current record's "containment_factor_weight" value
  * @method decimal             getReferenceOccupationRate()       Returns the current record's "reference_occupation_rate" value
+ * @method Doctrine_Collection getDecisionPoints()                Returns the current record's "DecisionPoints" collection
  * @method Doctrine_Collection getOperators()                     Returns the current record's "Operators" collection
  * @method Scenario            setDescription()                   Sets the current record's "description" value
  * @method Scenario            setSimulationStatus()              Sets the current record's "simulation_status" value
@@ -83,6 +85,7 @@
  * @method Scenario            setOccupationRateWeight()          Sets the current record's "occupation_rate_weight" value
  * @method Scenario            setContainmentFactorWeight()       Sets the current record's "containment_factor_weight" value
  * @method Scenario            setReferenceOccupationRate()       Sets the current record's "reference_occupation_rate" value
+ * @method Scenario            setDecisionPoints()                Sets the current record's "DecisionPoints" collection
  * @method Scenario            setOperators()                     Sets the current record's "Operators" collection
  * 
  * @package    stimuLearning
@@ -222,6 +225,10 @@ abstract class BaseScenario extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasMany('DecisionPoint as DecisionPoints', array(
+             'local' => 'id',
+             'foreign' => 'scenario_id'));
+
         $this->hasMany('Operator as Operators', array(
              'local' => 'id',
              'foreign' => 'scenario_id'));

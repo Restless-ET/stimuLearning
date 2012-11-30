@@ -10,17 +10,20 @@
  * @property integer $scenario_id
  * @property User $User
  * @property Scenario $Scenario
+ * @property Doctrine_Collection $DecisionPoints
  * 
- * @method integer  getStartingMarketSize()   Returns the current record's "starting_market_size" value
- * @method integer  getUserId()               Returns the current record's "user_id" value
- * @method integer  getScenarioId()           Returns the current record's "scenario_id" value
- * @method User     getUser()                 Returns the current record's "User" value
- * @method Scenario getScenario()             Returns the current record's "Scenario" value
- * @method Operator setStartingMarketSize()   Sets the current record's "starting_market_size" value
- * @method Operator setUserId()               Sets the current record's "user_id" value
- * @method Operator setScenarioId()           Sets the current record's "scenario_id" value
- * @method Operator setUser()                 Sets the current record's "User" value
- * @method Operator setScenario()             Sets the current record's "Scenario" value
+ * @method integer             getStartingMarketSize()   Returns the current record's "starting_market_size" value
+ * @method integer             getUserId()               Returns the current record's "user_id" value
+ * @method integer             getScenarioId()           Returns the current record's "scenario_id" value
+ * @method User                getUser()                 Returns the current record's "User" value
+ * @method Scenario            getScenario()             Returns the current record's "Scenario" value
+ * @method Doctrine_Collection getDecisionPoints()       Returns the current record's "DecisionPoints" collection
+ * @method Operator            setStartingMarketSize()   Sets the current record's "starting_market_size" value
+ * @method Operator            setUserId()               Sets the current record's "user_id" value
+ * @method Operator            setScenarioId()           Sets the current record's "scenario_id" value
+ * @method Operator            setUser()                 Sets the current record's "User" value
+ * @method Operator            setScenario()             Sets the current record's "Scenario" value
+ * @method Operator            setDecisionPoints()       Sets the current record's "DecisionPoints" collection
  * 
  * @package    stimuLearning
  * @subpackage model
@@ -60,6 +63,10 @@ abstract class BaseOperator extends sfDoctrineRecord
         $this->hasOne('Scenario', array(
              'local' => 'scenario_id',
              'foreign' => 'id'));
+
+        $this->hasMany('DecisionPoint as DecisionPoints', array(
+             'local' => 'id',
+             'foreign' => 'operator_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);
