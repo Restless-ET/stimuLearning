@@ -10,7 +10,13 @@
  */
 class ScenarioForm extends BaseScenarioForm
 {
+  /**
+   * Apply the proper widget configurations and validators for this form
+   * (non-PHPdoc)
+   * @see sfForm::configure()
+   */
   public function configure()
   {
+    unset($this['created_at'], $this['updated_at']);
   }
 }
