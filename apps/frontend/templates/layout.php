@@ -9,29 +9,26 @@
     <?php include_javascripts() ?>
 
     <script type="text/javascript">
+      var currentTime = new Date ('<?php echo date("d M Y H:i:s")?>');
+      setInterval('updateClock()', 1000);
 
-    var currentTime = new Date ('<?php echo date("d M Y H:i:s")?>');
-    setInterval('updateClock()', 1000);
+      function updateClock()
+      {
+        currentTime.setTime(currentTime.valueOf() + 1000); // advance the time
 
-    function updateClock()
-    {
-      currentTime.setTime(currentTime.valueOf() + 1000); // advance the time
+        var currentHours = currentTime.getHours ( );
+        var currentMinutes = currentTime.getMinutes ( );
+        var currentSeconds = currentTime.getSeconds ( );
 
-      var currentHours = currentTime.getHours ( );
-      var currentMinutes = currentTime.getMinutes ( );
-      var currentSeconds = currentTime.getSeconds ( );
+        // pad the minutes and seconds with leading zeros, if required
+        currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
+        currentSeconds = ( currentSeconds < 10 ? "0" : "" ) + currentSeconds;
 
-      // pad the minutes and seconds with leading zeros, if required
-      currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
-      currentSeconds = ( currentSeconds < 10 ? "0" : "" ) + currentSeconds;
+        var currentTimeString = currentHours + ":" + currentMinutes + ":" + currentSeconds
 
-      var currentTimeString = currentHours + ":" + currentMinutes + ":" + currentSeconds
-
-      document.getElementById('clock').innerHTML = currentTimeString; // update display
-    }
-
-  </script>
-
+        document.getElementById('clock').innerHTML = currentTimeString; // update display
+      }
+    </script>
   </head>
   <body>
     <div id="container">
@@ -41,17 +38,18 @@
             <?php echo image_tag('gsbl_v7.png') ?>
           </a>
         </h1>
-    <div id="system_info">
-      <?php if($sf_user->isAuthenticated()): ?>
-      Logado como: <?php echo $sf_user->getAttribute('Username') ?>
-      <br />
-      <?php endif; ?>
-      <?php echo date("Y-m-d",time()) ?>
-      <br />
-      <span id="clock"><?php echo date("H:i:s")?></span>
-    </div>
+        <div id="system_info">
+          <?php if($sf_user->isAuthenticated()): ?>
+          Hello, <?php echo $sf_user->getAttribute('username') ?>
+          <br />
+          <?php endif; ?>
+          <?php echo date('Y-m-d') ?>
+          <span id="clock"><?php echo date("H:i:s")?></span>
+        </div>
       </div>
-     <?php include_partial('global/menu'); ?>
+
+      <?php include_partial('global/menu'); ?>
+
       <div id="content">
         <?php //include_partial('global/title'); ?>
 
