@@ -1,0 +1,15 @@
+ScenarioTechnology:
+  options:
+    symfony:
+      filter: false
+      form: false
+  columns:
+    scenario_id:
+      type: integer
+      primary: true
+    technology_id:
+      type: integer
+      primary: true
+  relations:
+    Scenario: 
+    Technology:

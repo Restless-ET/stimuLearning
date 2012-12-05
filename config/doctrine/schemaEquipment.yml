@@ -34,4 +34,23 @@ Equipment:
         - Rápida (10)
         - Lenta (20)
         - Muito lenta (40)
-        
+    architecture_id: { type: integer, notnull: true }
+  relations:
+    Architecture:
+      foreignAlias: Equipments
+
+AcquiredEquipment:
+  options:
+    symfony:
+      form: false
+      filter: false
+  columns:
+    quantity: { type: integer, notnull: true }
+    price: { type: decimal, notnull: true }
+    is_obsolete: { type: boolean, default: false }
+    tick_id: { type: integer, notnull: true }
+    equipment_id: { type: integer, notnull: true }
+  relations:
+    Tick:
+      foreignAlias: AcquiredEquipments
+    Equipment: 

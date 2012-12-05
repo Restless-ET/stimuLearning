@@ -11,6 +11,7 @@
  * @property User $User
  * @property Scenario $Scenario
  * @property Doctrine_Collection $DecisionPoints
+ * @property Doctrine_Collection $Ticks
  * 
  * @method integer             getStartingMarketSize()   Returns the current record's "starting_market_size" value
  * @method integer             getUserId()               Returns the current record's "user_id" value
@@ -18,12 +19,14 @@
  * @method User                getUser()                 Returns the current record's "User" value
  * @method Scenario            getScenario()             Returns the current record's "Scenario" value
  * @method Doctrine_Collection getDecisionPoints()       Returns the current record's "DecisionPoints" collection
+ * @method Doctrine_Collection getTicks()                Returns the current record's "Ticks" collection
  * @method Operator            setStartingMarketSize()   Sets the current record's "starting_market_size" value
  * @method Operator            setUserId()               Sets the current record's "user_id" value
  * @method Operator            setScenarioId()           Sets the current record's "scenario_id" value
  * @method Operator            setUser()                 Sets the current record's "User" value
  * @method Operator            setScenario()             Sets the current record's "Scenario" value
  * @method Operator            setDecisionPoints()       Sets the current record's "DecisionPoints" collection
+ * @method Operator            setTicks()                Sets the current record's "Ticks" collection
  * 
  * @package    stimuLearning
  * @subpackage model
@@ -65,6 +68,10 @@ abstract class BaseOperator extends sfDoctrineRecord
              'foreign' => 'id'));
 
         $this->hasMany('DecisionPoint as DecisionPoints', array(
+             'local' => 'id',
+             'foreign' => 'operator_id'));
+
+        $this->hasMany('Tick as Ticks', array(
              'local' => 'id',
              'foreign' => 'operator_id'));
 

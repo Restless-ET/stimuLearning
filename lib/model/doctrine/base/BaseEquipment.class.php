@@ -14,25 +14,34 @@
  * @property enum $nature_or_purpose
  * @property enum $tecnology_age
  * @property enum $setup_speed
+ * @property integer $architecture_id
+ * @property Architecture $Architecture
+ * @property Doctrine_Collection $AcquiredEquipment
  * 
- * @method string    getName()              Returns the current record's "name" value
- * @method decimal   getStartingPrice()     Returns the current record's "starting_price" value
- * @method integer   getNumberOfPorts()     Returns the current record's "number_of_ports" value
- * @method integer   getNetworkLevel()      Returns the current record's "network_level" value
- * @method integer   getLifeExpectation()   Returns the current record's "life_expectation" value
- * @method enum      getEquipmentType()     Returns the current record's "equipment_type" value
- * @method enum      getNatureOrPurpose()   Returns the current record's "nature_or_purpose" value
- * @method enum      getTecnologyAge()      Returns the current record's "tecnology_age" value
- * @method enum      getSetupSpeed()        Returns the current record's "setup_speed" value
- * @method Equipment setName()              Sets the current record's "name" value
- * @method Equipment setStartingPrice()     Sets the current record's "starting_price" value
- * @method Equipment setNumberOfPorts()     Sets the current record's "number_of_ports" value
- * @method Equipment setNetworkLevel()      Sets the current record's "network_level" value
- * @method Equipment setLifeExpectation()   Sets the current record's "life_expectation" value
- * @method Equipment setEquipmentType()     Sets the current record's "equipment_type" value
- * @method Equipment setNatureOrPurpose()   Sets the current record's "nature_or_purpose" value
- * @method Equipment setTecnologyAge()      Sets the current record's "tecnology_age" value
- * @method Equipment setSetupSpeed()        Sets the current record's "setup_speed" value
+ * @method string              getName()              Returns the current record's "name" value
+ * @method decimal             getStartingPrice()     Returns the current record's "starting_price" value
+ * @method integer             getNumberOfPorts()     Returns the current record's "number_of_ports" value
+ * @method integer             getNetworkLevel()      Returns the current record's "network_level" value
+ * @method integer             getLifeExpectation()   Returns the current record's "life_expectation" value
+ * @method enum                getEquipmentType()     Returns the current record's "equipment_type" value
+ * @method enum                getNatureOrPurpose()   Returns the current record's "nature_or_purpose" value
+ * @method enum                getTecnologyAge()      Returns the current record's "tecnology_age" value
+ * @method enum                getSetupSpeed()        Returns the current record's "setup_speed" value
+ * @method integer             getArchitectureId()    Returns the current record's "architecture_id" value
+ * @method Architecture        getArchitecture()      Returns the current record's "Architecture" value
+ * @method Doctrine_Collection getAcquiredEquipment() Returns the current record's "AcquiredEquipment" collection
+ * @method Equipment           setName()              Sets the current record's "name" value
+ * @method Equipment           setStartingPrice()     Sets the current record's "starting_price" value
+ * @method Equipment           setNumberOfPorts()     Sets the current record's "number_of_ports" value
+ * @method Equipment           setNetworkLevel()      Sets the current record's "network_level" value
+ * @method Equipment           setLifeExpectation()   Sets the current record's "life_expectation" value
+ * @method Equipment           setEquipmentType()     Sets the current record's "equipment_type" value
+ * @method Equipment           setNatureOrPurpose()   Sets the current record's "nature_or_purpose" value
+ * @method Equipment           setTecnologyAge()      Sets the current record's "tecnology_age" value
+ * @method Equipment           setSetupSpeed()        Sets the current record's "setup_speed" value
+ * @method Equipment           setArchitectureId()    Sets the current record's "architecture_id" value
+ * @method Equipment           setArchitecture()      Sets the current record's "Architecture" value
+ * @method Equipment           setAcquiredEquipment() Sets the current record's "AcquiredEquipment" collection
  * 
  * @package    stimuLearning
  * @subpackage model
@@ -110,11 +119,23 @@ abstract class BaseEquipment extends sfDoctrineRecord
               4 => 'Muito lenta (40)',
              ),
              ));
+        $this->hasColumn('architecture_id', 'integer', null, array(
+             'type' => 'integer',
+             'notnull' => true,
+             ));
     }
 
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('Architecture', array(
+             'local' => 'architecture_id',
+             'foreign' => 'id'));
+
+        $this->hasMany('AcquiredEquipment', array(
+             'local' => 'id',
+             'foreign' => 'equipment_id'));
+
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);
     }

@@ -25,6 +25,7 @@ abstract class BaseEquipmentForm extends BaseFormDoctrine
       'nature_or_purpose' => new sfWidgetFormChoice(array('choices' => array('' => NULL, 'Construção civil (1)' => 'Construção civil (1)', 'Cabos de cobre (1)' => 'Cabos de cobre (1)', 'Cabos de fibra (0.8)' => 'Cabos de fibra (0.8)', 'Electrónica (0.9)' => 'Electrónica (0.9)', 'Componentes ópticos avançados (0.7)' => 'Componentes ópticos avançados (0.7)', 'Componentes ópticos passivos (0.8)' => 'Componentes ópticos passivos (0.8)'))),
       'tecnology_age'     => new sfWidgetFormChoice(array('choices' => array('' => NULL, 'Velha (0.5)' => 'Velha (0.5)', 'Madura (0.1)' => 'Madura (0.1)', 'Nova (0.01)' => 'Nova (0.01)', 'Emergente (0.001)' => 'Emergente (0.001)'))),
       'setup_speed'       => new sfWidgetFormChoice(array('choices' => array('' => NULL, 'Muito rápida (5)' => 'Muito rápida (5)', 'Rápida (10)' => 'Rápida (10)', 'Lenta (20)' => 'Lenta (20)', 'Muito lenta (40)' => 'Muito lenta (40)'))),
+      'architecture_id'   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Architecture'), 'add_empty' => false)),
       'created_at'        => new sfWidgetFormDateTime(),
       'updated_at'        => new sfWidgetFormDateTime(),
     ));
@@ -40,6 +41,7 @@ abstract class BaseEquipmentForm extends BaseFormDoctrine
       'nature_or_purpose' => new sfValidatorChoice(array('choices' => array(0 => NULL, 1 => 'Construção civil (1)', 2 => 'Cabos de cobre (1)', 3 => 'Cabos de fibra (0.8)', 4 => 'Electrónica (0.9)', 5 => 'Componentes ópticos avançados (0.7)', 6 => 'Componentes ópticos passivos (0.8)'), 'required' => false)),
       'tecnology_age'     => new sfValidatorChoice(array('choices' => array(0 => NULL, 1 => 'Velha (0.5)', 2 => 'Madura (0.1)', 3 => 'Nova (0.01)', 4 => 'Emergente (0.001)'), 'required' => false)),
       'setup_speed'       => new sfValidatorChoice(array('choices' => array(0 => NULL, 1 => 'Muito rápida (5)', 2 => 'Rápida (10)', 3 => 'Lenta (20)', 4 => 'Muito lenta (40)'), 'required' => false)),
+      'architecture_id'   => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Architecture'))),
       'created_at'        => new sfValidatorDateTime(),
       'updated_at'        => new sfValidatorDateTime(),
     ));

@@ -51,7 +51,7 @@
       <?php include_partial('global/menu'); ?>
 
       <div id="content">
-        <?php //include_partial('global/title'); ?>
+        <?php include_partial('global/title'); ?>
 
         <?php echo $sf_content ?>
       </div>

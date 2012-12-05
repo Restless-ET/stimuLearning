@@ -8,6 +8,24 @@ logout:
   param: { module: default, action: logout }
 ### END: General user rules ###
 
+architecture:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Architecture
+    module:               architecture
+    prefix_path:          /architecture
+    column:               id
+    with_wildcard_routes: true
+
+technology:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Technology
+    module:               technology
+    prefix_path:          /technology
+    column:               id
+    with_wildcard_routes: true
+
 equipment:
   class: sfDoctrineRouteCollection
   options:

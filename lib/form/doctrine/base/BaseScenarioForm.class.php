@@ -43,6 +43,7 @@ abstract class BaseScenarioForm extends BaseFormDoctrine
       'reference_occupation_rate'     => new sfWidgetFormInputText(),
       'created_at'                    => new sfWidgetFormDateTime(),
       'updated_at'                    => new sfWidgetFormDateTime(),
+      'available_technologies_list'   => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Technology')),
     ));
 
     $this->setValidators(array(
@@ -74,6 +75,7 @@ abstract class BaseScenarioForm extends BaseFormDoctrine
       'reference_occupation_rate'     => new sfValidatorNumber(),
       'created_at'                    => new sfValidatorDateTime(),
       'updated_at'                    => new sfValidatorDateTime(),
+      'available_technologies_list'   => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Technology', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('scenario[%s]');
@@ -88,6 +90,62 @@ abstract class BaseScenarioForm extends BaseFormDoctrine
   public function getModelName()
   {
     return 'Scenario';
+  }
+
+  public function updateDefaultsFromObject()
+  {
+    parent::updateDefaultsFromObject();
+
+    if (isset($this->widgetSchema['available_technologies_list']))
+    {
+      $this->setDefault('available_technologies_list', $this->object->AvailableTechnologies->getPrimaryKeys());
+    }
+
+  }
+
+  protected function doSave($con = null)
+  {
+    $this->saveAvailableTechnologiesList($con);
+
+    parent::doSave($con);
+  }
+
+  public function saveAvailableTechnologiesList($con = null)
+  {
+    if (!$this->isValid())
+    {
+      throw $this->getErrorSchema();
+    }
+
+    if (!isset($this->widgetSchema['available_technologies_list']))
+    {
+      // somebody has unset this widget
+      return;
+    }
+
+    if (null === $con)
+    {
+      $con = $this->getConnection();
+    }
+
+    $existing = $this->object->AvailableTechnologies->getPrimaryKeys();
+    $values = $this->getValue('available_technologies_list');
+    if (!is_array($values))
+    {
+      $values = array();
+    }
+
+    $unlink = array_diff($existing, $values);
+    if (count($unlink))
+    {
+      $this->object->unlink('AvailableTechnologies', array_values($unlink));
+    }
+
+    $link = array_diff($values, $existing);
+    if (count($link))
+    {
+      $this->object->link('AvailableTechnologies', array_values($link));
+    }
   }
 
 }

@@ -1,0 +1,19 @@
+Tick:
+  options:
+    symfony:
+      form: false
+      filter: false
+  actAs:
+    Timestampable: ~
+  columns:
+  ## Get columns from other main classes with variable values through time ##
+    CAPEX: { type: decimal, notnull: true }
+    OPEX: { type: decimal, notnull: true }
+    
+    operator_id: { type: integer, notnull: true }
+    scenario_id: { type: integer, notnull: true }
+  relations:
+    Operator:
+      foreignAlias: Ticks
+    Scenario:
+      foreignAlias: Ticks
