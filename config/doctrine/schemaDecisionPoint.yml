@@ -5,8 +5,11 @@ DecisionPoint:
   actAs:
     Timestampable: ~
   columns:
-    tick: { type: integer, notnull: true }
-    
+    setup_fee: { type: decimal, notnull: true }
+    cost_per_user: { type: decimal, notnull: true }
+    CAPEX_percentage: { type: float, notnull: true }
+    tick_to_apply: { type: integer, notnull: true }
+  ## For the relations ##
     operator_id: { type: integer, notnull: true }
     scenario_id: { type: integer, notnull: true }
   relations:

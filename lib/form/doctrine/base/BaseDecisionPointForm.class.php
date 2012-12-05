@@ -15,21 +15,27 @@ abstract class BaseDecisionPointForm extends BaseFormDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'id'          => new sfWidgetFormInputHidden(),
-      'tick'        => new sfWidgetFormInputText(),
-      'operator_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Operator'), 'add_empty' => false)),
-      'scenario_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Scenario'), 'add_empty' => false)),
-      'created_at'  => new sfWidgetFormDateTime(),
-      'updated_at'  => new sfWidgetFormDateTime(),
+      'id'               => new sfWidgetFormInputHidden(),
+      'setup_fee'        => new sfWidgetFormInputText(),
+      'cost_per_user'    => new sfWidgetFormInputText(),
+      'CAPEX_percentage' => new sfWidgetFormInputText(),
+      'tick_to_apply'    => new sfWidgetFormInputText(),
+      'operator_id'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Operator'), 'add_empty' => false)),
+      'scenario_id'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Scenario'), 'add_empty' => false)),
+      'created_at'       => new sfWidgetFormDateTime(),
+      'updated_at'       => new sfWidgetFormDateTime(),
     ));
 
     $this->setValidators(array(
-      'id'          => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'tick'        => new sfValidatorInteger(),
-      'operator_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Operator'))),
-      'scenario_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Scenario'))),
-      'created_at'  => new sfValidatorDateTime(),
-      'updated_at'  => new sfValidatorDateTime(),
+      'id'               => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'setup_fee'        => new sfValidatorNumber(),
+      'cost_per_user'    => new sfValidatorNumber(),
+      'CAPEX_percentage' => new sfValidatorNumber(),
+      'tick_to_apply'    => new sfValidatorInteger(),
+      'operator_id'      => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Operator'))),
+      'scenario_id'      => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Scenario'))),
+      'created_at'       => new sfValidatorDateTime(),
+      'updated_at'       => new sfValidatorDateTime(),
     ));
 
     $this->widgetSchema->setNameFormat('decision_point[%s]');
