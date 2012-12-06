@@ -10,9 +10,8 @@
  * @property integer $market_clients_total
  * @property enum $tick_alias
  * @property integer $simulation_lifespan
- * @property integer $decision_points
+ * @property integer $total_decision_points
  * @property integer $ticks_between_decision_points
- * @property integer $time_between_ticks
  * @property float $tariffs_erosion_rate
  * @property float $depreciation_rate
  * @property float $interest_rate
@@ -41,9 +40,8 @@
  * @method integer             getMarketClientsTotal()            Returns the current record's "market_clients_total" value
  * @method enum                getTickAlias()                     Returns the current record's "tick_alias" value
  * @method integer             getSimulationLifespan()            Returns the current record's "simulation_lifespan" value
- * @method integer             getDecisionPoints()                Returns the current record's "decision_points" value
+ * @method integer             getTotalDecisionPoints()           Returns the current record's "total_decision_points" value
  * @method integer             getTicksBetweenDecisionPoints()    Returns the current record's "ticks_between_decision_points" value
- * @method integer             getTimeBetweenTicks()              Returns the current record's "time_between_ticks" value
  * @method float               getTariffsErosionRate()            Returns the current record's "tariffs_erosion_rate" value
  * @method float               getDepreciationRate()              Returns the current record's "depreciation_rate" value
  * @method float               getInterestRate()                  Returns the current record's "interest_rate" value
@@ -71,9 +69,8 @@
  * @method Scenario            setMarketClientsTotal()            Sets the current record's "market_clients_total" value
  * @method Scenario            setTickAlias()                     Sets the current record's "tick_alias" value
  * @method Scenario            setSimulationLifespan()            Sets the current record's "simulation_lifespan" value
- * @method Scenario            setDecisionPoints()                Sets the current record's "decision_points" value
+ * @method Scenario            setTotalDecisionPoints()           Sets the current record's "total_decision_points" value
  * @method Scenario            setTicksBetweenDecisionPoints()    Sets the current record's "ticks_between_decision_points" value
- * @method Scenario            setTimeBetweenTicks()              Sets the current record's "time_between_ticks" value
  * @method Scenario            setTariffsErosionRate()            Sets the current record's "tariffs_erosion_rate" value
  * @method Scenario            setDepreciationRate()              Sets the current record's "depreciation_rate" value
  * @method Scenario            setInterestRate()                  Sets the current record's "interest_rate" value
@@ -117,9 +114,8 @@ abstract class BaseScenario extends sfDoctrineRecord
              'values' => 
              array(
               0 => 'Unstarted',
-              1 => 'Paused',
-              2 => 'Running',
-              3 => 'Finished',
+              1 => 'Running',
+              2 => 'Finished',
              ),
              'default' => 'Unstarted',
              ));
@@ -142,15 +138,11 @@ abstract class BaseScenario extends sfDoctrineRecord
              'type' => 'integer',
              'notnull' => true,
              ));
-        $this->hasColumn('decision_points', 'integer', null, array(
+        $this->hasColumn('total_decision_points', 'integer', null, array(
              'type' => 'integer',
              'notnull' => true,
              ));
         $this->hasColumn('ticks_between_decision_points', 'integer', null, array(
-             'type' => 'integer',
-             'notnull' => true,
-             ));
-        $this->hasColumn('time_between_ticks', 'integer', null, array(
              'type' => 'integer',
              'notnull' => true,
              ));

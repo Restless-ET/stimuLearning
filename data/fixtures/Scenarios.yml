@@ -1,0 +1,31 @@
+Scenario:
+<?php for ($i=1; $i<=5; $i++): ?>
+  Scenario_<?php echo $i; ?>:
+    description: <?php echo 'Cenário '.$i."\n"; ?>
+    simulation_status: Unstarted
+    market_clients_total: <?php echo (rand(100, 300)*1000)."\n"; ?> # auto-generated
+    tick_alias: Month
+    simulation_lifespan: 60
+    total_decision_points: 5
+    ticks_between_decision_points: 10 # hidden
+  ## Financial Parameters ##
+    tariffs_erosion_rate: '0.01'
+    depreciation_rate: '0.1'
+    interest_rate: '0.1'
+    elasticity: '1.0'
+    bankrupcy_limit: <?php echo rand(1, 100)."\n"; ?>
+  ## Market Share Evolution Parameters ##
+    starting_level: <?php echo rand(5, 35)."\n"; ?>
+    saturation_level: <?php echo rand(60, 90)."\n"; ?>
+    alpha: <?php echo rand(1, 300)."\n"; ?>
+    beta: <?php echo ((rand(0, 100) - 100) / 100)."\n"; ?>
+  ## Quality Vector Weights ##
+    number_of_services_weight: <?php echo rand(5, 50)."\n"; ?>
+    download_weight: <?php echo rand(5, 60)."\n"; ?>
+    upload_weight: <?php echo rand(5, 30)."\n"; ?>
+    rate_weight: <?php echo rand(5, 20)."\n"; ?>
+    fee_weight: <?php echo rand(5, 40)."\n"; ?>
+    occupation_rate_weight: <?php echo rand(1, 5)."\n"; ?>
+    containment_factor_weight: <?php echo rand(1, 5)."\n"; ?>
+    reference_occupation_rate: <?php echo rand(1, 25)."\n"; ?>
+<?php endfor; ?>

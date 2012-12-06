@@ -10,7 +10,6 @@ Scenario:
       type: enum
       values:
         - Unstarted
-        - Paused
         - Running
         - Finished
       default: Unstarted
@@ -24,9 +23,8 @@ Scenario:
         - Year
       notnull: true
     simulation_lifespan: { type: integer, notnull: true }
-    decision_points: { type: integer, notnull: true }
+    total_decision_points: { type: integer, notnull: true }
     ticks_between_decision_points: { type: integer, notnull: true } # hidden
-    time_between_ticks: { type: integer, notnull: true } # in minutes
   ## Financial Parameters ##
     tariffs_erosion_rate: { type: float, scale: 4, notnull: true }
     depreciation_rate: { type: float, scale: 4, notnull: true }
