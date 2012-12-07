@@ -2,12 +2,11 @@ Scenario:
 <?php for ($i=1; $i<=5; $i++): ?>
   Scenario_<?php echo $i; ?>:
     description: <?php echo 'Cenário '.$i."\n"; ?>
-    simulation_status: Unstarted
-    market_clients_total: <?php echo (rand(100, 300)*1000)."\n"; ?> # auto-generated
+    total_clients: <?php echo (rand(100, 300)*1000)."\n"; ?> # auto-generated
     tick_alias: Month
-    simulation_lifespan: 60
-    total_decision_points: 5
-    ticks_between_decision_points: 10 # hidden
+    lifespan: <?php $ls = rand(12, 60); echo $ls."\n"; ?>
+    total_decision_points: <?php $tdp = rand(2, 5); echo $tdp."\n"; ?>
+    ticks_between_decision_points: <?php echo ($ls / ($tdp + 1))."\n"; ?> # hidden
   ## Financial Parameters ##
     tariffs_erosion_rate: '0.01'
     depreciation_rate: '0.1'

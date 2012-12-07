@@ -14,8 +14,11 @@ generator:
     config:
       actions: ~
       fields:  ~
+      
       list:
         title: ''
+        display: [description,status,total_clients,lifespan,tick_alias,total_decision_points,ticks_between_decision_points]
+      
       filter:
         class: false
       form:    ~

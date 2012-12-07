@@ -18,5 +18,6 @@ class ScenarioForm extends BaseScenarioForm
   public function configure()
   {
     unset($this['created_at'], $this['updated_at']);
+    unset($this['status'], $this['available_technologies_list']);
   }
 }

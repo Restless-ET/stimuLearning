@@ -6,14 +6,14 @@ Scenario:
     Timestampable: ~
   columns:
     description: { type: string(100), notnull: true }
-    simulation_status:
+    status:
       type: enum
       values:
         - Unstarted
         - Running
         - Finished
       default: Unstarted
-    market_clients_total: { type: integer, notnull: true } # auto-generated
+    total_clients: { type: integer, notnull: true } # auto-generated
     tick_alias:
       type: enum
       values:
@@ -22,7 +22,7 @@ Scenario:
         - Month
         - Year
       notnull: true
-    simulation_lifespan: { type: integer, notnull: true }
+    lifespan: { type: integer, notnull: true }
     total_decision_points: { type: integer, notnull: true }
     ticks_between_decision_points: { type: integer, notnull: true } # hidden
   ## Financial Parameters ##
