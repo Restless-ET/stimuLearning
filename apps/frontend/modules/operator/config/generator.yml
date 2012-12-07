@@ -19,6 +19,7 @@ generator:
         fields:
           User:
             credentials: [admin]
+        max_per_page: 15
         title: ''
         sort: [scenario_id, asc]
         display: [id,starting_market_size,User,Scenario, scenario_id]

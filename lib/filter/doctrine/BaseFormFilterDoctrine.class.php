@@ -10,6 +10,13 @@
  */
 abstract class BaseFormFilterDoctrine extends sfFormFilterDoctrine
 {
+  /**
+   * (non-PHPdoc)
+   *
+   * @see sfForm::setup()
+   *
+   * @return nothing
+   */
   public function setup()
   {
   }
