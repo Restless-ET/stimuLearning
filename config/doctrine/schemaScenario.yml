@@ -1,7 +1,4 @@
 Scenario:
-  options:
-    symfony:
-      filter: false
   actAs:
     Timestampable: ~
   columns:

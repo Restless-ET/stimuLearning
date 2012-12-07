@@ -50,10 +50,6 @@ abstract class BaseOperator extends sfDoctrineRecord
              'type' => 'integer',
              'notnull' => true,
              ));
-
-        $this->option('symfony', array(
-             'filter' => false,
-             ));
     }
 
     public function setUp()

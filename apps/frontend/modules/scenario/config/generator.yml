@@ -17,8 +17,11 @@ generator:
       
       list:
         title: ''
-        display: [description,status,total_clients,lifespan,tick_alias,total_decision_points,ticks_between_decision_points]
-      
+        display: [id,description,status,total_clients,lifespan,tick_alias,total_decision_points,ticks_between_decision_points]
+        actions:
+          _new:
+            credentials: [admin]
+            
       filter:
         class: false
       form:    ~

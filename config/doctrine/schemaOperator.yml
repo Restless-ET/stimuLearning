@@ -1,7 +1,4 @@
 Operator:
-  options:
-    symfony:
-      filter: false
   actAs:
     Timestampable: ~
   columns:

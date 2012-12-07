@@ -217,10 +217,6 @@ abstract class BaseScenario extends sfDoctrineRecord
              'type' => 'decimal',
              'notnull' => true,
              ));
-
-        $this->option('symfony', array(
-             'filter' => false,
-             ));
     }
 
     public function setUp()

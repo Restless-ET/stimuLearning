@@ -14,10 +14,19 @@ generator:
     config:
       actions: ~
       fields:  ~
+      
       list:
+        fields:
+          User:
+            credentials: [admin]
         title: ''
+        sort: [scenario_id, asc]
+        display: [id,starting_market_size,User,Scenario, scenario_id]
+        table_method: filterByCredential
+
       filter:
-        class: false
+        display: [user_id,scenario_id]
+
       form:    ~
       edit:    ~
       new:     ~

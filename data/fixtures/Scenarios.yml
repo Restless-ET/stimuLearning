@@ -2,7 +2,7 @@ Scenario:
 <?php for ($i=1; $i<=5; $i++): ?>
   Scenario_<?php echo $i; ?>:
     description: <?php echo 'Cenário '.$i."\n"; ?>
-    total_clients: <?php echo (rand(100, 300)*1000)."\n"; ?> # auto-generated
+    total_clients: <?php echo (rand(1000, 3000)*100)."\n"; ?> # auto-generated
     tick_alias: Month
     lifespan: <?php $ls = rand(12, 60); echo $ls."\n"; ?>
     total_decision_points: <?php $tdp = rand(2, 5); echo $tdp."\n"; ?>
