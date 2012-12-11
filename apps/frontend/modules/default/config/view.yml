@@ -4,7 +4,7 @@ all:
 loginSuccess:
   has_layout:     true
   stylesheets:    [-*, reset.css, main.css]
-  javascripts:    [-*, lib/jquery_1.5.1.js, flot/jquery.flot.js, marketShareChart.js]
+  javascripts:    [-*, flot/jquery.js, flot/jquery.flot.js, flot/jquery.flot.selection.js, marketShareChart.js]
 
 error404Success:
   layout: 404
