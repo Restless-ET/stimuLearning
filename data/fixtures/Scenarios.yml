@@ -14,8 +14,8 @@ Scenario:
     elasticity: '1.0'
     bankrupcy_limit: <?php echo rand(1, 100)."\n"; ?>
   ## Market Share Evolution Parameters ##
-    starting_level: <?php echo rand(5, 35)."\n"; ?>
-    saturation_level: <?php echo rand(60, 90)."\n"; ?>
+    starting_level: <?php echo rand(1, 30)."\n"; ?>
+    saturation_level: <?php echo rand(65, 95)."\n"; ?>
     alpha: <?php echo rand(1, 300)."\n"; ?>
     beta: <?php echo ((rand(0, 100) - 100) / 100)."\n"; ?>
   ## Quality Vector Weights ##
