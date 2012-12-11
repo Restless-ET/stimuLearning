@@ -1,9 +1,9 @@
 jQuery(document).ready(function() {
-	var numTicks = 36;
-	var startingLevel = 5.00;
-	var saturationLevel = 70.00;
-	var alpha = 100;
-	var beta = -0.3;
+	var numTicks = parseInt(jQuery('#lifespan').val());
+	var startingLevel = parseFloat(jQuery('#starting_level').val());
+	var saturationLevel = parseFloat(jQuery('#saturation_level').val());
+	var alpha = parseInt(jQuery('#alpha').val());
+	var beta = parseFloat(jQuery('#beta').val());
 	
 	// setup plot
     function getData() {
@@ -25,10 +25,13 @@ jQuery(document).ready(function() {
             lines: { show: true },
             points: { show: true }
         },
-		grid: { hoverable: true, clickable: true },
+		grid: {
+			hoverable: true,
+			clickable: true
+		},
 		yaxis: { min: 0, max: 100 },
         //yaxis: { ticks: 10 },
-		xaxis: { min: -0.5, max: numTicks+1 },
+		xaxis: { min: -0.5, max: numTicks + 1 },
         selection: { mode: "xy" }
     };
 

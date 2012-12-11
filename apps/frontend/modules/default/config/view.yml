@@ -1,10 +1,2 @@
-all:
-  has_layout:     true
-
-loginSuccess:
-  has_layout:     true
-  stylesheets:    [-*, reset.css, main.css]
-  javascripts:    [-*, flot/jquery.js, flot/jquery.flot.js, flot/jquery.flot.selection.js, marketShareChart.js]
-
 error404Success:
   layout: 404

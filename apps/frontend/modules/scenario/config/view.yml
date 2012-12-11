@@ -1,0 +1,2 @@
+viewSuccess:
+  javascripts:    [-*, flot/jquery.js, flot/jquery.flot.js, flot/jquery.flot.selection.js, marketShareChart.js]

@@ -34,7 +34,6 @@ all:
     error_404_module:       default   # To be called when a 404 error is raised
     error_404_action:       error404  # Or when the requested URL doesn't match any route
   
-  
   .settings:
     # Form security secret (CSRF protection)
     csrf_secret:            dfbdc5e6c31a2e106225b57c219fec491be1d009
@@ -42,6 +41,9 @@ all:
     # Output escaping settings
     escaping_strategy:      true
     escaping_method:        ESC_SPECIALCHARS
+    
+    i18n:                   true
+    default_culture:        en        # Default user culture
 
     # Enable the database manager
     use_database:           true

@@ -6,15 +6,15 @@ default:
     content-type: text/html
 
   metas:
-    #title:        symfony project
+    title:        GSBL - StimuLearning
     #description:  symfony project
-    #keywords:     symfony, project
-    #language:     en
+    keywords:     gsbl, stimulearning, market
+    language:     en
     #robots:       index, follow
 
   stylesheets:    [overcast/jquery-ui.custom.css, /sfDoctrinePlugin/css/global.css, /sfDoctrinePlugin/css/default.css, reset.css, main.css]
 
-  javascripts:    [lib/jquery-1.4.2-min.js, lib/jquery-ui.custom.min.js, i18n/jquery.ui.datepicker-pt-BR.js]
+  javascripts:    [lib/jquery-1.4.2.min.js, lib/jquery-ui.custom.min.js, i18n/jquery.ui.datepicker-pt-BR.js]
 
   has_layout:     true
   layout:         layout
