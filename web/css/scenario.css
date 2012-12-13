@@ -5,19 +5,22 @@ div.ui-widget-content{
   width: 200px;
 }
 
+div#charts_container {
+  float: right;
+  margin-left: 10px;
+  width: 450px;
+  height: 450px;
+}
+
 div#market_share_chart {
-	float: right;
-	margin-left: 10px;
   width: 450px;
   height: 290px;
 }
 
 div#miniature {
-	float: right;
-	margin-left: 10px;
-	position: absolute;
-	top: 545px;
-	right: 140px;
+	position: relative;
+	top: 15px;
+	left: 130px;
 }
 
 div#overview {
