@@ -22,15 +22,14 @@ generator:
       
       list:
         title: ''
-        display: [id,description,status,total_clients,lifespan,tick_alias,total_decision_points,ticks_between_decision_points]
+        display: [_description,status,total_clients,lifespan,tick_alias,total_decision_points,ticks_between_decision_points]
         actions:
           _new:
             credentials: [admin]
         object_actions:
-          show:
-            action: view 
+          show: ~
           _edit:
-            #credentials: [admin]
+            credentials: [admin]
           _delete:
             credentials: [admin]
             

@@ -5,5 +5,5 @@ newSuccess:
   javascripts: [flot/jquery.flot.js, flot/jquery.flot.selection.js, marketShareChart.js, calculos.js]
 editSuccess:
   javascripts: [flot/jquery.flot.js, flot/jquery.flot.selection.js, marketShareChart.js, calculos.js]
-viewSuccess:
+showSuccess:
   javascripts: [flot/jquery.flot.js, flot/jquery.flot.selection.js, marketShareChart.js]

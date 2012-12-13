@@ -10,6 +10,6 @@
 <br /><br />
 <?php endif ?>
 
-<?php include_partial('scenario/market_share_chart', array('scenario' => $scenario)); ?>
+<?php include_partial('show', array('form' => $form, 'scenario' => $scenario, 'configuration' => $configuration)) ?>
 
 </div>

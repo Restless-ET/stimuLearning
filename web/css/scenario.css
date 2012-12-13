@@ -10,13 +10,13 @@ fieldset#sf_fieldset_graph {
   float: right;
   margin-left: 5px;
   width: 450px;
-  height: 450px;
+  height: 420px;
 }
 
 div#market_share_chart {
 	margin-top: 10px;
   width: 450px;
-  height: 290px;
+  height: 270px;
 }
 
 div#miniature {

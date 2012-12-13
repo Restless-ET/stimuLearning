@@ -14,16 +14,19 @@ require_once dirname(__FILE__).'/../lib/scenarioGeneratorHelper.class.php';
 class scenarioActions extends autoScenarioActions
 {
   /**
-   * Executes view action for scenario
+   * Executes show action for scenario
    *
    * @param sfWebRequest $request A request object
    *
    * @return nothing
    */
-  public function executeView(sfWebRequest $request)
+  public function executeShow(sfWebRequest $request)
   {
     $this->scenario = $this->getRoute()->getObject();
+    $this->forward404Unless($this->scenario);
 
     $this->helper = new scenarioGeneratorHelper();
+
+    $this->form = $this->configuration->getForm($this->scenario);
   }
 }
