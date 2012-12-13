@@ -1,20 +1,21 @@
 chartDivId = '#market_share_chart';
+tickAliasId = '#scenario_tick_alias';
 lifespanId = '#scenario_lifespan';
 startLevelId = '#scenario_starting_level';
 saturationId = '#scenario_saturation_level';
 alphaId = '#scenario_alpha';
 betaId = '#scenario_beta';
 
-var numTicks, startingLevel, saturationLevel, alpha, beta;
+var numTicks, tickAlias, startingLevel, saturationLevel, alpha, beta;
 var startData, options;
 
 jQuery(document).ready(function() {
 	
-	actOnBlur = jQuery([]).add($(lifespanId)).add($(startLevelId)).add($(saturationId)).add($(alphaId)).add($(betaId));
-	if (jQuery('#scenario_tick_alias').length != 0)
+	actOnChange = jQuery([]).add($(lifespanId)).add($(tickAliasId)).add($(startLevelId)).add($(saturationId)).add($(alphaId)).add($(betaId));
+	if (jQuery('#scenario_id').length != 0)
 	{
 		// hook on change events to each related input
-		actOnBlur.bind('blur', configAndInitiateGraphDraw);
+		actOnChange.bind('change blur input paste', configAndInitiateGraphDraw);
 	}
 	
 	configAndInitiateGraphDraw();
@@ -43,7 +44,7 @@ function configAndInitiateGraphDraw() {
                     y = item.datapoint[1];
                 
                 showTooltip(item.pageX, item.pageY,
-                            "Month #: "+ x +"<br>Penetration: " + y +' %');
+                            tickAlias+" #: "+ x +"<br>Penetration: " + y +' %');
             }
         }
         else {
@@ -91,6 +92,7 @@ function configAndInitiateGraphDraw() {
 
 function setNeededValuesFromInput() {
 	numTicks = parseInt(jQuery(lifespanId).val());
+	tickAlias = jQuery(tickAliasId).val();
 	startingLevel = parseFloat(jQuery(startLevelId).val());
 	saturationLevel = parseFloat(jQuery(saturationId).val());
 	alpha = parseInt(jQuery(alphaId).val());

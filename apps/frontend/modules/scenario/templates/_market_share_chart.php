@@ -10,6 +10,7 @@
 </div>
 
 <?php if (isset($scenario)): ?>
+  <input id="scenario_tick_alias" style="display: none;" type="text" value="<?php echo $scenario->getTickAlias(); ?>">
   <input id="scenario_lifespan" style="display: none;" type="text" value="<?php echo $scenario->getLifespan(); ?>">
   <input id="scenario_starting_level" style="display: none;" type="text" value="<?php echo $scenario->getStartingLevel(); ?>">
   <input id="scenario_saturation_level" style="display: none;" type="text" value="<?php echo $scenario->getSaturationLevel(); ?>">
