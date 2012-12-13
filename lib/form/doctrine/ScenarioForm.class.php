@@ -27,8 +27,14 @@ class ScenarioForm extends BaseScenarioForm
       'min' => '1',
       'default' => '36',
       'strict_limits' => false,
-      'js_on_slide' => 'configAndInitiateGraphDraw();',
+      'js_on_slide' => 'configAndInitiateGraphDraw();setTicksBetweenDP();',
     )));
+    $this->setWidget('total_decision_points', new amWidgetFormSlider(array(
+      'max' => '15',
+      'default' => '3',
+      'js_on_slide' => 'setTicksBetweenDP();',
+    )));
+    $this->getWidget('ticks_between_decision_points')->setAttribute('readonly', true);
     $this->setWidget('starting_level', new amWidgetFormSlider(array(
       'units' => '%',
       'js_on_slide' => 'configAndInitiateGraphDraw();',

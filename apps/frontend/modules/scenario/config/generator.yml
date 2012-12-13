@@ -45,6 +45,7 @@ generator:
           Quality Vector: [number_of_services_weight,download_weight,upload_weight,rate_weight,fee_weight,occupation_rate_weight,containment_factor_weight,reference_occupation_rate]
       
       edit:
+        title: 'Edit Scenario - %%description%%'
         actions:
           _delete:
             credentials: [admin]
