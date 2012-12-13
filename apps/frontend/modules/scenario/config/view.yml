@@ -1,2 +1,9 @@
+default:
+  stylesheets: [scenario.css]
+
+newSuccess:
+  javascripts: [flot/jquery.flot.js, flot/jquery.flot.selection.js, marketShareChart.js]
+editSuccess:
+  javascripts: [flot/jquery.flot.js, flot/jquery.flot.selection.js, marketShareChart.js]
 viewSuccess:
-  javascripts:    [-*, flot/jquery.js, flot/jquery.flot.js, flot/jquery.flot.selection.js, marketShareChart.js]
+  javascripts: [flot/jquery.flot.js, flot/jquery.flot.selection.js, marketShareChart.js]

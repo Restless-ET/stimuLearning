@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+
+div#market_share_chart {
+	float: right;
+	margin-left: 10px;
+  width: 450px;
+  height: 275px;
+}
+
+div#miniature {
+	float: right;
+	margin-left: 10px;
+	position: absolute;
+	top: 525px;
+	right: 140px;
+}
+
+div#overview {
+  width: 164px;
+  height: 100px;
+}

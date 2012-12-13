@@ -1,9 +1,9 @@
 jQuery(document).ready(function() {
-	var numTicks = parseInt(jQuery('#lifespan').val());
-	var startingLevel = parseFloat(jQuery('#starting_level').val());
-	var saturationLevel = parseFloat(jQuery('#saturation_level').val());
-	var alpha = parseInt(jQuery('#alpha').val());
-	var beta = parseFloat(jQuery('#beta').val());
+	var numTicks = parseInt(jQuery('#scenario_lifespan').val());
+	var startingLevel = parseFloat(jQuery('#scenario_starting_level').val());
+	var saturationLevel = parseFloat(jQuery('#scenario_saturation_level').val());
+	var alpha = parseInt(jQuery('#scenario_alpha').val());
+	var beta = parseFloat(jQuery('#scenario_beta').val());
 	
 	// setup plot
     function getData() {
@@ -27,7 +27,7 @@ jQuery(document).ready(function() {
         },
 		grid: {
 			hoverable: true,
-			clickable: true
+			//clickable: true
 		},
 		yaxis: { min: 0, max: 100 },
         //yaxis: { ticks: 10 },
@@ -72,14 +72,14 @@ jQuery(document).ready(function() {
             previousPoint = null;            
         }
     });
-    
+    /*
     jQuery('#market_share_chart').bind('plotclick', function (event, pos, item) {
         if (item) {
         	jQuery('#clickdata').text("You clicked point " + item.dataIndex + " in " + item.series.label + ".");
             plot.highlight(item.series, item.datapoint);
         }
     });
-    
+    */
   // ZOOMING
     // setup overview
     var overview = $.plot($("#overview"), startData, {
