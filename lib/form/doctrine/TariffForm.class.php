@@ -13,7 +13,10 @@ class TariffForm extends BaseTariffForm
   /**
    * Apply the proper widget configurations and validators for this form
    * (non-PHPdoc)
+   *
    * @see sfForm::configure()
+   *
+   * @return nothing
    */
   public function configure()
   {

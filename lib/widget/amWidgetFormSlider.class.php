@@ -2,13 +2,33 @@
 
 /**
  * Description of amWidgetFormSlider
+ * Based on sfWidgetFormSlider by Leny Bernard (http://www.leny-bernard.com)
  *
- * @author Artur Melo <adsmelo@ua.pt>
- *
- * @see Leny bernard http://www.leny-bernard.com
+ * @package    stimuLearning
+ * @subpackage widget
+ * @author     Artur Melo <adsmelo@ua.pt>
  */
 class amWidgetFormSlider extends sfWidgetForm
 {
+  /**
+   * Constructor.
+   *
+   * Available options:
+   *
+   *  * min: The slider minimum value (0 by default)
+   *  * max: The slider maximum value (100 by default)
+   *  * step: The slider step value (1 by default)
+   *  * units: The units of the value to show ('' by default)
+   *  * strict_limits: Indicates if the min and max limits should be strictly applied (true by default)
+   *  * js_on_slide: Some extra javascript code we might want to execute on slide event (e'' by default)
+   *
+   * @param array $options    An array of options
+   * @param array $attributes An array of default HTML attributes
+   *
+   * @see sfWidgetForm
+   *
+   * @return nothing
+   */
   public function configure($options = array(), $attributes = array())
   {
     $this->addOption('min', 0);
@@ -62,6 +82,18 @@ class amWidgetFormSlider extends sfWidgetForm
     ');
   }
 
+  /**
+   * Render the current widget
+   *
+   * @param string $name       The element name
+   * @param string $value      The value displayed in this widget
+   * @param array  $attributes An array of HTML attributes to be merged with the default HTML attributes
+   * @param array  $errors     An array of errors for the field
+   *
+   * @return string An HTML tag string
+   *
+   * @see sfWidgetForm
+   */
   public function render($name, $value = null, $attributes = array(), $errors = array())
   {
     if (is_null($value))
@@ -77,7 +109,7 @@ class amWidgetFormSlider extends sfWidgetForm
 
     // define main template variables
     $template_vars = array(
-      '{div.id}'        => $this->generateId($name."_slide"),
+      '{div.id}'        => $this->generateId($name.'_slide'),
       '{div.class}'     => $this->getOption('div.class'),
       '{min}'           => $min,
       '{max}'           => $max,
@@ -92,10 +124,6 @@ class amWidgetFormSlider extends sfWidgetForm
     );
 
     // merge templates and variables
-    return strtr(
-      $this->getOption('template.html').$this->getOption('template.javascript'),
-      $template_vars
-    );
+    return strtr($this->getOption('template.html').$this->getOption('template.javascript'), $template_vars);
   }
 }
-?>

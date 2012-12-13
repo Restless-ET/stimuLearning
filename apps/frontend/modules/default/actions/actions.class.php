@@ -10,11 +10,13 @@
  */
 class defaultActions extends sfActions
 {
- /**
-  * Executes index action
-  *
-  * @param sfRequest $request A request object
-  */
+  /**
+   * Executes index action
+   *
+   * @param sfRequest $request A request object
+   *
+   * @return nothing
+   */
   public function executeIndex(sfWebRequest $request)
   {
     if (!$this->getUser()->isAuthenticated())
@@ -33,6 +35,8 @@ class defaultActions extends sfActions
    * Executes login action
    *
    * @param sfRequest $request A request object
+   *
+   * @return nothing
    */
   public function executeLogin(sfWebRequest $request)
   {

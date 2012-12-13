@@ -16,7 +16,7 @@ class scenarioActions extends autoScenarioActions
   /**
    * Executes view action for scenario
    *
-   * @param sfWebRequest $request
+   * @param sfWebRequest $request A request object
    *
    * @return nothing
    */

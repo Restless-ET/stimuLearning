@@ -10,6 +10,13 @@
  */
 abstract class BaseFormDoctrine extends sfFormDoctrine
 {
+  /**
+   * Setups the current form.
+   *
+   * @see sfForm::setup()
+   *
+   * @return nothing
+   */
   public function setup()
   {
   }
