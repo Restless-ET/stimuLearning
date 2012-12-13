@@ -25,7 +25,8 @@ body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-s
 
 #content
 {
-  padding: 0px 15px 20px 20px;
+	min-width: 925px;
+  padding: 0px 10px 15px 15px;
 }
 
 #title a

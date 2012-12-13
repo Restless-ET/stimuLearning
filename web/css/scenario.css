@@ -6,14 +6,15 @@ div.ui-widget-content{
   display: inline-block;
 }
 
-div#charts_container {
+fieldset#sf_fieldset_graph {
   float: right;
-  margin-left: 10px;
+  margin-left: 5px;
   width: 450px;
   height: 450px;
 }
 
 div#market_share_chart {
+	margin-top: 10px;
   width: 450px;
   height: 290px;
 }
@@ -21,10 +22,17 @@ div#market_share_chart {
 div#miniature {
 	position: relative;
 	top: 15px;
-	left: 130px;
+	width: 450px;
+}
+
+p#overviewLegend {
+	float: left;
+	margin-left: 10px
 }
 
 div#overview {
+  float: right;
+  margin-right: 20px;
   width: 155px;
   height: 100px;
 }
