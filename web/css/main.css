@@ -126,7 +126,7 @@ th
 
 #header {
 	padding: 5px;
-	background: url("/images/banner_gsbl_v7.jpg") no-repeat scroll left top #EEEEEE;
+	background: url("/images/banner_gsbl_v7.jpg") repeat-x scroll left top #EEEEEE;
     height: 90px;
 }
 

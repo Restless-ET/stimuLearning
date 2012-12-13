@@ -3,9 +3,7 @@
 
   <div id="miniature">
     <div id="overview"></div>
-
     <p id="overviewLegend" style="margin-left:10px"></p>
-    <br />
     <p id="hoverdata">Mouse at
     (<span id="x">0</span>, <span id="y">0</span>).</p>
   </div>

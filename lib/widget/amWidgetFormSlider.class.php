@@ -45,15 +45,13 @@ class amWidgetFormSlider extends sfWidgetForm
         #{input.id}{
         width:35px !important;
         }
-
         </style>
+        <div id="{div.id}" class="{div.class}"></div>
         <!-- <p>
             <label for="units">{label}</label> -->
             <input type="text" id="{input.id}" name="{input.name}" value="{value}"/>
             <span id="unitsLabel">{units}</span>
         <!-- </p> -->
-
-        <div id="{div.id}" class="{div.class}"></div>
     ');
 
      $this->addOption('template.javascript', '
