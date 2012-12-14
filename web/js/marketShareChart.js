@@ -7,7 +7,7 @@ alphaId = '#scenario_alpha';
 betaId = '#scenario_beta';
 
 var numTicks, tickAlias, startingLevel, saturationLevel, alpha, beta;
-var startData, options;
+var startData, options, colorIndex = 6;
 
 jQuery(document).ready(function() {
 	
@@ -22,7 +22,7 @@ jQuery(document).ready(function() {
 });
 
 function configAndInitiateGraphDraw() {
-    
+
 	setNeededValuesFromInput();
 	startData = getPlotData();
 	options = getGraphOptions();
@@ -86,8 +86,7 @@ function configAndInitiateGraphDraw() {
     $("#overview").bind("plotselected", function (event, ranges) {
         plot.setSelection(ranges);
     });
-    
-    $("#overview").bind("dblclick", resetZoom);
+    //colorIndex = colorIndex + 1;
 }
 
 function setNeededValuesFromInput() {
@@ -103,6 +102,7 @@ function getGraphOptions() {
 	var graphOptions = {
 	    legend: { show: false },
 	    series: {
+	    	color: colorIndex,
 	        lines: { show: true },
 	        points: { show: true }
 	    },
@@ -145,9 +145,12 @@ function showTooltip(x, y, contents) {
 };
 
 function setupOverview() {
+    $("#overview").bind("dblclick", resetZoom);
+	
 	return $.plot($("#overview"), startData, {
         legend: { show: true, container: $("#overviewLegend") },
         series: {
+        	color: colorIndex,
             lines: { show: true, lineWidth: 1 },
             shadowSize: 0
         },
@@ -162,5 +165,5 @@ function resetZoom()
 { 
 	plot = $.plot($(chartDivId), getPlotData(), options); 
 	overview.clearSelection(); 
-	plot.clearSelection(); 
+	plot.clearSelection();
 };
