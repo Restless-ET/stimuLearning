@@ -24,6 +24,12 @@ generator:
         sort: [scenario_id, asc]
         display: [name,starting_market_size,User,Scenario, scenario_id]
         table_method: filterByCredential
+        object_actions:
+          show:
+            action: show
+          _edit:
+          _delete:
+            credentials: [admin]
 
       filter:
         display: [user_id,scenario_id]

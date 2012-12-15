@@ -1,4 +1,4 @@
-chartDivId = '#market_share_chart';
+chartDivId = '#market_penetration_chart';
 tickAliasId = '#scenario_tick_alias';
 lifespanId = '#scenario_lifespan';
 startLevelId = '#scenario_starting_level';
@@ -86,6 +86,15 @@ function configAndInitiateGraphDraw() {
     $("#overview").bind("plotselected", function (event, ranges) {
         plot.setSelection(ranges);
     });
+    
+    function resetZoom() 
+    { 
+    	plot = $.plot($(chartDivId), getPlotData(), options); 
+    	overview.clearSelection(); 
+    	plot.clearSelection();
+    };
+    
+    $("#overview").bind("dblclick", resetZoom);
     //colorIndex = colorIndex + 1;
 }
 
@@ -145,25 +154,18 @@ function showTooltip(x, y, contents) {
 };
 
 function setupOverview() {
-    $("#overview").bind("dblclick", resetZoom);
-	
-	return $.plot($("#overview"), startData, {
+	var overview = $.plot($("#overview"), startData, {
         legend: { show: true, container: $("#overviewLegend") },
         series: {
         	color: colorIndex,
             lines: { show: true, lineWidth: 1 },
             shadowSize: 0
         },
-        xaxis: { ticks: 4 },
+        xaxis: { ticks: 4, min: -0.5, max: numTicks + 1 },
         yaxis: { ticks: 3, min: 0, max: 100 },
         grid: { color: "#999" },
         selection: { mode: "xy" }
     });
-};
-
-function resetZoom() 
-{ 
-	plot = $.plot($(chartDivId), getPlotData(), options); 
-	overview.clearSelection(); 
-	plot.clearSelection();
+	
+	return overview;
 };

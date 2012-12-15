@@ -1,4 +1,4 @@
-<div id="market_share_chart"></div>
+<div id="market_penetration_chart"></div>
 
 <div id="miniature">
   <p id="overviewLegend"></p>

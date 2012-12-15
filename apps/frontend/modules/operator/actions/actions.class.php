@@ -13,4 +13,19 @@ require_once dirname(__FILE__).'/../lib/operatorGeneratorHelper.class.php';
  */
 class operatorActions extends autoOperatorActions
 {
+  /**
+   * Executes show action for scenario
+   *
+   * @param sfWebRequest $request A request object
+   *
+   * @return nothing
+   */
+  public function executeShow(sfWebRequest $request)
+  {
+    $this->operator = $this->getRoute()->getObject();
+    $this->forward404Unless($this->operator);
+
+    //$this->helper = new operatorGeneratorHelper();
+    //$this->form = $this->configuration->getForm($this->operator);
+  }
 }
