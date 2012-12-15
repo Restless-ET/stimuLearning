@@ -9,18 +9,17 @@
   </ul>
 <?php endif ?>
 
-<fieldset id="sf_fieldset_operator_status">
+  <fieldset id="sf_fieldset_operator_status">
     <h2>Operator <b><?php echo $operator->name ?></b> status at scenario <b><?php echo $operator->Scenario ?></b></h2>
-</fieldset>
+  </fieldset>
 
-<fieldset id="sf_fieldset_operator_simulated_data">
+  <fieldset id="sf_fieldset_operator_simulated_data">
     <h2>Operator Simulated Data</h2>
-</fieldset>
+    <?php include_partial('operator/simulated_data_chart'); ?>
+  </fieldset>
 
-<fieldset id="sf_fieldset_market_share_evolution">
+  <fieldset id="sf_fieldset_market_share_evolution">
     <h2>Market Share Evolution</h2>
-</fieldset>
-
-<?php //include_partial('show', array('form' => $form, 'scenario' => $scenario, 'configuration' => $configuration)) ?>
-
+    <?php include_partial('operator/market_share_evolution_chart'); ?>
+  </fieldset>
 </div>

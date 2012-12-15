@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+
+div#simulated_data_chart,
+div#market_share_evolution_chart {
+  margin: 10px 0px 0px 5px;
+  width: 760px;
+  height: 350px;
+}
+
+div#sdc_miniature,
+div#msec_miniature {
+	float: right;
+	margin: 10px 5px 0px 2px;
+  width: 150px;
+}
+
+p#sdc_legend,
+p#msec_legend {
+  margin-left: 10px
+}
+
+div#sdc_overview,
+div#msec_overview {
+  width: 150px;
+  height: 70px;
+}

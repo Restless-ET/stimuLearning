@@ -1,0 +1,5 @@
+default:
+  stylesheets: [operator.css]
+
+showSuccess:
+  javascripts: [flot/jquery.flot.js, flot/jquery.flot.selection.js, simulatedDataChart.js, marketShareEvolutionChart.js]
