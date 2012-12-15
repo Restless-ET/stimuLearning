@@ -7,6 +7,11 @@
  * 
  * @property decimal $CAPEX
  * @property decimal $OPEX
+ * @property decimal $revenue
+ * @property decimal $cashflow
+ * @property decimal $balance
+ * @property decimal $equity
+ * @property float $market_share
  * @property integer $operator_id
  * @property integer $scenario_id
  * @property Operator $Operator
@@ -15,6 +20,11 @@
  * 
  * @method decimal             getCAPEX()              Returns the current record's "CAPEX" value
  * @method decimal             getOPEX()               Returns the current record's "OPEX" value
+ * @method decimal             getRevenue()            Returns the current record's "revenue" value
+ * @method decimal             getCashflow()           Returns the current record's "cashflow" value
+ * @method decimal             getBalance()            Returns the current record's "balance" value
+ * @method decimal             getEquity()             Returns the current record's "equity" value
+ * @method float               getMarketShare()        Returns the current record's "market_share" value
  * @method integer             getOperatorId()         Returns the current record's "operator_id" value
  * @method integer             getScenarioId()         Returns the current record's "scenario_id" value
  * @method Operator            getOperator()           Returns the current record's "Operator" value
@@ -22,6 +32,11 @@
  * @method Doctrine_Collection getAcquiredEquipments() Returns the current record's "AcquiredEquipments" collection
  * @method Tick                setCAPEX()              Sets the current record's "CAPEX" value
  * @method Tick                setOPEX()               Sets the current record's "OPEX" value
+ * @method Tick                setRevenue()            Sets the current record's "revenue" value
+ * @method Tick                setCashflow()           Sets the current record's "cashflow" value
+ * @method Tick                setBalance()            Sets the current record's "balance" value
+ * @method Tick                setEquity()             Sets the current record's "equity" value
+ * @method Tick                setMarketShare()        Sets the current record's "market_share" value
  * @method Tick                setOperatorId()         Sets the current record's "operator_id" value
  * @method Tick                setScenarioId()         Sets the current record's "scenario_id" value
  * @method Tick                setOperator()           Sets the current record's "Operator" value
@@ -44,6 +59,26 @@ abstract class BaseTick extends sfDoctrineRecord
              ));
         $this->hasColumn('OPEX', 'decimal', null, array(
              'type' => 'decimal',
+             'notnull' => true,
+             ));
+        $this->hasColumn('revenue', 'decimal', null, array(
+             'type' => 'decimal',
+             'notnull' => true,
+             ));
+        $this->hasColumn('cashflow', 'decimal', null, array(
+             'type' => 'decimal',
+             'notnull' => true,
+             ));
+        $this->hasColumn('balance', 'decimal', null, array(
+             'type' => 'decimal',
+             'notnull' => true,
+             ));
+        $this->hasColumn('equity', 'decimal', null, array(
+             'type' => 'decimal',
+             'notnull' => true,
+             ));
+        $this->hasColumn('market_share', 'float', null, array(
+             'type' => 'float',
              'notnull' => true,
              ));
         $this->hasColumn('operator_id', 'integer', null, array(

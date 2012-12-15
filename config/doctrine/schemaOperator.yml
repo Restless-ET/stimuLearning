@@ -3,6 +3,11 @@ Operator:
     Timestampable: ~
   columns:
     starting_market_size: { type: integer, notnull: true }
+    balance: { type: decimal, notnull: true }
+    net_present_value: { type: decimal, notnull: true }
+    market_share: { type: float, notnull: true }
+    payback_period: { type: integer, notnull: true }
+    internal_rate_of_return: { type: float, notnull: true }
     
     user_id: { type: integer, notnull: true }
     scenario_id: { type: integer, notnull: true }

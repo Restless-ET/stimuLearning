@@ -9,6 +9,11 @@ Tick:
   ## Get columns from other main classes with variable values through time ##
     CAPEX: { type: decimal, notnull: true }
     OPEX: { type: decimal, notnull: true }
+    revenue: { type: decimal, notnull: true }
+    cashflow: { type: decimal, notnull: true }
+    balance: { type: decimal, notnull: true }
+    equity: { type: decimal, notnull: true }
+    market_share: { type: float, notnull: true }
     
     operator_id: { type: integer, notnull: true }
     scenario_id: { type: integer, notnull: true }
