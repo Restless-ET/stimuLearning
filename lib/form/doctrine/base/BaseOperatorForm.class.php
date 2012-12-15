@@ -16,6 +16,7 @@ abstract class BaseOperatorForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'                      => new sfWidgetFormInputHidden(),
+      'name'                    => new sfWidgetFormInputText(),
       'starting_market_size'    => new sfWidgetFormInputText(),
       'balance'                 => new sfWidgetFormInputText(),
       'net_present_value'       => new sfWidgetFormInputText(),
@@ -30,6 +31,7 @@ abstract class BaseOperatorForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'                      => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'name'                    => new sfValidatorString(array('max_length' => 150)),
       'starting_market_size'    => new sfValidatorInteger(),
       'balance'                 => new sfValidatorNumber(),
       'net_present_value'       => new sfValidatorNumber(),

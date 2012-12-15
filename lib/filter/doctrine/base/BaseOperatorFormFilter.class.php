@@ -13,6 +13,7 @@ abstract class BaseOperatorFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
+      'name'                    => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'starting_market_size'    => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'balance'                 => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'net_present_value'       => new sfWidgetFormFilterInput(array('with_empty' => false)),
@@ -26,6 +27,7 @@ abstract class BaseOperatorFormFilter extends BaseFormFilterDoctrine
     ));
 
     $this->setValidators(array(
+      'name'                    => new sfValidatorPass(array('required' => false)),
       'starting_market_size'    => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'balance'                 => new sfValidatorSchemaFilter('text', new sfValidatorNumber(array('required' => false))),
       'net_present_value'       => new sfValidatorSchemaFilter('text', new sfValidatorNumber(array('required' => false))),
@@ -56,6 +58,7 @@ abstract class BaseOperatorFormFilter extends BaseFormFilterDoctrine
   {
     return array(
       'id'                      => 'Number',
+      'name'                    => 'Text',
       'starting_market_size'    => 'Number',
       'balance'                 => 'Number',
       'net_present_value'       => 'Number',

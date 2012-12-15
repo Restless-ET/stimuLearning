@@ -2,6 +2,7 @@ Operator:
   actAs:
     Timestampable: ~
   columns:
+    name: { type: string(150), notnull: true }
     starting_market_size: { type: integer, notnull: true }
     balance: { type: decimal, notnull: true }
     net_present_value: { type: decimal, notnull: true }

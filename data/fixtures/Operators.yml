@@ -1,6 +1,7 @@
 Operator:
 <?php for ($i=1; $i<=15; $i++): ?>
   Operator_<?php echo $i; ?>:
+    name: <?php echo 'Operador '.$i."\n"; ?>
     starting_market_size: <?php echo (rand(1000, 3000)*10)."\n"; ?>
     User: <?php echo 'User_'.($i % 3 + 1)."\n"; ?>
     Scenario: <?php echo 'Scenario_'.($i % 5 + 1)."\n"; ?>
