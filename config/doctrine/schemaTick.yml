@@ -6,6 +6,7 @@ Tick:
   actAs:
     Timestampable: ~
   columns:
+    nbr: { type: integer, notnull: true }
   ## Get columns from other main classes with variable values through time ##
     CAPEX: { type: decimal, notnull: true }
     OPEX: { type: decimal, notnull: true }

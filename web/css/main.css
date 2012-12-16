@@ -25,7 +25,9 @@ body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-s
 
 #content
 {
-	min-width: 925px;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 925px;
   padding: 0px 10px 15px 15px;
 }
 
