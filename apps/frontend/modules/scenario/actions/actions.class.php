@@ -29,4 +29,38 @@ class scenarioActions extends autoScenarioActions
 
     $this->form = $this->configuration->getForm($this->scenario);
   }
+
+  public function executeGetMarketShareEvolutionData(sfWebRequest $request)
+  {
+    $scenario = $this->getRoute()->getObject();
+    $this->forward404Unless($scenario);
+
+    $i = 0;
+    $chartData = array();
+    foreach ($scenario->Operators as $operator)
+    {
+      // hard-code color indices to prevent them from shifting as operators are turned on/off
+      $chartData[$operator->id]['color'] = $i;
+      $chartData[$operator->id]['label'] = $operator->getName();
+      $chartData[$operator->id]['data'] = array();
+
+      $ticksForOperator = TickTable::getInstance()->createQuery('t')
+                              ->select('t.nbr, t.market_share')
+                              ->where('t.scenario_id = ?', $scenario->id)
+                              ->andWhere('t.operator_id = ?', $operator->id)
+                              ->orderBy('t.nbr asc')
+                              ->fetchArray();
+
+      foreach ($ticksForOperator as $tick)
+      {
+        array_push($chartData[$operator->id]['data'], array($tick['nbr'], $tick['market_share']));
+      }
+      $i++;
+    }
+
+    $this->data = json_encode($chartData);
+    $this->setLayout(false);
+    $this->setTemplate('getJsonData', 'default');
+    $this->getResponse()->setContentType('application/json');
+  }
 }

@@ -20,6 +20,6 @@
 
   <fieldset id="sf_fieldset_market_share_evolution">
     <h2>Market Share Evolution</h2>
-    <?php include_partial('operator/market_share_evolution_chart'); ?>
+    <?php include_partial('operator/market_share_evolution_chart', array('ajaxUrl' => url_for('scenario/getMarketShareEvolutionData?id='.$operator->scenario_id), 'tickAlias' => $operator->Scenario->getTickAlias())); ?>
   </fieldset>
 </div>
