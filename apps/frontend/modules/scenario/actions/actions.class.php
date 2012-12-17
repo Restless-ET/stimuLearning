@@ -25,9 +25,43 @@ class scenarioActions extends autoScenarioActions
     $this->scenario = $this->getRoute()->getObject();
     $this->forward404Unless($this->scenario);
 
+    $this->getUser()->setAttribute('scenarioId', $this->scenario->id);
+
     $this->helper = new scenarioGeneratorHelper();
 
     $this->form = $this->configuration->getForm($this->scenario);
+  }
+
+  /**
+   * Override edit action for extra validations
+   *
+   * @param sfWebRequest $request A request object
+   *
+   * @return nothing
+   */
+  public function executeEdit(sfWebRequest $request)
+  {
+    if ($this->getRoute()->getObject()->getStatus() != 'Unstarted')
+    {
+      $this->redirect('@scenario');
+    }
+    parent::executeEdit($request);
+  }
+
+  /**
+   * Override delete action for extra validations
+   *
+   * @param sfWebRequest $request A request object
+   *
+   * @return nothing
+   */
+  public function executeDelete(sfWebRequest $request)
+  {
+    if ($this->getRoute()->getObject()->getStatus() != 'Unstarted')
+    {
+      $this->redirect('@scenario');
+    }
+    parent::executeDelete($request);
   }
 
   /**

@@ -146,9 +146,9 @@ jQuery(document).ready(function() {
   };
 
   function suffixFormatter(val, axis) {
-	  if (Math.abs(val) > 1000000)
+	  if (Math.abs(val) >= 1000000)
 		  return (val / 1000000).toFixed(axis.tickDecimals) + " M";
-    else if (Math.abs(val) > 1000)
+    else if (Math.abs(val) >= 1000)
       return (val / 1000).toFixed(axis.tickDecimals) + ' k';
     else
       return val.toFixed(axis.tickDecimals);

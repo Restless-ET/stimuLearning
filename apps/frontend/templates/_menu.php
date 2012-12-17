@@ -8,23 +8,9 @@
     <li<?php if($currentModule == 'scenario'): ?> class="active"<?php endif; ?>>
       <?php echo link_to('Scenarios', '@scenario') ?>
     </li>
-    <li<?php if($currentModule == 'technology'): ?> class="active"<?php endif; ?>>
-      <?php echo link_to('Technologies', '@technology') ?>
-    </li>
-    <li<?php if($currentModule == 'architecture'): ?> class="active"<?php endif; ?>>
-      <?php echo link_to('Architectures', '@architecture') ?>
-    </li>
-    <li<?php if($currentModule == 'equipment'): ?> class="active"<?php endif; ?>>
-      <?php echo link_to('Equipments', '@equipment') ?>
-    </li>
   <?php if($sf_user->hasCredential('admin')): ?>
     <li<?php if($currentModule == 'user'): ?> class="active"<?php endif; ?>>
       <?php echo link_to('Users', '@user') ?>
-    </li>
-  <?php endif; ?>
-  <?php if($sf_user->hasCredential('admin_edit')): ?>
-    <li<?php if(in_array($currentModule, array('configuracoes', 'administradores', 'configuracoesatleta'))): ?> class="active"<?php endif; ?>>
-      <?php echo link_to('Configurações', 'configuracoes/edit?id=1') ?>
     </li>
   <?php endif; ?>
     <li>|</li>
@@ -37,18 +23,19 @@
       <?php //echo link_to('Change Password', '@changePassword') ?></li>
     <li><?php echo link_to('Logout', '@logout') ?></li>
   </ul>
-  <?php if($sf_user->hasCredential('superadmin') && in_array($currentModule, array('configuracoes', 'administradores', 'configuracoesatleta'))): ?>
-  <br />
+  <?php if (($currentModule == 'scenario' && sfContext::getInstance()->getActionName() == 'show')
+       || in_array($currentModule, array('technology','architecture','equipment'))): ?>
+
   <div id="sub-menu" class="sub-menu">
     <ul>
-      <li<?php if($currentModule == 'configuracoes'): ?> class="active"<?php endif; ?>>
-        <?php echo link_to('Gerais', 'configuracoes/edit?id=1') ?>
+      <li<?php if($currentModule == 'technology'): ?> class="active"<?php endif; ?>>
+        <?php echo link_to('Technologies', '@technology') ?>
       </li>
-      <li<?php if($currentModule == 'administradores'): ?> class="active"<?php endif; ?>>
-        <?php echo link_to('Administradores', '@administradores') ?>
+      <li<?php if($currentModule == 'architecture'): ?> class="active"<?php endif; ?>>
+        <?php echo link_to('Architectures', '@architecture') ?>
       </li>
-      <li<?php if($currentModule == 'configuracoesatleta'): ?> class="active"<?php endif; ?>>
-        <?php echo link_to('Atletas', 'configuracoesatleta/edit?id=1') ?>
+      <li<?php if($currentModule == 'equipment'): ?> class="active"<?php endif; ?>>
+        <?php echo link_to('Equipments', '@equipment') ?>
       </li>
     </ul>
   </div>
