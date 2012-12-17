@@ -59,10 +59,6 @@ abstract class BaseArchitecture extends sfDoctrineRecord
              'type' => 'integer',
              'notnull' => true,
              ));
-
-        $this->option('symfony', array(
-             'filter' => false,
-             ));
     }
 
     public function setUp()
