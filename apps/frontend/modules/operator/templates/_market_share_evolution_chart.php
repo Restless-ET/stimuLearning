@@ -13,7 +13,8 @@ jQuery(document).ready(function() {
 	var tooltipDivId = '#msec_tooltip';
   var choiceContainer = jQuery('#msec_choices');
 	var datasets = [];
-  //setup plot data
+
+	  //setup plot data
 	jQuery.ajax({
 		  url: "<?php echo $ajaxUrl; ?>",
       dataType: 'json',
@@ -30,17 +31,12 @@ jQuery(document).ready(function() {
 
 	    $('<input name="' + key + '" id="id' + key + '" type="checkbox" checked="checked" />').appendTo(li);
 	    $('<label>', { text: l, 'for': l}).appendTo(li);
-
-		  //choiceContainer.append('<br/><input type="checkbox" name="' + key +
-	    //                         '" checked="checked" id="id' + key + '">' +
-	     //                        '<label for="id' + key + '">'
-	      //                        + val.label + '</label>');
 	  });
 
 	  plotAccordingToChoices();
 	  choiceContainer.find("input").change(plotAccordingToChoices);
 
-	  $('.legend > table > tbody > tr > .legendColorBox > div').each(function(i){
+	  $(chartDivId+' > .legend > table > tbody > tr > .legendColorBox > div').each(function(i){
 	      $(this).clone().prependTo(choiceContainer.find("li").eq(i));
 	  });
   }
@@ -136,8 +132,8 @@ jQuery(document).ready(function() {
   			hoverable: true,
   			//clickable: true
   		},
-  		yaxis: { label: '%', ticks: 10, autoscaleMargin: 0.05 },
-  		xaxis: { min: -0.1, label: "<?php echo $tickAlias; ?>",  autoscaleMargin: 0.05 },
+  		yaxis: { label: '%', ticks: 10, autoscaleMargin: 0.05, axisLabel: 'Market Share (%)' },
+  		xaxis: { min: -0.1, axisLabel: "<?php echo $tickAlias; ?>", autoscaleMargin: 0.05 },
       selection: { mode: "xy" }
   	};
 

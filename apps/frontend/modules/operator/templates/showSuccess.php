@@ -15,11 +15,11 @@
 
   <fieldset id="sf_fieldset_operator_simulated_data">
     <h2>Operator Simulated Data</h2>
-    <?php include_partial('operator/simulated_data_chart'); ?>
+    <?php include_partial('operator/simulated_data_chart', array('ajaxUrl' => url_for('operator/getSimulatedDataDatasets?id='.$operator->id), 'tickAlias' => $operator->Scenario->getTickAlias())); ?>
   </fieldset>
 
   <fieldset id="sf_fieldset_market_share_evolution">
     <h2>Market Share Evolution</h2>
-    <?php include_partial('operator/market_share_evolution_chart', array('ajaxUrl' => url_for('scenario/getMarketShareEvolutionData?id='.$operator->scenario_id), 'tickAlias' => $operator->Scenario->getTickAlias())); ?>
+    <?php include_partial('operator/market_share_evolution_chart', array('ajaxUrl' => url_for('scenario/getMarketShareEvolutionDatasets?id='.$operator->scenario_id), 'tickAlias' => $operator->Scenario->getTickAlias())); ?>
   </fieldset>
 </div>

@@ -14,7 +14,7 @@ div#msec_miniature {
   width: 150px;
 }
 
-p#sdc_legend,
+ul#sdc_choices,
 ul#msec_choices {
   margin-left: 10px
 }
@@ -25,9 +25,14 @@ div#msec_overview {
   height: 70px;
 }
 
+#sdc_choices li > div,
 #msec_choices li > div {
     display: inline-block;
     margin-right: 3px;
+}
+
+div.legend {
+	display: none;
 }
 
 .legend > table > tbody > tr > td {

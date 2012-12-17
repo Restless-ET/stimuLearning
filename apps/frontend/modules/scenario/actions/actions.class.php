@@ -30,7 +30,15 @@ class scenarioActions extends autoScenarioActions
     $this->form = $this->configuration->getForm($this->scenario);
   }
 
-  public function executeGetMarketShareEvolutionData(sfWebRequest $request)
+  /**
+   * Gets market share data from ticks related with the given Scenario in order
+   *  to provide that data in JSON format for graphs that need it.
+   *
+   * @param sfWebRequest $request A request object
+   *
+   * @return nothing
+   */
+  public function executeGetMarketShareEvolutionDatasets(sfWebRequest $request)
   {
     $scenario = $this->getRoute()->getObject();
     $this->forward404Unless($scenario);

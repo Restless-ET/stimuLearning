@@ -2,4 +2,4 @@ default:
   stylesheets: [operator.css]
 
 showSuccess:
-  javascripts: [flot/jquery.flot.js, flot/jquery.flot.selection.js, flot/jquery.flot.axislabels.js, simulatedDataChart.js]
+  javascripts: [flot/jquery.flot.js, flot/jquery.flot.selection.js, flot/jquery.flot.axislabels.js, calculos.js]
