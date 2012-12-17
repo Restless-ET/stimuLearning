@@ -16,7 +16,9 @@ generator:
       fields:  ~
       list:
         title: ''
-      filter:  ~
+      
+      filter:
+        class: false
       form:    ~
       edit:    ~
       new:     ~

@@ -43,6 +43,7 @@ class scenarioActions extends autoScenarioActions
   {
     if ($this->getRoute()->getObject()->getStatus() != 'Unstarted')
     {
+      $this->getUser()->setFlash('error', 'You cannot edit a scenario with a running/finished simulation!');
       $this->redirect('@scenario');
     }
     parent::executeEdit($request);
@@ -59,6 +60,7 @@ class scenarioActions extends autoScenarioActions
   {
     if ($this->getRoute()->getObject()->getStatus() != 'Unstarted')
     {
+      $this->getUser()->setFlash('error', 'You cannot delete a scenario with a running/finished simulation!');
       $this->redirect('@scenario');
     }
     parent::executeDelete($request);
