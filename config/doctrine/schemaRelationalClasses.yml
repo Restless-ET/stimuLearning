@@ -11,5 +11,6 @@ ScenarioTechnology:
       type: integer
       primary: true
   relations:
-    Scenario: 
+    Scenario:
+      onDelete: CASCADE 
     Technology:

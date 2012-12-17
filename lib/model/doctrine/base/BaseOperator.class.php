@@ -104,7 +104,8 @@ abstract class BaseOperator extends sfDoctrineRecord
 
         $this->hasOne('Scenario', array(
              'local' => 'scenario_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasMany('DecisionPoint as DecisionPoints', array(
              'local' => 'id',

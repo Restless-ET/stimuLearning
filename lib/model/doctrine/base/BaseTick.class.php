@@ -112,7 +112,8 @@ abstract class BaseTick extends sfDoctrineRecord
 
         $this->hasOne('Scenario', array(
              'local' => 'scenario_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasMany('AcquiredEquipment as AcquiredEquipments', array(
              'local' => 'id',

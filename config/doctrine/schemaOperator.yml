@@ -17,3 +17,4 @@ Operator:
       foreignAlias: Operators
     Scenario:
       foreignAlias: Operators
+      onDelete: CASCADE
