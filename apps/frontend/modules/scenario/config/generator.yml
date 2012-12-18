@@ -26,13 +26,14 @@ generator:
         actions:
           _new:
             credentials: [admin]
-        object_actions:
+        object_actions: # _list_td_actions.php has been overridden
           show:
             action: show
           _edit:
             credentials: [admin]
           _delete:
             credentials: [admin]
+            confirm: 'This removal is irreversible! Are you sure you want to proceed?'
             
       filter:
         class: false
