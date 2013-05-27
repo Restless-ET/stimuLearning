@@ -1,12 +1,16 @@
-cache/*
-.settings/*
+cache
+#log
+web/output
+web/uploads
+
+#Vagrant
+.vagrant
+
+# Eclipse IDE
 .buildpath
 .project
+.settings
 
-web/bundles/
-app/bootstrap.php.cache
-app/cache/*
-app/logs/*
+# NetBeans IDE
+nbproject/
 build/
-vendor
-composer.phar
