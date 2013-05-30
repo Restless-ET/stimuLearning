@@ -33,8 +33,8 @@ body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-s
 
 #title a
 {
-  font-size: x-large;	
-	color: black;
+  font-size: x-large;
+  color: black;
 }
 
 #menu
@@ -53,18 +53,18 @@ body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-s
 }
 
 #menu li a{
-	color: white;
-	text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
 #menu li a:hover{
-	/*font-weight:bold;*/
-	text-decoration: underline;
+  /*font-weight:bold;*/
+  text-decoration: underline;
 }
 
 #menu li.active a{
-	font-weight:bold;
-	text-decoration: underline;
+  font-weight:bold;
+  text-decoration: underline;
 }
 
 
@@ -128,8 +128,8 @@ th
 }
 
 #header {
-	padding: 5px;
-	background: url("/images/banner_gsbl_v7.jpg") repeat-x scroll left top #EEEEEE;
+  padding: 5px;
+  background: url("../images/banner_gsbl_v7.jpg") repeat-x scroll left top #EEEEEE;
     height: 90px;
 }
 
@@ -140,47 +140,47 @@ th
 }
 
 #system_info {
-	position: absolute;
-	right: 25px;
-	top: 25px;
-	color: #F7F7F7;
-	text-align: right;
-	font-weight: bold;
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  color: #F7F7F7;
+  text-align: right;
+  font-weight: bold;
 }
 
 #center {
-	height:410px;
-	left:50%;
-	margin:-205px 0 0 -191px;
-	padding:0;
-	position:absolute;
-	text-align:center;
-	top:50%;
-	vertical-align:middle;
-	width:382px;
+  height:410px;
+  left:50%;
+  margin:-205px 0 0 -191px;
+  padding:0;
+  position:absolute;
+  text-align:center;
+  top:50%;
+  vertical-align:middle;
+  width:382px;
 }
 
 #sf_admin_header {
-	display: none;
+  display: none;
 }
 
 #menu {
-	font-size: 13px;
+  font-size: 13px;
 }
 
 .sub-menu {
-	padding-top: 5px;
-	padding-left: 60px;
-	font-size: 12px;
-	text-align: left;
+  padding-top: 5px;
+  padding-left: 60px;
+  font-size: 12px;
+  text-align: left;
 }
 
 .popup {
-	vertical-align: middle;
+  vertical-align: middle;
 }
 
 .invisible {
-	display: none;
+  display: none;
 }
 
 #sf_admin_container label {
@@ -188,7 +188,7 @@ th
 }
 #sf_admin_container .sf_admin_form_row .content,
 #sf_admin_container .help {
-	padding-left: 18em;
+  padding-left: 18em;
 }
 
 #sf_admin_container ul.error_list {
