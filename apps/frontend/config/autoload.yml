@@ -1,0 +1,5 @@
+autoload:
+  financial:
+    name:      financial
+    path:      '%SF_LIB_DIR%/vendor/financial'
+    recursive: true
