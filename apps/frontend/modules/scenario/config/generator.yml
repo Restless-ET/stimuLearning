@@ -13,13 +13,14 @@ generator:
 
     config:
       actions:
-        edit:
-          credentials: [admin]
-        delete:
-          credentials: [admin]
+        nextStep: { credentials: [admin] }
+        nextDecision: { credentials: [admin] }
+        finish: { credentials: [admin] }
+        edit: { credentials: [admin] }
+        delete: { credentials: [admin] }
 
       fields:  ~
-      
+
       list:
         title: ''
         display: [_description,status,total_clients,lifespan,tick_alias,total_decision_points,ticks_between_decision_points]
@@ -34,10 +35,10 @@ generator:
           _delete:
             credentials: [admin]
             confirm: 'This removal is irreversible! Are you sure you want to proceed?'
-            
+
       filter:
         class: false
-        
+
       form:
         display:
           Graph: [_market_penetration_chart]
@@ -45,7 +46,7 @@ generator:
           Market Share Evolution: [starting_level,saturation_level,alpha,beta]
           Financial: [tariffs_erosion_rate,depreciation_rate,interest_rate,elasticity,bankrupcy_limit]
           Quality Vector: [number_of_services_weight,download_weight,upload_weight,rate_weight,fee_weight,occupation_rate_weight,containment_factor_weight,reference_occupation_rate]
-      
+
       edit:
         title: 'Edit Scenario - %%description%%'
         actions:
@@ -54,5 +55,5 @@ generator:
           _list:
           _save:
             credentials: [admin]
-      
+
       new: ~

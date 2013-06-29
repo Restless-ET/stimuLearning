@@ -67,6 +67,38 @@ class scenarioActions extends autoScenarioActions
   }
 
   /**
+   * Advance the simulation the indicated number of ticks.
+   *
+   * @param sfRequest $request A request object
+   *
+   * @return nothing
+   */
+  public function executeAdvanceSimulation(sfWebRequest $request)
+  {
+    $user = $this->getUser();
+    if (!$user->hasCredential('admin')) {
+      $user->setFlash('error', 'You are not allowed to control the simulation progress!');
+      $this->redirect('@scenario');
+    }
+
+    $scenario = $this->getRoute()->getObject();
+    $this->forward404Unless($scenario);
+    if ($scenario->getStatus() == 'Finished')
+    {
+      $user->setFlash('notice', 'The simulation for this scenario is already finished!');
+      $this->redirect('@scenario');
+    }
+
+    $ticks = $request->getParameter('ticks', 0);
+    if ($ticks > 0) {
+      $user->setFlash('notice', 'Simulation advanced '.$ticks.' ticks!');
+    } else {
+      $user->setFlash('error', 'No valid number of ticks indicateds!');
+    }
+    $this->redirect('@scenario');
+  }
+
+  /**
    * Gets market share data from ticks related with the given Scenario in order
    *  to provide that data in JSON format for graphs that need it.
    *
