@@ -2,4 +2,12 @@
 # http://www.symfony-project.org/reference/1_4/en/11-App
 
 # default values
-#all:
+all:
+  auth: false
+
+
+dev:
+  auth:
+    realm: 'GSBL - StimuLearning'
+    username: gsbl
+    password: learning

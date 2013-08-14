@@ -5,6 +5,8 @@ rendering: ~
 security:  ~
 
 # insert your own filters here
+httpAuthFilter:
+  class: httpAuthFilter
 
 cache:     ~
 execution: ~
