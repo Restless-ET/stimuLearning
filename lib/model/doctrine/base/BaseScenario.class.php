@@ -9,6 +9,7 @@
  * @property enum $status
  * @property integer $total_clients
  * @property enum $tick_alias
+ * @property integer $current_tick
  * @property integer $lifespan
  * @property integer $total_decision_points
  * @property integer $ticks_between_decision_points
@@ -39,6 +40,7 @@
  * @method enum                getStatus()                        Returns the current record's "status" value
  * @method integer             getTotalClients()                  Returns the current record's "total_clients" value
  * @method enum                getTickAlias()                     Returns the current record's "tick_alias" value
+ * @method integer             getCurrentTick()                   Returns the current record's "current_tick" value
  * @method integer             getLifespan()                      Returns the current record's "lifespan" value
  * @method integer             getTotalDecisionPoints()           Returns the current record's "total_decision_points" value
  * @method integer             getTicksBetweenDecisionPoints()    Returns the current record's "ticks_between_decision_points" value
@@ -68,6 +70,7 @@
  * @method Scenario            setStatus()                        Sets the current record's "status" value
  * @method Scenario            setTotalClients()                  Sets the current record's "total_clients" value
  * @method Scenario            setTickAlias()                     Sets the current record's "tick_alias" value
+ * @method Scenario            setCurrentTick()                   Sets the current record's "current_tick" value
  * @method Scenario            setLifespan()                      Sets the current record's "lifespan" value
  * @method Scenario            setTotalDecisionPoints()           Sets the current record's "total_decision_points" value
  * @method Scenario            setTicksBetweenDecisionPoints()    Sets the current record's "ticks_between_decision_points" value
@@ -133,6 +136,11 @@ abstract class BaseScenario extends sfDoctrineRecord
               3 => 'Year',
              ),
              'notnull' => true,
+             ));
+        $this->hasColumn('current_tick', 'integer', null, array(
+             'type' => 'integer',
+             'notnull' => true,
+             'default' => 0,
              ));
         $this->hasColumn('lifespan', 'integer', null, array(
              'type' => 'integer',

@@ -46,8 +46,7 @@ class scenarioGeneratorHelper extends BaseScenarioGeneratorHelper
    */
   public function linkToFinish($object, $params)
   {
-    //TODO calculate proper number of ticks
-    $ticks='5';
+    $ticks = $object->getLifespan() - $object->getCurrentTick();
 
     return '<li class="sf_admin_action_sim_finish">'.link_to(__($params['label'], array(), 'messages'),
             'scenario/advanceSimulation?id='.$object->getId().'&ticks='.$ticks,
