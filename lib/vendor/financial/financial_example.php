@@ -1,7 +1,7 @@
 <?php
 /**
  * Case use of financial class.
- * 
+ *
  * @version   $Id: financial_example.php,v 1.0.5 2004-06-23 09:03:56-05 egarcia Exp $
  * @author    Enrique Garcia M. <egarcia@egm.as>
  * @copyright (c) 2002-2004 EGM :: Ingenieria sin fronteras
@@ -38,64 +38,64 @@ echo 'EFFECT: ' . $f->EFFECT(0.0525, 4) . "\n";
 echo 'NOMINAL: ' . $f->NOMINAL(0.053543, 4) . "\n";
 echo 'NPV: ' . $f->NPV(0.1, array(-10000,3000,4200,6800)) . "\n";
 echo 'XNPV: ' . $f->XNPV(0.09, array(-10000,2750,4250,3250,2750), array(
-	mktime(0,0,0,1,1,2008),
-	mktime(0,0,0,3,1,2008),
-	mktime(0,0,0,10,30,2008),
-	mktime(0,0,0,2,15,2009),
-	mktime(0,0,0,4,1,2009),
-	)) . "\n";
+  mktime(0,0,0,1,1,2008),
+  mktime(0,0,0,3,1,2008),
+  mktime(0,0,0,10,30,2008),
+  mktime(0,0,0,2,15,2009),
+  mktime(0,0,0,4,1,2009),
+  )) . "\n";
 echo 'XIRR: ' . $f->XIRR(array(-10000,2750,4250,3250,2750), array(
-	mktime(0,0,0,1,1,2008),
-	mktime(0,0,0,3,1,2008),
-	mktime(0,0,0,10,30,2008),
-	mktime(0,0,0,2,15,2009),
-	mktime(0,0,0,4,1,2009),
-	), 0.1) . "\n";
+  mktime(0,0,0,1,1,2008),
+  mktime(0,0,0,3,1,2008),
+  mktime(0,0,0,10,30,2008),
+  mktime(0,0,0,2,15,2009),
+  mktime(0,0,0,4,1,2009),
+  ), 0.1) . "\n";
 echo 'IRR: ' . $f->IRR(array(-70000,12000,15000,18000,21000)) . "\n";
 echo 'DISC: ' . $f->DISC(
-	mktime(0,0,0,1,25,2007),
-	mktime(0,0,0,6,15,2007),
-	97.975,
-	100,
-	0) . "\n";
+  mktime(0,0,0,1,25,2007),
+  mktime(0,0,0,6,15,2007),
+  97.975,
+  100,
+  0) . "\n";
 echo 'DISC: ' . $f->DISC(
-	mktime(0,0,0,1,25,2007),
-	mktime(0,0,0,6,15,2009),
-	97.975,
-	100,
-	1) . "\n";
+  mktime(0,0,0,1,25,2007),
+  mktime(0,0,0,6,15,2009),
+  97.975,
+  100,
+  1) . "\n";
 echo 'DISC: ' . $f->DISC(
-	mktime(0,0,0,1,25,2007),
-	mktime(0,0,0,6,15,2007),
-	97.975,
-	100,
-	2) . "\n";
+  mktime(0,0,0,1,25,2007),
+  mktime(0,0,0,6,15,2007),
+  97.975,
+  100,
+  2) . "\n";
 echo 'DISC: ' . $f->DISC(
-	mktime(0,0,0,1,25,2007),
-	mktime(0,0,0,6,15,2007),
-	97.975,
-	100,
-	3) . "\n";
+  mktime(0,0,0,1,25,2007),
+  mktime(0,0,0,6,15,2007),
+  97.975,
+  100,
+  3) . "\n";
 echo 'DISC: ' . $f->DISC(
-	mktime(0,0,0,1,25,2007),
-	mktime(0,0,0,6,15,2007),
-	97.975,
-	100,
-	4) . "\n";
+  mktime(0,0,0,1,25,2007),
+  mktime(0,0,0,6,15,2007),
+  97.975,
+  100,
+  4) . "\n";
 echo 'INTRATE: ' . $f->INTRATE(
-	mktime(0,0,0,2,15,2008),
-	mktime(0,0,0,5,15,2008),
-	1000000,
-	1014420,
-	2) . "\n";
+  mktime(0,0,0,2,15,2008),
+  mktime(0,0,0,5,15,2008),
+  1000000,
+  1014420,
+  2) . "\n";
 echo 'IPMT: ' . $f->IPMT(0.1/12, 3, 3, 8000) . "\n";
 echo 'IPMT: ' . $f->IPMT(0.1, 3, 3, 8000) . "\n";
 echo 'RECEIVED: ' . $f->RECEIVED(
-	mktime(0,0,0,2,15,2008),
-	mktime(0,0,0,5,15,2008),
-	1000000,
-	0.0575,
-	2) . "\n";
+  mktime(0,0,0,2,15,2008),
+  mktime(0,0,0,5,15,2008),
+  1000000,
+  0.0575,
+  2) . "\n";
 echo 'DOLLARDE: ' . $f->DOLLARDE(1.02, 16) . "\n";
 echo 'DOLLARDE: ' . $f->DOLLARDE(1.1, 32) . "\n";
 echo 'DOLLARFR: ' . $f->DOLLARFR(1.125, 16) . "\n";
