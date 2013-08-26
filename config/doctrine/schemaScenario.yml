@@ -19,9 +19,10 @@ Scenario:
         - Month
         - Year
       notnull: true
+    current_tick: { type: integer, notnull: true, default: 0 } # hidden
     lifespan: { type: integer, notnull: true }
     total_decision_points: { type: integer, notnull: true }
-    ticks_between_decision_points: { type: integer, notnull: true } # hidden
+    ticks_between_decision_points: { type: integer, notnull: true } # readonly
   ## Financial Parameters ##
     tariffs_erosion_rate: { type: float, scale: 4, notnull: true }
     depreciation_rate: { type: float, scale: 4, notnull: true }
@@ -49,5 +50,5 @@ Scenario:
       class: Technology
       refClass: ScenarioTechnology
       local: scenario_id
-      foreign: techonology_id 
+      foreign: techonology_id
       foreignAlias: Scenarios

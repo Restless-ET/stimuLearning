@@ -21,7 +21,7 @@ class ScenarioForm extends BaseScenarioForm
   public function configure()
   {
     unset($this['created_at'], $this['updated_at']);
-    unset($this['status'], $this['available_technologies_list']);
+    unset($this['status'], $this['current_tick'], $this['available_technologies_list']);
 
     $this->setWidget('lifespan', new amWidgetFormSlider(array(
       'min' => '1',
