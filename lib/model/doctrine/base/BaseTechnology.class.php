@@ -78,7 +78,7 @@ abstract class BaseTechnology extends sfDoctrineRecord
 
         $this->hasMany('Scenario as Scenarios', array(
              'refClass' => 'ScenarioTechnology',
-             'local' => 'techonology_id',
+             'local' => 'technology_id',
              'foreign' => 'scenario_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();

@@ -233,7 +233,7 @@ abstract class BaseScenario extends sfDoctrineRecord
         $this->hasMany('Technology as AvailableTechnologies', array(
              'refClass' => 'ScenarioTechnology',
              'local' => 'scenario_id',
-             'foreign' => 'techonology_id'));
+             'foreign' => 'technology_id'));
 
         $this->hasMany('DecisionPoint as DecisionPoints', array(
              'local' => 'id',
