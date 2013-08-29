@@ -89,12 +89,12 @@ abstract class BaseEquipment extends sfDoctrineRecord
              'values' => 
              array(
               0 => NULL,
-              1 => 'Construção civil (1)',
-              2 => 'Cabos de cobre (1)',
-              3 => 'Cabos de fibra (0.8)',
-              4 => 'Electrónica (0.9)',
-              5 => 'Componentes ópticos avançados (0.7)',
-              6 => 'Componentes ópticos passivos (0.8)',
+              1 => 'Building/Construction (1)',
+              2 => 'Copper cables (1)',
+              3 => 'Fiber cables (0.8)',
+              4 => 'Electronics (0.9)',
+              5 => 'Advanced Optical Components (0.7)',
+              6 => 'Passive Optical Components (0.8)',
              ),
              ));
         $this->hasColumn('tecnology_age', 'enum', null, array(
@@ -102,10 +102,10 @@ abstract class BaseEquipment extends sfDoctrineRecord
              'values' => 
              array(
               0 => NULL,
-              1 => 'Velha (0.5)',
-              2 => 'Madura (0.1)',
-              3 => 'Nova (0.01)',
-              4 => 'Emergente (0.001)',
+              1 => 'Old (0.5)',
+              2 => 'Mature (0.1)',
+              3 => 'New (0.01)',
+              4 => 'Emerging (0.001)',
              ),
              ));
         $this->hasColumn('setup_speed', 'enum', null, array(
@@ -113,10 +113,10 @@ abstract class BaseEquipment extends sfDoctrineRecord
              'values' => 
              array(
               0 => NULL,
-              1 => 'Muito rápida (5)',
-              2 => 'Rápida (10)',
-              3 => 'Lenta (20)',
-              4 => 'Muito lenta (40)',
+              1 => 'Very fast (5)',
+              2 => 'Fast (10)',
+              3 => 'Slow (20)',
+              4 => 'Very slow (40)',
              ),
              ));
         $this->hasColumn('architecture_id', 'integer', null, array(
