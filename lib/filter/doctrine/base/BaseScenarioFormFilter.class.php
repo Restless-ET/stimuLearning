@@ -97,7 +97,7 @@ abstract class BaseScenarioFormFilter extends BaseFormFilterDoctrine
 
     $query
       ->leftJoin($query->getRootAlias().'.ScenarioTechnology ScenarioTechnology')
-      ->andWhereIn('ScenarioTechnology.techonology_id', $values)
+      ->andWhereIn('ScenarioTechnology.technology_id', $values)
     ;
   }
 

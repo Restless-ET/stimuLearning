@@ -50,5 +50,5 @@ Scenario:
       class: Technology
       refClass: ScenarioTechnology
       local: scenario_id
-      foreign: techonology_id
+      foreign: technology_id
       foreignAlias: Scenarios
