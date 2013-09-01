@@ -1,8 +1,8 @@
 Architecture:
-<?php for ($i=1; $i<=30; $i++): ?>
+<?php for ($i=1; $i<=15; $i++): ?>
   Architecture_<?php echo $i; ?>:
     name: <?php echo 'Arquitectura '.$i."\n"; ?>
     download_bandwidth: <?php $exp = rand(0, 6); echo pow(2, $exp)."\n"; ?>
     upload_bandwith: <?php $exp = rand(8, 12); echo pow(2, $exp)."\n"; ?>
-    Technology: [<?php echo 'Technology_'.($i % 15 + 1); ?>]
+    Technology: [<?php echo 'Technology_'.$i; ?>]
 <?php endfor; ?>
