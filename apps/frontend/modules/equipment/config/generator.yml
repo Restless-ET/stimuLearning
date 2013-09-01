@@ -16,7 +16,8 @@ generator:
       fields:  ~
       list:
         title: ''
-      
+        display: [name, starting_price, number_of_ports, network_level, life_expectation, equipment_type, nature_or_purpose, tecnology_age, setup_speed]
+
       filter:
         class: false
       form:    ~

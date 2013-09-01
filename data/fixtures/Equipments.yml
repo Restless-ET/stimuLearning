@@ -1,0 +1,14 @@
+Equipment:
+<?php for ($i=1; $i<=45; $i++): ?>
+  Equipment_<?php echo $i; ?>:
+    name: <?php echo 'Equipamento '.$i."\n"; ?>
+    starting_price: <?php echo rand(50, 200)."\n"; ?>
+    number_of_ports: <?php $exp = rand(0, 6); echo pow(2, $exp)."\n"; ?>
+    network_level: <?php echo ($i % 3 + 1)."\n"; ?>
+    life_expectation: <?php echo rand(10, 20)."\n"; ?>
+    equipment_type: <?php $type = array('Wired','Wireless'); echo $type[rand(0,1)]."\n"; ?>
+    nature_or_purpose: <?php $nat = array('Building/Construction (1)','Copper cables (1)','Fiber cables (0.8)','Electronics (0.9)','Advanced Optical Components (0.7)','Passive Optical Components (0.8)'); echo $nat[rand(0,5)]."\n"; ?>
+    tecnology_age: <?php $age = array('Old (0.5)','Mature (0.1)','New (0.01)','Emerging (0.001)'); echo $age[rand(0,3)]."\n"; ?>
+    setup_speed: <?php $speed = array('Very fast (5)','Fast (10)','Slow (20)','Very slow (40)'); echo $speed[rand(0,3)]."\n"; ?>
+    Architecture: [<?php echo 'Architecture_'.($i % 15 + 1); ?>]
+<?php endfor; ?>
