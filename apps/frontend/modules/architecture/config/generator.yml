@@ -1,8 +1,8 @@
 generator:
-  class: sfDoctrineGenerator
+  class: jRollerDoctrineGenerator
   param:
     model_class:           Architecture
-    theme:                 admin
+    theme:                 jroller
     non_verbose_templates: true
     with_show:             false
     singular:              ~
@@ -13,11 +13,27 @@ generator:
 
     config:
       actions: ~
-      fields:  ~
+      fields:
+        name: { label: 'Name' }
+        download_bandwidth: { label: 'Download Bandwidth' }
+        upload_bandwidth: { label: 'Upload Bandwidth' }
+        image: { label: 'Image' }
+        technology_id: { label: 'Technology' }
+        created_at: { label: 'Created At' }
+        updated_at: { label: 'Updated At' }
+
       list:
         title: ''
+        object_actions:
+          show: { action: show }
+          _edit: { credentials: [admin] }
+          _delete: { credentials: [admin] }
+
       filter:
         class: false
+
       form:    ~
       edit:    ~
       new:     ~
+      show:
+        display: [ name, download_bandwidth, upload_bandwidth, image, technology_id, created_at, updated_at ]

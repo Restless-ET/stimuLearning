@@ -15,7 +15,7 @@ abstract class BaseArchitectureFormFilter extends BaseFormFilterDoctrine
     $this->setWidgets(array(
       'name'               => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'download_bandwidth' => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'upload_bandwith'    => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'upload_bandwidth'   => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'image'              => new sfWidgetFormFilterInput(),
       'technology_id'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Technology'), 'add_empty' => true)),
       'created_at'         => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
@@ -25,7 +25,7 @@ abstract class BaseArchitectureFormFilter extends BaseFormFilterDoctrine
     $this->setValidators(array(
       'name'               => new sfValidatorPass(array('required' => false)),
       'download_bandwidth' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'upload_bandwith'    => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'upload_bandwidth'   => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'image'              => new sfValidatorPass(array('required' => false)),
       'technology_id'      => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Technology'), 'column' => 'id')),
       'created_at'         => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
@@ -52,7 +52,7 @@ abstract class BaseArchitectureFormFilter extends BaseFormFilterDoctrine
       'id'                 => 'Number',
       'name'               => 'Text',
       'download_bandwidth' => 'Number',
-      'upload_bandwith'    => 'Number',
+      'upload_bandwidth'   => 'Number',
       'image'              => 'Text',
       'technology_id'      => 'ForeignKey',
       'created_at'         => 'Date',

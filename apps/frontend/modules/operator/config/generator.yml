@@ -1,8 +1,8 @@
 generator:
-  class: sfDoctrineGenerator
+  class: sfDoctrineGenerator #jRollerDoctrineGenerator
   param:
     model_class:           Operator
-    theme:                 admin
+    theme:                 admin #jroller
     non_verbose_templates: true
     with_show:             false
     singular:              ~
@@ -39,3 +39,7 @@ generator:
 
       edit:    ~
       new:     ~
+      #show:
+      #  display:
+      #    Operator Simulated Data: [_simulated_data_chart]
+      #    Market Share Evolution: [_market_share_evolution_chart]

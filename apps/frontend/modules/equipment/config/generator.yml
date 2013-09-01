@@ -1,8 +1,8 @@
 generator:
-  class: sfDoctrineGenerator
+  class: jRollerDoctrineGenerator
   param:
     model_class:           Equipment
-    theme:                 admin
+    theme:                 jroller
     non_verbose_templates: true
     with_show:             false
     singular:              ~
@@ -17,6 +17,10 @@ generator:
       list:
         title: ''
         display: [name, starting_price, number_of_ports, network_level, life_expectation, equipment_type, nature_or_purpose, tecnology_age, setup_speed]
+        object_actions:
+          show: { action: show }
+          _edit: { credentials: [admin] }
+          _delete: { credentials: [admin] }
 
       filter:
         class: false

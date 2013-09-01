@@ -14,7 +14,7 @@ require_once dirname(__FILE__).'/../lib/operatorGeneratorHelper.class.php';
 class operatorActions extends autoOperatorActions
 {
   /**
-   * Executes show action for scenario
+   * Executes show action for operator
    *
    * @param sfWebRequest $request A request object
    *

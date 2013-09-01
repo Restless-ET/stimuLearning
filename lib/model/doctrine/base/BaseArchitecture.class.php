@@ -7,7 +7,7 @@
  * 
  * @property string $name
  * @property integer $download_bandwidth
- * @property integer $upload_bandwith
+ * @property integer $upload_bandwidth
  * @property string $image
  * @property integer $technology_id
  * @property Technology $Technology
@@ -15,14 +15,14 @@
  * 
  * @method string              getName()               Returns the current record's "name" value
  * @method integer             getDownloadBandwidth()  Returns the current record's "download_bandwidth" value
- * @method integer             getUploadBandwith()     Returns the current record's "upload_bandwith" value
+ * @method integer             getUploadBandwidth()    Returns the current record's "upload_bandwidth" value
  * @method string              getImage()              Returns the current record's "image" value
  * @method integer             getTechnologyId()       Returns the current record's "technology_id" value
  * @method Technology          getTechnology()         Returns the current record's "Technology" value
  * @method Doctrine_Collection getEquipments()         Returns the current record's "Equipments" collection
  * @method Architecture        setName()               Sets the current record's "name" value
  * @method Architecture        setDownloadBandwidth()  Sets the current record's "download_bandwidth" value
- * @method Architecture        setUploadBandwith()     Sets the current record's "upload_bandwith" value
+ * @method Architecture        setUploadBandwidth()    Sets the current record's "upload_bandwidth" value
  * @method Architecture        setImage()              Sets the current record's "image" value
  * @method Architecture        setTechnologyId()       Sets the current record's "technology_id" value
  * @method Architecture        setTechnology()         Sets the current record's "Technology" value
@@ -47,7 +47,7 @@ abstract class BaseArchitecture extends sfDoctrineRecord
              'type' => 'integer',
              'notnull' => true,
              ));
-        $this->hasColumn('upload_bandwith', 'integer', null, array(
+        $this->hasColumn('upload_bandwidth', 'integer', null, array(
              'type' => 'integer',
              'notnull' => true,
              ));

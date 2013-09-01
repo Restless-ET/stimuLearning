@@ -3,59 +3,60 @@
   <br />
   <ul id="msec_choices"></ul>
 </div>
-
+<?php //$ajaxUrl = url_for('scenario/getMarketShareEvolutionDatasets?id='.$operator->scenario_id);
+      //$tickAlias = $operator->Scenario->getTickAlias(); ?>
 <div id="market_share_evolution_chart"></div>
 
 <script type="text/javascript">
 jQuery(document).ready(function() {
-	var chartDivId = '#market_share_evolution_chart';
-	var overviewDivId = '#msec_overview';
-	var tooltipDivId = '#msec_tooltip';
+  var chartDivId = '#market_share_evolution_chart';
+  var overviewDivId = '#msec_overview';
+  var tooltipDivId = '#msec_tooltip';
   var choiceContainer = jQuery('#msec_choices');
-	var datasets = [];
+  var datasets = [];
 
-	  //setup plot data
-	jQuery.ajax({
-		  url: "<?php echo $ajaxUrl; ?>",
+    //setup plot data
+  jQuery.ajax({
+      url: "<?php echo $ajaxUrl; ?>",
       dataType: 'json',
     success: setChoiceContainer,
   });
 
   function setChoiceContainer(data)
   {
-	  datasets = data;
-	  // insert checkboxes
-	  $.each(datasets, function(key, val) {
-	    l = val.label;
-	    var li = $('<li />').appendTo(choiceContainer);
+    datasets = data;
+    // insert checkboxes
+    $.each(datasets, function(key, val) {
+      l = val.label;
+      var li = $('<li />').appendTo(choiceContainer);
 
-	    $('<input name="' + key + '" id="id' + key + '" type="checkbox" checked="checked" />').appendTo(li);
-	    $('<label>', { text: l, 'for': l}).appendTo(li);
-	  });
+      $('<input name="' + key + '" id="id' + key + '" type="checkbox" checked="checked" />').appendTo(li);
+      $('<label>', { text: l, 'for': l}).appendTo(li);
+    });
 
-	  plotAccordingToChoices();
-	  choiceContainer.find("input").change(plotAccordingToChoices);
+    plotAccordingToChoices();
+    choiceContainer.find("input").change(plotAccordingToChoices);
 
-	  $(chartDivId+' > .legend > table > tbody > tr > .legendColorBox > div').each(function(i){
-	      $(this).clone().prependTo(choiceContainer.find("li").eq(i));
-	  });
+    $(chartDivId+' > .legend > table > tbody > tr > .legendColorBox > div').each(function(i){
+        $(this).clone().prependTo(choiceContainer.find("li").eq(i));
+    });
   }
 
   function plotAccordingToChoices() {
-	  var drawData = [];
+    var drawData = [];
 
-	  choiceContainer.find("input:checked").each(function () {
+    choiceContainer.find("input:checked").each(function () {
       var key = $(this).attr("name");
       if (key && datasets[key])
-      	drawData.push(datasets[key]);
+        drawData.push(datasets[key]);
     });
 
-	  if (drawData.length > 0)
-	  {
-    	var options = getGraphOptions();
-    	var previousPoint = null;
+    if (drawData.length > 0)
+    {
+      var options = getGraphOptions();
+      var previousPoint = null;
 
-    	var plot = jQuery.plot(jQuery(chartDivId), drawData, options);
+      var plot = jQuery.plot(jQuery(chartDivId), drawData, options);
 
       jQuery(chartDivId).bind('plothover', function (event, pos, item) {
         if (item) {
@@ -70,14 +71,14 @@ jQuery(document).ready(function() {
           }
         }
         else {
-        	jQuery(tooltipDivId).remove();
+          jQuery(tooltipDivId).remove();
           previousPoint = null;
         }
       });
 
     // ZOOMING
       var overview = $.plot($(overviewDivId), drawData, {
-    	  legend: { show: false },
+        legend: { show: false },
         series: {
           lines: { show: true, lineWidth: 1 },
           shadowSize: 0
@@ -113,31 +114,31 @@ jQuery(document).ready(function() {
 
       function resetZoom()
       {
-      	plot = $.plot($(chartDivId), drawData, options);
-      	overview.clearSelection();
-      	plot.clearSelection();
+        plot = $.plot($(chartDivId), drawData, options);
+        overview.clearSelection();
+        plot.clearSelection();
       };
       $(overviewDivId).bind("dblclick", resetZoom);
-	  }
+    }
   };
 
   function getGraphOptions() {
-  	var graphOptions = {
+    var graphOptions = {
       //legend: { show: false },
       series: {
         lines: { show: true },
         points: { show: true }
       },
-  		grid: {
-  			hoverable: true,
-  			//clickable: true
-  		},
-  		yaxis: { label: '%', ticks: 10, autoscaleMargin: 0.05, axisLabel: 'Market Share (%)' },
-  		xaxis: { min: -0.1, axisLabel: "<?php echo $tickAlias; ?>", autoscaleMargin: 0.05 },
+      grid: {
+        hoverable: true,
+        //clickable: true
+      },
+      yaxis: { label: '%', ticks: 10, autoscaleMargin: 0.05, axisLabel: 'Market Share (%)' },
+      xaxis: { min: -0.1, axisLabel: "<?php echo $tickAlias; ?>", autoscaleMargin: 0.05 },
       selection: { mode: "xy" }
-  	};
+    };
 
-  	return graphOptions;
+    return graphOptions;
   };
 
   function showTooltip(x, y, contents) {

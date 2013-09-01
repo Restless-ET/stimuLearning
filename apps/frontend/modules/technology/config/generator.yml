@@ -1,8 +1,8 @@
 generator:
-  class: sfDoctrineGenerator
+  class: jRollerDoctrineGenerator
   param:
     model_class:           Technology
-    theme:                 admin
+    theme:                 jroller
     non_verbose_templates: true
     with_show:             false
     singular:              ~
@@ -15,13 +15,17 @@ generator:
       actions: ~
       fields:
         scenarios_list: { label: Available for scenarios, help: Press "Ctrl" to select multiple items }
-      
+
       list:
         title: ''
-      
+        object_actions:
+          show: { action: show }
+          _edit: { credentials: [admin] }
+          _delete: { credentials: [admin] }
+
       filter:
         class: false
-      
+
       form:    ~
       edit:    ~
       new:     ~

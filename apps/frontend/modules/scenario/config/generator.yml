@@ -1,8 +1,8 @@
 generator:
-  class: sfDoctrineGenerator
+  class: sfDoctrineGenerator #jRollerDoctrineGenerator
   param:
     model_class:           Scenario
-    theme:                 admin
+    theme:                 admin #jroller
     non_verbose_templates: true
     with_show:             false
     singular:              ~
