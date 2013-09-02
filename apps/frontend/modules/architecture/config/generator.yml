@@ -19,11 +19,12 @@ generator:
         upload_bandwidth: { label: 'Upload Bandwidth' }
         image: { label: 'Image' }
         technology_id: { label: 'Technology' }
-        created_at: { label: 'Created At' }
-        updated_at: { label: 'Updated At' }
+        created_at: { label: 'Created At', date_format: 'dd/MM/yyyy HH:mm:ss' }
+        updated_at: { label: 'Updated At', date_format: 'dd/MM/yyyy HH:mm:ss' }
 
       list:
         title: ''
+        display: [ name, download_bandwidth, upload_bandwidth, image, technology_id, created_at ]
         object_actions:
           show: { action: show }
           _edit: { credentials: [admin] }

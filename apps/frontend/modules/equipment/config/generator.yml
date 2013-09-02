@@ -13,10 +13,16 @@ generator:
 
     config:
       actions: ~
-      fields:  ~
+      fields:
+        created_at: { label: 'Created At', date_format: 'dd/MM/yyyy HH:mm:ss' }
+        updated_at: { label: 'Updated At', date_format: 'dd/MM/yyyy HH:mm:ss' }
+
       list:
         title: ''
         display: [name, starting_price, number_of_ports, network_level, life_expectation, equipment_type, nature_or_purpose, tecnology_age, setup_speed]
+        fields:
+          number_of_ports: { label: '# ports'}
+          equipment_type: { label: Type }
         object_actions:
           show: { action: show }
           _edit: { credentials: [admin] }
@@ -24,6 +30,7 @@ generator:
 
       filter:
         class: false
+
       form:    ~
       edit:    ~
       new:     ~
