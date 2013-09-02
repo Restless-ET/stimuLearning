@@ -14,6 +14,7 @@ generator:
     config:
       actions: ~
       fields:
+        starting_price: { renderer: 'fieldRendererHelper::euro' }
         created_at: { label: 'Created At', date_format: 'dd/MM/yyyy HH:mm:ss' }
         updated_at: { label: 'Updated At', date_format: 'dd/MM/yyyy HH:mm:ss' }
 
