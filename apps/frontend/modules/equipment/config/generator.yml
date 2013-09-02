@@ -18,10 +18,10 @@ generator:
         updated_at: { label: 'Updated At', date_format: 'dd/MM/yyyy HH:mm:ss' }
 
       list:
-        title: ''
+        title: 'Equipments'
         display: [name, starting_price, number_of_ports, network_level, life_expectation, equipment_type, nature_or_purpose, tecnology_age, setup_speed]
         fields:
-          number_of_ports: { label: '# ports'}
+          number_of_ports: { label: '# of ports'}
           equipment_type: { label: Type }
         object_actions:
           show: { action: show }
@@ -29,7 +29,8 @@ generator:
           _delete: { credentials: [admin] }
 
       filter:
-        class: false
+        #class: false
+        display: [ equipment_type, nature_or_purpose, tecnology_age, setup_speed ]
 
       form:    ~
       edit:    ~
