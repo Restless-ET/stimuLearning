@@ -17,7 +17,8 @@ abstract class BaseScenarioForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'                            => new sfWidgetFormInputHidden(),
       'description'                   => new sfWidgetFormInputText(),
-      'status'                        => new sfWidgetFormChoice(array('choices' => array('Unstarted' => 'Unstarted', 'Running' => 'Running', 'Finished' => 'Finished'))),
+      'started'                       => new sfWidgetFormInputCheckbox(),
+      'finished'                      => new sfWidgetFormInputCheckbox(),
       'total_clients'                 => new sfWidgetFormInputText(),
       'tick_alias'                    => new sfWidgetFormChoice(array('choices' => array('' => NULL, 'Day' => 'Day', 'Month' => 'Month', 'Year' => 'Year'))),
       'current_tick'                  => new sfWidgetFormInputText(),
@@ -49,7 +50,8 @@ abstract class BaseScenarioForm extends BaseFormDoctrine
     $this->setValidators(array(
       'id'                            => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'description'                   => new sfValidatorString(array('max_length' => 100)),
-      'status'                        => new sfValidatorChoice(array('choices' => array(0 => 'Unstarted', 1 => 'Running', 2 => 'Finished'), 'required' => false)),
+      'started'                       => new sfValidatorBoolean(array('required' => false)),
+      'finished'                      => new sfValidatorBoolean(array('required' => false)),
       'total_clients'                 => new sfValidatorInteger(),
       'tick_alias'                    => new sfValidatorChoice(array('choices' => array(0 => NULL, 1 => 'Day', 2 => 'Month', 3 => 'Year'))),
       'current_tick'                  => new sfValidatorInteger(array('required' => false)),

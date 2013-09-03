@@ -41,9 +41,9 @@ class scenarioActions extends autoScenarioActions
    */
   public function executeEdit(sfWebRequest $request)
   {
-    if ($this->getRoute()->getObject()->getStatus() != 'Unstarted')
+    if ($this->getRoute()->getObject()->getStarted())
     {
-      $this->getUser()->setFlash('error', 'You cannot edit a scenario with a running/finished simulation!');
+      $this->getUser()->setFlash('error', 'You cannot edit a scenario with a started simulation!');
       $this->redirect('@scenario');
     }
 
@@ -59,9 +59,9 @@ class scenarioActions extends autoScenarioActions
    */
   public function executeDelete(sfWebRequest $request)
   {
-    if ($this->getRoute()->getObject()->getStatus() != 'Unstarted')
+    if ($this->getRoute()->getObject()->getStarted())
     {
-      $user->setFlash('error', 'You cannot delete a scenario with a running/finished simulation!');
+      $user->setFlash('error', 'You cannot delete a scenario with a started simulation!');
       $this->redirect('@scenario');
     }
 
@@ -79,7 +79,7 @@ class scenarioActions extends autoScenarioActions
   {
     $scenario = $this->getRoute()->getObject();
     $this->forward404Unless($scenario);
-    if ($scenario->getStatus() == 'Finished')
+    if ($scenario->getFinished())
     {
       $user->setFlash('notice', 'The simulation for this scenario is already finished!');
       $this->redirect('@scenario');

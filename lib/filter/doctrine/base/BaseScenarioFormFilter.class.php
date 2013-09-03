@@ -14,7 +14,8 @@ abstract class BaseScenarioFormFilter extends BaseFormFilterDoctrine
   {
     $this->setWidgets(array(
       'description'                   => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'status'                        => new sfWidgetFormChoice(array('choices' => array('' => '', 'Unstarted' => 'Unstarted', 'Running' => 'Running', 'Finished' => 'Finished'))),
+      'started'                       => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
+      'finished'                      => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
       'total_clients'                 => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'tick_alias'                    => new sfWidgetFormChoice(array('choices' => array('' => NULL, 'Day' => 'Day', 'Month' => 'Month', 'Year' => 'Year'))),
       'current_tick'                  => new sfWidgetFormFilterInput(array('with_empty' => false)),
@@ -45,7 +46,8 @@ abstract class BaseScenarioFormFilter extends BaseFormFilterDoctrine
 
     $this->setValidators(array(
       'description'                   => new sfValidatorPass(array('required' => false)),
-      'status'                        => new sfValidatorChoice(array('required' => false, 'choices' => array('Unstarted' => 'Unstarted', 'Running' => 'Running', 'Finished' => 'Finished'))),
+      'started'                       => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
+      'finished'                      => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
       'total_clients'                 => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'tick_alias'                    => new sfValidatorChoice(array('required' => false, 'choices' => array('' => NULL, 'Day' => 'Day', 'Month' => 'Month', 'Year' => 'Year'))),
       'current_tick'                  => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
@@ -111,7 +113,8 @@ abstract class BaseScenarioFormFilter extends BaseFormFilterDoctrine
     return array(
       'id'                            => 'Number',
       'description'                   => 'Text',
-      'status'                        => 'Enum',
+      'started'                       => 'Boolean',
+      'finished'                      => 'Boolean',
       'total_clients'                 => 'Number',
       'tick_alias'                    => 'Enum',
       'current_tick'                  => 'Number',

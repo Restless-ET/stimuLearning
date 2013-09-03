@@ -3,13 +3,8 @@ Scenario:
     Timestampable: ~
   columns:
     description: { type: string(100), notnull: true }
-    status:
-      type: enum
-      values:
-        - Unstarted
-        - Running
-        - Finished
-      default: Unstarted
+    started: { type: boolean, default: false }
+    finished: { type: boolean, default: false }
     total_clients: { type: integer, notnull: true } # auto-generated
     tick_alias:
       type: enum

@@ -2,12 +2,12 @@
 
 <div id="sf_admin_container">
 
-<?php if ($sf_user->hasCredential('manager') && $scenario->status != 'Finished'): ?>
+<?php if ($sf_user->hasCredential('manager') && !$scenario->finished): ?>
   <ul class="sf_admin_td_actions">
     <?php echo $helper->linkToNextStep($scenario, array('params' => array(  ), 'class_suffix' => 'nextStep', 'label' => 'Next Tick',)) ?>
     <?php echo $helper->linkToNextDecision($scenario, array('params' => array(  ), 'class_suffix' => 'nextDecision', 'label' => 'Next Decision',)) ?>
     <?php echo $helper->linkToFinish($scenario, array('params' => array(  ), 'class_suffix' => 'finish', 'label' => 'Finish',)) ?>
-    <?php if ($scenario->status == 'Unstarted'): ?>
+    <?php if (!$scenario->started): ?>
       <?php echo $helper->linkToEdit($scenario, array('params' => array(  ), 'class_suffix' => 'edit', 'label' => 'Edit',)) ?>
       <?php echo $helper->linkToDelete($scenario, array('params' => array(  ), 'confirm' => 'This removal is irreversible! Are you sure you want to proceed?', 'class_suffix' => 'delete', 'label' => 'Delete',)) ?>
     <?php endif ?>
