@@ -4,12 +4,14 @@ User:
     password: a1cf055d4f7e1ec07170363a1805fbdd  #md5("adsmelo")
     name:     Artur Daniel Santos Melo
     email:    adsmelo@ua.pt
+    is_manager: true
     is_admin: true
   User_1:
     username: hsfelix
     password: 5cdcac9d87ddeb638fa66bded7b4365c  #md5("hsfelix")
     name:     Hugo Silveirinha Félix
     email:    hsfelix@ua.pt
+    is_admin: true
   User_2:
     username: aalves
     password: 2bba8dd0ef19c067ac5def7919acaa70  #md5("aalves")
@@ -20,4 +22,4 @@ User:
     password: 485ba25e02b2e5aa3d90f7bea0dc69bd  #md5("duarte")
     name:     Anibal Manuel de Oliveira Duarte
     email:    duarte@ua.pt
-    
+    is_manager: true

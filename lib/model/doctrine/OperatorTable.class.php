@@ -32,7 +32,7 @@ class OperatorTable extends Doctrine_Table
   {
     $user = sfContext::getInstance()->getUser();
 
-    if (!$user->hasCredential('admin'))
+    if (!$user->hasCredential('manager'))
     {
       $q->andWhere('user_id = ?', $user->getAttribute('id'));
     }

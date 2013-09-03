@@ -9,6 +9,7 @@
  * @property string $username
  * @property string $password
  * @property string $email
+ * @property boolean $is_manager
  * @property boolean $is_admin
  * @property datetime $last_login
  * @property Doctrine_Collection $Operators
@@ -17,6 +18,7 @@
  * @method string              getUsername()   Returns the current record's "username" value
  * @method string              getPassword()   Returns the current record's "password" value
  * @method string              getEmail()      Returns the current record's "email" value
+ * @method boolean             getIsManager()  Returns the current record's "is_manager" value
  * @method boolean             getIsAdmin()    Returns the current record's "is_admin" value
  * @method datetime            getLastLogin()  Returns the current record's "last_login" value
  * @method Doctrine_Collection getOperators()  Returns the current record's "Operators" collection
@@ -24,6 +26,7 @@
  * @method User                setUsername()   Sets the current record's "username" value
  * @method User                setPassword()   Sets the current record's "password" value
  * @method User                setEmail()      Sets the current record's "email" value
+ * @method User                setIsManager()  Sets the current record's "is_manager" value
  * @method User                setIsAdmin()    Sets the current record's "is_admin" value
  * @method User                setLastLogin()  Sets the current record's "last_login" value
  * @method User                setOperators()  Sets the current record's "Operators" collection
@@ -57,6 +60,10 @@ abstract class BaseUser extends sfDoctrineRecord
              'type' => 'string',
              'email' => true,
              'length' => 255,
+             ));
+        $this->hasColumn('is_manager', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
              ));
         $this->hasColumn('is_admin', 'boolean', null, array(
              'type' => 'boolean',
