@@ -70,6 +70,11 @@ class defaultActions extends sfActions
         {
           return sfView::ERROR;
         }
+        //TODO replace is properly named credentials to avoid confusion!
+        if ($userFromDb->is_manager) // It's a game manager
+        {
+          $user->addCredential('manager');
+        }
         if ($userFromDb->is_admin) // It's an administrator
         {
           $user->addCredential('admin');
@@ -83,12 +88,6 @@ class defaultActions extends sfActions
         $user->setAuthenticated(true);
         $user->setAttribute('username', $userFromDb->getUsername());
         $user->setAttribute('id', $userFromDb->id);
-
-        // If the user is the 'superadmin' then it's a superadmin
-        if ($username == 'superadmin')
-        {
-          $user->addCredential('superadmin');
-        }
 
         // Login sucessful, take us to the homepage
         $this->redirect('@homepage');

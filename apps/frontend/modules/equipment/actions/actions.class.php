@@ -13,4 +13,5 @@ require_once dirname(__FILE__).'/../lib/equipmentGeneratorHelper.class.php';
  */
 class equipmentActions extends autoEquipmentActions
 {
+  //Check security.yml for credentials details
 }

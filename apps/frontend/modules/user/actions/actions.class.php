@@ -13,4 +13,5 @@ require_once dirname(__FILE__).'/../lib/userGeneratorHelper.class.php';
  */
 class userActions extends autoUserActions
 {
+  // The entire module is secured for 'admin' only
 }

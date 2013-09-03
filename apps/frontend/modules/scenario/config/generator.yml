@@ -13,11 +13,11 @@ generator:
 
     config:
       actions:
-        nextStep: { credentials: [admin] }
-        nextDecision: { credentials: [admin] }
-        finish: { credentials: [admin] }
-        edit: { credentials: [admin] }
-        delete: { credentials: [admin] }
+        nextStep: { credentials: [manager] }
+        nextDecision: { credentials: [manager] }
+        finish: { credentials: [manager] }
+        edit: { credentials: [manager] }
+        delete: { credentials: [manager] }
 
       fields:  ~
 
@@ -26,14 +26,14 @@ generator:
         display: [_description,status,total_clients,lifespan,tick_alias,total_decision_points,ticks_between_decision_points]
         actions:
           _new:
-            credentials: [admin]
+            credentials: [manager]
         object_actions: # _list_td_actions.php has been overridden
           show:
             action: show
           _edit:
-            credentials: [admin]
+            credentials: [manager]
           _delete:
-            credentials: [admin]
+            credentials: [manager]
             confirm: 'This removal is irreversible! Are you sure you want to proceed?'
 
       filter:
@@ -51,9 +51,9 @@ generator:
         title: 'Edit Scenario - %%description%%'
         actions:
           _delete:
-            credentials: [admin]
+            credentials: [manager]
           _list:
           _save:
-            credentials: [admin]
+            credentials: [manager]
 
       new: ~

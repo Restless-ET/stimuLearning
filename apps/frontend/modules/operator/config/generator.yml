@@ -18,7 +18,7 @@ generator:
       list:
         fields:
           User:
-            credentials: [admin]
+            credentials: [manager]
         max_per_page: 15
         title: ''
         sort: [scenario_id, asc]
@@ -27,9 +27,9 @@ generator:
         object_actions:
           show:
             action: show
-          _edit:
+          _edit: ~
           _delete:
-            credentials: [admin]
+            credentials: [manager]
 
       filter:
         display: [user_id,scenario_id]

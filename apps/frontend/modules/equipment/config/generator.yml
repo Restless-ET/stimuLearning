@@ -24,15 +24,22 @@ generator:
         fields:
           number_of_ports: { label: '# of ports'}
           equipment_type: { label: Type }
+        actions:
+          _new:
+            credentials: [manager]
         object_actions:
           show: { action: show }
-          _edit: { credentials: [admin] }
-          _delete: { credentials: [admin] }
+          _edit: { credentials: [manager] }
+          _delete:
+            credentials: [manager]
+            confirm: 'This removal is irreversible! Are you sure you want to proceed?'
+        batch_actions:
+          _delete: { credentials: [manager] }
 
       filter:
-        #class: false
         display: [ equipment_type, nature_or_purpose, tecnology_age, setup_speed ]
 
       form:    ~
       edit:    ~
       new:     ~
+      show:    ~

@@ -19,11 +19,18 @@ generator:
         updated_at: { label: 'Updated At', date_format: 'dd/MM/yyyy HH:mm:ss' }
 
       list:
-        title: ''
+        title: 'Technologies'
+        actions:
+          _new:
+            credentials: [manager]
         object_actions:
           show: { action: show }
-          _edit: { credentials: [admin] }
-          _delete: { credentials: [admin] }
+          _edit: { credentials: [manager] }
+          _delete:
+            credentials: [manager]
+            confirm: 'This removal is irreversible! Are you sure you want to proceed?'
+        batch_actions:
+          _delete: { credentials: [manager] }
 
       filter:
         class: false
@@ -31,3 +38,4 @@ generator:
       form:    ~
       edit:    ~
       new:     ~
+      show:    ~

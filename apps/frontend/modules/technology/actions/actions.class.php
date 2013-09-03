@@ -13,4 +13,5 @@ require_once dirname(__FILE__).'/../lib/technologyGeneratorHelper.class.php';
  */
 class technologyActions extends autoTechnologyActions
 {
+  //Check security.yml for credentials details
 }

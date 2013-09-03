@@ -2,7 +2,7 @@
 
 <div id="sf_admin_container">
 
-<?php if ($sf_user->hasCredential('admin') && $scenario->status != 'Finished'): ?>
+<?php if ($sf_user->hasCredential('manager') && $scenario->status != 'Finished'): ?>
   <ul class="sf_admin_td_actions">
     <?php echo $helper->linkToNextStep($scenario, array('params' => array(  ), 'class_suffix' => 'nextStep', 'label' => 'Next Tick',)) ?>
     <?php echo $helper->linkToNextDecision($scenario, array('params' => array(  ), 'class_suffix' => 'nextDecision', 'label' => 'Next Decision',)) ?>

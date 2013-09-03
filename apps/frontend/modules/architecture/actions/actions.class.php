@@ -13,4 +13,5 @@ require_once dirname(__FILE__).'/../lib/architectureGeneratorHelper.class.php';
  */
 class architectureActions extends autoArchitectureActions
 {
+  //Check security.yml for credentials details
 }

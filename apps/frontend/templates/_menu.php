@@ -14,16 +14,11 @@
     </li>
   <?php endif; ?>
     <li>|</li>
-  <?php if($sf_user->hasCredential('atleta')): ?>
-    <li<?php if ($currentModule == 'atletas'): ?> class="active"<?php endif; ?>>
-      <?php echo link_to('Meus Operadores', 'atletas/edit?id='.$sf_user->getAttribute('id')) ?>
-    </li>
-  <?php endif; ?>
     <li<?php if(sfContext::getInstance()->getActionName()=='changePassword'): ?> class="active"<?php endif; ?>>
       <?php //echo link_to('Change Password', '@changePassword') ?></li>
     <li><?php echo link_to('Logout', '@logout') ?></li>
   </ul>
-  <?php if (($currentModule == 'scenario' && sfContext::getInstance()->getActionName() == 'show')
+  <?php if (($currentModule == 'scenario' /*&& sfContext::getInstance()->getActionName() == 'show'*/)
        || in_array($currentModule, array('technology','architecture','equipment'))): ?>
 
   <div id="sub-menu" class="sub-menu">

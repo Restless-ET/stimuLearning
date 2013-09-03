@@ -11,10 +11,8 @@
   <?php echo link_to('Architectures', '@architecture') ?>
 <?php elseif ($currentModule == 'equipment'): ?>
   <?php echo link_to('Equipments', '@equipment') ?>
-<?php elseif($currentModule=='provas' || $currentModule=='inscricoesatletas'): ?>
-  <?php echo link_to('Provas', '@provas') ?><?php include_component('provas','subTitle'); ?>
-<?php elseif(in_array($currentModule, array('configuracoes', 'administradores', 'configuracoesatleta'))): ?>
-  <?php echo link_to('Configurações', 'configuracoes/edit?id=1') ?>
+<?php elseif($currentModule=='user'): ?>
+  <?php echo link_to('Users', '@user') ?>
 <?php endif; ?>
 </h1>
 </div>

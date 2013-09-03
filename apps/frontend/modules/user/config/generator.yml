@@ -11,6 +11,7 @@ generator:
     with_doctrine_route:   true
     actions_base_class:    sfActions
 
+  ## This entire module is already secured for 'admin' only!
     config:
       actions: ~
       fields:
@@ -19,7 +20,8 @@ generator:
         updated_at: { label: 'Updated At', date_format: 'dd/MM/yyyy HH:mm:ss' }
 
       list:
-        display: [name, username, email, is_admin, last_login]
+        title: 'Users'
+        display: [name, username, email, is_manager, is_admin, last_login]
 
       filter:
         class: false
@@ -27,3 +29,4 @@ generator:
       form:    ~
       edit:    ~
       new:     ~
+      show:    ~
