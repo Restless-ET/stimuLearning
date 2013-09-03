@@ -23,7 +23,10 @@ generator:
 
       list:
         title: ''
-        display: [_description,status,total_clients,lifespan,tick_alias,total_decision_points,ticks_between_decision_points]
+        display: [_description,started,total_clients,lifespan,tick_alias,total_decision_points,ticks_between_decision_points,finished]
+        fields:
+          total_decision_points: { label: '# decision pts'}
+          ticks_between_decision_points: { label: 'Ticks between decision pts'}
         actions:
           _new:
             credentials: [manager]
@@ -37,7 +40,7 @@ generator:
             confirm: 'This removal is irreversible! Are you sure you want to proceed?'
 
       filter:
-        class: false
+        display: [started, tick_alias, finished]
 
       form:
         display:
