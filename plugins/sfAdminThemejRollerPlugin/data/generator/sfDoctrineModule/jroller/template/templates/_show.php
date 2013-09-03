@@ -33,7 +33,7 @@
         [?php else: ?]
         <div class="sf_admin_form_row">
           <label>[?php echo $field->getConfig('label')? $field->getConfig('label') : $form[$name]->renderLabelName() ?]:</label>
-          [?php echo $form->getObject()->get($name) ? ($field->getConfig('renderer') ? call_user_func_array($field->getConfig('renderer'), array($form->getObject()->get($name))) : $form->getObject()->get($name)) : "&nbsp;" ?]
+          [?php echo $form->getObject()->get($name) ? ($field->getConfig('renderer') ? call_user_func_array($field->getConfig('renderer'), array($form->getObject()->get($name))) : $form->getObject()->get($name)) : "<s>&nbsp;&nbsp;&nbsp;</s>" ?]
         </div>
         [?php endif; ?]
 
