@@ -62,14 +62,12 @@ class defaultActions extends sfActions
         $username = $inputData['username'];
         $password = $inputData['password'];
 
-        if (! ($userFromDb = Doctrine_Core::getTable('User')->findOneBy('username', $username)))
+        $userFromDb = Doctrine_Core::getTable('User')->findOneBy('username', $username);
+        if (! $this->usernameExists($userFromDb) || ! $userFromDb->passwordMatchesPassword($password))
         {
           return sfView::ERROR;
         }
-        if ($userFromDb->getPassword() != md5($password))
-        {
-          return sfView::ERROR;
-        }
+
         //TODO replace is properly named credentials to avoid confusion!
         if ($userFromDb->is_manager) // It's a game manager
         {
@@ -93,6 +91,11 @@ class defaultActions extends sfActions
         $this->redirect('@homepage');
       }
     }
+  }
+
+  private function usernameExists($userFromDb)
+  {
+    return $userFromDb !== false;
   }
 
   /**
