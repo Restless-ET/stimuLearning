@@ -10,7 +10,7 @@
     <?php include_javascripts() ?>
 
     <script type="text/javascript">
-      var currentTime = new Date ('<?php echo date("d M Y H:i:s")?>');
+      var currentTime = new Date ('<?php echo date('d M Y H:i:s')?>');
       setInterval('updateClock()', 1000);
 
       function updateClock()
@@ -45,7 +45,7 @@
           <br />
           <?php endif; ?>
           <?php echo date('Y-m-d') ?>
-          <span id="clock"><?php echo date("H:i:s")?></span>
+          <span id="clock"><?php echo date('H:i:s')?></span>
         </div>
       </div>
 
@@ -59,7 +59,7 @@
 
       <div id="footer">
         powered by <a href="http://gsbl.det.ua.pt">
-        <?php echo image_tag('gsbl_logo.png', array('alt'=>'GSBL', 'height' => '20px')) ?></a>
+        <?php echo image_tag('gsbl_logo.png', array('alt' => 'GSBL', 'height' => '20px')) ?></a>
       </div>
     </div>
   </body>
