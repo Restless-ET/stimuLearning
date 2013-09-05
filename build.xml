@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Ubibanking" default="build" basedir=".">
+
+ <property name="builddir" value="${basedir}/build"/>
+ <property name="testdir" value="${basedir}/test"/>
+ <property name="testconfigdir" value="${testdir}/config"/>
+ <property name="testlibdir" value="${testdir}/lib"/>
+
+  <property name="source" value="."/>
+  <condition property="source" value="${source}">
+      <isset property="." />
+  </condition>
+
+ <target name="clean" description="Run cleanFolders and logClear">
+   <antcall target="cleanFolders"/>
+   <antcall target="logClear"/>
+ </target>
+
+ <target name="cleanFolders" description="Clean up and create artifact directories">
+  <delete dir="${builddir}/coverage"/>
+  <delete dir="${builddir}/logs"/>
+  <delete dir="${builddir}/pdepend"/>
+  <delete dir="${builddir}/phpunit"/>
+  <delete dir="${basedir}/web/uploads/screenshots"/>
+
+  <mkdir dir="${builddir}/coverage"/>
+  <mkdir dir="${builddir}/logs"/>
+  <mkdir dir="${builddir}/pdepend"/>
+  <mkdir dir="${builddir}/phpunit"/>
+  <mkdir dir="${basedir}/web/uploads/screenshots"/>
+ </target>
+
+  <target name="logClear" description="Delete log so they dont overload jenkins">
+  <exec executable="php">
+   <arg line="symfony log:clear"/>
+  </exec>
+ </target>
+
+ <target name="parallelTasks" description="Run the pdepend, phpmd, phpcpd, phpcs, phpdoc and phploc tasks in parallel using a maximum of 2 threads.">
+  <parallel threadCount="2">
+   <sequential>
+    <antcall target="pdepend"/>
+    <antcall target="phpmd"/>
+   </sequential>
+   <antcall target="phpcpd"/>
+   <antcall target="phpdoc"/>
+   <antcall target="phploc"/>
+  </parallel>
+ </target>
+
+ <target name="runAllTask" description="Run the pdepend, phpmd, phpcpd phpdoc and phploc tasks">
+   <antcall target="pdepend"/>
+   <antcall target="phpmd"/>
+   <antcall target="phpcpd"/>
+   <antcall target="phpdoc"/>
+   <antcall target="phploc"/>
+ </target>
+
+ <target name="pdepend" description="Generate jdepend.xml and software metrics charts using PHP_Depend">
+  <exec executable="pdepend">
+   <arg line="--jdepend-xml=${basedir}/build/logs/jdepend.xml
+              --jdepend-chart=${basedir}/build/pdepend/dependencies.svg
+              --overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg
+              --ignore=${basedir}/lib/vendor,${basedir}/plugins,${testdir},${basedir}/cache
+              ${source}" />
+  </exec>
+ </target>
+
+ <target name="phpmd" description="Perform project mess detection using PHPMD">
+   <exec executable="phpmd">
+     <arg path="${source}" />
+     <arg value="xml" />
+     <arg value="${basedir}/build/phpmd.xml" />
+     <arg value="--exclude" />
+     <arg value="*/build/*,*/test/*,*/web/*,*/sf*/*,*/plugins/*,*/lib/vendor/*,*/cache/*,*/base/*,*/Base/*,*/templates/*,*/packages/*" />
+     <arg value="--reportfile" />
+     <arg value="${basedir}/build/logs/pmd.xml" />
+   </exec>
+ </target>
+
+ <target name="phpcpd" description="Generate pmd-cpd.xml using PHPCPD">
+   <exec executable="phpcpd">
+     <arg line="--log-pmd ${basedir}/build/logs/pmd-cpd.xml
+       --exclude test
+       --exclude plugins
+       --exclude cache
+       --exclude build
+       --exclude web
+       --exclude lib/vendor
+       --exclude lib/model/doctrine/mapas/base
+       --exclude lib/model/doctrine/ccam/base
+       --exclude lib/model/doctrine/patrimonio/base
+       --exclude lib/model/doctrine/credito/base
+       --exclude lib/model/doctrine/base
+       --exclude lib/form/doctrine/base
+       --exclude lib/filter/doctrine/base
+       ${source}" />
+   </exec>
+ </target>
+
+ <target name="phploc" description="Measure project size using PHPLOC">
+  <exec executable="phploc">
+   <arg line="--log-csv ${basedir}/build/logs/phploc.csv
+              --exclude '${basedir}/lib/vendor'
+              --exclude '${basedir}/plugins'
+              --exclude '${testdir}'
+              --exclude '${basedir}/cache'
+              ${source}" />
+  </exec>
+ </target>
+
+ <target name="phpcs"
+  description="Find coding standard violations from php files using PHP_CodeSniffer">
+  <exec executable="phpcs">
+   <arg value="--report=checkstyle" />
+   <arg value="--report-file=${basedir}/build/logs/checkstyle.xml" />
+   <arg value="--standard=${basedir}/build/CS" />
+   <arg value="--ignore=*/build/*,*/web/*/lib/*,*/sf*/*,*/lib/vendor/*,*/test/*,*/plugins/*,*/cache/*,*/base/*,*/Base/*,*/templates/*,*/packages/*,*/web/*.php" />
+   <arg value="-p" />
+   <arg value="--extensions=php,js,css" />
+   <arg path="${source}" />
+  </exec>
+ </target>
+
+ <target name="phpdoc" description="Generate API documentation using PHPDoc">
+  <exec executable="phpdoc">
+    <arg line=" -d ${source} -t ${basedir}/build/api -e php
+      -i build/*,doc/*,log/*,config/*,data/*,test/*,web/*,sf*/*,lib/vendor/*,lib/task/*,lib/migration/*,plugins/*,cache/*,*/base/*,*/Base/*,*/templates/*,*/packages/*" />
+  </exec>
+ </target>
+<!-- This tool is useless as it does not detect every checkstyle and get no updates for years - sebastian left this project?.
+ <target name="phpcb" description="Aggregate tool output with PHP_CodeBrowser">
+ </target>
+-->
+ <target name="phpdcd" description="Run php death code detector to find code that is not been used (check https://github.com/sebastianbergmann/phpdcd for limitations and other usefull information)">
+  <exec executable="bash">
+    <arg line="-c 'phpdcd --verbose ${source} > ${builddir}/phpdcd.log'"/>
+  </exec>
+ </target>
+
+ <target name="build" depends="clean,runAllTask"/>
+</project>
