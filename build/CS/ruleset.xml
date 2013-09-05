@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<ruleset name="concilium"><description>concilum internal coding standard</description>
+
+  <rule ref="PSR2" />
+
+<!-- :::::::::::::::::::::::::::::::::::::: Our Sniffs ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  -->
+
+  <rule ref="Squiz.Classes.LowercaseClassKeywords" /><!-- verifies class keywords like abstract, extends, implements :: from PSR-2 -->
+  <rule ref="Squiz.PHP.LowercasePHPFunctions" /><!--Ensures all calls to inbuilt PHP functions are lowercase. -->
+  <rule ref="Squiz.Strings.ConcatenationSpacing" /><!--Makes sure there are no spaces between the concatenation operator (.) and the strings being concatenated. -->
+  <rule ref="Squiz.WhiteSpace.LanguageConstructSpacing" /><!--Ensures all language constructs (without brackets) contain a single space between themselves and their content. -->
+  <rule ref="Squiz.Arrays.ArrayBracketSpacing" /><!--Ensure that there are no spaces around square brackets. -->
+  <!-- IMPORTANT--><rule ref="PSR2.ControlStructures.SwitchDeclaration"><exclude-pattern>*</exclude-pattern></rule><!-- IMPORTANT we already have this sniff :: this is needed to ignore PSR2 sniff -->
+
+<!-- :::::::::::::::::::::::::::::::::::::: Code Analisys ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+
+  <rule ref="Generic.Metrics.CyclomaticComplexity" /><!--The cyclomatic complexity (also called McCabe code metrics) indicates the complexity within a function by counting the different paths the function includes. -->
+  <rule ref="Generic.Metrics.NestingLevel" /> <!-- Checks the nesting level for methods. -->
+
+<!-- :::::::::::::::::::::::::::::::::::::: Trying to avoid problems with PHP ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+
+  <rule ref="Generic.CodeAnalysis.JumbledIncrementer" /><!-- detects increments with the same variable name-->
+  <rule ref="Squiz.Scope.StaticThisUsage" /><!--Checks for usage of "$this" in static methods, which will cause runtime errors. -->
+
+<!-- :::::::::::::::::::::::::::::::::::::: Clean code / unnused code :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+
+  <rule ref="Generic.CodeAnalysis.ForLoopShouldBeWhileLoop" /><!-- Detects for-loops that can be simplified to a while-loop. This rule is based on the PMD rule catalog -->
+  <rule ref="Generic.CodeAnalysis.EmptyStatement" /><!-- looks for empty loops-->
+  <rule ref="Generic.CodeAnalysis.UnconditionalIfStatement" /><!-- detects things like "if (true)" -->
+  <rule ref="Generic.CodeAnalysis.UnnecessaryFinalModifier" /><!-- detects the use of the final modifier inside of a final class which is unnecessary. -->
+  <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter" /><!--Checks the for unused function parameters. -->
+    <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter.Found">
+      <message>The method parameter %s is never used ~~> check if you realy need this param.</message></rule>
+  <rule ref="Generic.CodeAnalysis.UselessOverridingMethod" /><!-- Detects unnecessary overriden methods that simply call their parent.-->
+  <rule ref="Squiz.PHP.NonExecutableCode" /><!--Warns about code that can never been executed. This happens when a function returns before the code, or a break ends execution of a statement etc. -->
+  <rule ref="Squiz.Operators.IncrementDecrementUsage" /><!--Tests that the ++ operators are used when possible and not used when it makes the code confusing (E.g. in string concatenation or arithmetic operation). -->
+
+<!-- :::::::::::::::::::::::::::::::::::::: Comments sniffs ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+
+  <rule ref="PEAR.Commenting.FunctionComment" /><!-- verifies functions documentation-->
+  <rule ref="Generic.Commenting.Todo" /><!-- warning for TODOs-->
+
+<!-- :::::::::::::::::::::::::::::::::::::: Performance ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+
+  <rule ref="Generic.CodeAnalysis.ForLoopWithTestFunctionCall" /><!-- Detects for-loops that use a function call in the test expression. like "for ($i = 0; $i < count($a); $i++) {..." -->
+  <rule ref="Generic.PHP.NoSilencedErrors" /><!-- Throws an error or warning when any code prefixed with an asperand (@) is encountered. can change to error easily-->
+  <rule ref="Squiz.Operators.ValidLogicalOperators" /><!--Checks to ensure that the logical operators 'and' and 'or' are not used. Use the && and || operators instead. -->
+  <rule ref="Squiz.Strings.DoubleQuoteUsage" /><!--Makes sure that any use of Double Quotes ("") are warranted. -->
+
+<!-- :::::::::::::::::::::::::::::::::::::: JavaScript and PHP Rules ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  -->
+
+  <rule ref="Generic.Strings.UnnecessaryStringConcat" /><!-- Checks that two strings are not concatenated together; suggests using one string instead. this works for php and js files -->
+  <rule ref="Squiz.WhiteSpace.OperatorSpacing" /><!--Verifies that operators have valid spacing surrounding them. This works with js and php -->
+  <rule ref="Squiz.WhiteSpace.SemicolonSpacing" /><!--Ensure there is no whitespace before a semicolon.Works for php and js files -->
+
+<!-- :::::::::::::::::::::::::::::::::::::: JavaScript Rules ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  -->
+
+  <rule ref="Squiz.Debug.JSLint" /><!--Runs jslint.js on the file. -->
+  <rule ref="MySource.Objects.AssignThis" /><!-- Ensures this is not assigned to any other var but self. used in Js files -->
+  <!--<rule ref="Squiz.Classes.DuplicateProperty" />--><!-- for JS code -->
+
+<!-- :::::::::::::::::::::::::::::::::::::: CSS Rules :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  -->
+
+  <!-- <rule ref="Squiz.CSS.ClassDefinitionClosingBraceSpace" />--><!--Ensure there is a single blank line after the closing brace of a class definition. -->
+  <rule ref="Squiz.CSS.ClassDefinitionNameSpacing" /><!-- Ensure there are no blank lines between the names of classes/IDs.-->
+  <!-- <rule ref="Squiz.CSS.ClassDefinitionOpeningBraceSpace" />--><!--Ensure there is a single space before the opening brace in a class definition and the content starts on the next line. -->
+  <rule ref="Squiz.CSS.ColonSpacing" /><!-- Ensure there is no space before a colon and one space after it.-->
+  <rule ref="Squiz.CSS.ColourDefinition" /><!--Ensure colours are defined in upper-case and use shortcuts where possible. -->
+  <!-- <rule ref="Squiz.CSS.DisallowMultipleStyleDefinitions" />--><!--Ensure that each style definition is on a line by itself. -->
+  <rule ref="Squiz.CSS.DuplicateClassDefinition" /><!--Check for duplicate class definitions that can be merged into one. -->
+  <rule ref="Squiz.CSS.DuplicateStyleDefinition" /><!--Check for duplicate style definitions in the same class. -->
+  <rule ref="Squiz.CSS.EmptyClassDefinition" /><!--Ensure that class definitions are not empty. -->
+  <rule ref="Squiz.CSS.EmptyStyleDefinition" /><!--Ensure that style definitions are not empty. -->
+  <!-- <rule ref="Squiz.CSS.Indentation" /> -->
+  <rule ref="Squiz.CSS.LowercaseStyleDefinition" /><!--Ensure that all style definitions are in lowercase. -->
+  <!-- <rule ref="Squiz.CSS.MissingColon" />--><!--Ensure that all style definitions have a colon. -->
+  <rule ref="Squiz.CSS.Opacity" /><!--Ensure that opacity values start with a 0 if it is not a whole number. -->
+  <rule ref="Squiz.CSS.SemicolonSpacing" /><!--Ensure each style definition has a semi-colon and it is spaced correctly. -->
+
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+
+  <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace"><severity>0</severity></rule>
+  <rule ref="PSR1.Files.SideEffects.FoundWithSymbols"><severity>0</severity></rule>
+  <rule ref="Squiz.Classes.ValidClassName.NotCamelCaps"><severity>0</severity></rule><!-- maybe this should be have some file's exception only -->
+
+  <rule ref="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket"><severity>0</severity></rule>
+  <rule ref="PEAR.Functions.FunctionCallSignature.CloseBracketLine"><severity>0</severity></rule>
+  <rule ref="PEAR.Functions.FunctionCallSignature.MultipleArguments"><severity>0</severity></rule>
+
+<!-- ::::::: In tests we have _start and there is no solution so we have to de activate this sniff for test folder :::::-->
+
+  <rule ref="Generic.NamingConventions.CamelCapsFunctionName.ScopeNotCamelCaps"><exclude-pattern>test/*</exclude-pattern></rule>
+  <rule ref="PSR2.Methods.MethodDeclaration.Underscore"><exclude-pattern>test/*</exclude-pattern></rule>
+
+<!-- ::::::::::::::::::::::::::::::::::::::::::  Excluded Directories  :::::::::::::::::::::::::::::::::::::::::::::::: -->
+
+  <exclude-pattern>*/web/css/ubi-theme-caixa/*</exclude-pattern>
+  <exclude-pattern>*/web/css/jquery/*</exclude-pattern>
+  <exclude-pattern>text.css</exclude-pattern>
+  <exclude-pattern>reset.css</exclude-pattern>
+
+  <!-- put this to warning in templates -->
+  <rule ref="Generic.ControlStructures.InlineControlStructure">
+    <properties>
+      <property name="error" value="false" />
+    </properties>
+  </rule>
+
+<!--:::::::::::::::::::::::::::::::::::::::: Exclude sniffs from lib/migration :::::::::::::::::::::::::::::::::::::-->
+
+<rule ref="Beubi.CodeAnalisys.ExcessiveLength"><exclude-pattern>*/lib/migration/*</exclude-pattern></rule>
+
+<!-- ::::::::::::::::::::::::::::::::::::::::::  Excluded Sniffs from templates (mixed php and html files)  :::::::::::::::::: -->
+
+  <rule ref="Squiz.WhiteSpace.ScopeClosingBrace">        <exclude-pattern>*/templates/*</exclude-pattern></rule>
+  <rule ref="Generic.Files.LineLength">                  <exclude-pattern>*/templates/*</exclude-pattern></rule>
+  <!-- indentation -->
+  <rule ref="Generic.WhiteSpace.ScopeIndent">            <exclude-pattern>*/templates/*</exclude-pattern></rule>
+  <rule ref="Beubi.ControlStructures.SwitchDeclaration"> <exclude-pattern>*/templates/*</exclude-pattern></rule>
+  <rule ref="PEAR.Functions.FunctionCallSignature">      <exclude-pattern>*/templates/*</exclude-pattern></rule>
+  <rule ref="Beubi.ControlStructures.MultiLineCondition"><exclude-pattern>*/templates/*</exclude-pattern></rule>
+
+</ruleset>
