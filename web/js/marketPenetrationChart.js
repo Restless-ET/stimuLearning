@@ -10,133 +10,133 @@ var numTicks, tickAlias, startingLevel, saturationLevel, alpha, beta;
 var startData, options, colorIndex = 6;
 
 jQuery(document).ready(function() {
-	
-	actOnChange = jQuery([]).add($(lifespanId)).add($(tickAliasId)).add($(startLevelId)).add($(saturationId)).add($(alphaId)).add($(betaId));
-	if (jQuery('#scenario_id').length != 0)
-	{
-		// hook on change events to each related input
-		actOnChange.bind('change blur input paste', configAndInitiateGraphDraw);
-	}
-	
-	configAndInitiateGraphDraw();
+
+    actOnChange = jQuery([]).add($(lifespanId)).add($(tickAliasId)).add($(startLevelId)).add($(saturationId)).add($(alphaId)).add($(betaId));
+    if (jQuery('#scenario_id').length != 0)
+    {
+        // hook on change events to each related input
+        actOnChange.bind('change blur input paste', configAndInitiateGraphDraw);
+    }
+
+    configAndInitiateGraphDraw();
 });
 
 function configAndInitiateGraphDraw() {
 
-	setNeededValuesFromInput();
-	startData = getPlotData();
-	options = getGraphOptions();
-	
-	var previousPoint = null;
+    setNeededValuesFromInput();
+    startData = getPlotData();
+    options = getGraphOptions();
+
+    var previousPoint = null;
 
     var plot = jQuery.plot(jQuery(chartDivId), startData, options);
-    
+
     jQuery(chartDivId).bind('plothover', function (event, pos, item) {
-    	jQuery('#x').text(pos.x.toFixed(2));
-    	jQuery('#y').text(pos.y.toFixed(2));
-        
+      jQuery('#x').text(pos.x.toFixed(2));
+      jQuery('#y').text(pos.y.toFixed(2));
+
         if (item) {
             if (previousPoint != item.dataIndex) {
                 previousPoint = item.dataIndex;
                 jQuery('#tooltip').remove();
-                
+
                 var x = item.datapoint[0],
                     y = item.datapoint[1];
-                
+
                 showTooltip(item.pageX, item.pageY,
                             tickAlias+" #: "+ x +"<br>Penetration: " + y +' %');
             }
         }
         else {
-        	jQuery('#tooltip').remove();
-            previousPoint = null;            
+          jQuery('#tooltip').remove();
+            previousPoint = null;
         }
     });
     /*
     jQuery(chartDivId).bind('plotclick', function (event, pos, item) {
         if (item) {
-        	jQuery('#clickdata').text("You clicked point " + item.dataIndex + " in " + item.series.label + ".");
+          jQuery('#clickdata').text("You clicked point " + item.dataIndex + " in " + item.series.label + ".");
             plot.highlight(item.series, item.datapoint);
         }
     });
     */
-    
+
 // ZOOMING
     var overview = setupOverview();
-    
-    // now connect the two 
+
+    // now connect the two
     $(chartDivId).bind("plotselected", function (event, ranges) {
         // clamp the zooming to prevent eternal zoom
         if (ranges.xaxis.to - ranges.xaxis.from < 0.00001)
             ranges.xaxis.to = ranges.xaxis.from + 0.00001;
         if (ranges.yaxis.to - ranges.yaxis.from < 0.00001)
             ranges.yaxis.to = ranges.yaxis.from + 0.00001;
-        
+
         // do the zooming
         plot = $.plot($(chartDivId), getPlotData(),
                       $.extend(true, {}, options, {
                           xaxis: { min: ranges.xaxis.from, max: ranges.xaxis.to },
                           yaxis: { min: ranges.yaxis.from, max: ranges.yaxis.to }
                       }));
-        
+
         // don't fire event on the overview to prevent eternal loop
         overview.setSelection(ranges, true);
     });
-    
+
     $("#overview").bind("plotselected", function (event, ranges) {
         plot.setSelection(ranges);
     });
-    
-    function resetZoom() 
-    { 
-    	plot = $.plot($(chartDivId), getPlotData(), options); 
-    	overview.clearSelection(); 
-    	plot.clearSelection();
+
+    function resetZoom()
+    {
+      plot = $.plot($(chartDivId), getPlotData(), options);
+      overview.clearSelection();
+      plot.clearSelection();
     };
-    
+
     $("#overview").bind("dblclick", resetZoom);
     //colorIndex = colorIndex + 1;
 }
 
 function setNeededValuesFromInput() {
-	numTicks = parseInt(jQuery(lifespanId).val());
-	tickAlias = jQuery(tickAliasId).val();
-	startingLevel = parseFloat(jQuery(startLevelId).val());
-	saturationLevel = parseFloat(jQuery(saturationId).val());
-	alpha = parseInt(jQuery(alphaId).val());
-	beta = parseFloat(jQuery(betaId).val());
+    numTicks = parseInt(jQuery(lifespanId).val());
+    tickAlias = jQuery(tickAliasId).val();
+    startingLevel = parseFloat(jQuery(startLevelId).val());
+    saturationLevel = parseFloat(jQuery(saturationId).val());
+    alpha = parseInt(jQuery(alphaId).val());
+    beta = parseFloat(jQuery(betaId).val());
 }
 
 function getGraphOptions() {
-	var graphOptions = {
-	    legend: { show: false },
-	    series: {
-	    	color: colorIndex,
-	        lines: { show: true },
-	        points: { show: true }
-	    },
-		grid: {
-			hoverable: true,
-			//clickable: true
-		},
-		yaxis: { min: 0, max: 100 },
-	    //yaxis: { ticks: 10 },
-		xaxis: { min: -0.5, max: numTicks + 1 },
-	    selection: { mode: "xy" }
-	};
-	
-	return graphOptions;
+    var graphOptions = {
+        legend: { show: false },
+        series: {
+          color: colorIndex,
+            lines: { show: true },
+            points: { show: true }
+        },
+        grid: {
+            //clickable: true,
+            hoverable: true
+        },
+        yaxis: { min: 0, max: 100 },
+        //yaxis: { ticks: 10 },
+         xaxis: { min: -0.5, max: numTicks + 1 },
+        selection: { mode: "xy" }
+    };
+
+    return graphOptions;
 }
 
 //setup plot data
 function getPlotData() {
-	var market = [];
-	market.push([0, startingLevel]);
-	for (var i = 0; i < numTicks; i++) {
-	    var share = (startingLevel + ((saturationLevel - startingLevel) / (1 + alpha * Math.exp(i * beta)))).toFixed(2);
-		market.push([i+1, share]);
-	}
-	
+    var market = [];
+    market.push([0, startingLevel]);
+    for (var i = 0; i < numTicks; i++) {
+        var share = (startingLevel + ((saturationLevel - startingLevel) / (1 + alpha * Math.exp(i * beta)))).toFixed(2);
+        market.push([i+1, share]);
+    }
+
     return [{ data: market, label: 'market penetration (%)' }];
 };
 
@@ -154,10 +154,10 @@ function showTooltip(x, y, contents) {
 };
 
 function setupOverview() {
-	var overview = $.plot($("#overview"), startData, {
+    var overview = $.plot($("#overview"), startData, {
         legend: { show: true, container: $("#overviewLegend") },
         series: {
-        	color: colorIndex,
+          color: colorIndex,
             lines: { show: true, lineWidth: 1 },
             shadowSize: 0
         },
@@ -166,6 +166,6 @@ function setupOverview() {
         grid: { color: "#999" },
         selection: { mode: "xy" }
     });
-	
-	return overview;
+
+    return overview;
 };
