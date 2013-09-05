@@ -12,16 +12,16 @@ sfCoreAutoload::register();
  */
 class ProjectConfiguration extends sfProjectConfiguration
 {
-  /**
-   * Insert in this method all the project configurations that you need.
-   *
-   * @return void
-   */
-  public function setup()
-  {
-    $this->enablePlugins('sfDoctrinePlugin');
-    $this->enablePlugins('sfFormExtraPlugin');
-    $this->enablePlugins('sfJqueryReloadedPlugin');
-    $this->enablePlugins('sfAdminThemejRollerPlugin');
-  }
+    /**
+     * Insert in this method all the project configurations that you need.
+     *
+     * @return void
+     */
+    public function setup()
+    {
+        $this->enablePlugins('sfDoctrinePlugin');
+        $this->enablePlugins('sfFormExtraPlugin');
+        $this->enablePlugins('sfJqueryReloadedPlugin');
+        $this->enablePlugins('sfAdminThemejRollerPlugin');
+    }
 }

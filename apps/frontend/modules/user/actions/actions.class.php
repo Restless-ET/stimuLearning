@@ -9,9 +9,8 @@ require_once dirname(__FILE__).'/../lib/userGeneratorHelper.class.php';
  * @package    stimuLearning
  * @subpackage user
  * @author     Artur Melo <adsmelo@ua.pt>
- * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class userActions extends autoUserActions
+class UserActions extends autoUserActions
 {
-  // The entire module is secured for 'admin' only
+    // The entire module is secured for 'admin' only
 }

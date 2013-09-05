@@ -9,12 +9,12 @@
  */
 class frontendConfiguration extends sfApplicationConfiguration
 {
-  /**
-   * Method that allows to override some default configurations
-   *
-   * @return nothing
-   */
-  public function configure()
-  {
-  }
+    /**
+     * Method that allows to override some default configurations
+     *
+     * @return nothing
+     */
+    public function configure()
+    {
+    }
 }
