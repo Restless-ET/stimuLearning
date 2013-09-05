@@ -9,36 +9,35 @@
  */
 class OperatorFormFilter extends BaseOperatorFormFilter
 {
-  /**
-   * Configures the filter form
-   *
-   * @return nothing
-   */
-  public function configure()
-  {
-    if (!sfContext::getInstance()->getUser()->hasCredential('admin'))
+    /**
+     * Configures the filter form
+     *
+     * @return nothing
+     */
+    public function configure()
     {
-      unset($this['user_id']);
+        if (!sfContext::getInstance()->getUser()->hasCredential('admin')) {
+            unset($this['user_id']);
+        }
     }
-  }
 
-  /**
-   * Overrides default doBuilQuery so that we can set the special cases we might need
-   *
-   * @param array $values Array of values to process into the query.
-   *
-   * @see sfFormFilterDoctrine::doBuildQuery()
-   *
-   * @return Doctrine_Query
-   */
-  protected function doBuildQuery(array $values)
-  {
-    $query = parent::doBuildQuery($values);
+    /**
+     * Overrides default doBuilQuery so that we can set the special cases we might need
+     *
+     * @param array $values Array of values to process into the query.
+     *
+     * @see sfFormFilterDoctrine::doBuildQuery()
+     *
+     * @return Doctrine_Query
+     */
+    protected function doBuildQuery(array $values)
+    {
+        $query = parent::doBuildQuery($values);
 
-    $query->leftJoin('r.Scenario s')
-          ->leftJoin('r.User u')
-          ->select('r.*, s.description, u.name');
+        $query->leftJoin('r.Scenario s')
+              ->leftJoin('r.User u')
+              ->select('r.*, s.description, u.name');
 
-    return $query;
-  }
+        return $query;
+    }
 }
