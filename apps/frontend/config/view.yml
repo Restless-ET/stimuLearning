@@ -12,7 +12,12 @@ default:
     language:     en
     #robots:       index, follow
 
-  stylesheets:    [/sfDoctrinePlugin/css/global.css, /sfDoctrinePlugin/css/default.css, reset.css, main.css, overcast/jquery-ui.custom.css]
+  stylesheets:
+    - reset.css
+    - /sfDoctrinePlugin/css/global.css
+    - /sfDoctrinePlugin/css/default.css
+    - main.css
+    - overcast/jquery-ui.custom.css
 
   javascripts:    [lib/jquery-1.5.1.min.js, lib/jquery-ui.custom.min.js] #, i18n/jquery.ui.datepicker-pt-BR.js]
 
