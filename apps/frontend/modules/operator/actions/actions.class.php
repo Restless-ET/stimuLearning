@@ -46,25 +46,25 @@ class OperatorActions extends autoOperatorActions
             'capex' => array(
               'color' => 6,
               'label' => 'CAPEX',
-              'bars' => array('show' => true,'barWidth'=> 0.15,'lineWidth'=> 1,'align' => 'left'),
+              'bars' => array('show' => true,'barWidth' => 0.15,'lineWidth' => 1,'align' => 'left'),
               'data' => array()
             ),
             'opex' => array(
               'color' => 7,
               'label' => 'OPEX',
-              'bars' => array('show' => true,'barWidth'=> 0.15,'lineWidth'=> 1,'align' => 'left'),
+              'bars' => array('show' => true,'barWidth' => 0.15,'lineWidth' => 1,'align' => 'left'),
               'data' => array()
             ),
             'revenue' => array(
               'color' => 8,
               'label' => 'Revenue',
-              'bars' => array('show' => true,'barWidth'=> 0.15,'lineWidth'=> 1,'align' => 'left'),
+              'bars' => array('show' => true,'barWidth' => 0.15,'lineWidth' => 1,'align' => 'left'),
               'data' => array()
             ),
             'cashflow' => array(
               'color' => 3,
               'label' => 'Cashflow',
-              'bars' => array('show' => true,'barWidth'=> 0.15,'lineWidth'=> 1,'align' => 'left'),
+              'bars' => array('show' => true,'barWidth' => 0.15,'lineWidth' => 1,'align' => 'left'),
               'data' => array()
             ),
             'balance' => array(
@@ -89,10 +89,10 @@ class OperatorActions extends autoOperatorActions
             ->fetchArray();
 
         foreach ($ticksForOperator as $tick) {
-            array_push($chartData['capex']['data'], array($tick['nbr']-0.3, $tick['CAPEX']));
-            array_push($chartData['opex']['data'], array($tick['nbr']-0.15, $tick['OPEX']));
+            array_push($chartData['capex']['data'], array($tick['nbr'] - 0.3, $tick['CAPEX']));
+            array_push($chartData['opex']['data'], array($tick['nbr'] - 0.15, $tick['OPEX']));
             array_push($chartData['revenue']['data'], array($tick['nbr'], $tick['revenue']));
-            array_push($chartData['cashflow']['data'], array($tick['nbr']+0.15, $tick['cashflow']));
+            array_push($chartData['cashflow']['data'], array($tick['nbr'] + 0.15, $tick['cashflow']));
             array_push($chartData['balance']['data'], array($tick['nbr'], $tick['balance']));
             array_push($chartData['equity']['data'], array($tick['nbr'], $tick['equity']));
         }

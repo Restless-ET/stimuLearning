@@ -8,24 +8,24 @@
  */
 class LoginForm extends BaseForm
 {
-  /**
-   * Configures the current form
-   *
-   * @return nothing
-   */
-  public function configure()
-  {
-    $this->setWidgets(array(
-      'username'    => new sfWidgetFormInputText(),
-      'password'   => new sfWidgetFormInputPassword(),
-    ));
+    /**
+     * Configures the current form
+     *
+     * @return nothing
+     */
+    public function configure()
+    {
+        $this->setWidgets(array(
+          'username'    => new sfWidgetFormInputText(),
+          'password'   => new sfWidgetFormInputPassword(),
+        ));
 
-    //Default validator for strings is required field
-    $this->setValidators(array(
-      'username'    => new sfValidatorString(array('min_length' => 3)),
-      'password'    => new sfValidatorString(),
-    ));
+        //Default validator for strings is required field
+        $this->setValidators(array(
+          'username'    => new sfValidatorString(array('min_length' => 3)),
+          'password'    => new sfValidatorString(),
+        ));
 
-    $this->getWidgetSchema()->setNameFormat('login[%s]');
-  }
+        $this->getWidgetSchema()->setNameFormat('login[%s]');
+    }
 }

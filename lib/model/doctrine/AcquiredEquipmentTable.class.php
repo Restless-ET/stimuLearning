@@ -11,13 +11,13 @@
  */
 class AcquiredEquipmentTable extends Doctrine_Table
 {
-  /**
-   * Returns an instance of this class.
-   *
-   * @return object AcquiredEquipmentTable
-   */
-  public static function getInstance()
-  {
-    return Doctrine_Core::getTable('AcquiredEquipment');
-  }
+    /**
+     * Returns an instance of this class.
+     *
+     * @return object AcquiredEquipmentTable
+     */
+    public static function getInstance()
+    {
+        return Doctrine_Core::getTable('AcquiredEquipment');
+    }
 }

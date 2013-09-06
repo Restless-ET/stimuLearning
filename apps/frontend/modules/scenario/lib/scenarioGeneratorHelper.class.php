@@ -14,6 +14,8 @@ class ScenarioGeneratorHelper extends BaseScenarioGeneratorHelper
      *
      * @param mixed $object The Scenario object
      * @param array $params Array with parameters for the link to render
+     *
+     * @return string
      */
     public function linkToNextStep($object, $params)
     {
@@ -29,11 +31,13 @@ class ScenarioGeneratorHelper extends BaseScenarioGeneratorHelper
      *
      * @param mixed $object The Scenario object
      * @param array $params Array with parameters for the link to render
+     *
+     * @return string
      */
     public function linkToNextDecision($object, $params)
     {
         //TODO calculate proper number of ticks
-        $ticks='2';
+        $ticks = '2';
 
         return '<li class="sf_admin_action_sim_next_decision">'.link_to(
             __($params['label'], array(), 'messages'),
@@ -47,6 +51,8 @@ class ScenarioGeneratorHelper extends BaseScenarioGeneratorHelper
      *
      * @param mixed $object The Scenario object
      * @param array $params Array with parameters for the link to render
+     *
+     * @return string
      */
     public function linkToFinish($object, $params)
     {
