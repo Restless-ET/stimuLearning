@@ -29,8 +29,9 @@ generator:
             credentials: [manager]
         object_actions:
           show: { action: show }
-          _edit: { credentials: [manager] }
-          _delete:
+          edit: { action: edit, credentials: [manager] }
+          delete:
+            action: delete
             credentials: [manager]
             confirm: 'This removal is irreversible! Are you sure you want to proceed?'
         batch_actions:

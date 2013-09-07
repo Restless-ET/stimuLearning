@@ -13,9 +13,9 @@ default:
     #robots:       index, follow
 
   stylesheets:
-    - reset.css
     - /sfDoctrinePlugin/css/global.css
     - /sfDoctrinePlugin/css/default.css
+    - lib/reset_fonts.css
     - main.css
     - overcast/jquery-ui.custom.css
 
