@@ -12,11 +12,9 @@ class DecisionsActions extends sfActions
     /**
      * Executes index action
      *
-     * @param sfWebRequest $request A request object
-     *
      * @return nothing
      */
-    public function executeIndex(sfWebRequest $request)
+    public function executeIndex()
     {
         $this->decision_points = Doctrine_Core::getTable('DecisionPoint')
                                   ->createQuery('a')
@@ -26,11 +24,9 @@ class DecisionsActions extends sfActions
     /**
      * Executes new action
      *
-     * @param sfWebRequest $request A request object
-     *
      * @return nothing
      */
-    public function executeNew(sfWebRequest $request)
+    public function executeNew()
     {
         $this->form = new DecisionPointForm();
     }

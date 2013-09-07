@@ -11,13 +11,13 @@
  */
 class ScenarioTable extends Doctrine_Table
 {
-  /**
-   * Returns an instance of this class.
-   *
-   * @return object ScenarioTable
-   */
-  public static function getInstance()
-  {
-    return Doctrine_Core::getTable('Scenario');
-  }
+    /**
+     * Returns an instance of this class.
+     *
+     * @return object ScenarioTable
+     */
+    public static function getInstance()
+    {
+        return Doctrine_Core::getTable('Scenario');
+    }
 }

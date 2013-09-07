@@ -11,13 +11,13 @@
  */
 class TickTable extends Doctrine_Table
 {
-  /**
-   * Returns an instance of this class.
-   *
-   * @return object TickTable
-   */
-  public static function getInstance()
-  {
-    return Doctrine_Core::getTable('Tick');
-  }
+    /**
+     * Returns an instance of this class.
+     *
+     * @return object TickTable
+     */
+    public static function getInstance()
+    {
+        return Doctrine_Core::getTable('Tick');
+    }
 }

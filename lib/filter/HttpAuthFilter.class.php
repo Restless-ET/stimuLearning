@@ -24,7 +24,7 @@ class HttpAuthFilter extends sfFilter
                 $this->sendHeadersAndExit();
             }
             if (!($_SERVER['PHP_AUTH_USER'] == sfConfig::get('app_auth_username')
-              && $_SERVER['PHP_AUTH_PW'] == sfConfig::get('app_auth_password'))
+                && $_SERVER['PHP_AUTH_PW'] == sfConfig::get('app_auth_password'))
             ) {
                 $this->sendHeadersAndExit();
             }

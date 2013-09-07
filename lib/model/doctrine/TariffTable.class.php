@@ -11,13 +11,13 @@
  */
 class TariffTable extends Doctrine_Table
 {
-  /**
-   * Returns an instance of this class.
-   *
-   * @return object TariffTable
-   */
-  public static function getInstance()
-  {
-    return Doctrine_Core::getTable('Tariff');
-  }
+    /**
+     * Returns an instance of this class.
+     *
+     * @return object TariffTable
+     */
+    public static function getInstance()
+    {
+        return Doctrine_Core::getTable('Tariff');
+    }
 }

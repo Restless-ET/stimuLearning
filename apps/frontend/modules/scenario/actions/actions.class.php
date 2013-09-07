@@ -15,11 +15,9 @@ class ScenarioActions extends autoScenarioActions
     /**
      * Executes show action for scenario
      *
-     * @param sfWebRequest $request A request object
-     *
      * @return nothing
      */
-    public function executeShow(sfWebRequest $request)
+    public function executeShow()
     {
         $this->scenario = $this->getRoute()->getObject();
         $this->forward404Unless($this->scenario);
@@ -94,11 +92,9 @@ class ScenarioActions extends autoScenarioActions
      * Gets market share data from ticks related with the given Scenario in order
      *  to provide that data in JSON format for graphs that need it.
      *
-     * @param sfWebRequest $request A request object
-     *
      * @return nothing
      */
-    public function executeGetMarketShareEvolutionDatasets(sfWebRequest $request)
+    public function executeGetMarketShareEvolutionDatasets()
     {
         $scenario = $this->getRoute()->getObject();
         $this->forward404Unless($scenario);

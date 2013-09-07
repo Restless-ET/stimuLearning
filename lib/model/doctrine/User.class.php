@@ -13,27 +13,27 @@
 class User extends BaseUser
 {
 
-  /**
-   * This method will return true if the given passord is correct and false otherwise
-   *
-   * @param string $password password
-   *
-   * @return boolean
-   */
-  public function passwordMatchesPassword($password)
-  {
-    return $this->getPassword() == $this->getEncryptedPassword($password);
-  }
+    /**
+     * This method will return true if the given passord is correct and false otherwise
+     *
+     * @param string $password password
+     *
+     * @return boolean
+     */
+    public function passwordMatchesPassword($password)
+    {
+        return $this->getPassword() == $this->getEncryptedPassword($password);
+    }
 
-  /**
-   * This method will return the user's password encrypted
-   *
-   * @param string $password password
-   *
-   * @return string
-   */
-  public function getEncryptedPassword($password)
-  {
-    return md5($password);
-  }
+    /**
+     * This method will return the user's password encrypted
+     *
+     * @param string $password password
+     *
+     * @return string
+     */
+    public function getEncryptedPassword($password)
+    {
+        return md5($password);
+    }
 }

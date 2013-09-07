@@ -15,11 +15,9 @@ class OperatorActions extends autoOperatorActions
     /**
      * Executes show action for operator
      *
-     * @param sfWebRequest $request A request object
-     *
      * @return nothing
      */
-    public function executeShow(sfWebRequest $request)
+    public function executeShow()
     {
         $this->operator = $this->getRoute()->getObject();
         $this->forward404Unless($this->operator);
@@ -32,11 +30,9 @@ class OperatorActions extends autoOperatorActions
      * Gets operator simulated data from ticks related with the given Operator in order
      *  to provide that data in JSON format for graphs that need it.
      *
-     * @param sfWebRequest $request A request object
-     *
      * @return nothing
      */
-    public function executeGetSimulatedDataDatasets(sfWebRequest $request)
+    public function executeGetSimulatedDataDatasets()
     {
         $operator = $this->getRoute()->getObject();
         $this->forward404Unless($operator);

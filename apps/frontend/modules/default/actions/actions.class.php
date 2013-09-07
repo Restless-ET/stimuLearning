@@ -12,11 +12,9 @@ class DefaultActions extends sfActions
     /**
      * Executes index action
      *
-     * @param sfRequest $request A request object
-     *
      * @return nothing
      */
-    public function executeIndex(sfWebRequest $request)
+    public function executeIndex()
     {
         if (!$this->getUser()->isAuthenticated()) {
             $this->redirect('@login');
@@ -57,7 +55,7 @@ class DefaultActions extends sfActions
                 $password = $inputData['password'];
 
                 $userFromDb = Doctrine_Core::getTable('User')->findOneBy('username', $username);
-                if (! $this->usernameExists($userFromDb) || ! $userFromDb->passwordMatchesPassword($password)) {
+                if ($userFromDb === false || ! $userFromDb->passwordMatchesPassword($password)) {
                     return sfView::ERROR;
                 }
 
@@ -81,11 +79,6 @@ class DefaultActions extends sfActions
                 $this->redirect('@homepage');
             }
         }
-    }
-
-    private function usernameExists($userFromDb)
-    {
-        return $userFromDb !== false;
     }
 
     /**

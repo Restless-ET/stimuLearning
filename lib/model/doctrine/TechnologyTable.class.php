@@ -11,13 +11,13 @@
  */
 class TechnologyTable extends Doctrine_Table
 {
-  /**
-   * Returns an instance of this class.
-   *
-   * @return object TechnologyTable
-   */
-  public static function getInstance()
-  {
-    return Doctrine_Core::getTable('Technology');
-  }
+    /**
+     * Returns an instance of this class.
+     *
+     * @return object TechnologyTable
+     */
+    public static function getInstance()
+    {
+        return Doctrine_Core::getTable('Technology');
+    }
 }

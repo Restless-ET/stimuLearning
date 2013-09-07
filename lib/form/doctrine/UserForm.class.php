@@ -10,15 +10,15 @@
  */
 class UserForm extends BaseUserForm
 {
-  /**
-   * Apply the proper widget configurations and validators for this form
-   * (non-PHPdoc)
-   *
-   * @see sfForm::configure()
-   *
-   * @return nothing
-   */
-  public function configure()
-  {
-  }
+    /**
+     * Apply the proper widget configurations and validators for this form
+     * (non-PHPdoc)
+     *
+     * @see sfForm::configure()
+     *
+     * @return nothing
+     */
+    public function configure()
+    {
+    }
 }
