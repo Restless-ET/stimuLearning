@@ -8,7 +8,6 @@
  * @package    stimuLearning
  * @subpackage model
  * @author     Artur Melo <adsmelo@ua.pt>
- * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 class User extends BaseUser
 {
