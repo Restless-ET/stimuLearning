@@ -64,6 +64,30 @@ class ScenarioActions extends autoScenarioActions
     }
 
     /**
+     * Initializes the simulation scenario.
+     *
+     * @return nothing
+     */
+    public function executeStartSimulation()
+    {
+        $scenario = $this->getRoute()->getObject();
+        $this->forward404Unless($scenario);
+
+        if (!$scenario->getStarted()) {
+            $msg = $scenario->initializeSimulation();
+
+            if ($msg === true) {
+                $user->setFlash('notice', 'Simulation started (no new operators can be added)!');
+            } else {
+                $user->setFlash('error', $msg);
+            }
+        } else {
+            $user->setFlash('error', 'The simulation for this scenario had already been started!');
+        }
+        $this->redirect('@scenario');
+    }
+
+    /**
      * Advance the simulation the indicated number of ticks.
      *
      * @param sfRequest $request A request object
@@ -74,14 +98,18 @@ class ScenarioActions extends autoScenarioActions
     {
         $scenario = $this->getRoute()->getObject();
         $this->forward404Unless($scenario);
-        if ($scenario->getFinished()) {
-            $user->setFlash('notice', 'The simulation for this scenario is already finished!');
+
+        if (!$scenario->getStarted() || $scenario->getFinished()) {
+            $user->setFlash('notice', 'The simulation for this scenario is either: not started or already finished!');
             $this->redirect('@scenario');
         }
 
         $ticks = $request->getParameter('ticks', 0);
         if ($ticks > 0) {
+            $scenario->advanceToNextStep();
+
             $user->setFlash('notice', 'Simulation advanced '.$ticks.' ticks!');
+
         } else {
             $user->setFlash('error', 'No valid number of ticks indicateds!');
         }

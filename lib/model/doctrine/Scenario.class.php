@@ -11,4 +11,44 @@
  */
 class Scenario extends BaseScenario
 {
+    /**
+     * Takes the necessary steps to initialize all data regarding the simulation starting point (time=0)
+     *
+     * @return true on success, error message otherwise
+     */
+    public function initializeSimulation()
+    {
+        $msg = true;
+        //TODO Validate operators
+        if (!count($scenario->Operators)) {
+            $msg = 'This scenario has no associated operators!';
+        }
+
+        foreach ($scenario->Operators as $operator) {
+            // TODO validate that tariffs/services exists for all operators.
+        }
+
+        //TODO Calculate the necessary equipments and acquire them.
+
+        //TODO Create the ticks for all operators
+        //TODO Equipments price is for CAPEX
+
+        //TODO Init a market tick
+
+        // Change scenario to started
+        $this->setStarted(true);
+        $this->save();
+
+        return $msg;
+    }
+
+    /**
+     * Advances the scenario simulation to the next step.
+     *
+     * @return void
+     */
+    public function advanceToNextStep()
+    {
+
+    }
 }
