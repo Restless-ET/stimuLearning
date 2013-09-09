@@ -1,16 +1,16 @@
 <?php
 
 /**
- * DecisionPoint form base class.
+ * Service form base class.
  *
- * @method DecisionPoint getObject() Returns the current form's model object
+ * @method Service getObject() Returns the current form's model object
  *
  * @package    stimuLearning
  * @subpackage form
  * @author     Artur Melo <adsmelo@ua.pt>
  * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 29553 2010-05-20 14:33:00Z Kris.Wallsmith $
  */
-abstract class BaseDecisionPointForm extends BaseFormDoctrine
+abstract class BaseServiceForm extends BaseFormDoctrine
 {
   public function setup()
   {
@@ -38,7 +38,7 @@ abstract class BaseDecisionPointForm extends BaseFormDoctrine
       'updated_at'       => new sfValidatorDateTime(),
     ));
 
-    $this->widgetSchema->setNameFormat('decision_point[%s]');
+    $this->widgetSchema->setNameFormat('service[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -49,7 +49,7 @@ abstract class BaseDecisionPointForm extends BaseFormDoctrine
 
   public function getModelName()
   {
-    return 'DecisionPoint';
+    return 'Service';
   }
 
 }

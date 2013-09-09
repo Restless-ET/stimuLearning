@@ -17,6 +17,7 @@
  * @property User $User
  * @property Scenario $Scenario
  * @property Doctrine_Collection $DecisionPoints
+ * @property Doctrine_Collection $Services
  * @property Doctrine_Collection $Ticks
  * 
  * @method string              getName()                    Returns the current record's "name" value
@@ -31,6 +32,7 @@
  * @method User                getUser()                    Returns the current record's "User" value
  * @method Scenario            getScenario()                Returns the current record's "Scenario" value
  * @method Doctrine_Collection getDecisionPoints()          Returns the current record's "DecisionPoints" collection
+ * @method Doctrine_Collection getServices()                Returns the current record's "Services" collection
  * @method Doctrine_Collection getTicks()                   Returns the current record's "Ticks" collection
  * @method Operator            setName()                    Sets the current record's "name" value
  * @method Operator            setStartingMarketSize()      Sets the current record's "starting_market_size" value
@@ -44,6 +46,7 @@
  * @method Operator            setUser()                    Sets the current record's "User" value
  * @method Operator            setScenario()                Sets the current record's "Scenario" value
  * @method Operator            setDecisionPoints()          Sets the current record's "DecisionPoints" collection
+ * @method Operator            setServices()                Sets the current record's "Services" collection
  * @method Operator            setTicks()                   Sets the current record's "Ticks" collection
  * 
  * @package    stimuLearning
@@ -108,6 +111,10 @@ abstract class BaseOperator extends sfDoctrineRecord
              'onDelete' => 'CASCADE'));
 
         $this->hasMany('DecisionPoint as DecisionPoints', array(
+             'local' => 'id',
+             'foreign' => 'operator_id'));
+
+        $this->hasMany('Service as Services', array(
              'local' => 'id',
              'foreign' => 'operator_id'));
 

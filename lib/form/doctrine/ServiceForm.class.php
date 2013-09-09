@@ -1,14 +1,13 @@
 <?php
 
 /**
- * DecisionPoint form.
+ * Service form.
  *
  * @package    stimuLearning
  * @subpackage form
  * @author     Artur Melo <adsmelo@ua.pt>
- * @version    SVN: $Id: sfDoctrineFormTemplate.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class DecisionPointForm extends BaseDecisionPointForm
+class ServiceForm extends BaseServiceForm
 {
     /**
      * Apply the proper widget configurations and validators for this form
@@ -16,7 +15,7 @@ class DecisionPointForm extends BaseDecisionPointForm
      *
      * @see sfForm::configure()
      *
-     * @return nothing
+     * @return void
      */
     public function configure()
     {

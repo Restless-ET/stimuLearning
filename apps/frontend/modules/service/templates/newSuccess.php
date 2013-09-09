@@ -1,3 +1,3 @@
-<h1>Edit Decision point</h1>
+<h1>New Service</h1>
 
 <?php include_partial('form', array('form' => $form)) ?>

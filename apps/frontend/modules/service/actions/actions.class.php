@@ -1,13 +1,13 @@
 <?php
 
 /**
- * decisions actions.
+ * service actions.
  *
  * @package    stimuLearning
- * @subpackage decisions
+ * @subpackage service
  * @author     Artur Melo <adsmelo@ua.pt>
  */
-class DecisionsActions extends sfActions
+class ServiceActions extends sfActions
 {
     /**
      * Executes index action
@@ -16,7 +16,7 @@ class DecisionsActions extends sfActions
      */
     public function executeIndex()
     {
-        $this->decision_points = Doctrine_Core::getTable('DecisionPoint')
+        $this->services = Doctrine_Core::getTable('Service')
                                   ->createQuery('a')
                                   ->execute();
     }
@@ -28,7 +28,7 @@ class DecisionsActions extends sfActions
      */
     public function executeNew()
     {
-        $this->form = new DecisionPointForm();
+        $this->form = new ServiceForm();
     }
 
     /**
@@ -42,7 +42,7 @@ class DecisionsActions extends sfActions
     {
         $this->forward404Unless($request->isMethod(sfRequest::POST));
 
-        $this->form = new DecisionPointForm();
+        $this->form = new ServiceForm();
 
         $this->processForm($request, $this->form);
 
@@ -58,12 +58,12 @@ class DecisionsActions extends sfActions
      */
     public function executeEdit(sfWebRequest $request)
     {
-        $decision_point = Doctrine_Core::getTable('DecisionPoint')->find(array($request->getParameter('id')));
+        $service = Doctrine_Core::getTable('Service')->find(array($request->getParameter('id')));
         $this->forward404Unless(
-            $decision_point,
-            sprintf('Object decision_point does not exist (%s).', $request->getParameter('id'))
+            $service,
+            sprintf('Object Service does not exist (%s).', $request->getParameter('id'))
         );
-        $this->form = new DecisionPointForm($decision_point);
+        $this->form = new ServiceForm($service);
     }
 
     /**
@@ -76,12 +76,12 @@ class DecisionsActions extends sfActions
     public function executeUpdate(sfWebRequest $request)
     {
         $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
-        $decision_point = Doctrine_Core::getTable('DecisionPoint')->find(array($request->getParameter('id')));
+        $service = Doctrine_Core::getTable('Service')->find(array($request->getParameter('id')));
         $this->forward404Unless(
-            $decision_point,
-            sprintf('Object decision_point does not exist (%s).', $request->getParameter('id'))
+            $service,
+            sprintf('Object Service does not exist (%s).', $request->getParameter('id'))
         );
-        $this->form = new DecisionPointForm($decision_point);
+        $this->form = new ServiceForm($service);
 
         $this->processForm($request, $this->form);
 
@@ -98,14 +98,14 @@ class DecisionsActions extends sfActions
     public function executeDelete(sfWebRequest $request)
     {
         $request->checkCSRFProtection();
-        $decision_point = Doctrine_Core::getTable('DecisionPoint')->find(array($request->getParameter('id')));
+        $service = Doctrine_Core::getTable('Service')->find(array($request->getParameter('id')));
         $this->forward404Unless(
-            $decision_point,
-            sprintf('Object decision_point does not exist (%s).', $request->getParameter('id'))
+            $service,
+            sprintf('Object Service does not exist (%s).', $request->getParameter('id'))
         );
-        $decision_point->delete();
+        $service->delete();
 
-        $this->redirect('decisions/index');
+        $this->redirect('service/index');
     }
 
     /**
@@ -122,9 +122,9 @@ class DecisionsActions extends sfActions
     {
         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
         if ($form->isValid()) {
-            $decision_point = $form->save();
+            $service = $form->save();
 
-            $this->redirect('decisions/edit?id='.$decision_point->getId());
+            $this->redirect('service/edit?id='.$service->getId());
         }
     }
 }

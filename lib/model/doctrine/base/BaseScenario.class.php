@@ -35,6 +35,7 @@
  * @property Doctrine_Collection $DecisionPoints
  * @property Doctrine_Collection $Operators
  * @property Doctrine_Collection $ScenarioTechnology
+ * @property Doctrine_Collection $Services
  * @property Doctrine_Collection $Ticks
  * 
  * @method string              getDescription()                   Returns the current record's "description" value
@@ -67,6 +68,7 @@
  * @method Doctrine_Collection getDecisionPoints()                Returns the current record's "DecisionPoints" collection
  * @method Doctrine_Collection getOperators()                     Returns the current record's "Operators" collection
  * @method Doctrine_Collection getScenarioTechnology()            Returns the current record's "ScenarioTechnology" collection
+ * @method Doctrine_Collection getServices()                      Returns the current record's "Services" collection
  * @method Doctrine_Collection getTicks()                         Returns the current record's "Ticks" collection
  * @method Scenario            setDescription()                   Sets the current record's "description" value
  * @method Scenario            setStarted()                       Sets the current record's "started" value
@@ -98,6 +100,7 @@
  * @method Scenario            setDecisionPoints()                Sets the current record's "DecisionPoints" collection
  * @method Scenario            setOperators()                     Sets the current record's "Operators" collection
  * @method Scenario            setScenarioTechnology()            Sets the current record's "ScenarioTechnology" collection
+ * @method Scenario            setServices()                      Sets the current record's "Services" collection
  * @method Scenario            setTicks()                         Sets the current record's "Ticks" collection
  * 
  * @package    stimuLearning
@@ -245,6 +248,10 @@ abstract class BaseScenario extends sfDoctrineRecord
              'foreign' => 'scenario_id'));
 
         $this->hasMany('ScenarioTechnology', array(
+             'local' => 'id',
+             'foreign' => 'scenario_id'));
+
+        $this->hasMany('Service as Services', array(
              'local' => 'id',
              'foreign' => 'scenario_id'));
 
