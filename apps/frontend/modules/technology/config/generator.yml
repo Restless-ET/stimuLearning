@@ -39,4 +39,6 @@ generator:
       form:    ~
       edit:    ~
       new:     ~
-      show:    ~
+
+      show:
+        display: [ name, description, first_tick_available, decline_A, decline_B, created_at, updated_at ]
