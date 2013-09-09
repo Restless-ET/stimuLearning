@@ -20,6 +20,7 @@ generator:
 
       list:
         title: 'Technologies'
+        display: [ name, description, first_tick_available, decline_a, decline_b ]
         actions:
           _new:
             credentials: [manager]

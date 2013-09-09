@@ -10,6 +10,11 @@
     padding: 0px 10px 15px 10px;
 }
 
+#content h1 {
+    margin-bottom: 10px;
+    font-size: 140%;
+}
+
 #title a {
     font-size: x-large;
     color: black;
@@ -46,7 +51,7 @@
 
 .sub-menu {
     padding-top: 5px;
-    padding-left: 40px;
+    padding-left: 20px;
     font-size: 12px;
     text-align: left;
 }
