@@ -14,26 +14,30 @@
     </li>
   <?php endif; ?>
     <li>|</li>
-    <li<?php if(sfContext::getInstance()->getActionName()=='changePassword'): ?> class="active"<?php endif; ?>>
-      <?php //echo link_to('Change Password', '@changePassword') ?></li>
     <li><?php echo link_to('Logout', '@logout') ?></li>
   </ul>
-  <?php if (($currentModule == 'scenario' /*&& sfContext::getInstance()->getActionName() == 'show'*/)
-       || in_array($currentModule, array('technology','architecture','equipment'))): ?>
-
-  <div id="sub-menu" class="sub-menu">
-    <ul>
-      <li<?php if($currentModule == 'technology'): ?> class="active"<?php endif; ?>>
-        <?php echo link_to('Technologies', '@technology') ?>
-      </li>
-      <li<?php if($currentModule == 'architecture'): ?> class="active"<?php endif; ?>>
-        <?php echo link_to('Architectures', '@architecture') ?>
-      </li>
-      <li<?php if($currentModule == 'equipment'): ?> class="active"<?php endif; ?>>
-        <?php echo link_to('Equipments', '@equipment') ?>
-      </li>
-    </ul>
-  </div>
+  <?php if (in_array($currentModule, array('scenario','technology','architecture','equipment'))): ?>
+    <div id="sub-menu" class="sub-menu">
+      <ul>
+        <li<?php if($currentModule == 'technology'): ?> class="active"<?php endif; ?>>
+          <?php echo link_to('Technologies', '@technology') ?>
+        </li>
+        <li<?php if($currentModule == 'architecture'): ?> class="active"<?php endif; ?>>
+          <?php echo link_to('Architectures', '@architecture') ?>
+        </li>
+        <li<?php if($currentModule == 'equipment'): ?> class="active"<?php endif; ?>>
+          <?php echo link_to('Equipments', '@equipment') ?>
+        </li>
+      </ul>
+    </div>
+  <?php elseif (in_array($currentModule, array('operator','service'))): ?>
+    <div id="sub-menu" class="sub-menu">
+      <ul>
+        <li<?php if($currentModule == 'service'): ?> class="active"<?php endif; ?>>
+          <?php echo link_to('Services', '@service') ?>
+        </li>
+      </ul>
+    </div>
   <?php endif; ?>
 <?php endif; ?>
 </div>

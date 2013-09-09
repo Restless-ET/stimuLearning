@@ -9,9 +9,7 @@
   <body>
   <div id="center">
     <a href="http://<?php echo $_SERVER['HTTP_HOST'] ?>" >
-    <?php echo image_tag('gsbl_v7.png',array(
-    'alt'=>'gsbl',
-    'title'=>'gsbl')); ?>
+      <?php echo image_tag('gsbl_v7.png',array('alt'=>'gsbl', 'title'=>'gsbl')); ?>
     </a>
     <br /><br />
     <?php echo $sf_content; ?>

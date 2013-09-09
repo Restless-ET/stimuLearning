@@ -34,11 +34,9 @@
   <body>
     <div id="container">
       <div id="header">
-        <h1>
-          <a class="sitelogo" href="<?php echo url_for('@homepage') ?>">
-            <?php echo image_tag('gsbl_v7.png') ?>
-          </a>
-        </h1>
+        <a class="sitelogo" href="<?php echo url_for('@homepage') ?>">
+          <?php echo image_tag('gsbl_v7.png') ?>
+        </a>
         <div id="system_info">
           <?php if($sf_user->isAuthenticated()): ?>
           Hello, <?php echo $sf_user->getAttribute('username') ?>

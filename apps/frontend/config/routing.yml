@@ -2,11 +2,20 @@
 login:
   url: /login
   param: { module: default, action: login }
-  
+
 logout:
   url: /logout
   param: { module: default, action: logout }
 ### END: General user rules ###
+
+scenario:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Scenario
+    module:               scenario
+    prefix_path:          /scenario
+    column:               id
+    with_wildcard_routes: true
 
 architecture:
   class: sfDoctrineRouteCollection
@@ -44,21 +53,21 @@ operator:
     column:               id
     with_wildcard_routes: true
 
+service:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Service
+    module:               service
+    prefix_path:          /service
+    column:               id
+    with_wildcard_routes: true
+
 user:
   class: sfDoctrineRouteCollection
   options:
     model:                User
     module:               user
     prefix_path:          /user
-    column:               id
-    with_wildcard_routes: true
-
-scenario:
-  class: sfDoctrineRouteCollection
-  options:
-    model:                Scenario
-    module:               scenario
-    prefix_path:          /scenario
     column:               id
     with_wildcard_routes: true
 

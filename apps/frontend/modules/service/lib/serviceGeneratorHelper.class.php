@@ -1,13 +1,12 @@
 <?php
 
 /**
- * service actions.
+ * service module helper.
  *
  * @package    stimuLearning
  * @subpackage service
  * @author     Artur Melo <adsmelo@ua.pt>
  */
-class ServiceActions extends autoServiceActions
+class ServiceGeneratorHelper extends BaseServiceGeneratorHelper
 {
-    // Accessible by all logged-in users.
 }
