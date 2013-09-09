@@ -16,7 +16,7 @@ class OperatorFormFilter extends BaseOperatorFormFilter
      */
     public function configure()
     {
-        if (!sfContext::getInstance()->getUser()->hasCredential('admin')) {
+        if (!sfContext::getInstance()->getUser()->hasCredential('manager')) {
             unset($this['user_id']);
         }
     }
@@ -32,11 +32,15 @@ class OperatorFormFilter extends BaseOperatorFormFilter
      */
     protected function doBuildQuery(array $values)
     {
+        $user = sfContext::getInstance()->getUser();
         $query = parent::doBuildQuery($values);
 
         $query->leftJoin('r.Scenario s')
               ->leftJoin('r.User u')
               ->select('r.*, s.description, u.name');
+        if (!$user->hasCredential('manager')) {
+            $query->andWhere('r.user_id = ?', $user->getAttribute('id', 0));
+        }
 
         return $query;
     }

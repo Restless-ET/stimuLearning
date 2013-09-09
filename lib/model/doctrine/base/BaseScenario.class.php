@@ -32,7 +32,6 @@
  * @property decimal $containment_factor_weight
  * @property decimal $reference_occupation_rate
  * @property Doctrine_Collection $AvailableTechnologies
- * @property Doctrine_Collection $DecisionPoints
  * @property Doctrine_Collection $Operators
  * @property Doctrine_Collection $ScenarioTechnology
  * @property Doctrine_Collection $Services
@@ -65,7 +64,6 @@
  * @method decimal             getContainmentFactorWeight()       Returns the current record's "containment_factor_weight" value
  * @method decimal             getReferenceOccupationRate()       Returns the current record's "reference_occupation_rate" value
  * @method Doctrine_Collection getAvailableTechnologies()         Returns the current record's "AvailableTechnologies" collection
- * @method Doctrine_Collection getDecisionPoints()                Returns the current record's "DecisionPoints" collection
  * @method Doctrine_Collection getOperators()                     Returns the current record's "Operators" collection
  * @method Doctrine_Collection getScenarioTechnology()            Returns the current record's "ScenarioTechnology" collection
  * @method Doctrine_Collection getServices()                      Returns the current record's "Services" collection
@@ -97,7 +95,6 @@
  * @method Scenario            setContainmentFactorWeight()       Sets the current record's "containment_factor_weight" value
  * @method Scenario            setReferenceOccupationRate()       Sets the current record's "reference_occupation_rate" value
  * @method Scenario            setAvailableTechnologies()         Sets the current record's "AvailableTechnologies" collection
- * @method Scenario            setDecisionPoints()                Sets the current record's "DecisionPoints" collection
  * @method Scenario            setOperators()                     Sets the current record's "Operators" collection
  * @method Scenario            setScenarioTechnology()            Sets the current record's "ScenarioTechnology" collection
  * @method Scenario            setServices()                      Sets the current record's "Services" collection
@@ -238,10 +235,6 @@ abstract class BaseScenario extends sfDoctrineRecord
              'refClass' => 'ScenarioTechnology',
              'local' => 'scenario_id',
              'foreign' => 'technology_id'));
-
-        $this->hasMany('DecisionPoint as DecisionPoints', array(
-             'local' => 'id',
-             'foreign' => 'scenario_id'));
 
         $this->hasMany('Operator as Operators', array(
              'local' => 'id',

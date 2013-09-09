@@ -67,6 +67,10 @@ th
   font-weight: bold;
 }
 
+#sf_admin_container td, #sf_admin_container th {
+  vertical-align: middle;
+}
+
 #footer
 {
   clear: both;
