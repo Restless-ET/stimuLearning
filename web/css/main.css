@@ -134,14 +134,6 @@ th
   color: red;
 }
 
-#sf_admin_container ul li a {
-  padding-left: 17px;
-}
-
-#sf_admin_container ul.sf_admin_td_actions li {
-  margin-right: 7px;
-}
-
 #sf_admin_container ul li.sf_admin_action_show a {
   background: url(../images/icons/magnify.png) no-repeat 0 0;
 }
