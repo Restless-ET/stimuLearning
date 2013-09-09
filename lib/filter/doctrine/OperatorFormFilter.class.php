@@ -38,9 +38,6 @@ class OperatorFormFilter extends BaseOperatorFormFilter
         $query->leftJoin('r.Scenario s')
               ->leftJoin('r.User u')
               ->select('r.*, s.description, u.name');
-        if (!$user->hasCredential('manager')) {
-            $query->andWhere('r.user_id = ?', $user->getAttribute('id', 0));
-        }
 
         return $query;
     }
