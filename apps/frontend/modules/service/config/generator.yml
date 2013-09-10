@@ -13,11 +13,15 @@ generator:
 
     config:
       actions: ~
-      fields: ~
+      fields:
+        setup_fee: { renderer: 'FieldRendererHelper::euro' }
+        cost_per_user: { renderer: 'FieldRendererHelper::euro' }
+        created_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
+        updated_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
 
       list:
         title: 'Services'
-        display: [ setup_fee, cost_per_user, CAPEX_percentage, tick_to_apply ]
+        display: [ name, setup_fee, cost_per_user, CAPEX_percentage, tick_to_apply ]
 
       filter:
         class: false
@@ -25,4 +29,6 @@ generator:
       form:    ~
       edit:    ~
       new:     ~
-      show:    ~
+
+      show:
+        display: [ name, setup_fee, cost_per_user, CAPEX_percentage, tick_to_apply, created_at, updated_at ]

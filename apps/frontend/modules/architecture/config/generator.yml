@@ -14,17 +14,13 @@ generator:
     config:
       actions: ~
       fields:
-        name: { label: 'Name' }
-        download_bandwidth: { label: 'Download Bandwidth' }
-        upload_bandwidth: { label: 'Upload Bandwidth' }
-        image: { label: 'Image' }
         technology_id: { label: 'Technology' }
-        created_at: { label: 'Created At', date_format: 'dd/MM/yyyy HH:mm:ss' }
-        updated_at: { label: 'Updated At', date_format: 'dd/MM/yyyy HH:mm:ss' }
+        created_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
+        updated_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
 
       list:
         title: 'Architectures'
-        display: [ name, download_bandwidth, upload_bandwidth, image, technology_id, created_at ]
+        display: [ name, download_bandwidth, upload_bandwidth, Technology, created_at ]
         actions:
           _new:
             credentials: [manager]

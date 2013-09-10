@@ -15,13 +15,13 @@ generator:
     config:
       actions: ~
       fields:
-        last_login: { label: 'Last Login', date_format: 'dd/MM/yyyy HH:mm:ss' }
-        created_at: { label: 'Created At', date_format: 'dd/MM/yyyy HH:mm:ss' }
-        updated_at: { label: 'Updated At', date_format: 'dd/MM/yyyy HH:mm:ss' }
+        last_login: { date_format: 'dd/MM/yyyy HH:mm:ss' }
+        created_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
+        updated_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
 
       list:
         title: 'Users'
-        display: [name, username, email, is_manager, is_admin, last_login]
+        display: [ name, username, email, is_manager, is_admin, last_login ]
 
       filter:
         class: false

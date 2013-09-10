@@ -15,12 +15,12 @@ generator:
       actions: ~
       fields:
         starting_price: { renderer: 'FieldRendererHelper::euro' }
-        created_at: { label: 'Created At', date_format: 'dd/MM/yyyy HH:mm:ss' }
-        updated_at: { label: 'Updated At', date_format: 'dd/MM/yyyy HH:mm:ss' }
+        created_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
+        updated_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
 
       list:
         title: 'Equipments'
-        display: [name, starting_price, number_of_ports, network_level, life_expectation, equipment_type, nature_or_purpose, tecnology_age, setup_speed]
+        display: [ name, starting_price, number_of_ports, network_level, life_expectation, equipment_type, nature_or_purpose, tecnology_age, setup_speed ]
         fields:
           number_of_ports: { label: '# of ports'}
           network_level: { label: 'Net. lvl' }

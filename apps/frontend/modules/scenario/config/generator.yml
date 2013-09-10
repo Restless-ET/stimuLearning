@@ -19,7 +19,9 @@ generator:
         edit: { credentials: [manager] }
         delete: { credentials: [manager] }
 
-      fields:  ~
+      fields:
+        created_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
+        updated_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
 
       list:
         title: 'Scenarios'
