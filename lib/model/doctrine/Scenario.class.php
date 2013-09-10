@@ -19,13 +19,17 @@ class Scenario extends BaseScenario
     public function initializeSimulation()
     {
         $msg = true;
-        //TODO Validate operators
+        // validate that this scenario has operators
         if (!count($scenario->Operators)) {
             $msg = 'This scenario has no associated operators!';
         }
 
+        // validate that services exists for all operators
         foreach ($scenario->Operators as $operator) {
-            // TODO validate that tariffs/services exists for all operators.
+            if (!count($operator->Services)) {
+                $msg = 'One or more of the Operators does not have any Service registered yet!';
+                break;
+            }
         }
 
         //TODO Calculate the necessary equipments and acquire them.
@@ -35,9 +39,11 @@ class Scenario extends BaseScenario
 
         //TODO Init a market tick
 
-        // Change scenario to started
-        $this->setStarted(true);
-        $this->save();
+        if ($msg === true) {
+            // Change scenario to started
+            $this->setStarted(true);
+            $this->save();
+        }
 
         return $msg;
     }
