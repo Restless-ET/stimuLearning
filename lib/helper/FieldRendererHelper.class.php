@@ -24,4 +24,22 @@ class FieldRendererHelper
 
         return '€ '.number_format($value, 2, ',', '.');
     }
+
+    /**
+     * Converts the received boolean value to an equivalent text string
+     *
+     * @param boolean $value The value of the field to convert
+     *
+     * @return string with the correct representation for the field
+     */
+    public static function plainBoolean($value)
+    {
+        if ($value === true) {
+            return 'Yes';
+        } elseif ($value === false) {
+            return 'No';
+        }
+
+        return '---';
+    }
 }

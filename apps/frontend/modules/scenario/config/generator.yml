@@ -20,8 +20,8 @@ generator:
         delete: { credentials: [manager] }
 
       fields:
-        created_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
-        updated_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
+        started: { renderer: 'FieldRendererHelper::plainBoolean' }
+        finished: { renderer: 'FieldRendererHelper::plainBoolean' }
 
       list:
         title: 'Scenarios'

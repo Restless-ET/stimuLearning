@@ -15,8 +15,6 @@ generator:
       actions: ~
       fields:
         starting_price: { renderer: 'FieldRendererHelper::euro' }
-        created_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
-        updated_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
 
       list:
         title: 'Equipments'
@@ -45,4 +43,6 @@ generator:
       form:    ~
       edit:    ~
       new:     ~
-      show:    ~
+
+      show:
+        display: [ name, starting_price, number_of_ports, network_level, life_expectation, equipment_type, nature_or_purpose, tecnology_age, setup_speed ]

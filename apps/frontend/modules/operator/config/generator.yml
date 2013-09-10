@@ -13,9 +13,7 @@ generator:
 
     config:
       actions: ~
-      fields:
-        created_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
-        updated_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
+      fields: ~
 
       list:
         fields:
