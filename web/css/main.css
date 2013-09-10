@@ -13,6 +13,9 @@
 #content h1 {
     margin-bottom: 10px;
     font-size: 140%;
+    padding: 3px;
+    color: #333;
+    background-color: #ccf;
 }
 
 #title a {

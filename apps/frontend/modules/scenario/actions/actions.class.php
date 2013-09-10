@@ -15,18 +15,20 @@ class ScenarioActions extends autoScenarioActions
     /**
      * Executes show action for scenario
      *
-     * @return nothing
+     * @param sfWebRequest $request A request object
+     *
+     * @return void
      */
-    public function executeShow()
+    public function executeShow(sfWebRequest $request)
     {
-        $this->scenario = $this->getRoute()->getObject();
+        //parent::executeShow($request);
+        $this->scenario = Doctrine::getTable('Scenario')->find($request->getParameter('id'));
         $this->forward404Unless($this->scenario);
+        $this->form = $this->configuration->getForm($this->scenario);
 
         $this->getUser()->setAttribute('scenarioId', $this->scenario->id);
 
         $this->helper = new scenarioGeneratorHelper();
-
-        $this->form = $this->configuration->getForm($this->scenario);
     }
 
     /**

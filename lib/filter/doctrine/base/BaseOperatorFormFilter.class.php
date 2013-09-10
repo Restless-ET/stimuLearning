@@ -19,7 +19,7 @@ abstract class BaseOperatorFormFilter extends BaseFormFilterDoctrine
       'net_present_value'       => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'market_share'            => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'payback_period'          => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'internal_rate_of_return' => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'internal_rate_of_return' => new sfWidgetFormFilterInput(),
       'user_id'                 => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('User'), 'add_empty' => true)),
       'scenario_id'             => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Scenario'), 'add_empty' => true)),
       'created_at'              => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),

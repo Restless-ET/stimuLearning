@@ -10,7 +10,7 @@
 <?php endif ?>
 
   <fieldset id="sf_fieldset_operator_status">
-    <h2>Operator <b><?php echo $operator->name ?></b> status at scenario <b><?php echo $operator->Scenario ?></b></h2>
+    <h1>Operator <b><?php echo $operator->name ?></b> status at scenario <b><?php echo $operator->Scenario ?></b></h1>
   </fieldset>
 
   <fieldset id="sf_fieldset_operator_simulated_data">

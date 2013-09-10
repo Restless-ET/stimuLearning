@@ -13,20 +13,6 @@ require_once dirname(__FILE__).'/../lib/operatorGeneratorHelper.class.php';
 class OperatorActions extends autoOperatorActions
 {
     /**
-     * Executes show action for operator
-     *
-     * @return nothing
-     */
-    public function executeShow()
-    {
-        $this->operator = $this->getRoute()->getObject();
-        $this->forward404Unless($this->operator);
-
-        //$this->helper = new operatorGeneratorHelper();
-        //$this->form = $this->configuration->getForm($this->operator);
-    }
-
-    /**
      * Gets operator simulated data from ticks related with the given Operator in order
      *  to provide that data in JSON format for graphs that need it.
      *

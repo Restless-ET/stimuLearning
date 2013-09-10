@@ -2,7 +2,7 @@ generator:
   class: sfDoctrineGenerator #jRollerDoctrineGenerator
   param:
     model_class:           Operator
-    theme:                 admin #jroller
+    theme:                 jroller
     non_verbose_templates: true
     with_show:             false
     singular:              ~
@@ -20,7 +20,7 @@ generator:
           User:
             credentials: [manager]
         max_per_page: 15
-        title: ''
+        title: 'Operators'
         sort: [scenario_id, asc]
         display: [name, starting_market_size, User, Scenario, scenario_id]
         table_method: filterByCredential
