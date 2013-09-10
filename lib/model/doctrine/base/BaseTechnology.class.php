@@ -13,6 +13,7 @@
  * @property Doctrine_Collection $Architectures
  * @property Doctrine_Collection $ScenarioTechnology
  * @property Doctrine_Collection $Scenarios
+ * @property Doctrine_Collection $Services
  * 
  * @method string              getName()                 Returns the current record's "name" value
  * @method string              getDescription()          Returns the current record's "description" value
@@ -22,6 +23,7 @@
  * @method Doctrine_Collection getArchitectures()        Returns the current record's "Architectures" collection
  * @method Doctrine_Collection getScenarioTechnology()   Returns the current record's "ScenarioTechnology" collection
  * @method Doctrine_Collection getScenarios()            Returns the current record's "Scenarios" collection
+ * @method Doctrine_Collection getServices()             Returns the current record's "Services" collection
  * @method Technology          setName()                 Sets the current record's "name" value
  * @method Technology          setDescription()          Sets the current record's "description" value
  * @method Technology          setFirstTickAvailable()   Sets the current record's "first_tick_available" value
@@ -30,6 +32,7 @@
  * @method Technology          setArchitectures()        Sets the current record's "Architectures" collection
  * @method Technology          setScenarioTechnology()   Sets the current record's "ScenarioTechnology" collection
  * @method Technology          setScenarios()            Sets the current record's "Scenarios" collection
+ * @method Technology          setServices()             Sets the current record's "Services" collection
  * 
  * @package    stimuLearning
  * @subpackage model
@@ -80,6 +83,10 @@ abstract class BaseTechnology extends sfDoctrineRecord
              'refClass' => 'ScenarioTechnology',
              'local' => 'technology_id',
              'foreign' => 'scenario_id'));
+
+        $this->hasMany('Service as Services', array(
+             'local' => 'id',
+             'foreign' => 'technology_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);
