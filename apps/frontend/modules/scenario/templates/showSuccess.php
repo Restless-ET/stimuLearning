@@ -1,6 +1,9 @@
 <?php use_helper('I18N'); ?>
 
-<div id="sf_admin_container">
+<div id="sf_admin_container" class="sf_admin_edit ui-corner-all">
+  <div class="fg-toolbar ui-widget-header ui-corner-all">
+    <h1><?php echo __('View Scenario - %%description%%', array('%%description%%' => $scenario->getDescription()), 'messages') ?></h1>
+  </div>
 
 <?php if ($sf_user->hasCredential('manager') && !$scenario->finished): ?>
   <ul class="sf_admin_td_actions">
@@ -14,9 +17,7 @@
         <?php echo $helper->linkToFinish($scenario, array('params' => array(  ), 'class_suffix' => 'finish', 'label' => 'Finish',)) ?>
     <?php endif ?>
   </ul>
-<br />
 <?php endif ?>
 
 <?php include_partial('show', array('form' => $form, 'scenario' => $scenario, 'configuration' => $configuration)) ?>
-
 </div>

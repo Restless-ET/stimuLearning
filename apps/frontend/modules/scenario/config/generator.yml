@@ -22,7 +22,7 @@ generator:
       fields:  ~
 
       list:
-        title: ''
+        title: 'Scenarios'
         display: [_description,started,total_clients,lifespan,tick_alias,total_decision_points,ticks_between_decision_points,finished]
         fields:
           total_decision_points: { label: '# decision pts'}
