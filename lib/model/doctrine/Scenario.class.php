@@ -30,12 +30,11 @@ class Scenario extends BaseScenario
                 $msg = 'One or more of the Operators does not have any Service registered yet!';
                 break;
             }
+
+            //TODO Calculate the initial equipments that are necessary and acquire them.
+
+            //TODO Create the initial tick (Equipments price is for CAPEX; costs_per_user for OPEX; setup_fee???)
         }
-
-        //TODO Calculate the necessary equipments and acquire them.
-
-        //TODO Create the ticks for all operators
-        //TODO Equipments price is for CAPEX
 
         //TODO Init a market tick
 
@@ -55,6 +54,15 @@ class Scenario extends BaseScenario
      */
     public function advanceToNextStep()
     {
+        foreach ($scenario->Operators as $operator) {
 
+            //TODO Determine the how many clients have arrived/left for the operator
+
+            //TODO Calculate the necessary equipments and acquire them.
+
+            //TODO Create the ticks (Equipments price is for CAPEX; costs_per_user for OPEX)
+        }
+
+        //TODO A new market tick??
     }
 }

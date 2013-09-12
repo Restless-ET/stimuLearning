@@ -10,7 +10,7 @@
  * @property integer $first_tick_available
  * @property float $decline_A
  * @property float $decline_B
- * @property Doctrine_Collection $Architectures
+ * @property Architecture $Architecture
  * @property Doctrine_Collection $ScenarioTechnology
  * @property Doctrine_Collection $Scenarios
  * @property Doctrine_Collection $Services
@@ -20,7 +20,7 @@
  * @method integer             getFirstTickAvailable()   Returns the current record's "first_tick_available" value
  * @method float               getDeclineA()             Returns the current record's "decline_A" value
  * @method float               getDeclineB()             Returns the current record's "decline_B" value
- * @method Doctrine_Collection getArchitectures()        Returns the current record's "Architectures" collection
+ * @method Architecture        getArchitecture()         Returns the current record's "Architecture" value
  * @method Doctrine_Collection getScenarioTechnology()   Returns the current record's "ScenarioTechnology" collection
  * @method Doctrine_Collection getScenarios()            Returns the current record's "Scenarios" collection
  * @method Doctrine_Collection getServices()             Returns the current record's "Services" collection
@@ -29,7 +29,7 @@
  * @method Technology          setFirstTickAvailable()   Sets the current record's "first_tick_available" value
  * @method Technology          setDeclineA()             Sets the current record's "decline_A" value
  * @method Technology          setDeclineB()             Sets the current record's "decline_B" value
- * @method Technology          setArchitectures()        Sets the current record's "Architectures" collection
+ * @method Technology          setArchitecture()         Sets the current record's "Architecture" value
  * @method Technology          setScenarioTechnology()   Sets the current record's "ScenarioTechnology" collection
  * @method Technology          setScenarios()            Sets the current record's "Scenarios" collection
  * @method Technology          setServices()             Sets the current record's "Services" collection
@@ -71,7 +71,7 @@ abstract class BaseTechnology extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasMany('Architecture as Architectures', array(
+        $this->hasOne('Architecture', array(
              'local' => 'id',
              'foreign' => 'technology_id'));
 

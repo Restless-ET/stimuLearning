@@ -9,4 +9,6 @@ Architecture:
     technology_id: { type: integer, notnull: true }
   relations:
     Technology:
-      foreignAlias: Architectures
+      foreignAlias: Architecture
+      type: one
+      foreignType: one
