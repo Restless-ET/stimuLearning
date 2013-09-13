@@ -53,7 +53,7 @@ class ScenarioGeneratorHelper extends BaseScenarioGeneratorHelper
      */
     public function linkToNextDecision($object, $params)
     {
-        $nextDP = ($object->getCurrentTick() % $object->getTicksBetweenDecisionPoints()) + 1;
+        $nextDP = floor($object->getCurrentTick() / $object->getTicksBetweenDecisionPoints()) + 1;
         $targetStep = $object->getTicksBetweenDecisionPoints() * $nextDP;
 
         if ($targetStep > $object->getLifespan()) {

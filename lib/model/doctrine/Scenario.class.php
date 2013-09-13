@@ -73,9 +73,9 @@ class Scenario extends BaseScenario
      */
     public function advanceToNextStep()
     {
-        foreach ($scenario->Operators as $operator) {
+        foreach ($this->Operators as $operator) {
 
-            $newClients = rand(12345, 67890);
+            $newClients = rand(9876, 12345);
             //TODO Determine the how many clients have arrived/left for the operator
 
             //TODO Calculate the necessary equipments and acquire them.
@@ -87,5 +87,11 @@ class Scenario extends BaseScenario
         }
 
         //TODO A new market tick??
+
+        $this->current_tick += 1;
+        if ($this->current_tick == $this->lifespan) {
+            $this->finished = true;
+        }
+        $this->save();
     }
 }

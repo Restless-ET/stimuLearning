@@ -112,12 +112,14 @@ class ScenarioActions extends autoScenarioActions
 
         $ticks = $request->getParameter('ticks', 0);
         if ($ticks > 0) {
-            $scenario->advanceToNextStep();
+            for ($i = 1; $i <= $ticks; $i++) {
+                $scenario->advanceToNextStep();
+            }
 
             $user->setFlash('notice', 'Simulation advanced '.$ticks.' ticks!');
 
         } else {
-            $user->setFlash('error', 'No valid number of ticks indicateds!');
+            $user->setFlash('error', 'No valid number of ticks indicated!');
         }
         $this->redirect('@scenario');
     }

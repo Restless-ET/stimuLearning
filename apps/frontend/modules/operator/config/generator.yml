@@ -22,7 +22,7 @@ generator:
         max_per_page: 15
         title: 'Operators'
         sort: [scenario_id, asc]
-        display: [name, starting_market_size, User, Scenario, scenario_id]
+        display: [name, starting_market_size, current_market_size, User, Scenario]
         table_method: filterByCredential
         object_actions:
           show: { action: show }
@@ -31,7 +31,7 @@ generator:
             credentials: [manager]
 
       filter:
-        display: [user_id,scenario_id]
+        display: [user_id, scenario_id]
 
       form:
         display: [name, starting_market_size, user_id, scenario_id]
