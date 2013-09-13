@@ -79,6 +79,8 @@ class ScenarioActions extends autoScenarioActions
             $msg = $scenario->initializeSimulation();
 
             if ($msg === true) {
+                $scenario->advanceToNextStep();
+
                 $user->setFlash('notice', 'Simulation started (no new operators can be added)!');
             } else {
                 $user->setFlash('error', $msg);

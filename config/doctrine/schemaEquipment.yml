@@ -4,9 +4,9 @@ Equipment:
   columns:
     name: { type: string(150), notnull: true }
     starting_price: { type: decimal, notnull: true } #Preço inicial
-    number_of_ports: { type: integer, notnull: true } #Capacidade
-    network_level: { type: integer, notnull: true } #Nível na rede
-    life_expectation: { type: integer, notnull: true } #Esperança de vida
+    number_of_ports: { type: integer, notnull: true, unsigned: true } #Capacidade
+    network_level: { type: integer, notnull: true, unsigned: true } #Nível na rede
+    life_expectation: { type: integer, notnull: true, unsigned: true } #Esperança de vida
     equipment_type: { type: enum, values: [~,Wired,Wireless], notnull: true }
     nature_or_purpose:
       type: enum
@@ -34,6 +34,7 @@ Equipment:
         - Fast (10) #Rápida (10)
         - Slow (20) #Lenta (20)
         - Very slow (40) #Muito lenta (40)
+    maximum_clients: { type: integer } #hidden
   ## For the relations ##
     architecture_id: { type: integer, notnull: true }
   relations:

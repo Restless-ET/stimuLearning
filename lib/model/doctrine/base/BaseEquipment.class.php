@@ -14,6 +14,7 @@
  * @property enum $nature_or_purpose
  * @property enum $tecnology_age
  * @property enum $setup_speed
+ * @property integer $maximum_clients
  * @property integer $architecture_id
  * @property Architecture $Architecture
  * @property Doctrine_Collection $AcquiredEquipment
@@ -27,6 +28,7 @@
  * @method enum                getNatureOrPurpose()   Returns the current record's "nature_or_purpose" value
  * @method enum                getTecnologyAge()      Returns the current record's "tecnology_age" value
  * @method enum                getSetupSpeed()        Returns the current record's "setup_speed" value
+ * @method integer             getMaximumClients()    Returns the current record's "maximum_clients" value
  * @method integer             getArchitectureId()    Returns the current record's "architecture_id" value
  * @method Architecture        getArchitecture()      Returns the current record's "Architecture" value
  * @method Doctrine_Collection getAcquiredEquipment() Returns the current record's "AcquiredEquipment" collection
@@ -39,6 +41,7 @@
  * @method Equipment           setNatureOrPurpose()   Sets the current record's "nature_or_purpose" value
  * @method Equipment           setTecnologyAge()      Sets the current record's "tecnology_age" value
  * @method Equipment           setSetupSpeed()        Sets the current record's "setup_speed" value
+ * @method Equipment           setMaximumClients()    Sets the current record's "maximum_clients" value
  * @method Equipment           setArchitectureId()    Sets the current record's "architecture_id" value
  * @method Equipment           setArchitecture()      Sets the current record's "Architecture" value
  * @method Equipment           setAcquiredEquipment() Sets the current record's "AcquiredEquipment" collection
@@ -65,14 +68,17 @@ abstract class BaseEquipment extends sfDoctrineRecord
         $this->hasColumn('number_of_ports', 'integer', null, array(
              'type' => 'integer',
              'notnull' => true,
+             'unsigned' => true,
              ));
         $this->hasColumn('network_level', 'integer', null, array(
              'type' => 'integer',
              'notnull' => true,
+             'unsigned' => true,
              ));
         $this->hasColumn('life_expectation', 'integer', null, array(
              'type' => 'integer',
              'notnull' => true,
+             'unsigned' => true,
              ));
         $this->hasColumn('equipment_type', 'enum', null, array(
              'type' => 'enum',
@@ -118,6 +124,9 @@ abstract class BaseEquipment extends sfDoctrineRecord
               3 => 'Slow (20)',
               4 => 'Very slow (40)',
              ),
+             ));
+        $this->hasColumn('maximum_clients', 'integer', null, array(
+             'type' => 'integer',
              ));
         $this->hasColumn('architecture_id', 'integer', null, array(
              'type' => 'integer',

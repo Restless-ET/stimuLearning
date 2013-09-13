@@ -31,6 +31,25 @@ class Scenario extends BaseScenario
                 break;
             }
 
+            $clients = $operator['total_clients'];
+
+            foreach ($operator['Services'] as $service) {
+                $tech = $service['Technology'];
+                if ($tech['first_tick_available'] >= $this['current_tick']) {
+                    $equipDetails = array();
+                    $equipments = Doctrine_Core::getTable('Equipment')->createQuery('e')
+                                      ->where('e.architecture_id = ?', $tech['Architecture']['id'])
+                                      ->orderBy('e.network_level ASC')
+                                      ->fetchArray();
+                    foreach ($equipments as $equipment) {
+                        $equipDetails[$equipment['network_level']] = $equipment['number_of_ports'];
+                    }
+
+
+                }
+
+            }
+
             //TODO Calculate the initial equipments that are necessary and acquire them.
 
             //TODO Create the initial tick (Equipments price is for CAPEX; costs_per_user for OPEX; setup_fee???)
