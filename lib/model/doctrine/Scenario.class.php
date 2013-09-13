@@ -20,18 +20,18 @@ class Scenario extends BaseScenario
     {
         $msg = true;
         // validate that this scenario has operators
-        if (!count($scenario->Operators)) {
+        if (!count($this->Operators)) {
             $msg = 'This scenario has no associated operators!';
         }
 
         // validate that services exists for all operators
-        foreach ($scenario->Operators as $operator) {
+        foreach ($this->Operators as $operator) {
             if (!count($operator->Services)) {
                 $msg = 'One or more of the Operators does not have any Service registered yet!';
                 break;
             }
 
-            $clients = $operator['total_clients'];
+            $clients = $operator['starting_market_size'];
 
             foreach ($operator['Services'] as $service) {
                 $tech = $service['Technology'];
@@ -44,15 +44,15 @@ class Scenario extends BaseScenario
                     foreach ($equipments as $equipment) {
                         $equipDetails[$equipment['network_level']] = $equipment['number_of_ports'];
                     }
-
-
                 }
-
             }
 
             //TODO Calculate the initial equipments that are necessary and acquire them.
 
             //TODO Create the initial tick (Equipments price is for CAPEX; costs_per_user for OPEX; setup_fee???)
+
+            $operator->setCurrentMarketSize($clients);
+            $operator->save();
         }
 
         //TODO Init a market tick
@@ -75,11 +75,15 @@ class Scenario extends BaseScenario
     {
         foreach ($scenario->Operators as $operator) {
 
+            $newClients = rand(12345, 67890);
             //TODO Determine the how many clients have arrived/left for the operator
 
             //TODO Calculate the necessary equipments and acquire them.
 
             //TODO Create the ticks (Equipments price is for CAPEX; costs_per_user for OPEX)
+
+            $operator->current_market_size += $newClients;
+            $operator->save();
         }
 
         //TODO A new market tick??

@@ -75,6 +75,7 @@ class ScenarioActions extends autoScenarioActions
         $scenario = $this->getRoute()->getObject();
         $this->forward404Unless($scenario);
 
+        $user = $this->getUser();
         if (!$scenario->getStarted()) {
             $msg = $scenario->initializeSimulation();
 
@@ -103,6 +104,7 @@ class ScenarioActions extends autoScenarioActions
         $scenario = $this->getRoute()->getObject();
         $this->forward404Unless($scenario);
 
+        $user = $this->getUser();
         if (!$scenario->getStarted() || $scenario->getFinished()) {
             $user->setFlash('notice', 'The simulation for this scenario is either: not started or already finished!');
             $this->redirect('@scenario');

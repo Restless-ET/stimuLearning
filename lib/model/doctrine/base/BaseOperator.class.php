@@ -7,6 +7,7 @@
  * 
  * @property string $name
  * @property integer $starting_market_size
+ * @property integer $current_market_size
  * @property decimal $balance
  * @property decimal $net_present_value
  * @property decimal $market_share
@@ -21,6 +22,7 @@
  * 
  * @method string              getName()                    Returns the current record's "name" value
  * @method integer             getStartingMarketSize()      Returns the current record's "starting_market_size" value
+ * @method integer             getCurrentMarketSize()       Returns the current record's "current_market_size" value
  * @method decimal             getBalance()                 Returns the current record's "balance" value
  * @method decimal             getNetPresentValue()         Returns the current record's "net_present_value" value
  * @method decimal             getMarketShare()             Returns the current record's "market_share" value
@@ -34,6 +36,7 @@
  * @method Doctrine_Collection getTicks()                   Returns the current record's "Ticks" collection
  * @method Operator            setName()                    Sets the current record's "name" value
  * @method Operator            setStartingMarketSize()      Sets the current record's "starting_market_size" value
+ * @method Operator            setCurrentMarketSize()       Sets the current record's "current_market_size" value
  * @method Operator            setBalance()                 Sets the current record's "balance" value
  * @method Operator            setNetPresentValue()         Sets the current record's "net_present_value" value
  * @method Operator            setMarketShare()             Sets the current record's "market_share" value
@@ -64,6 +67,9 @@ abstract class BaseOperator extends sfDoctrineRecord
         $this->hasColumn('starting_market_size', 'integer', null, array(
              'type' => 'integer',
              'notnull' => true,
+             ));
+        $this->hasColumn('current_market_size', 'integer', null, array(
+             'type' => 'integer',
              ));
         $this->hasColumn('balance', 'decimal', null, array(
              'type' => 'decimal',

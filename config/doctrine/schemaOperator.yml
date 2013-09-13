@@ -4,6 +4,7 @@ Operator:
   columns:
     name: { type: string(150), notnull: true }
     starting_market_size: { type: integer, notnull: true }
+    current_market_size: { type: integer } #hidden
     balance: { type: decimal, default: 0.00, notnull: true }
     net_present_value: { type: decimal, default: 0.00, notnull: true }
     market_share: { type: decimal, default: 0.00, notnull: true }
