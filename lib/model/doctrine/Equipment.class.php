@@ -11,4 +11,19 @@
  */
 class Equipment extends BaseEquipment
 {
+    /**
+     * Overrided to set the values on some hidden/support fields.
+     *
+     * @param Doctrine_Connection $conn Optional connection parameter
+     *
+     * @return void
+     */
+    public function save(Doctrine_Connection $conn = null)
+    {
+        $this->valK = StringHelper::getStringBetween($this->nature_or_purpose, '(', ')');
+        $this->NrIni = StringHelper::getStringBetween($this->tecnology_age, '(', ')');
+        $this->deltaT = StringHelper::getStringBetween($this->setup_speed, '(', ')');
+
+        parent::save($conn);
+    }
 }

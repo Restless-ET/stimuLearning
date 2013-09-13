@@ -12,8 +12,11 @@
  * @property integer $life_expectation
  * @property enum $equipment_type
  * @property enum $nature_or_purpose
+ * @property decimal $valK
  * @property enum $tecnology_age
+ * @property decimal $NrIni
  * @property enum $setup_speed
+ * @property integer $deltaT
  * @property integer $maximum_clients
  * @property integer $architecture_id
  * @property Architecture $Architecture
@@ -26,8 +29,11 @@
  * @method integer             getLifeExpectation()   Returns the current record's "life_expectation" value
  * @method enum                getEquipmentType()     Returns the current record's "equipment_type" value
  * @method enum                getNatureOrPurpose()   Returns the current record's "nature_or_purpose" value
+ * @method decimal             getValK()              Returns the current record's "valK" value
  * @method enum                getTecnologyAge()      Returns the current record's "tecnology_age" value
+ * @method decimal             getNrIni()             Returns the current record's "NrIni" value
  * @method enum                getSetupSpeed()        Returns the current record's "setup_speed" value
+ * @method integer             getDeltaT()            Returns the current record's "deltaT" value
  * @method integer             getMaximumClients()    Returns the current record's "maximum_clients" value
  * @method integer             getArchitectureId()    Returns the current record's "architecture_id" value
  * @method Architecture        getArchitecture()      Returns the current record's "Architecture" value
@@ -39,8 +45,11 @@
  * @method Equipment           setLifeExpectation()   Sets the current record's "life_expectation" value
  * @method Equipment           setEquipmentType()     Sets the current record's "equipment_type" value
  * @method Equipment           setNatureOrPurpose()   Sets the current record's "nature_or_purpose" value
+ * @method Equipment           setValK()              Sets the current record's "valK" value
  * @method Equipment           setTecnologyAge()      Sets the current record's "tecnology_age" value
+ * @method Equipment           setNrIni()             Sets the current record's "NrIni" value
  * @method Equipment           setSetupSpeed()        Sets the current record's "setup_speed" value
+ * @method Equipment           setDeltaT()            Sets the current record's "deltaT" value
  * @method Equipment           setMaximumClients()    Sets the current record's "maximum_clients" value
  * @method Equipment           setArchitectureId()    Sets the current record's "architecture_id" value
  * @method Equipment           setArchitecture()      Sets the current record's "Architecture" value
@@ -103,6 +112,9 @@ abstract class BaseEquipment extends sfDoctrineRecord
               6 => 'Passive Optical Components (0.8)',
              ),
              ));
+        $this->hasColumn('valK', 'decimal', null, array(
+             'type' => 'decimal',
+             ));
         $this->hasColumn('tecnology_age', 'enum', null, array(
              'type' => 'enum',
              'values' => 
@@ -114,6 +126,10 @@ abstract class BaseEquipment extends sfDoctrineRecord
               4 => 'Emerging (0.001)',
              ),
              ));
+        $this->hasColumn('NrIni', 'decimal', null, array(
+             'type' => 'decimal',
+             'scale' => 3,
+             ));
         $this->hasColumn('setup_speed', 'enum', null, array(
              'type' => 'enum',
              'values' => 
@@ -124,6 +140,9 @@ abstract class BaseEquipment extends sfDoctrineRecord
               3 => 'Slow (20)',
               4 => 'Very slow (40)',
              ),
+             ));
+        $this->hasColumn('deltaT', 'integer', null, array(
+             'type' => 'integer',
              ));
         $this->hasColumn('maximum_clients', 'integer', null, array(
              'type' => 'integer',
