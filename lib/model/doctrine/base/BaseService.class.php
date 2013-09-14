@@ -9,7 +9,9 @@
  * @property decimal $setup_fee
  * @property decimal $cost_per_user
  * @property float $CAPEX_percentage
- * @property integer $tick_to_apply
+ * @property decimal $periodic_fee
+ * @property decimal $clients_quota
+ * @property integer $tick_to_edit
  * @property integer $operator_id
  * @property integer $technology_id
  * @property Operator $Operator
@@ -19,7 +21,9 @@
  * @method decimal    getSetupFee()         Returns the current record's "setup_fee" value
  * @method decimal    getCostPerUser()      Returns the current record's "cost_per_user" value
  * @method float      getCAPEXPercentage()  Returns the current record's "CAPEX_percentage" value
- * @method integer    getTickToApply()      Returns the current record's "tick_to_apply" value
+ * @method decimal    getPeriodicFee()      Returns the current record's "periodic_fee" value
+ * @method decimal    getClientsQuota()     Returns the current record's "clients_quota" value
+ * @method integer    getTickToEdit()       Returns the current record's "tick_to_edit" value
  * @method integer    getOperatorId()       Returns the current record's "operator_id" value
  * @method integer    getTechnologyId()     Returns the current record's "technology_id" value
  * @method Operator   getOperator()         Returns the current record's "Operator" value
@@ -28,7 +32,9 @@
  * @method Service    setSetupFee()         Sets the current record's "setup_fee" value
  * @method Service    setCostPerUser()      Sets the current record's "cost_per_user" value
  * @method Service    setCAPEXPercentage()  Sets the current record's "CAPEX_percentage" value
- * @method Service    setTickToApply()      Sets the current record's "tick_to_apply" value
+ * @method Service    setPeriodicFee()      Sets the current record's "periodic_fee" value
+ * @method Service    setClientsQuota()     Sets the current record's "clients_quota" value
+ * @method Service    setTickToEdit()       Sets the current record's "tick_to_edit" value
  * @method Service    setOperatorId()       Sets the current record's "operator_id" value
  * @method Service    setTechnologyId()     Sets the current record's "technology_id" value
  * @method Service    setOperator()         Sets the current record's "Operator" value
@@ -61,8 +67,17 @@ abstract class BaseService extends sfDoctrineRecord
              'type' => 'float',
              'notnull' => true,
              ));
-        $this->hasColumn('tick_to_apply', 'integer', null, array(
+        $this->hasColumn('periodic_fee', 'decimal', null, array(
+             'type' => 'decimal',
+             'notnull' => true,
+             ));
+        $this->hasColumn('clients_quota', 'decimal', null, array(
+             'type' => 'decimal',
+             'notnull' => true,
+             ));
+        $this->hasColumn('tick_to_edit', 'integer', null, array(
              'type' => 'integer',
+             'default' => 0,
              'notnull' => true,
              ));
         $this->hasColumn('operator_id', 'integer', null, array(

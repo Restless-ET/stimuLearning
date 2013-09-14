@@ -23,6 +23,10 @@
     color: black;
 }
 
+ul {
+    margin: 0px;
+}
+
 #menu {
     padding: 7px;
     margin-bottom: 10px;

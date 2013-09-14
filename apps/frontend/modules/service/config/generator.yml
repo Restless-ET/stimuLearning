@@ -19,7 +19,7 @@ generator:
 
       list:
         title: 'Services'
-        display: [ name, setup_fee, cost_per_user, CAPEX_percentage, tick_to_apply ]
+        display: [ name, setup_fee, cost_per_user, CAPEX_percentage, tick_to_edit ]
 
       filter:
         class: false
@@ -29,4 +29,4 @@ generator:
       new:     ~
 
       show:
-        display: [ name, setup_fee, cost_per_user, CAPEX_percentage, tick_to_apply ]
+        display: [ name, setup_fee, cost_per_user, CAPEX_percentage, tick_to_edit ]

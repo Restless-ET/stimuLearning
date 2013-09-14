@@ -7,26 +7,29 @@
  * 
  * @property integer $quantity
  * @property decimal $price
+ * @property integer $available_until
  * @property boolean $is_obsolete
- * @property integer $tick_id
  * @property integer $equipment_id
+ * @property integer $tick_id
  * @property Tick $Tick
  * @property Equipment $Equipment
  * 
- * @method integer           getQuantity()     Returns the current record's "quantity" value
- * @method decimal           getPrice()        Returns the current record's "price" value
- * @method boolean           getIsObsolete()   Returns the current record's "is_obsolete" value
- * @method integer           getTickId()       Returns the current record's "tick_id" value
- * @method integer           getEquipmentId()  Returns the current record's "equipment_id" value
- * @method Tick              getTick()         Returns the current record's "Tick" value
- * @method Equipment         getEquipment()    Returns the current record's "Equipment" value
- * @method AcquiredEquipment setQuantity()     Sets the current record's "quantity" value
- * @method AcquiredEquipment setPrice()        Sets the current record's "price" value
- * @method AcquiredEquipment setIsObsolete()   Sets the current record's "is_obsolete" value
- * @method AcquiredEquipment setTickId()       Sets the current record's "tick_id" value
- * @method AcquiredEquipment setEquipmentId()  Sets the current record's "equipment_id" value
- * @method AcquiredEquipment setTick()         Sets the current record's "Tick" value
- * @method AcquiredEquipment setEquipment()    Sets the current record's "Equipment" value
+ * @method integer           getQuantity()        Returns the current record's "quantity" value
+ * @method decimal           getPrice()           Returns the current record's "price" value
+ * @method integer           getAvailableUntil()  Returns the current record's "available_until" value
+ * @method boolean           getIsObsolete()      Returns the current record's "is_obsolete" value
+ * @method integer           getEquipmentId()     Returns the current record's "equipment_id" value
+ * @method integer           getTickId()          Returns the current record's "tick_id" value
+ * @method Tick              getTick()            Returns the current record's "Tick" value
+ * @method Equipment         getEquipment()       Returns the current record's "Equipment" value
+ * @method AcquiredEquipment setQuantity()        Sets the current record's "quantity" value
+ * @method AcquiredEquipment setPrice()           Sets the current record's "price" value
+ * @method AcquiredEquipment setAvailableUntil()  Sets the current record's "available_until" value
+ * @method AcquiredEquipment setIsObsolete()      Sets the current record's "is_obsolete" value
+ * @method AcquiredEquipment setEquipmentId()     Sets the current record's "equipment_id" value
+ * @method AcquiredEquipment setTickId()          Sets the current record's "tick_id" value
+ * @method AcquiredEquipment setTick()            Sets the current record's "Tick" value
+ * @method AcquiredEquipment setEquipment()       Sets the current record's "Equipment" value
  * 
  * @package    stimuLearning
  * @subpackage model
@@ -46,15 +49,19 @@ abstract class BaseAcquiredEquipment extends sfDoctrineRecord
              'type' => 'decimal',
              'notnull' => true,
              ));
+        $this->hasColumn('available_until', 'integer', null, array(
+             'type' => 'integer',
+             'notnull' => true,
+             ));
         $this->hasColumn('is_obsolete', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
              ));
-        $this->hasColumn('tick_id', 'integer', null, array(
+        $this->hasColumn('equipment_id', 'integer', null, array(
              'type' => 'integer',
              'notnull' => true,
              ));
-        $this->hasColumn('equipment_id', 'integer', null, array(
+        $this->hasColumn('tick_id', 'integer', null, array(
              'type' => 'integer',
              'notnull' => true,
              ));

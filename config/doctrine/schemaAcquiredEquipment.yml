@@ -6,10 +6,11 @@ AcquiredEquipment:
   columns:
     quantity: { type: integer, notnull: true }
     price: { type: decimal, notnull: true }
+    available_until: { type: integer, notnull: true }
     is_obsolete: { type: boolean, default: false }
-    tick_id: { type: integer, notnull: true }
     equipment_id: { type: integer, notnull: true }
+    tick_id: { type: integer, notnull: true }
   relations:
     Tick:
       foreignAlias: AcquiredEquipments
-    Equipment: 
+    Equipment:

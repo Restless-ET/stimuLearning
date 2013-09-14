@@ -30,28 +30,62 @@ class Scenario extends BaseScenario
                 $msg = 'One or more of the Operators does not have any Service registered yet!';
                 break;
             }
+            $opTick = new Tick();
+            $opTick->setNbr($this['current_tick']);
+            $opTick->setOperator($operator);
+            $opTick->setScenario($this);
+            $opTick->save();
 
-            $clients = $operator['starting_market_size'];
+            $totalClients = $operator['starting_market_size'];
+            $clientsDiff = $totalClients - 0; // Equal values on initialization
+            $capex = 0.00;
+            $opex = 0.00;
+            $revenue = 0.00;
 
             foreach ($operator['Services'] as $service) {
                 $tech = $service['Technology'];
-                if ($tech['first_tick_available'] >= $this['current_tick']) {
-                    $equipDetails = array();
+                $clients = round($service['clients_quota'] / 100 * $totalClients);
+                if ($tech['first_tick_available'] == $this['current_tick']) { // Equals 0
                     $equipments = Doctrine_Core::getTable('Equipment')->createQuery('e')
                                       ->where('e.architecture_id = ?', $tech['Architecture']['id'])
                                       ->orderBy('e.network_level ASC')
                                       ->fetchArray();
                     foreach ($equipments as $equipment) {
-                        $equipDetails[$equipment['network_level']] = $equipment['number_of_ports'];
+                        $targetTotal = ceil($clients / $equipment['maximum_clients']);
+                        $currentTotal = 0; // Because this is the initialization
+
+                        $acquired = new AcquiredEquipment();
+                        $acquired->setQuantity($targetTotal - $currentTotal);
+                        $acquired->setPrice($equipment['starting_price']); // Just for indication really
+                        $acquired->setAvailableUntil($this['current_tick'] + $equipment['life_expectation']);
+                        $acquired->setEquipmentId($equipment['id']);
+                        $acquired->setTick($opTick);
+                        $acquired->save();
+
+                        $capex -= ($targetTotal - $currentTotal) * $equipment['starting_price'];
+
                     }
+                    if ($clientsDiff > 0) {
+                        $newClients = round($service['clients_quota'] / 100 * $clientsDiff);
+                        $opex -= $newClients * $service['setup_fee']; //OPEX or CAPEX??
+                    }
+                    $opex -= $clients * $service['cost_per_user'];
+                    $revenue += $clients * $service['periodic_fee'];
                 }
             }
+            //Update the remaining details of a Tick
+            $opTick->setCAPEX($capex);
+            $opTick->setOPEX($opex);
+            $opTick->setRevenue($revenue);
+            $cashflow = $capex + $opex + $revenue;
+            $opTick->setCashflow($cashflow);
+            $balance = $operator['balance'] + $cashflow;
+            $opTick->setBalance($balance);
+            $opTick->setEquity($balance * 0.5); // ????!?!
+            $opTick->save();
 
-            //TODO Calculate the initial equipments that are necessary and acquire them.
-
-            //TODO Create the initial tick (Equipments price is for CAPEX; costs_per_user for OPEX; setup_fee???)
-
-            $operator->setCurrentMarketSize($clients);
+            $operator->setCurrentMarketSize($totalClients);
+            $operator->setBalance($balance);
             $operator->save();
         }
 
@@ -73,25 +107,77 @@ class Scenario extends BaseScenario
      */
     public function advanceToNextStep()
     {
-        foreach ($this->Operators as $operator) {
+        $this['current_tick'] += 1;
+        if ($this['current_tick'] == $this['lifespan']) {
+            $this->setFinished(true);
+        }
 
-            $newClients = rand(9876, 12345);
+        foreach ($this['Operators'] as $operator) {
             //TODO Determine the how many clients have arrived/left for the operator
+            $clientsDiff = rand(3000, 6000);
 
-            //TODO Calculate the necessary equipments and acquire them.
+            $opTick = new Tick();
+            $opTick->setNbr($this['current_tick']);
+            $opTick->setOperator($operator);
+            $opTick->setScenario($this);
+            $opTick->save();
 
-            //TODO Create the ticks (Equipments price is for CAPEX; costs_per_user for OPEX)
+            $totalClients = $operator['current_market_size'] + $clientsDiff;
+            $capex = 0.00;
+            $opex = 0.00;
+            $revenue = 0.00;
 
-            $operator->current_market_size += $newClients;
+            foreach ($operator['Services'] as $service) {
+                $tech = $service['Technology'];
+                $clients = round($service['clients_quota'] / 100 * $totalClients);
+                if ($this['current_tick'] >= $tech['first_tick_available']) {
+                    $equipments = Doctrine_Core::getTable('Equipment')->createQuery('e')
+                                      ->where('e.architecture_id = ?', $tech['Architecture']['id'])
+                                      ->orderBy('e.network_level ASC')
+                                      ->fetchArray();
+                    foreach ($equipments as $equipment) {
+                        //TODO Mark obsolete equipments
+                        $targetTotal = ceil($clients / $equipment['maximum_clients']);
+                        $currentTotal = ceil($targetTotal * 0.7); // TODO Determine current amount of equipments
+
+                        $acquired = new AcquiredEquipment();
+                        $acquired->setQuantity($targetTotal - $currentTotal);
+                        $acquired->setPrice($equipment['starting_price'] * (1 - 0.02 * $this['current_tick'])); //TODO Calculate price depreciation
+                        $acquired->setAvailableUntil($this['current_tick'] + $equipment['life_expectation']);
+                        $acquired->setEquipmentId($equipment['id']);
+                        $acquired->setTick($opTick);
+                        $acquired->save();
+
+                        $capex -= ($targetTotal - $currentTotal) * $equipment['starting_price'];
+
+                    }
+                    if ($clientsDiff > 0) {
+                        $newClients = round($service['clients_quota'] / 100 * $clientsDiff);
+                        $opex -= $newClients * $service['setup_fee']; //OPEX or CAPEX??
+                    }
+                    $opex -= $clients * $service['cost_per_user'];
+                    $revenue += $clients * $service['periodic_fee'];
+                }
+            }
+            //Update the remaining details of a Tick
+            $opTick->setCAPEX($capex);
+            $opTick->setOPEX($opex);
+            $opTick->setRevenue($revenue);
+            $cashflow = $capex + $opex + $revenue;
+            $opTick->setCashflow($cashflow);
+            $balance = $operator['balance'] + $cashflow;
+            $opTick->setBalance($balance);
+            $opTick->setEquity($balance * 0.5); // ????!?!
+            $opTick->save();
+
+            $operator->setCurrentMarketSize($totalClients);
+            $operator->setBalance($balance);
             $operator->save();
         }
 
         //TODO A new market tick??
 
-        $this->current_tick += 1;
-        if ($this->current_tick == $this->lifespan) {
-            $this->finished = true;
-        }
+
         $this->save();
     }
 }

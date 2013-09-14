@@ -9,8 +9,8 @@ div#market_share_evolution_chart {
 
 div#sdc_miniature,
 div#msec_miniature {
-	float: right;
-	margin: 10px 5px 0px 2px;
+  float: right;
+  margin: 10px 5px 0px 2px;
   width: 150px;
 }
 
@@ -32,9 +32,13 @@ div#msec_overview {
 }
 
 div.legend {
-	display: none;
+  display: none;
 }
 
 .legend > table > tbody > tr > td {
   padding: 2px;
+}
+
+li {
+    list-style: none !important;
 }

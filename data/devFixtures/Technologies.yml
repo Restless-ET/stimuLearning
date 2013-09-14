@@ -3,7 +3,7 @@ Technology:
   Technology_<?php echo $i; ?>:
     name: <?php echo 'Tecnologia '.$i."\n"; ?>
     description: <?php echo 'Descrição '.$i."\n"; ?>
-    first_tick_available: <?php echo ($i % 3 * 5)."\n"; ?>
+    #first_tick_available: <?php echo ($i % 3 * 5)."\n"; ?>
     decline_A: <?php echo ((400 - rand(100, 300)) / 100)."\n"; ?>
     decline_B: <?php echo ((500 - rand(0, 500)) / 100)."\n"; ?>
     Scenarios: [<?php echo 'Scenario_'.($i % 5 + 1); ?>]

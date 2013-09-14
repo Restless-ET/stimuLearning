@@ -1,4 +1,5 @@
 <?php use_helper('I18N'); ?>
+<?php include_partial('scenario/assets') ?>
 
 <div id="sf_admin_container" class="sf_admin_edit ui-corner-all">
   <div class="fg-toolbar ui-widget-header ui-corner-all">
