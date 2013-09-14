@@ -1,0 +1,10 @@
+Service:
+  Service_0:
+    name: 'Internet'
+    setup_fee: 35.00
+    cost_per_user: 120.00
+    CAPEX_percentage: 5.00
+    periodic_fee: 480.00
+    clients_quota: 100.00 # Simplify this by using a single service
+    Operator: Operator_0
+    Technology: Technology_0

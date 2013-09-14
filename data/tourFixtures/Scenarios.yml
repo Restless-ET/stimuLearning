@@ -1,0 +1,28 @@
+Scenario:
+  Scenario_0:
+    description: 'Hipótese A'
+    total_clients: 300000
+    tick_alias: Year
+    lifespan: <?php $ls = 36; echo $ls."\n"; ?>
+    total_decision_points: <?php $tdp = 5; echo $tdp."\n"; ?>
+    ticks_between_decision_points: <?php echo ($ls / ($tdp + 1))."\n"; ?> # hidden
+  ## Financial Parameters ##
+    tariffs_erosion_rate: '0.035'
+    depreciation_rate: '0.1'
+    interest_rate: '0.1'
+    elasticity: '1.0'
+    bankrupcy_limit: <?php echo rand(1, 100)."\n"; ?>
+  ## Market Share Evolution Parameters ##
+    starting_level: 5
+    saturation_level: 40
+    alpha: 120 #test wih 300 and 50
+    beta: -0.3
+  ## Quality Vector Weights ##
+    number_of_services_weight: <?php echo rand(5, 50)."\n"; ?>
+    download_weight: <?php echo rand(5, 60)."\n"; ?>
+    upload_weight: <?php echo rand(5, 30)."\n"; ?>
+    rate_weight: <?php echo rand(5, 20)."\n"; ?>
+    fee_weight: <?php echo rand(5, 40)."\n"; ?>
+    occupation_rate_weight: <?php echo rand(1, 5)."\n"; ?>
+    containment_factor_weight: <?php echo rand(1, 5)."\n"; ?>
+    reference_occupation_rate: <?php echo rand(1, 25)."\n"; ?>

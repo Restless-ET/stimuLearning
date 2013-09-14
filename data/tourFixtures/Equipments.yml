@@ -1,0 +1,37 @@
+Equipment:
+  Equipment_0:
+    name: 'Base'
+    starting_price: 1000000
+    number_of_ports: 32
+    network_level: 0
+    life_expectation: <?php echo rand(10, 20)."\n"; ?>
+    equipment_type: 'Wired'
+    nature_or_purpose: 'Building/Construction (1)'
+    tecnology_age: 'Mature (0.1)'
+    setup_speed: 'Very slow (40)'
+    maximum_clients: 1024
+    Architecture: Architecture_0
+  Equipment_1:
+    name: 'Intermédio'
+    starting_price: 30000
+    number_of_ports: 32
+    network_level: 1
+    life_expectation: <?php echo rand(10, 20)."\n"; ?>
+    equipment_type: 'Wired'
+    nature_or_purpose: 'Electronics (0.9)'
+    tecnology_age: 'Mature (0.1)'
+    setup_speed: 'Very slow (40)'
+    maximum_clients: 32
+    Architecture: Architecture_0
+  Equipment_2:
+    name: 'Terminal'
+    starting_price: 20
+    number_of_ports: 1
+    network_level: 2
+    life_expectation: <?php echo rand(10, 20)."\n"; ?>
+    equipment_type: 'Wired'
+    nature_or_purpose: 'Fiber cables (0.8)'
+    tecnology_age: 'Mature (0.1)'
+    setup_speed: 'Very slow (40)'
+    maximum_clients: 1
+    Architecture: Architecture_0
