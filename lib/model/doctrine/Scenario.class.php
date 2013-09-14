@@ -12,6 +12,21 @@
 class Scenario extends BaseScenario
 {
     /**
+     * Get the market penetration rate on a given instant
+     *
+     * @param integer $tick The instant on time in ticks
+     *
+     * @return the penetration rate for the given tick
+     */
+    public function getPenetrationRate($tick = 0)
+    {
+        $num = $this['saturation_level'] - $this['starting_level'];
+        $den = 1 + $this['alpha'] * exp($this['beta'] * $tick);
+
+        return ($this['starting_level'] + $num / $den) / 100;
+    }
+
+    /**
      * Takes the necessary steps to initialize all data regarding the simulation starting point (time=0)
      *
      * @return true on success, error message otherwise
@@ -24,23 +39,31 @@ class Scenario extends BaseScenario
             $msg = 'This scenario has no associated operators!';
         }
 
+        $marketClients = $this['total_clients'] * ($this['starting_level'] / 100);
+
         // validate that services exists for all operators
         foreach ($this->Operators as $operator) {
             if (!count($operator->Services)) {
                 $msg = 'One or more of the Operators does not have any Service registered yet!';
                 break;
             }
-            $opTick = new Tick();
-            $opTick->setNbr($this['current_tick']);
-            $opTick->setOperator($operator);
-            $opTick->setScenario($this);
-            $opTick->save();
 
             $totalClients = $operator['starting_market_size'];
+            $totalClients = $marketClients; // TODO calculate for the operator
             $clientsDiff = $totalClients - 0; // Equal values on initialization
             $capex = 0.00;
             $opex = 0.00;
             $revenue = 0.00;
+
+            //TODO Update operator market share
+            $operator['market_share'] = 100.00;
+
+            $opTick = new Tick();
+            $opTick->setNbr($this['current_tick']);
+            $opTick->setMarketShare($operator['market_share']);
+            $opTick->setOperator($operator);
+            $opTick->setScenario($this);
+            $opTick->save();
 
             foreach ($operator['Services'] as $service) {
                 $tech = $service['Technology'];
@@ -112,20 +135,25 @@ class Scenario extends BaseScenario
             $this->setFinished(true);
         }
 
+        $penetrationRate = $this->getPenetrationRate($this['current_tick']);
+        $marketClients = $this['total_clients'] * $penetrationRate;
+
         foreach ($this['Operators'] as $operator) {
-            //TODO Determine the how many clients have arrived/left for the operator
-            $clientsDiff = rand(3000, 6000);
-
-            $opTick = new Tick();
-            $opTick->setNbr($this['current_tick']);
-            $opTick->setOperator($operator);
-            $opTick->setScenario($this);
-            $opTick->save();
-
-            $totalClients = $operator['current_market_size'] + $clientsDiff;
+            $totalClients = $marketClients; // TODO calculate for the operator correctly
+            $clientsDiff = $totalClients - $operator['current_market_size'];
             $capex = 0.00;
             $opex = 0.00;
             $revenue = 0.00;
+
+            //TODO Update operator market share
+            $operator['market_share'] = 100.00;
+
+            $opTick = new Tick();
+            $opTick->setNbr($this['current_tick']);
+            $opTick->setMarketShare($operator['market_share']);
+            $opTick->setOperator($operator);
+            $opTick->setScenario($this);
+            $opTick->save();
 
             foreach ($operator['Services'] as $service) {
                 $tech = $service['Technology'];
@@ -138,25 +166,28 @@ class Scenario extends BaseScenario
                     foreach ($equipments as $equipment) {
                         //TODO Mark obsolete equipments
                         $targetTotal = ceil($clients / $equipment['maximum_clients']);
-                        $currentTotal = ceil($targetTotal * 0.7); // TODO Determine current amount of equipments
+                        // TODO Determine current amount of equipments
+                        $currentTotal = ceil($targetTotal * ($operator['current_market_size'] / $totalClients));
 
                         $acquired = new AcquiredEquipment();
-                        $acquired->setQuantity($targetTotal - $currentTotal);
-                        $acquired->setPrice($equipment['starting_price'] * (1 - 0.02 * $this['current_tick'])); //TODO Calculate price depreciation
+                        $quantity = $targetTotal - $currentTotal;
+                        $acquired->setQuantity($quantity);
+                        //TODO Calculate price depreciation
+                        $currentPrice = $equipment['starting_price'] * (1 - 0.045 * $this['current_tick']);
+                        $acquired->setPrice($currentPrice);
                         $acquired->setAvailableUntil($this['current_tick'] + $equipment['life_expectation']);
                         $acquired->setEquipmentId($equipment['id']);
                         $acquired->setTick($opTick);
                         $acquired->save();
 
-                        $capex -= ($targetTotal - $currentTotal) * $equipment['starting_price'];
-
+                        $capex -= $quantity * $currentPrice;
                     }
                     if ($clientsDiff > 0) {
                         $newClients = round($service['clients_quota'] / 100 * $clientsDiff);
                         $opex -= $newClients * $service['setup_fee']; //OPEX or CAPEX??
                     }
                     $opex -= $clients * $service['cost_per_user'];
-                    $revenue += $clients * $service['periodic_fee'];
+                    $revenue += $clients * $service['periodic_fee'] * (1 - 0.035 * $this['current_tick']);
                 }
             }
             //Update the remaining details of a Tick
