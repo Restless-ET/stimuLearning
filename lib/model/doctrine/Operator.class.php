@@ -11,4 +11,41 @@
  */
 class Operator extends BaseOperator
 {
+    /**
+     * Get the operator quality on a given instant in time
+     *
+     * @param integer $tick The instant on time in ticks
+     *
+     * @return the operator quality
+     */
+    public function getOperatorQuality($tick = 0)
+    {
+        $scenario = $this['Scenario'];
+        //TODO create array with tech as key for related services list
+
+        $perTechnology = 0.00;
+        //TODO Por tecnologia
+        {
+
+            $perService = 0.00;
+            $service = new Service();
+            //TODO Por serviço
+            {
+                $nbrServ = $scenario['number_of_services_weight'] * log(0000);
+                $fee = $scenario['fee_weight'] * log(0000);
+                $contain = $scenario['containment_factor_weight'] * log(0000);
+                $bwUp = $scenario['upload_weight'] * log(0000);
+                $bwDown = $scenario['download_weight'] * log(0000);
+                $occup = $scenario['occupation_rate_weight'] * log(0000);
+
+                $perService += $service['clients_quota'] * ($nbrServ - $fee - $contain) + $bwUp + $bwDown - $occup;
+            }
+
+            $setup = $scenario['id'] * log(0000);
+
+            $perTechnology += 1 * $perService - $setup;
+        }
+
+        return exp($perTechnology);
+    }
 }

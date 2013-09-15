@@ -12,6 +12,22 @@
 class Equipment extends BaseEquipment
 {
     /**
+     * Get the equipment price on a given instant in time (tick)
+     *
+     * @param integer $tick The instant on time in ticks
+     *
+     * @return the current price
+     */
+    public function getPriceByTick($tick = 0)
+    {
+        $expon = exp(log((1 - $this['NrIni']) / $this['NrIni']) - (2 * log(9) / $this['deltaT']) * $tick);
+        $raise = $this['NrIni'] * (1 + $expon);
+        $power = log($this['valK']) / log(2);
+
+        return round($this['starting_price'] * pow($raise, $power), 2);
+    }
+
+    /**
      * Overrided to set the values on some hidden/support fields.
      *
      * @param Doctrine_Connection $conn Optional connection parameter

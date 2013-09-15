@@ -162,18 +162,29 @@ class Scenario extends BaseScenario
                     $equipments = Doctrine_Core::getTable('Equipment')->createQuery('e')
                                       ->where('e.architecture_id = ?', $tech['Architecture']['id'])
                                       ->orderBy('e.network_level ASC')
-                                      ->fetchArray();
+                                      ->execute();
                     foreach ($equipments as $equipment) {
-                        //TODO Mark obsolete equipments
+                        // Mark obsolete equipments
+                        /*Doctrine_Core::getTable('AcquiredEquipment')->createQuery('ae')
+                            ->update()
+                            ->set('ae.is_obsolete', '1')
+                            ->where('ae.equipment_id = ?', $equipment['id'])
+                            ->andWhere('ae.available_until = ?', $this['current_tick'])
+                            ->andWhere('ae.is_obsolete = ?', true)
+                            ->execute();*/
                         $targetTotal = ceil($clients / $equipment['maximum_clients']);
-                        // TODO Determine current amount of equipments
-                        $currentTotal = ceil($targetTotal * ($operator['current_market_size'] / $totalClients));
+
+                        $currentTotal = Doctrine_Core::getTable('AcquiredEquipment')->createQuery('ae')
+                            ->select('SUM(ae.quantity)')
+                            ->where('ae.equipment_id = ?', $equipment['id'])
+                            ->andWhere('ae.is_obsolete = ?', false)
+                            ->execute(array(), Doctrine_Core::HYDRATE_SINGLE_SCALAR);
+
+                        $currentPrice = $equipment->getPriceByTick($this['current_tick']);
 
                         $acquired = new AcquiredEquipment();
                         $quantity = $targetTotal - $currentTotal;
                         $acquired->setQuantity($quantity);
-                        //TODO Calculate price depreciation
-                        $currentPrice = $equipment['starting_price'] * (1 - 0.045 * $this['current_tick']);
                         $acquired->setPrice($currentPrice);
                         $acquired->setAvailableUntil($this['current_tick'] + $equipment['life_expectation']);
                         $acquired->setEquipmentId($equipment['id']);
@@ -187,7 +198,7 @@ class Scenario extends BaseScenario
                         $opex -= $newClients * $service['setup_fee']; //OPEX or CAPEX??
                     }
                     $opex -= $clients * $service['cost_per_user'];
-                    $revenue += $clients * $service['periodic_fee'] * (1 - 0.035 * $this['current_tick']);
+                    $revenue += $clients * $service['periodic_fee'] * (1 - 0.015 * $this['current_tick']);
                 }
             }
             //Update the remaining details of a Tick
