@@ -171,7 +171,7 @@ class Scenario extends BaseScenario
                             ->set('ae.is_obsolete', '1')
                             ->where('ae.equipment_id = ?', $equipment['id'])
                             ->andWhere('ae.available_until = ?', $this['current_tick'])
-                            ->andWhere('ae.is_obsolete = ?', true)
+                            ->andWhere('ae.is_obsolete = ?', false) // safe only
                             ->execute();
                         $targetTotal = ceil($clients / $equipment['maximum_clients']);
                         // Get currently existing equipments of this type
