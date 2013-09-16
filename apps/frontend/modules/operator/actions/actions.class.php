@@ -55,13 +55,13 @@ class OperatorActions extends autoOperatorActions
               'lines' => array('show' => true),
               //'points' => array('show' => true),
               'data' => array()
-             ),
-            'equity' => array(
+             /*),
+              'equity' => array(
               'color' => 5,
               'label' => 'Equity',
               'lines' => array('show' => true),
               //'points' => array('show' => true),
-              'data' => array()
+              'data' => array()*/
         ));
 
         $ticksForOperator = TickTable::getInstance()->createQuery('t')
@@ -76,7 +76,7 @@ class OperatorActions extends autoOperatorActions
             array_push($chartData['revenue']['data'], array($tick['nbr'], $tick['revenue']));
             array_push($chartData['cashflow']['data'], array($tick['nbr'] + 0.15, $tick['cashflow']));
             array_push($chartData['balance']['data'], array($tick['nbr'], $tick['balance']));
-            array_push($chartData['equity']['data'], array($tick['nbr'], $tick['equity']));
+            //array_push($chartData['equity']['data'], array($tick['nbr'], $tick['equity']));
         }
 
         $this->data = json_encode($chartData);
