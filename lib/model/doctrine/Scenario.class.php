@@ -90,9 +90,10 @@ class Scenario extends BaseScenario
                     }
                     if ($clientsDiff > 0) {
                         $newClients = round($service['clients_quota'] / 100 * $clientsDiff);
-                        $opex -= $newClients * $service['setup_fee']; //OPEX or CAPEX??
+                        $revenue += $newClients * $service['setup_fee'];
                     }
                     $opex -= $clients * $service['cost_per_user'];
+                    // Em cada instante retirar 5% do capex acumulado e actualizado!?
                     $revenue += $clients * $service['periodic_fee'];
                 }
             }
@@ -165,15 +166,15 @@ class Scenario extends BaseScenario
                                       ->execute();
                     foreach ($equipments as $equipment) {
                         // Mark obsolete equipments
-                        /*Doctrine_Core::getTable('AcquiredEquipment')->createQuery('ae')
+                        Doctrine_Core::getTable('AcquiredEquipment')->createQuery('ae')
                             ->update()
                             ->set('ae.is_obsolete', '1')
                             ->where('ae.equipment_id = ?', $equipment['id'])
                             ->andWhere('ae.available_until = ?', $this['current_tick'])
                             ->andWhere('ae.is_obsolete = ?', true)
-                            ->execute();*/
+                            ->execute();
                         $targetTotal = ceil($clients / $equipment['maximum_clients']);
-
+                        // Get currently existing equipments of this type
                         $currentTotal = Doctrine_Core::getTable('AcquiredEquipment')->createQuery('ae')
                             ->select('SUM(ae.quantity)')
                             ->where('ae.equipment_id = ?', $equipment['id'])
@@ -195,9 +196,10 @@ class Scenario extends BaseScenario
                     }
                     if ($clientsDiff > 0) {
                         $newClients = round($service['clients_quota'] / 100 * $clientsDiff);
-                        $opex -= $newClients * $service['setup_fee']; //OPEX or CAPEX??
+                        $revenue += $newClients * $service['setup_fee'];
                     }
                     $opex -= $clients * $service['cost_per_user'];
+                    // Em cada instante retirar 5% do capex acumulado e actualizado!?
                     $revenue += $clients * $service['periodic_fee'] * (1 - 0.015 * $this['current_tick']);
                 }
             }

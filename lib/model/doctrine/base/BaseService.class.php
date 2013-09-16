@@ -8,7 +8,7 @@
  * @property string $name
  * @property decimal $setup_fee
  * @property decimal $cost_per_user
- * @property float $CAPEX_percentage
+ * @property decimal $CAPEX_percentage
  * @property decimal $periodic_fee
  * @property decimal $clients_quota
  * @property integer $tick_to_edit
@@ -20,7 +20,7 @@
  * @method string     getName()             Returns the current record's "name" value
  * @method decimal    getSetupFee()         Returns the current record's "setup_fee" value
  * @method decimal    getCostPerUser()      Returns the current record's "cost_per_user" value
- * @method float      getCAPEXPercentage()  Returns the current record's "CAPEX_percentage" value
+ * @method decimal    getCAPEXPercentage()  Returns the current record's "CAPEX_percentage" value
  * @method decimal    getPeriodicFee()      Returns the current record's "periodic_fee" value
  * @method decimal    getClientsQuota()     Returns the current record's "clients_quota" value
  * @method integer    getTickToEdit()       Returns the current record's "tick_to_edit" value
@@ -63,8 +63,8 @@ abstract class BaseService extends sfDoctrineRecord
              'type' => 'decimal',
              'notnull' => true,
              ));
-        $this->hasColumn('CAPEX_percentage', 'float', null, array(
-             'type' => 'float',
+        $this->hasColumn('CAPEX_percentage', 'decimal', null, array(
+             'type' => 'decimal',
              'notnull' => true,
              ));
         $this->hasColumn('periodic_fee', 'decimal', null, array(
