@@ -8,7 +8,7 @@ Scenario:
     total_decision_points: <?php $tdp = rand(2, 5); echo $tdp."\n"; ?>
     ticks_between_decision_points: <?php echo ($ls / ($tdp + 1))."\n"; ?> # hidden
   ## Financial Parameters ##
-    tariffs_erosion_rate: '0.01'
+    packages_erosion_rate: '0.01'
     depreciation_rate: '0.1'
     interest_rate: '0.1'
     elasticity: '1.0'

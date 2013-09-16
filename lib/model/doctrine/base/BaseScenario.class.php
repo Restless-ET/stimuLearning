@@ -14,7 +14,7 @@
  * @property integer $lifespan
  * @property integer $total_decision_points
  * @property integer $ticks_between_decision_points
- * @property float $tariffs_erosion_rate
+ * @property float $packages_erosion_rate
  * @property float $depreciation_rate
  * @property float $interest_rate
  * @property decimal $elasticity
@@ -45,7 +45,7 @@
  * @method integer             getLifespan()                      Returns the current record's "lifespan" value
  * @method integer             getTotalDecisionPoints()           Returns the current record's "total_decision_points" value
  * @method integer             getTicksBetweenDecisionPoints()    Returns the current record's "ticks_between_decision_points" value
- * @method float               getTariffsErosionRate()            Returns the current record's "tariffs_erosion_rate" value
+ * @method float               getPackagesErosionRate()           Returns the current record's "packages_erosion_rate" value
  * @method float               getDepreciationRate()              Returns the current record's "depreciation_rate" value
  * @method float               getInterestRate()                  Returns the current record's "interest_rate" value
  * @method decimal             getElasticity()                    Returns the current record's "elasticity" value
@@ -75,7 +75,7 @@
  * @method Scenario            setLifespan()                      Sets the current record's "lifespan" value
  * @method Scenario            setTotalDecisionPoints()           Sets the current record's "total_decision_points" value
  * @method Scenario            setTicksBetweenDecisionPoints()    Sets the current record's "ticks_between_decision_points" value
- * @method Scenario            setTariffsErosionRate()            Sets the current record's "tariffs_erosion_rate" value
+ * @method Scenario            setPackagesErosionRate()           Sets the current record's "packages_erosion_rate" value
  * @method Scenario            setDepreciationRate()              Sets the current record's "depreciation_rate" value
  * @method Scenario            setInterestRate()                  Sets the current record's "interest_rate" value
  * @method Scenario            setElasticity()                    Sets the current record's "elasticity" value
@@ -152,7 +152,7 @@ abstract class BaseScenario extends sfDoctrineRecord
              'type' => 'integer',
              'notnull' => true,
              ));
-        $this->hasColumn('tariffs_erosion_rate', 'float', null, array(
+        $this->hasColumn('packages_erosion_rate', 'float', null, array(
              'type' => 'float',
              'scale' => 4,
              'notnull' => true,

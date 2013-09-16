@@ -1,6 +1,19 @@
 Architecture:
+## Hipotese A ##
   Architecture_0:
     name: 'FTTX'
     download_bandwidth: <?php $exp = rand(0, 6); echo pow(2, $exp)."\n"; ?>
     upload_bandwidth: <?php $exp = rand(8, 12); echo pow(2, $exp)."\n"; ?>
     Technology: Technology_0
+
+## Hipotese C ##
+  Architecture_1:
+    name: 'UMTS Arch.'
+    download_bandwidth: <?php $exp = rand(0, 6); echo pow(2, $exp)."\n"; ?>
+    upload_bandwidth: <?php $exp = rand(8, 12); echo pow(2, $exp)."\n"; ?>
+    Technology: Technology_1
+  Architecture_2:
+    name: 'LTE Arch.'
+    download_bandwidth: <?php $exp = rand(0, 6); echo pow(2, $exp)."\n"; ?>
+    upload_bandwidth: <?php $exp = rand(8, 12); echo pow(2, $exp)."\n"; ?>
+    Technology: Technology_2

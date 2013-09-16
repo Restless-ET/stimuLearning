@@ -198,9 +198,11 @@ class Scenario extends BaseScenario
                         $newClients = round($service['clients_quota'] / 100 * $clientsDiff);
                         $revenue += $newClients * $service['setup_fee'];
                     }
+                    // Em cada instante retirar como opex 5% do capex acumulado e actualizado!?
                     $opex -= $clients * $service['cost_per_user'];
-                    // Em cada instante retirar 5% do capex acumulado e actualizado!?
-                    $revenue += $clients * $service['periodic_fee'] * (1 - 0.015 * $this['current_tick']);
+
+                    $updatedRate = pow((1 + $this['packages_erosion_rate']), $this['current_tick']);
+                    $revenue += $clients * $service['periodic_fee'] / $updatedRate;
                 }
             }
             //Update the remaining details of a Tick

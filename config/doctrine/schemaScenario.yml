@@ -19,7 +19,7 @@ Scenario:
     total_decision_points: { type: integer, notnull: true }
     ticks_between_decision_points: { type: integer, notnull: true } # readonly
   ## Financial Parameters ##
-    tariffs_erosion_rate: { type: float, scale: 4, notnull: true }
+    packages_erosion_rate: { type: float, scale: 4, notnull: true }
     depreciation_rate: { type: float, scale: 4, notnull: true }
     interest_rate: { type: float, scale: 4, notnull: true }
     elasticity: { type: decimal, notnull: true }

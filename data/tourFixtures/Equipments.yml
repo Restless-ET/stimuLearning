@@ -1,13 +1,14 @@
 Equipment:
+## Hipotese A ##
   Equipment_0:
     name: 'Base'
     starting_price: 1000000
     number_of_ports: 32
     network_level: 0
-    life_expectation: <?php echo rand(10, 20)."\n"; ?>
+    life_expectation: 40
     equipment_type: 'Wired'
     nature_or_purpose: 'Building/Construction (1)'
-    tecnology_age: 'Mature (0.1)'
+    tecnology_age: 'Emerging (0.001)'
     setup_speed: 'Very slow (40)'
     maximum_clients: 1024
     Architecture: Architecture_0
@@ -16,10 +17,10 @@ Equipment:
     starting_price: 30000
     number_of_ports: 32
     network_level: 1
-    life_expectation: <?php echo rand(10, 20)."\n"; ?>
+    life_expectation: 40
     equipment_type: 'Wired'
     nature_or_purpose: 'Electronics (0.9)'
-    tecnology_age: 'Mature (0.1)'
+    tecnology_age: 'Emerging (0.001)'
     setup_speed: 'Very slow (40)'
     maximum_clients: 32
     Architecture: Architecture_0
@@ -28,10 +29,84 @@ Equipment:
     starting_price: 20
     number_of_ports: 1
     network_level: 2
-    life_expectation: <?php echo rand(10, 20)."\n"; ?>
+    life_expectation: 40
     equipment_type: 'Wired'
     nature_or_purpose: 'Fiber cables (0.8)'
-    tecnology_age: 'Mature (0.1)'
+    tecnology_age: 'Emerging (0.001)'
     setup_speed: 'Very slow (40)'
     maximum_clients: 1
     Architecture: Architecture_0
+
+## Hipotese C ##
+  Equipment_3:
+    name: 'Base for UMTS'
+    starting_price: 33000
+    number_of_ports: 1
+    network_level: 0
+    life_expectation: 20
+    equipment_type: 'Wired'
+    nature_or_purpose: 'Building/Construction (1)'
+    tecnology_age: 'Mature (0.1)'
+    setup_speed: 'Fast (10)'
+    maximum_clients: 160
+    Architecture: Architecture_1
+  Equipment_4:
+    name: 'Intermédio for UMTS'
+    starting_price: 70000
+    number_of_ports: 160
+    network_level: 1
+    life_expectation: 12
+    equipment_type: 'Wired'
+    nature_or_purpose: 'Electronics (0.9)'
+    tecnology_age: 'Mature (0.1)'
+    setup_speed: 'Fast (10)'
+    maximum_clients: 160
+    Architecture: Architecture_1
+  Equipment_5:
+    name: 'Terminal for UMTS'
+    starting_price: 150
+    number_of_ports: 1
+    network_level: 2
+    life_expectation: 5
+    equipment_type: 'Wired'
+    nature_or_purpose: 'Fiber cables (0.8)'
+    tecnology_age: 'New (0.01)'
+    setup_speed: 'Slow (20)'
+    maximum_clients: 1
+    Architecture: Architecture_1
+  Equipment_6:
+    name: 'Base for LTE'
+    starting_price: 33000
+    number_of_ports: 1
+    network_level: 0
+    life_expectation: 20
+    equipment_type: 'Wired'
+    nature_or_purpose: 'Building/Construction (1)'
+    tecnology_age: 'Mature (0.1)'
+    setup_speed: 'Fast (10)'
+    maximum_clients: 160
+    Architecture: Architecture_2
+  Equipment_7:
+    name: 'Intermédio for LTE'
+    starting_price: 70000
+    number_of_ports: 160
+    network_level: 1
+    life_expectation: 12
+    equipment_type: 'Wired'
+    nature_or_purpose: 'Electronics (0.9)'
+    tecnology_age: 'Mature (0.1)'
+    setup_speed: 'Fast (10)'
+    maximum_clients: 160
+    Architecture: Architecture_2
+  Equipment_8:
+    name: 'Terminal for LTE'
+    starting_price: 150
+    number_of_ports: 1
+    network_level: 2
+    life_expectation: 5
+    equipment_type: 'Wired'
+    nature_or_purpose: 'Fiber cables (0.8)'
+    tecnology_age: 'New (0.01)'
+    setup_speed: 'Slow (20)'
+    maximum_clients: 1
+    Architecture: Architecture_2

@@ -6,6 +6,7 @@ Service:
     Timestampable: ~
   columns:
     name: { type: string(100), notnull: true }
+    number_of_services: { type: integer, default: 1, notnull: true }
     setup_fee: { type: decimal, notnull: true }
     cost_per_user: { type: decimal, notnull: true }
     CAPEX_percentage: { type: decimal, notnull: true }

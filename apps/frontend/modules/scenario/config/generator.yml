@@ -49,7 +49,7 @@ generator:
           Graph: [_market_penetration_chart]
           Basic: [description,total_clients,tick_alias,lifespan,total_decision_points,ticks_between_decision_points]
           Market Share Evolution: [starting_level,saturation_level,alpha,beta]
-          Financial: [tariffs_erosion_rate,depreciation_rate,interest_rate,elasticity,bankrupcy_limit]
+          Financial: [packages_erosion_rate,depreciation_rate,interest_rate,elasticity,bankrupcy_limit]
           Quality Vector: [number_of_services_weight,download_weight,upload_weight,rate_weight,fee_weight,occupation_rate_weight,containment_factor_weight,reference_occupation_rate]
 
       edit:

@@ -1,7 +1,22 @@
 Technology:
+## Hipotese A ##
   Technology_0:
     name: 'FTTH'
-    description: 'Descrição...'
-    decline_A: <?php echo ((400 - rand(100, 300)) / 100)."\n"; ?>
+    description: 'Fiber To The Home'
+    decline_A: <?php echo rand(100, 300)."\n"; ?>
     decline_B: <?php echo ((500 - rand(0, 500)) / 100)."\n"; ?>
     Scenarios: [Scenario_0]
+
+## Hipotese C ##
+  Technology_1:
+    name: 'UMTS'
+    description: 'UMTS para cenário a 1 operador'
+    decline_A: 0.001
+    decline_B: 0.28
+    Scenarios: [Scenario_1]
+  Technology_2:
+    name: 'LTE'
+    description: 'LTE para cenário a 1 operador'
+    decline_A: 95.00
+    decline_B: -0.33
+    Scenarios: [Scenario_1]

@@ -1,7 +1,16 @@
 Operator:
+## Hipotese A ##
   Operator_0:
-    name: 'Operador Único'
+    name: 'Operador A (Único)'
     starting_market_size: 15000
     market_share: 100.00
     User: User_1
     Scenario: Scenario_0
+
+## Hipotese C ##
+  Operator_1:
+    name: 'Operador C (Único)'
+    starting_market_size: 15000
+    market_share: 100.00
+    User: User_2
+    Scenario: Scenario_1

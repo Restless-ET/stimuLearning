@@ -1,6 +1,8 @@
 Service:
+## Hipotese A ##
   Service_0:
-    name: 'Internet'
+    name: 'Triple-play'
+    number_of_services: 3
     setup_fee: 35.00
     cost_per_user: 120.00
     CAPEX_percentage: 5.00
@@ -8,3 +10,25 @@ Service:
     clients_quota: 100.00 # Simplify this by using a single service
     Operator: Operator_0
     Technology: Technology_0
+
+## Hipotese C ##
+  Service_1:
+    name: 'Triple-play em UMTS'
+    number_of_services: 3
+    setup_fee: 35.00
+    cost_per_user: 120.00
+    CAPEX_percentage: 5.00
+    periodic_fee: 480.00
+    clients_quota: 100.00 # Simplify this by using a single service
+    Operator: Operator_1
+    Technology: Technology_1
+  Service_2:
+    name: 'Triple-play em LTE'
+    number_of_services: 3
+    setup_fee: 35.00
+    cost_per_user: 120.00
+    CAPEX_percentage: 5.00
+    periodic_fee: 480.00
+    clients_quota: 0.00 # Simplify this by using a single service
+    Operator: Operator_1
+    Technology: Technology_2

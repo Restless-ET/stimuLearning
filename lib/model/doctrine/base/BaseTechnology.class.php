@@ -8,8 +8,8 @@
  * @property string $name
  * @property string $description
  * @property integer $first_tick_available
- * @property float $decline_A
- * @property float $decline_B
+ * @property decimal $decline_A
+ * @property decimal $decline_B
  * @property Architecture $Architecture
  * @property Doctrine_Collection $ScenarioTechnology
  * @property Doctrine_Collection $Scenarios
@@ -18,8 +18,8 @@
  * @method string              getName()                 Returns the current record's "name" value
  * @method string              getDescription()          Returns the current record's "description" value
  * @method integer             getFirstTickAvailable()   Returns the current record's "first_tick_available" value
- * @method float               getDeclineA()             Returns the current record's "decline_A" value
- * @method float               getDeclineB()             Returns the current record's "decline_B" value
+ * @method decimal             getDeclineA()             Returns the current record's "decline_A" value
+ * @method decimal             getDeclineB()             Returns the current record's "decline_B" value
  * @method Architecture        getArchitecture()         Returns the current record's "Architecture" value
  * @method Doctrine_Collection getScenarioTechnology()   Returns the current record's "ScenarioTechnology" collection
  * @method Doctrine_Collection getScenarios()            Returns the current record's "Scenarios" collection
@@ -58,12 +58,14 @@ abstract class BaseTechnology extends sfDoctrineRecord
              'default' => 0,
              'notnull' => true,
              ));
-        $this->hasColumn('decline_A', 'float', null, array(
-             'type' => 'float',
+        $this->hasColumn('decline_A', 'decimal', null, array(
+             'type' => 'decimal',
+             'scale' => 3,
              'notnull' => true,
              ));
-        $this->hasColumn('decline_B', 'float', null, array(
-             'type' => 'float',
+        $this->hasColumn('decline_B', 'decimal', null, array(
+             'type' => 'decimal',
+             'scale' => 3,
              'notnull' => true,
              ));
     }
