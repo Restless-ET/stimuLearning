@@ -38,6 +38,13 @@ class Scenario extends BaseScenario
         if (!count($this->Operators)) {
             $msg = 'This scenario has no associated operators!';
         }
+        // validate that this scenario has technologies available
+        $techsAvailable = count($this->AvailableTechnologies);
+        if (!$techsAvailable) {
+            $msg = 'This scenario has no available technologies!';
+        } elseif ($techsAvailable > 2) { // backend safeguard
+            $msg = 'Technology transition on this scenario is only possible to a maximum of two right now!';
+        }
 
         $marketClients = $this['total_clients'] * ($this['starting_level'] / 100);
 
@@ -114,6 +121,10 @@ class Scenario extends BaseScenario
             $operator->setCurrentMarketSize($totalClients);
             $operator->setBalance($balance);
             $operator->setAccumulatedCAPEX($capex);
+
+            //TODO calculate quality to use on next tick market share determination
+            $quality = $operator->getOperatorQuality($this['current_tick']);
+            //$operator->setQuality($quality);
             $operator->save();
         }
 
@@ -140,8 +151,21 @@ class Scenario extends BaseScenario
             $this->setFinished(true);
         }
 
-        $penetrationRate = $this->getPenetrationRate($this['current_tick']);
-        $marketClients = $this['total_clients'] * $penetrationRate;
+        $marketPenetration = $this->getPenetrationRate($this['current_tick']);
+        $marketClients = $this['total_clients'] * $marketPenetration;
+
+        $techsPenetration = array();
+        $singleTech = (count($this['AvailableTechnologies']) == 1) ? true : false;
+        foreach ($this['AvailableTechnologies'] as $tech) {
+            if ($this['current_tick'] >= $tech['first_tick_available']) {
+                if ($singleTech) {
+                    $techPenetrRatio = 1;
+                } else {
+                    $techPenetrRatio = 1 + $tech['decline_A'] * exp($tech['decline_B'] * $this['current_tick']);
+                }
+                $techsPenetration['t'.$tech['id']] = $marketPenetration / $techPenetrRatio;
+            }
+        }
 
         foreach ($this['Operators'] as $operator) {
             $totalClients = $marketClients; // TODO calculate for the operator correctly
@@ -162,11 +186,15 @@ class Scenario extends BaseScenario
             $opTick->save();
 
             foreach ($operator['Services'] as $service) {
-                $tech = $service['Technology'];
-                $clients = round($service['clients_quota'] / 100 * $totalClients);
-                if ($this['current_tick'] >= $tech['first_tick_available']) {
+                $technology = $service['Technology'];
+                if (isset($techsPenetration['t'.$technology['id']])) {
+                    //TODO Find the best way to get this % relational, since right now this only works for single Oper
+                    //In other words, this should be techClients by operator.
+                    $techClients = $this['total_clients'] * $techsPenetration['t'.$technology['id']];
+                    $servClients = round($service['clients_quota'] / 100 * $techClients);
+
                     $equipments = Doctrine_Core::getTable('Equipment')->createQuery('e')
-                                      ->where('e.architecture_id = ?', $tech['Architecture']['id'])
+                                      ->where('e.architecture_id = ?', $technology['Architecture']['id'])
                                       ->orderBy('e.network_level ASC')
                                       ->execute();
                     foreach ($equipments as $equipment) {
@@ -178,7 +206,8 @@ class Scenario extends BaseScenario
                             ->andWhere('ae.available_until = ?', $this['current_tick'])
                             ->andWhere('ae.is_obsolete = ?', false) // safe only
                             ->execute();
-                        $targetTotal = ceil($clients / $equipment['maximum_clients']);
+
+                        $targetTotal = ceil($servClients / $equipment['maximum_clients']);
                         // Get currently existing equipments of this type
                         $currentTotal = Doctrine_Core::getTable('AcquiredEquipment')->createQuery('ae')
                             ->select('SUM(ae.quantity)')
@@ -203,10 +232,11 @@ class Scenario extends BaseScenario
                         $newClients = round($service['clients_quota'] / 100 * $clientsDiff);
                         $revenue += $newClients * $service['setup_fee'];
                     }
-                    $opex -= $clients * $service['cost_per_user'];
+                    $opex -= $servClients * $service['cost_per_user'];
 
-                    $updatedRate = pow((1 - $this['packages_erosion_rate']), $this['current_tick']);
-                    $revenue += $clients * $service['periodic_fee'] * $updatedRate;
+                    $ticksFromTechStart = $this['current_tick'] - $technology['first_tick_available'];
+                    $updatedRate = pow((1 - $this['packages_erosion_rate']), $ticksFromTechStart);
+                    $revenue += $servClients * $service['periodic_fee'] * $updatedRate;
                 }
             }
             $accumCapex = $operator['accumulated_CAPEX'] * (1 - $this['depreciation_rate']) + $capex;

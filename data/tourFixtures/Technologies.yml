@@ -17,6 +17,7 @@ Technology:
   Technology_2:
     name: 'LTE'
     description: 'LTE para cenário a 1 operador'
+    first_tick_available: 12
     decline_A: 95.00
     decline_B: -0.33
     Scenarios: [Scenario_1]

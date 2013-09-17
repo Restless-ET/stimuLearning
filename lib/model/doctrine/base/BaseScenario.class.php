@@ -231,7 +231,8 @@ abstract class BaseScenario extends sfDoctrineRecord
         $this->hasMany('Technology as AvailableTechnologies', array(
              'refClass' => 'ScenarioTechnology',
              'local' => 'scenario_id',
-             'foreign' => 'technology_id'));
+             'foreign' => 'technology_id',
+             'orderBy' => 'first_tick_available ASC'));
 
         $this->hasMany('Operator as Operators', array(
              'local' => 'id',

@@ -43,6 +43,7 @@ Scenario:
     AvailableTechnologies:
       type: many
       class: Technology
+      orderBy: first_tick_available ASC
       refClass: ScenarioTechnology
       local: scenario_id
       foreign: technology_id
