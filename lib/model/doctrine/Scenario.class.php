@@ -61,6 +61,7 @@ class Scenario extends BaseScenario
             $opTick = new Tick();
             $opTick->setNbr($this['current_tick']);
             $opTick->setMarketShare($operator['market_share']);
+            $opTick->setClients($totalClients);
             $opTick->setOperator($operator);
             $opTick->setScenario($this);
             $opTick->save();
@@ -93,10 +94,12 @@ class Scenario extends BaseScenario
                         $revenue += $newClients * $service['setup_fee'];
                     }
                     $opex -= $clients * $service['cost_per_user'];
-                    // Em cada instante retirar 5% do capex acumulado e actualizado!?
                     $revenue += $clients * $service['periodic_fee'];
                 }
             }
+            // Some CAPEX percentage as OPEX
+            $opex += $capex * ($service['CAPEX_percentage'] / 100); // CAPEX is already negative
+
             //Update the remaining details of a Tick
             $opTick->setCAPEX($capex);
             $opTick->setOPEX($opex);
@@ -110,10 +113,11 @@ class Scenario extends BaseScenario
 
             $operator->setCurrentMarketSize($totalClients);
             $operator->setBalance($balance);
+            $operator->setAccumulatedCAPEX($capex);
             $operator->save();
         }
 
-        //TODO Init a market tick
+        //TODO Init a market tick??
 
         if ($msg === true) {
             // Change scenario to started
@@ -152,6 +156,7 @@ class Scenario extends BaseScenario
             $opTick = new Tick();
             $opTick->setNbr($this['current_tick']);
             $opTick->setMarketShare($operator['market_share']);
+            $opTick->setClients($totalClients);
             $opTick->setOperator($operator);
             $opTick->setScenario($this);
             $opTick->save();
@@ -198,13 +203,18 @@ class Scenario extends BaseScenario
                         $newClients = round($service['clients_quota'] / 100 * $clientsDiff);
                         $revenue += $newClients * $service['setup_fee'];
                     }
-                    // Em cada instante retirar como opex 5% do capex acumulado e actualizado!?
                     $opex -= $clients * $service['cost_per_user'];
 
-                    $updatedRate = pow((1 + $this['packages_erosion_rate']), $this['current_tick']);
-                    $revenue += $clients * $service['periodic_fee'] / $updatedRate;
+                    $updatedRate = pow((1 - $this['packages_erosion_rate']), $this['current_tick']);
+                    $revenue += $clients * $service['periodic_fee'] * $updatedRate;
                 }
             }
+            $accumCapex = $operator['accumulated_CAPEX'] * (1 - $this['depreciation_rate']) + $capex;
+            // Some CAPEX percentage as OPEX
+            //$opex -= $targetTotal * $currentPrice * $service['CAPEX_percentage'];
+            // Em cada instante retirar como opex 5% do capex acumulado e actualizado!?
+            $opex += $accumCapex * ($service['CAPEX_percentage'] / 100); // CAPEX is already negative
+
             //Update the remaining details of a Tick
             $opTick->setCAPEX($capex);
             $opTick->setOPEX($opex);
@@ -216,13 +226,32 @@ class Scenario extends BaseScenario
             $opTick->setEquity($balance * 0.5); // ????!?!
             $opTick->save();
 
+            if ($operator['balance'] < 0.00 && $balance >= 0.00) {
+                $payback = $this['current_tick'] - 1 + abs($operator['balance']) / $cashflow;
+                $operator->setPaybackPeriod($payback);
+            }
             $operator->setCurrentMarketSize($totalClients);
             $operator->setBalance($balance);
+            $operator->setAccumulatedCAPEX($accumCapex);
+            // if last step calulate VAL/NPV
+            if ($this['finished']) {
+                $cashflows = Doctrine_Core::getTable('Tick')->createQuery('t')
+                                  ->select('t.cashflow')
+                                  ->where('t.operator_id = ?', $operator['id'])
+                                  ->orderBy('t.nbr ASC')
+                                  ->execute(array(), Doctrine_Core::HYDRATE_SINGLE_SCALAR);
+
+                $financial = new Financial();
+                $npv = $financial->NPV($this['interest_rate'], $cashflows);
+                $irr = $financial->IRR($cashflows, $this['interest_rate']);
+
+                $operator->setNetPresentValue($npv);
+                $operator->setInternalRateOfReturn($irr * 100);
+            }
             $operator->save();
         }
 
         //TODO A new market tick??
-
 
         $this->save();
     }

@@ -15,7 +15,8 @@ Tick:
     balance: { type: decimal, notnull: true }
     equity: { type: decimal, notnull: true }
     market_share: { type: float, notnull: true }
-    
+    clients: { type: integer, notnull: true }
+
     operator_id: { type: integer, notnull: true }
     scenario_id: { type: integer, notnull: true }
   relations:

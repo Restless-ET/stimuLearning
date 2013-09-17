@@ -18,7 +18,8 @@ Equipment:
         - Electronics (0.9) #Electrónica (0.9)
         - Advanced Optical Components (0.7) #Componentes ópticos avançados (0.7)
         - Passive Optical Components (0.8) #Componentes ópticos passivos (0.8)
-    valK: { type: decimal } #hidden
+        #- Other
+    valK: { type: decimal } #show only on 'Other'
     tecnology_age:
       type: enum
       values:
@@ -27,7 +28,8 @@ Equipment:
         - Mature (0.1) #Madura (0.1)
         - New (0.01) #Nova (0.01)
         - Emerging (0.001) #Emergente (0.001)
-    NrIni: { type: decimal, scale: 3 } #hidden
+        #- Other
+    NrIni: { type: decimal, scale: 3 } #show only on 'Other'
     setup_speed:
       type: enum
       values:
@@ -36,8 +38,9 @@ Equipment:
         - Fast (10) #Rápida (10)
         - Slow (20) #Lenta (20)
         - Very slow (40) #Muito lenta (40)
+        #- Other
     deltaT: { type: integer } #hidden
-    maximum_clients: { type: integer } #hidden
+    maximum_clients: { type: integer } #show only on 'Other'
   ## For the relations ##
     architecture_id: { type: integer, notnull: true }
   relations:

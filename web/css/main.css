@@ -141,10 +141,6 @@ th
   color: red;
 }
 
-#sf_admin_container ul li.sf_admin_action_show a {
-  background: url(../images/icons/magnify.png) no-repeat 0 0;
-}
-
 /* For 404 layout */
 #center {
     height: 410px;

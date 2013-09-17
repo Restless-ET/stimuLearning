@@ -152,32 +152,6 @@ body
   margin-right: 10px;
 }
 
-#sf_admin_container ul li a
-{
-  padding-left: 20px;
-  background: url(../images/admin/default.png) no-repeat 0 0;
-}
-
-#sf_admin_container ul li.sf_admin_action_new a
-{
-  background: url(../images/admin/new.png) no-repeat 0 0;
-}
-
-#sf_admin_container ul li.sf_admin_action_delete a
-{
-  background: url(../images/admin/delete.png) no-repeat 0 0;
-}
-
-#sf_admin_container ul li.sf_admin_action_list a
-{
-  background: url(../images/admin/list.png) no-repeat 0 0;
-}
-
-#sf_admin_container ul li.sf_admin_action_edit a
-{
-  background: url(../images/admin/edit.png) no-repeat 0 0;
-}
-
 #sf_admin_container .notice
 {
   margin: 4px 0;

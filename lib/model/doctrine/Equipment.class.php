@@ -20,9 +20,9 @@ class Equipment extends BaseEquipment
      */
     public function getPriceByTick($tick = 0)
     {
-        $expon = exp(log((1 - $this['NrIni']) / $this['NrIni']) - (2 * log(9) / $this['deltaT']) * $tick);
+        $expon = exp(log((1 - $this['NrIni']) / $this['NrIni']) - ((2 * log(9) / $this['deltaT']) * $tick));
         $raise = $this['NrIni'] * (1 + $expon);
-        $power = log($this['valK']) / log(2);
+        $power = -log($this['valK']) / log(2);
 
         return round($this['starting_price'] * pow($raise, $power), 2);
     }
@@ -36,9 +36,15 @@ class Equipment extends BaseEquipment
      */
     public function save(Doctrine_Connection $conn = null)
     {
-        $this->valK = StringHelper::getStringBetween($this->nature_or_purpose, '(', ')');
-        $this->NrIni = StringHelper::getStringBetween($this->tecnology_age, '(', ')');
-        $this->deltaT = StringHelper::getStringBetween($this->setup_speed, '(', ')');
+        if ($this->nature_or_purpose != 'Other') {
+            $this->valK = StringHelper::getStringBetween($this->nature_or_purpose, '(', ')');
+        }
+        if ($this->tecnology_age != 'Other') {
+            $this->NrIni = StringHelper::getStringBetween($this->tecnology_age, '(', ')');
+        }
+        if ($this->setup_speed != 'Other') {
+            $this->deltaT = StringHelper::getStringBetween($this->setup_speed, '(', ')');
+        }
 
         parent::save($conn);
     }

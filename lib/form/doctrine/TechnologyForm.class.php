@@ -21,8 +21,5 @@ class TechnologyForm extends BaseTechnologyForm
     public function configure()
     {
         unset($this['created_at'], $this['updated_at']);
-
-        //Disable this one temporarily
-        unset($this['first_tick_available']);
     }
 }

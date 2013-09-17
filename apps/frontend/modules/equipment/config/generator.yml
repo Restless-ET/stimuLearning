@@ -18,20 +18,19 @@ generator:
 
       list:
         title: 'Equipments'
-        display: [ name, starting_price, number_of_ports, network_level, maximum_clients, life_expectation, equipment_type, nature_or_purpose, tecnology_age, setup_speed ]
+        display: [ name, starting_price, number_of_ports, network_level, life_expectation, equipment_type, nature_or_purpose, tecnology_age, setup_speed ]
         fields:
           number_of_ports: { label: '# of ports'}
           network_level: { label: 'Net. lvl' }
-          life_expectation: { label: 'Lifespan' }
+          life_expectation: { label: 'Lifespan', renderer: 'FieldRendererHelper::append', renderer_arguments: ['ticks'] }
           equipment_type: { label: Type }
         actions:
           _new:
             credentials: [manager]
         object_actions:
-          show: { action: show }
-          edit: { action: edit, credentials: [manager] }
-          delete:
-            action: delete
+          _show: ~
+          _edit: { credentials: [manager] }
+          _delete:
             credentials: [manager]
             confirm: 'This removal is irreversible! Are you sure you want to proceed?'
         batch_actions:

@@ -16,6 +16,7 @@ generator:
       fields:
         setup_fee: { renderer: 'FieldRendererHelper::euro' }
         cost_per_user: { renderer: 'FieldRendererHelper::euro' }
+        CAPEX_percentage: { renderer: 'FieldRendererHelper::perc' }
 
       list:
         title: 'Services'

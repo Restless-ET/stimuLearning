@@ -3,7 +3,7 @@ Service:
   Service_0:
     name: 'Triple-play'
     number_of_services: 3
-    setup_fee: 35.00
+    setup_fee: 00.00
     cost_per_user: 120.00
     CAPEX_percentage: 5.00
     periodic_fee: 480.00
@@ -15,7 +15,7 @@ Service:
   Service_1:
     name: 'Triple-play em UMTS'
     number_of_services: 3
-    setup_fee: 35.00
+    setup_fee: 00.00
     cost_per_user: 120.00
     CAPEX_percentage: 5.00
     periodic_fee: 480.00
@@ -25,7 +25,7 @@ Service:
   Service_2:
     name: 'Triple-play em LTE'
     number_of_services: 3
-    setup_fee: 35.00
+    setup_fee: 00.00
     cost_per_user: 120.00
     CAPEX_percentage: 5.00
     periodic_fee: 480.00

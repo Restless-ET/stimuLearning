@@ -14,9 +14,9 @@
  * @property integer $lifespan
  * @property integer $total_decision_points
  * @property integer $ticks_between_decision_points
- * @property float $packages_erosion_rate
- * @property float $depreciation_rate
- * @property float $interest_rate
+ * @property decimal $packages_erosion_rate
+ * @property decimal $depreciation_rate
+ * @property decimal $interest_rate
  * @property decimal $elasticity
  * @property decimal $bankrupcy_limit
  * @property decimal $starting_level
@@ -45,9 +45,9 @@
  * @method integer             getLifespan()                      Returns the current record's "lifespan" value
  * @method integer             getTotalDecisionPoints()           Returns the current record's "total_decision_points" value
  * @method integer             getTicksBetweenDecisionPoints()    Returns the current record's "ticks_between_decision_points" value
- * @method float               getPackagesErosionRate()           Returns the current record's "packages_erosion_rate" value
- * @method float               getDepreciationRate()              Returns the current record's "depreciation_rate" value
- * @method float               getInterestRate()                  Returns the current record's "interest_rate" value
+ * @method decimal             getPackagesErosionRate()           Returns the current record's "packages_erosion_rate" value
+ * @method decimal             getDepreciationRate()              Returns the current record's "depreciation_rate" value
+ * @method decimal             getInterestRate()                  Returns the current record's "interest_rate" value
  * @method decimal             getElasticity()                    Returns the current record's "elasticity" value
  * @method decimal             getBankrupcyLimit()                Returns the current record's "bankrupcy_limit" value
  * @method decimal             getStartingLevel()                 Returns the current record's "starting_level" value
@@ -129,7 +129,7 @@ abstract class BaseScenario extends sfDoctrineRecord
              'values' => 
              array(
               0 => NULL,
-              1 => 'Day',
+              1 => 'Week',
               2 => 'Month',
               3 => 'Year',
              ),
@@ -152,18 +152,18 @@ abstract class BaseScenario extends sfDoctrineRecord
              'type' => 'integer',
              'notnull' => true,
              ));
-        $this->hasColumn('packages_erosion_rate', 'float', null, array(
-             'type' => 'float',
+        $this->hasColumn('packages_erosion_rate', 'decimal', null, array(
+             'type' => 'decimal',
              'scale' => 4,
              'notnull' => true,
              ));
-        $this->hasColumn('depreciation_rate', 'float', null, array(
-             'type' => 'float',
+        $this->hasColumn('depreciation_rate', 'decimal', null, array(
+             'type' => 'decimal',
              'scale' => 4,
              'notnull' => true,
              ));
-        $this->hasColumn('interest_rate', 'float', null, array(
-             'type' => 'float',
+        $this->hasColumn('interest_rate', 'decimal', null, array(
+             'type' => 'decimal',
              'scale' => 4,
              'notnull' => true,
              ));

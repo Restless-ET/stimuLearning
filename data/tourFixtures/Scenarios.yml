@@ -15,7 +15,7 @@ Scenario:
     bankrupcy_limit: <?php echo rand(1, 100)."\n"; ?>
   ## Market Share Evolution Parameters ##
     starting_level: 5
-    saturation_level: 60
+    saturation_level: 40
     alpha: 120
     beta: -0.3
   ## Quality Vector Weights ##

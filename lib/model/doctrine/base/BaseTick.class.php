@@ -13,6 +13,7 @@
  * @property decimal $balance
  * @property decimal $equity
  * @property float $market_share
+ * @property integer $clients
  * @property integer $operator_id
  * @property integer $scenario_id
  * @property Operator $Operator
@@ -27,6 +28,7 @@
  * @method decimal             getBalance()            Returns the current record's "balance" value
  * @method decimal             getEquity()             Returns the current record's "equity" value
  * @method float               getMarketShare()        Returns the current record's "market_share" value
+ * @method integer             getClients()            Returns the current record's "clients" value
  * @method integer             getOperatorId()         Returns the current record's "operator_id" value
  * @method integer             getScenarioId()         Returns the current record's "scenario_id" value
  * @method Operator            getOperator()           Returns the current record's "Operator" value
@@ -40,6 +42,7 @@
  * @method Tick                setBalance()            Sets the current record's "balance" value
  * @method Tick                setEquity()             Sets the current record's "equity" value
  * @method Tick                setMarketShare()        Sets the current record's "market_share" value
+ * @method Tick                setClients()            Sets the current record's "clients" value
  * @method Tick                setOperatorId()         Sets the current record's "operator_id" value
  * @method Tick                setScenarioId()         Sets the current record's "scenario_id" value
  * @method Tick                setOperator()           Sets the current record's "Operator" value
@@ -86,6 +89,10 @@ abstract class BaseTick extends sfDoctrineRecord
              ));
         $this->hasColumn('market_share', 'float', null, array(
              'type' => 'float',
+             'notnull' => true,
+             ));
+        $this->hasColumn('clients', 'integer', null, array(
+             'type' => 'integer',
              'notnull' => true,
              ));
         $this->hasColumn('operator_id', 'integer', null, array(

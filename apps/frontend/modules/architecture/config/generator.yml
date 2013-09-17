@@ -14,6 +14,8 @@ generator:
     config:
       actions: ~
       fields:
+        download_bandwidth: { renderer: 'FieldRendererHelper::append', renderer_arguments: ['Mbps'] }
+        upload_bandwidth: { renderer: 'FieldRendererHelper::append', renderer_arguments: ['Kbps'] }
         technology_id: { label: 'Technology' }
 
       list:

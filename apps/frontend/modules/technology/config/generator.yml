@@ -37,8 +37,10 @@ generator:
         class: false
 
       form:    ~
-      edit:    ~
-      new:     ~
+      edit:
+        display: [ name, description, decline_A, decline_B, scenarios_list ]
+      new:
+        display: [ name, description, decline_A, decline_B, scenarios_list ]
 
       show:
         display: [ name, description, first_tick_available, decline_A, decline_B ]

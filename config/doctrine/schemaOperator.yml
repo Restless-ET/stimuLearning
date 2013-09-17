@@ -8,8 +8,9 @@ Operator:
     balance: { type: decimal, default: 0.00, notnull: true }
     net_present_value: { type: decimal, default: 0.00, notnull: true }
     market_share: { type: decimal, default: 0.00, notnull: true }
-    payback_period: { type: integer, default: 0, notnull: true }
+    payback_period: { type: decimal, default: 0.00, notnull: true }
     internal_rate_of_return: { type: float }
+    accumulated_CAPEX: { type: decimal, notnull: true } #hidden
 
     user_id: { type: integer, notnull: true }
     scenario_id: { type: integer, notnull: true }

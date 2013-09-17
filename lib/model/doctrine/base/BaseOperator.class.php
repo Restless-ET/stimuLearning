@@ -11,8 +11,9 @@
  * @property decimal $balance
  * @property decimal $net_present_value
  * @property decimal $market_share
- * @property integer $payback_period
+ * @property decimal $payback_period
  * @property float $internal_rate_of_return
+ * @property decimal $accumulated_CAPEX
  * @property integer $user_id
  * @property integer $scenario_id
  * @property User $User
@@ -26,8 +27,9 @@
  * @method decimal             getBalance()                 Returns the current record's "balance" value
  * @method decimal             getNetPresentValue()         Returns the current record's "net_present_value" value
  * @method decimal             getMarketShare()             Returns the current record's "market_share" value
- * @method integer             getPaybackPeriod()           Returns the current record's "payback_period" value
+ * @method decimal             getPaybackPeriod()           Returns the current record's "payback_period" value
  * @method float               getInternalRateOfReturn()    Returns the current record's "internal_rate_of_return" value
+ * @method decimal             getAccumulatedCAPEX()        Returns the current record's "accumulated_CAPEX" value
  * @method integer             getUserId()                  Returns the current record's "user_id" value
  * @method integer             getScenarioId()              Returns the current record's "scenario_id" value
  * @method User                getUser()                    Returns the current record's "User" value
@@ -42,6 +44,7 @@
  * @method Operator            setMarketShare()             Sets the current record's "market_share" value
  * @method Operator            setPaybackPeriod()           Sets the current record's "payback_period" value
  * @method Operator            setInternalRateOfReturn()    Sets the current record's "internal_rate_of_return" value
+ * @method Operator            setAccumulatedCAPEX()        Sets the current record's "accumulated_CAPEX" value
  * @method Operator            setUserId()                  Sets the current record's "user_id" value
  * @method Operator            setScenarioId()              Sets the current record's "scenario_id" value
  * @method Operator            setUser()                    Sets the current record's "User" value
@@ -86,13 +89,17 @@ abstract class BaseOperator extends sfDoctrineRecord
              'default' => 0,
              'notnull' => true,
              ));
-        $this->hasColumn('payback_period', 'integer', null, array(
-             'type' => 'integer',
+        $this->hasColumn('payback_period', 'decimal', null, array(
+             'type' => 'decimal',
              'default' => 0,
              'notnull' => true,
              ));
         $this->hasColumn('internal_rate_of_return', 'float', null, array(
              'type' => 'float',
+             ));
+        $this->hasColumn('accumulated_CAPEX', 'decimal', null, array(
+             'type' => 'decimal',
+             'notnull' => true,
              ));
         $this->hasColumn('user_id', 'integer', null, array(
              'type' => 'integer',
