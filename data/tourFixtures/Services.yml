@@ -29,6 +29,6 @@ Service:
     cost_per_user: 120.00
     CAPEX_percentage: 5.00
     periodic_fee: 480.00
-    clients_quota: 0.00 # Simplify this by using a single service
+    clients_quota: 100.00 # Simplify this by using a single service
     Operator: Operator_1
     Technology: Technology_2

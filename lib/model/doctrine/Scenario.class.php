@@ -156,14 +156,18 @@ class Scenario extends BaseScenario
 
         $techsPenetration = array();
         $singleTech = (count($this['AvailableTechnologies']) == 1) ? true : false;
+        $lastPenetr = false;
         foreach ($this['AvailableTechnologies'] as $tech) {
             if ($this['current_tick'] >= $tech['first_tick_available']) {
                 if ($singleTech) {
-                    $techPenetrRatio = 1;
+                    $techsPenetration['t'.$tech['id']] = $marketPenetration;
+                } elseif ($lastPenetr !== false) {
+                    $techsPenetration['t'.$tech['id']] = $marketPenetration - $lastPenetr;
                 } else {
                     $techPenetrRatio = 1 + $tech['decline_A'] * exp($tech['decline_B'] * $this['current_tick']);
+                    $lastPenetr = $marketPenetration / $techPenetrRatio;
+                    $techsPenetration['t'.$tech['id']] = $lastPenetr;
                 }
-                $techsPenetration['t'.$tech['id']] = $marketPenetration / $techPenetrRatio;
             }
         }
 
@@ -188,9 +192,7 @@ class Scenario extends BaseScenario
             foreach ($operator['Services'] as $service) {
                 $technology = $service['Technology'];
                 if (isset($techsPenetration['t'.$technology['id']])) {
-                    //TODO Find the best way to get this % relational, since right now this only works for single Oper
-                    //In other words, this should be techClients by operator.
-                    $techClients = $this['total_clients'] * $techsPenetration['t'.$technology['id']];
+                    $techClients = $totalClients * $techsPenetration['t'.$technology['id']] / $marketPenetration;
                     $servClients = round($service['clients_quota'] / 100 * $techClients);
 
                     $equipments = Doctrine_Core::getTable('Equipment')->createQuery('e')
