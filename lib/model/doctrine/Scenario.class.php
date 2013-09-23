@@ -115,7 +115,7 @@ class Scenario extends BaseScenario
             $opTick->setCashflow($cashflow);
             $balance = $operator['balance'] + $cashflow;
             $opTick->setBalance($balance);
-            $opTick->setEquity($balance * 0.5); // ????!?!
+            $opTick->setEquity($balance - $capex); //TODO CONFIRMAR !!
             $opTick->save();
 
             $operator->setCurrentMarketSize($totalClients);
@@ -255,7 +255,7 @@ class Scenario extends BaseScenario
             $opTick->setCashflow($cashflow);
             $balance = $operator['balance'] + $cashflow;
             $opTick->setBalance($balance);
-            $opTick->setEquity($balance * 0.5); // ????!?!
+            $opTick->setEquity($balance - $accumCapex); //TODO Confirmar!!!
             $opTick->save();
 
             if ($operator['balance'] < 0.00 && $balance >= 0.00) {
