@@ -16,9 +16,7 @@ class DefaultActions extends sfActions
      */
     public function executeIndex()
     {
-        if (!$this->getUser()->isAuthenticated()) {
-            $this->redirect('@login');
-        } else {
+        if ($this->getUser()->isAuthenticated()) {
             $this->redirect('@operator');
         }
 
@@ -34,6 +32,11 @@ class DefaultActions extends sfActions
      */
     public function executeLogin(sfWebRequest $request)
     {
+        // If we're already logged on, send to homepage
+        if ($this->getUser()->isAuthenticated()) {
+            $this->redirect('@homepage');
+        }
+
         $this->form = new LoginForm();
 
         // We must detect that besides being in post, we have posted the login info
