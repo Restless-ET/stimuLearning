@@ -34,16 +34,16 @@ class Operator extends BaseOperator
                 $nbrServ = $scenario['number_of_services_weight'] * log(0000);
                 $fee = $scenario['fee_weight'] * log(0000);
                 $contain = $scenario['containment_factor_weight'] * log(0000);
-                $bwUp = $scenario['upload_weight'] * log(0000);
-                $bwDown = $scenario['download_weight'] * log(0000);
-                $occup = $scenario['occupation_rate_weight'] * log(0000);
+                $setup = $scenario['id'] * log(0000); // Change to Operator??
 
-                $perService += $service['clients_quota'] * ($nbrServ - $fee - $contain) + $bwUp + $bwDown - $occup;
+                $perService += $service['clients_quota'] * ($nbrServ - $fee - $contain - $setup);
             }
 
-            $setup = $scenario['id'] * log(0000);
+            $bwUp = $scenario['upload_weight'] * log(0000);
+            $bwDown = $scenario['download_weight'] * log(0000);
+            $occup = $scenario['occupation_rate_weight'] * log(0000);
 
-            $perTechnology += 1 * $perService - $setup;
+            $perTechnology += 1 * $perService + $bwUp + $bwDown - $occup;
         }
 
         return exp($perTechnology);

@@ -32,3 +32,65 @@ Service:
     clients_quota: 100.00 # Simplify this by using a single service
     Operator: Operator_1
     Technology: Technology_2
+
+## Hipotese A ##
+  Service_3:
+    name: 'Triple-play A-1'
+    number_of_services: 3
+    setup_fee: 25.00
+    cost_per_user: 120.00
+    CAPEX_percentage: 5.00
+    periodic_fee: 650.00
+    clients_quota: 75.00
+    Operator: Operator_2
+    Technology: Technology_3
+  Service_4:
+    name: 'Triple-play B-1'
+    number_of_services: 3
+    setup_fee: 25.00
+    cost_per_user: 120.00
+    CAPEX_percentage: 5.00
+    periodic_fee: 600.00
+    clients_quota: 25.00
+    Operator: Operator_2
+    Technology: Technology_3
+  Service_5:
+    name: 'Triple-play A-2'
+    number_of_services: 3
+    setup_fee: 25.00
+    cost_per_user: 120.00
+    CAPEX_percentage: 5.00
+    periodic_fee: 50.00
+    clients_quota: 60.00
+    Operator: Operator_3
+    Technology: Technology_3
+  Service_6:
+    name: 'Triple-play B-2'
+    number_of_services: 3
+    setup_fee: 25.00
+    cost_per_user: 120.00
+    CAPEX_percentage: 5.00
+    periodic_fee: 400.00
+    clients_quota: 40.00
+    Operator: Operator_3
+    Technology: Technology_3
+  Service_7:
+    name: 'Triple-play A-3'
+    number_of_services: 3
+    setup_fee: 50.00
+    cost_per_user: 120.00
+    CAPEX_percentage: 5.00
+    periodic_fee: 600.00
+    clients_quota: 50.00
+    Operator: Operator_4
+    Technology: Technology_3
+  Service_8:
+    name: 'Triple-play B-3'
+    number_of_services: 3
+    setup_fee: 50.00
+    cost_per_user: 120.00
+    CAPEX_percentage: 5.00
+    periodic_fee: 500.00
+    clients_quota: 50.00
+    Operator: Operator_4
+    Technology: Technology_3

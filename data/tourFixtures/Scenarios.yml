@@ -56,3 +56,32 @@ Scenario:
     occupation_rate_weight: <?php echo rand(1, 5)."\n"; ?>
     containment_factor_weight: <?php echo rand(1, 5)."\n"; ?>
     reference_occupation_rate: <?php echo rand(1, 25)."\n"; ?>
+
+## Hipotese 3 operadores ##
+  Scenario_2:
+    description: 'Hipótese a 3 operadores'
+    total_clients: 350000
+    tick_alias: Year
+    lifespan: <?php $ls = 36; echo $ls."\n"; ?>
+    total_decision_points: <?php $tdp = 2; echo $tdp."\n"; ?>
+    ticks_between_decision_points: <?php echo ($ls / ($tdp + 1))."\n"; ?> # hidden
+  ## Financial Parameters ##
+    packages_erosion_rate: '0.02'
+    depreciation_rate: '0.1'
+    interest_rate: '0.1'
+    elasticity: '1.0'
+    bankrupcy_limit: <?php echo rand(1, 100)."\n"; ?>
+  ## Market Share Evolution Parameters ##
+    starting_level: 5
+    saturation_level: 40
+    alpha: 120
+    beta: -0.30
+  ## Quality Vector Weights ##
+    number_of_services_weight: 30.00
+    download_weight: 3.00
+    upload_weight: 3.00
+    rate_weight: 3.00
+    fee_weight: 5.00
+    occupation_rate_weight: <?php echo rand(1, 5)."\n"; ?>
+    containment_factor_weight: <?php echo rand(1, 5)."\n"; ?>
+    reference_occupation_rate: <?php echo rand(1, 25)."\n"; ?>

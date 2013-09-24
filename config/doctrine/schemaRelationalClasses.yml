@@ -10,7 +10,7 @@ ScenarioTechnology:
     technology_id:
       type: integer
       primary: true
-  relations:
-    Scenario:
-      onDelete: CASCADE 
-    Technology:
+  #relations:
+  #  Scenario:
+  #    onDelete: CASCADE
+  #  Technology:

@@ -7,5 +7,8 @@ Technology:
     first_tick_available: { type: integer, default: 0, notnull: true }
     decline_A: { type: decimal, scale: 3, notnull: true }
     decline_B: { type: decimal, scale: 3, notnull: true }
+  ## For the relations ##
+    scenario_id: { type: integer, notnull: true }
   relations:
-    #Scenarios: # Defined on Scenario schema
+    Scenario:
+      foreignAlias: Technologies

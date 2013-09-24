@@ -14,3 +14,23 @@ Operator:
     market_share: 100.00
     User: User_2
     Scenario: Scenario_1
+
+## Hipotese A ##
+  Operator_2:
+    name: 'Operador 1'
+    starting_market_size: 4725
+    market_share: 27.00
+    User: User_1
+    Scenario: Scenario_2
+  Operator_3:
+    name: 'Operador 2'
+    starting_market_size: 5250
+    market_share: 30.00
+    User: User_2
+    Scenario: Scenario_2
+  Operator_4:
+    name: 'Operador 3'
+    starting_market_size: 7525
+    market_share: 43.00
+    User: User_3
+    Scenario: Scenario_2

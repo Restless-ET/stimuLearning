@@ -10,9 +10,9 @@
  * @property integer $first_tick_available
  * @property decimal $decline_A
  * @property decimal $decline_B
+ * @property integer $scenario_id
+ * @property Scenario $Scenario
  * @property Architecture $Architecture
- * @property Doctrine_Collection $ScenarioTechnology
- * @property Doctrine_Collection $Scenarios
  * @property Doctrine_Collection $Services
  * 
  * @method string              getName()                 Returns the current record's "name" value
@@ -20,18 +20,18 @@
  * @method integer             getFirstTickAvailable()   Returns the current record's "first_tick_available" value
  * @method decimal             getDeclineA()             Returns the current record's "decline_A" value
  * @method decimal             getDeclineB()             Returns the current record's "decline_B" value
+ * @method integer             getScenarioId()           Returns the current record's "scenario_id" value
+ * @method Scenario            getScenario()             Returns the current record's "Scenario" value
  * @method Architecture        getArchitecture()         Returns the current record's "Architecture" value
- * @method Doctrine_Collection getScenarioTechnology()   Returns the current record's "ScenarioTechnology" collection
- * @method Doctrine_Collection getScenarios()            Returns the current record's "Scenarios" collection
  * @method Doctrine_Collection getServices()             Returns the current record's "Services" collection
  * @method Technology          setName()                 Sets the current record's "name" value
  * @method Technology          setDescription()          Sets the current record's "description" value
  * @method Technology          setFirstTickAvailable()   Sets the current record's "first_tick_available" value
  * @method Technology          setDeclineA()             Sets the current record's "decline_A" value
  * @method Technology          setDeclineB()             Sets the current record's "decline_B" value
+ * @method Technology          setScenarioId()           Sets the current record's "scenario_id" value
+ * @method Technology          setScenario()             Sets the current record's "Scenario" value
  * @method Technology          setArchitecture()         Sets the current record's "Architecture" value
- * @method Technology          setScenarioTechnology()   Sets the current record's "ScenarioTechnology" collection
- * @method Technology          setScenarios()            Sets the current record's "Scenarios" collection
  * @method Technology          setServices()             Sets the current record's "Services" collection
  * 
  * @package    stimuLearning
@@ -68,23 +68,22 @@ abstract class BaseTechnology extends sfDoctrineRecord
              'scale' => 3,
              'notnull' => true,
              ));
+        $this->hasColumn('scenario_id', 'integer', null, array(
+             'type' => 'integer',
+             'notnull' => true,
+             ));
     }
 
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('Scenario', array(
+             'local' => 'scenario_id',
+             'foreign' => 'id'));
+
         $this->hasOne('Architecture', array(
              'local' => 'id',
              'foreign' => 'technology_id'));
-
-        $this->hasMany('ScenarioTechnology', array(
-             'local' => 'id',
-             'foreign' => 'technology_id'));
-
-        $this->hasMany('Scenario as Scenarios', array(
-             'refClass' => 'ScenarioTechnology',
-             'local' => 'technology_id',
-             'foreign' => 'scenario_id'));
 
         $this->hasMany('Service as Services', array(
              'local' => 'id',

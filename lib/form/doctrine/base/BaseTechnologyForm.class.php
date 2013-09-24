@@ -21,9 +21,9 @@ abstract class BaseTechnologyForm extends BaseFormDoctrine
       'first_tick_available' => new sfWidgetFormInputText(),
       'decline_A'            => new sfWidgetFormInputText(),
       'decline_B'            => new sfWidgetFormInputText(),
+      'scenario_id'          => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Scenario'), 'add_empty' => false)),
       'created_at'           => new sfWidgetFormDateTime(),
       'updated_at'           => new sfWidgetFormDateTime(),
-      'scenarios_list'       => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Scenario')),
     ));
 
     $this->setValidators(array(
@@ -33,9 +33,9 @@ abstract class BaseTechnologyForm extends BaseFormDoctrine
       'first_tick_available' => new sfValidatorInteger(array('required' => false)),
       'decline_A'            => new sfValidatorNumber(),
       'decline_B'            => new sfValidatorNumber(),
+      'scenario_id'          => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Scenario'))),
       'created_at'           => new sfValidatorDateTime(),
       'updated_at'           => new sfValidatorDateTime(),
-      'scenarios_list'       => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Scenario', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('technology[%s]');
@@ -50,62 +50,6 @@ abstract class BaseTechnologyForm extends BaseFormDoctrine
   public function getModelName()
   {
     return 'Technology';
-  }
-
-  public function updateDefaultsFromObject()
-  {
-    parent::updateDefaultsFromObject();
-
-    if (isset($this->widgetSchema['scenarios_list']))
-    {
-      $this->setDefault('scenarios_list', $this->object->Scenarios->getPrimaryKeys());
-    }
-
-  }
-
-  protected function doSave($con = null)
-  {
-    $this->saveScenariosList($con);
-
-    parent::doSave($con);
-  }
-
-  public function saveScenariosList($con = null)
-  {
-    if (!$this->isValid())
-    {
-      throw $this->getErrorSchema();
-    }
-
-    if (!isset($this->widgetSchema['scenarios_list']))
-    {
-      // somebody has unset this widget
-      return;
-    }
-
-    if (null === $con)
-    {
-      $con = $this->getConnection();
-    }
-
-    $existing = $this->object->Scenarios->getPrimaryKeys();
-    $values = $this->getValue('scenarios_list');
-    if (!is_array($values))
-    {
-      $values = array();
-    }
-
-    $unlink = array_diff($existing, $values);
-    if (count($unlink))
-    {
-      $this->object->unlink('Scenarios', array_values($unlink));
-    }
-
-    $link = array_diff($values, $existing);
-    if (count($link))
-    {
-      $this->object->link('Scenarios', array_values($link));
-    }
   }
 
 }

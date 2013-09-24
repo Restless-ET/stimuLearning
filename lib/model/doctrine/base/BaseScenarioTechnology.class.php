@@ -7,17 +7,11 @@
  * 
  * @property integer $scenario_id
  * @property integer $technology_id
- * @property Scenario $Scenario
- * @property Technology $Technology
  * 
  * @method integer            getScenarioId()    Returns the current record's "scenario_id" value
  * @method integer            getTechnologyId()  Returns the current record's "technology_id" value
- * @method Scenario           getScenario()      Returns the current record's "Scenario" value
- * @method Technology         getTechnology()    Returns the current record's "Technology" value
  * @method ScenarioTechnology setScenarioId()    Sets the current record's "scenario_id" value
  * @method ScenarioTechnology setTechnologyId()  Sets the current record's "technology_id" value
- * @method ScenarioTechnology setScenario()      Sets the current record's "Scenario" value
- * @method ScenarioTechnology setTechnology()    Sets the current record's "Technology" value
  * 
  * @package    stimuLearning
  * @subpackage model
@@ -47,13 +41,6 @@ abstract class BaseScenarioTechnology extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Scenario', array(
-             'local' => 'scenario_id',
-             'foreign' => 'id',
-             'onDelete' => 'CASCADE'));
-
-        $this->hasOne('Technology', array(
-             'local' => 'technology_id',
-             'foreign' => 'id'));
+        
     }
 }

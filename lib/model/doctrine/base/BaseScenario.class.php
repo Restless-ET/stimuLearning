@@ -31,9 +31,8 @@
  * @property decimal $occupation_rate_weight
  * @property decimal $containment_factor_weight
  * @property decimal $reference_occupation_rate
- * @property Doctrine_Collection $AvailableTechnologies
+ * @property Doctrine_Collection $Technologies
  * @property Doctrine_Collection $Operators
- * @property Doctrine_Collection $ScenarioTechnology
  * @property Doctrine_Collection $Ticks
  * 
  * @method string              getDescription()                   Returns the current record's "description" value
@@ -62,9 +61,8 @@
  * @method decimal             getOccupationRateWeight()          Returns the current record's "occupation_rate_weight" value
  * @method decimal             getContainmentFactorWeight()       Returns the current record's "containment_factor_weight" value
  * @method decimal             getReferenceOccupationRate()       Returns the current record's "reference_occupation_rate" value
- * @method Doctrine_Collection getAvailableTechnologies()         Returns the current record's "AvailableTechnologies" collection
+ * @method Doctrine_Collection getTechnologies()                  Returns the current record's "Technologies" collection
  * @method Doctrine_Collection getOperators()                     Returns the current record's "Operators" collection
- * @method Doctrine_Collection getScenarioTechnology()            Returns the current record's "ScenarioTechnology" collection
  * @method Doctrine_Collection getTicks()                         Returns the current record's "Ticks" collection
  * @method Scenario            setDescription()                   Sets the current record's "description" value
  * @method Scenario            setStarted()                       Sets the current record's "started" value
@@ -92,9 +90,8 @@
  * @method Scenario            setOccupationRateWeight()          Sets the current record's "occupation_rate_weight" value
  * @method Scenario            setContainmentFactorWeight()       Sets the current record's "containment_factor_weight" value
  * @method Scenario            setReferenceOccupationRate()       Sets the current record's "reference_occupation_rate" value
- * @method Scenario            setAvailableTechnologies()         Sets the current record's "AvailableTechnologies" collection
+ * @method Scenario            setTechnologies()                  Sets the current record's "Technologies" collection
  * @method Scenario            setOperators()                     Sets the current record's "Operators" collection
- * @method Scenario            setScenarioTechnology()            Sets the current record's "ScenarioTechnology" collection
  * @method Scenario            setTicks()                         Sets the current record's "Ticks" collection
  * 
  * @package    stimuLearning
@@ -228,17 +225,13 @@ abstract class BaseScenario extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasMany('Technology as AvailableTechnologies', array(
-             'refClass' => 'ScenarioTechnology',
-             'local' => 'scenario_id',
-             'foreign' => 'technology_id',
+        $this->hasMany('Technology as Technologies', array(
+             'local' => 'id',
+             'foreign' => 'scenario_id',
+             'onDelete' => 'CASCADE',
              'orderBy' => 'first_tick_available ASC'));
 
         $this->hasMany('Operator as Operators', array(
-             'local' => 'id',
-             'foreign' => 'scenario_id'));
-
-        $this->hasMany('ScenarioTechnology', array(
              'local' => 'id',
              'foreign' => 'scenario_id'));
 

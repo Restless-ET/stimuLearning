@@ -40,11 +40,10 @@ Scenario:
     reference_occupation_rate: { type: decimal, notnull: true }
   ## Relations ##
   relations:
-    AvailableTechnologies:
+    Technologies:
       type: many
       class: Technology
       orderBy: first_tick_available ASC
-      refClass: ScenarioTechnology
-      local: scenario_id
-      foreign: technology_id
-      foreignAlias: Scenarios
+      onDelete: CASCADE
+      local: id
+      foreign: scenario_id

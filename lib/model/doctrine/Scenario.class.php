@@ -39,9 +39,9 @@ class Scenario extends BaseScenario
             $msg = 'This scenario has no associated operators!';
         }
         // validate that this scenario has technologies available
-        $techsAvailable = count($this->AvailableTechnologies);
+        $techsAvailable = count($this->Technologies);
         if (!$techsAvailable) {
-            $msg = 'This scenario has no available technologies!';
+            $msg = 'This scenario has no technologies available!';
         } elseif ($techsAvailable > 2) { // backend safeguard
             $msg = 'Technology transition on this scenario is only possible to a maximum of two right now!';
         }
@@ -56,14 +56,14 @@ class Scenario extends BaseScenario
             }
 
             $totalClients = $operator['starting_market_size'];
-            $totalClients = $marketClients; // TODO calculate for the operator
+            $totalClients = $marketClients * $operator['market_share'] / 100; // TODO calculate for the operator
             $clientsDiff = $totalClients - 0; // Equal values on initialization
             $capex = 0.00;
             $opex = 0.00;
             $revenue = 0.00;
 
             //TODO Update operator market share
-            $operator['market_share'] = 100.00;
+            //$operator['market_share'] = 100.00;
 
             $opTick = new Tick();
             $opTick->setNbr($this['current_tick']);
@@ -85,16 +85,17 @@ class Scenario extends BaseScenario
                         $targetTotal = ceil($clients / $equipment['maximum_clients']);
                         $currentTotal = 0; // Because this is the initialization
 
-                        $acquired = new AcquiredEquipment();
-                        $acquired->setQuantity($targetTotal - $currentTotal);
-                        $acquired->setPrice($equipment['starting_price']); // Just for indication really
-                        $acquired->setAvailableUntil($this['current_tick'] + $equipment['life_expectation']);
-                        $acquired->setEquipmentId($equipment['id']);
-                        $acquired->setTick($opTick);
-                        $acquired->save();
+                        if ($targetTotal > $currentTotal) {
+                            $acquired = new AcquiredEquipment();
+                            $acquired->setQuantity($targetTotal - $currentTotal);
+                            $acquired->setPrice($equipment['starting_price']); // Just for indication really
+                            $acquired->setAvailableUntil($this['current_tick'] + $equipment['life_expectation']);
+                            $acquired->setEquipmentId($equipment['id']);
+                            $acquired->setTick($opTick);
+                            $acquired->save();
 
-                        $capex -= ($targetTotal - $currentTotal) * $equipment['starting_price'];
-
+                            $capex -= ($targetTotal - $currentTotal) * $equipment['starting_price'];
+                        }
                     }
                     if ($clientsDiff > 0) {
                         $newClients = round($service['clients_quota'] / 100 * $clientsDiff);
@@ -155,9 +156,9 @@ class Scenario extends BaseScenario
         $marketClients = $this['total_clients'] * $marketPenetration;
 
         $techsPenetration = array();
-        $singleTech = (count($this['AvailableTechnologies']) == 1) ? true : false;
+        $singleTech = (count($this['Technologies']) == 1) ? true : false;
         $lastPenetr = false;
-        foreach ($this['AvailableTechnologies'] as $tech) {
+        foreach ($this['Technologies'] as $tech) {
             if ($this['current_tick'] >= $tech['first_tick_available']) {
                 if ($singleTech) {
                     $techsPenetration['t'.$tech['id']] = $marketPenetration;
@@ -172,14 +173,14 @@ class Scenario extends BaseScenario
         }
 
         foreach ($this['Operators'] as $operator) {
-            $totalClients = $marketClients; // TODO calculate for the operator correctly
+            $totalClients = $marketClients * $operator['market_share'] / 100; // TODO calculate for the operator correctly
             $clientsDiff = $totalClients - $operator['current_market_size'];
             $capex = 0.00;
             $opex = 0.00;
             $revenue = 0.00;
 
             //TODO Update operator market share
-            $operator['market_share'] = 100.00;
+            //$operator['market_share'] = 100.00;
 
             $opTick = new Tick();
             $opTick->setNbr($this['current_tick']);
@@ -217,18 +218,20 @@ class Scenario extends BaseScenario
                             ->andWhere('ae.is_obsolete = ?', false)
                             ->execute(array(), Doctrine_Core::HYDRATE_SINGLE_SCALAR);
 
-                        $currentPrice = $equipment->getPriceByTick($this['current_tick']);
+                        if ($targetTotal > $currentTotal) {
+                            $currentPrice = $equipment->getPriceByTick($this['current_tick']);
 
-                        $acquired = new AcquiredEquipment();
-                        $quantity = $targetTotal - $currentTotal;
-                        $acquired->setQuantity($quantity);
-                        $acquired->setPrice($currentPrice);
-                        $acquired->setAvailableUntil($this['current_tick'] + $equipment['life_expectation']);
-                        $acquired->setEquipmentId($equipment['id']);
-                        $acquired->setTick($opTick);
-                        $acquired->save();
+                            $acquired = new AcquiredEquipment();
+                            $quantity = $targetTotal - $currentTotal;
+                            $acquired->setQuantity($quantity);
+                            $acquired->setPrice($currentPrice);
+                            $acquired->setAvailableUntil($this['current_tick'] + $equipment['life_expectation']);
+                            $acquired->setEquipmentId($equipment['id']);
+                            $acquired->setTick($opTick);
+                            $acquired->save();
 
-                        $capex -= $quantity * $currentPrice;
+                            $capex -= $quantity * $currentPrice;
+                        }
                     }
                     if ($clientsDiff > 0) {
                         $newClients = round($service['clients_quota'] / 100 * $clientsDiff);
