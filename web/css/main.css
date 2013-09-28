@@ -1,6 +1,6 @@
 #container
 {
-  width: 100%;
+    width: 100%;
 }
 
 #content {
@@ -16,6 +16,10 @@
     padding: 3px;
     color: #333;
     background-color: #ccf;
+}
+
+#sf_admin_container {
+    width: 99.5%;
 }
 
 #title a {
