@@ -1,5 +1,5 @@
 generator:
-  class: sfDoctrineGenerator #jRollerDoctrineGenerator
+  class: jRollerDoctrineGenerator
   param:
     model_class:           Scenario
     theme:                 jroller
@@ -13,11 +13,10 @@ generator:
 
     config:
       actions:
+        startSimulation: { credentials: [manager] }
         nextStep: { credentials: [manager] }
         nextDecision: { credentials: [manager] }
         finish: { credentials: [manager] }
-        edit: { credentials: [manager] }
-        delete: { credentials: [manager] }
 
       fields:
         started: { renderer: 'FieldRendererHelper::plainBoolean' }
@@ -46,26 +45,27 @@ generator:
       form:
         display:
           #Graph:
+          #  - _market_penetration_chart
+          Basic:
             - _market_penetration_chart
-          #Basic:
             - description
             - total_clients
             - tick_alias
             - lifespan
             - total_decision_points
             - ticks_between_decision_points
-          #Market Share Evolution:
+          Market Share Evolution:
             - starting_level
             - saturation_level
             - alpha
             - beta
-          #Financial:
+          Financial:
             - packages_erosion_rate
             - depreciation_rate
             - interest_rate
             - elasticity
             - bankrupcy_limit
-          #Quality Vector:
+          Quality Vector:
             - number_of_services_weight
             - download_weight
             - upload_weight
@@ -85,3 +85,15 @@ generator:
             credentials: [manager]
 
       new: ~
+      show:
+        title: 'View Scenario - %description%'
+#        display: ~
+#        actions: # check _show_actions.php
+#          _list: ~
+#          startSimulation: { credentials: [manager] }
+#          _edit: { credentials: [manager] }
+#          _delete: { credentials: [manager] }
+#          nextStep: { credentials: [manager] }
+#          nextDecision: { credentials: [manager] }
+#          finish: { credentials: [manager] }
+
