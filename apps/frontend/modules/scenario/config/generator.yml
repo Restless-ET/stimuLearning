@@ -1,22 +1,22 @@
 generator:
   class: jRollerDoctrineGenerator
   param:
-    model_class:           Scenario
-    theme:                 jroller
-    non_verbose_templates: true
-    with_show:             false
-    singular:              ~
-    plural:                ~
-    route_prefix:          scenario
-    with_doctrine_route:   true
-    actions_base_class:    sfActions
+    model_class:            Scenario
+    theme:                  jroller
+    non_verbose_templates:  true
+    with_show:              false
+    singular:               ~
+    plural:                 ~
+    route_prefix:           scenario
+    with_doctrine_route:    true
+    actions_base_class:     sfActions
 
     config:
       actions:
-        startSimulation: { credentials: [manager] }
-        nextStep: { credentials: [manager] }
-        nextDecision: { credentials: [manager] }
-        finish: { credentials: [manager] }
+        startSimulation: { action: startSimulation, credentials: [manager] }
+        nextStep: { action: advanceSimulation, credentials: [manager] }
+        nextDecision: { action: advanceSimulation, credentials: [manager] }
+        finish: { action: advanceSimulation, credentials: [manager] }
 
       fields:
         started: { renderer: 'FieldRendererHelper::plainBoolean' }
@@ -86,8 +86,36 @@ generator:
 
       new: ~
       show:
-        title: 'View Scenario - %description%'
-#        display: ~
+        #title: 'View Scenario - %%description%%'
+        display:
+          Basic:
+            - _market_penetration_chart
+            - description
+            - total_clients
+            - tick_alias
+            - lifespan
+            - total_decision_points
+            - ticks_between_decision_points
+          Market Share Evolution:
+            - starting_level
+            - saturation_level
+            - alpha
+            - beta
+          Financial:
+            - packages_erosion_rate
+            - depreciation_rate
+            - interest_rate
+            - elasticity
+            - bankrupcy_limit
+          Quality Vector:
+            - number_of_services_weight
+            - download_weight
+            - upload_weight
+            - rate_weight
+            - fee_weight
+            - occupation_rate_weight
+            - containment_factor_weight
+            - reference_occupation_rate
 #        actions: # check _show_actions.php
 #          _list: ~
 #          startSimulation: { credentials: [manager] }
