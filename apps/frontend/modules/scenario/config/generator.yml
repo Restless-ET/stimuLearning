@@ -1,5 +1,5 @@
 generator:
-  class: jRollerDoctrineGenerator
+  class: jRollerDoctrineGenerator #extends sfDoctrineGenerator
   param:
     model_class:            Scenario
     theme:                  jroller
@@ -89,13 +89,15 @@ generator:
         #title: 'View Scenario - %%description%%'
         display:
           Basic:
-            - _market_penetration_chart
+            #- _market_penetration_chart
             - description
             - total_clients
             - tick_alias
             - lifespan
             - total_decision_points
             - ticks_between_decision_points
+          Graph:
+            - _market_penetration_chart
           Market Share Evolution:
             - starting_level
             - saturation_level

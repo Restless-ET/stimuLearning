@@ -24,7 +24,8 @@ class ScenarioGeneratorHelper extends BaseScenarioGeneratorHelper
         return '<li class="sf_admin_action_sim_init">'.link_to(
              UIHelper::addIcon($params).'<span>'.$label.'</span>',
              'scenario/startSimulation?id='.$object->getId(),
-             array('id' => 'scenario_sim_init')
+             array('id' => 'scenario_sim_init',
+                 'class' => str_replace('class=', '', $params['params']))
         ).'</li>';
 
         //return '<li class="sf_admin_action_custom">'.link_to(UIHelper::addIcon($params).'<span>'.__($params['label'],
@@ -42,10 +43,13 @@ class ScenarioGeneratorHelper extends BaseScenarioGeneratorHelper
      */
     public function linkToNextStep($object, $params)
     {
+        $label = __($params['label'], array(), 'sf_admin');
+
         return '<li class="sf_admin_action_sim_next_step">'.link_to(
-            __($params['label'], array(), 'messages'),
+            UIHelper::addIcon($params).'<span>'.$label.'</span>',
             'scenario/advanceSimulation?id='.$object->getId().'&ticks=1',
-            array('id' => 'scenario_sim_next_step')
+            array('id' => 'scenario_sim_next_step',
+                 'class' => str_replace('class=', '', $params['params']))
         ).'</li>';
     }
 
@@ -66,11 +70,13 @@ class ScenarioGeneratorHelper extends BaseScenarioGeneratorHelper
             $targetStep = $object->getLifespan();
         }
         $ticks = $targetStep - $object->getCurrentTick();
+        $label = __($params['label'], array(), 'sf_admin');
 
         return '<li class="sf_admin_action_sim_next_decision">'.link_to(
-            __($params['label'], array(), 'messages'),
+            UIHelper::addIcon($params).'<span>'.$label.'</span>',
             'scenario/advanceSimulation?id='.$object->getId().'&ticks='.$ticks,
-            array('id' => 'scenario_sim_next_decision')
+            array('id' => 'scenario_sim_next_decision',
+                 'class' => str_replace('class=', '', $params['params']))
         ).'</li>';
     }
 
@@ -85,11 +91,13 @@ class ScenarioGeneratorHelper extends BaseScenarioGeneratorHelper
     public function linkToFinish($object, $params)
     {
         $ticks = $object->getLifespan() - $object->getCurrentTick();
+        $label = __($params['label'], array(), 'sf_admin');
 
         return '<li class="sf_admin_action_sim_finish">'.link_to(
-            __($params['label'], array(), 'messages'),
+            UIHelper::addIcon($params).'<span>'.$label.'</span>',
             'scenario/advanceSimulation?id='.$object->getId().'&ticks='.$ticks,
-            array('id' => 'scenario_sim_finish')
+            array('id' => 'scenario_sim_finish',
+                 'class' => str_replace('class=', '', $params['params']))
         ).'</li>';
     }
 }
