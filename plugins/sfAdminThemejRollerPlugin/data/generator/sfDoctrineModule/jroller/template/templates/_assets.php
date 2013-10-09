@@ -10,7 +10,7 @@
 <?php if (sfConfig::get('app_sf_admin_theme_jroller_plugin_theme_switcher')): // theme switcher ?>
   [?php use_stylesheet('<?php echo sfConfig::get('app_sf_admin_theme_jroller_plugin_theme_dir', '/sfAdminThemejRollerPlugin/css/jquery').'/base/ui.all.css' ?>') ?]
 <?php else: // specific theme ?>
-  [?php use_stylesheet('<?php echo sfConfig::get('app_sf_admin_theme_jroller_plugin_theme_dir', '/sfAdminThemejRollerPlugin/css/jquery').'/'.sfConfig::get('app_sf_admin_theme_jroller_plugin_theme', 'redmond').'/jquery-ui.custom.css' ?>') ?]
+  [?php use_stylesheet('<?php echo sfConfig::get('app_sf_admin_theme_jroller_plugin_theme_dir', '/sfAdminThemejRollerPlugin/css/jquery').'/'.sfConfig::get('app_sf_admin_theme_jroller_plugin_theme', 'redmond').'/'.sfConfig::get('app_sf_admin_theme_jroller_plugin_ui_css_file', 'jquery-ui.custom.css') ?>') ?]
 <?php endif; ?>
 
 <?php if (isset($this->params['css'])): // custom CSS ?>

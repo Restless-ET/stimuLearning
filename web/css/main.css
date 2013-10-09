@@ -6,7 +6,7 @@
 #content {
     margin-left: auto;
     margin-right: auto;
-    min-width: 925px;
+    min-width: 1004px;  /* for 1024px min-width page */
     padding: 0px 10px 15px 10px;
 }
 
@@ -20,6 +20,11 @@
 
 #sf_admin_container {
     width: 99.5%;
+}
+
+div.ui-tabs-vertical .ui-tabs-panel {
+  width: 72%;
+  margin: 0px;
 }
 
 #title a {

@@ -9,4 +9,11 @@
  */
 class OperatorGeneratorConfiguration extends BaseOperatorGeneratorConfiguration
 {
+    public function getShowActions()
+    {
+        $actions = parent::getShowActions();
+        //unset($actions['_edit'], $actions['_delete']);
+
+        return $actions;
+    }
 }
