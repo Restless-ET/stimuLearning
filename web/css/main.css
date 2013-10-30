@@ -78,6 +78,14 @@ th
     vertical-align: middle;
 }
 
+#sf_admin_container .sf_admin_form_row {
+    padding: 5px;
+}
+
+div.label {
+    display: inline-block;
+}
+
 #footer
 {
   clear: both;
