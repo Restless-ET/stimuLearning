@@ -38,9 +38,9 @@ generator:
 
       form:    ~
       edit:
-        display: [ name, description, decline_A, decline_B, scenarios_list ]
+        display: [ name, description, decline_A, decline_B, scenario_id ]
       new:
-        display: [ name, description, decline_A, decline_B, scenarios_list ]
+        display: [ name, description, decline_A, decline_B, scenario_id ]
 
       show:
         display: [ name, description, first_tick_available, decline_A, decline_B ]
