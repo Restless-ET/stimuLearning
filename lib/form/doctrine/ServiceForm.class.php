@@ -20,6 +20,6 @@ class ServiceForm extends BaseServiceForm
     public function configure()
     {
         unset($this['created_at'], $this['updated_at']);
-        unset($this['tick_to_edit']);
+        //unset($this['tick_to_edit']);
     }
 }
