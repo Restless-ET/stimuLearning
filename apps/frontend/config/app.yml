@@ -8,7 +8,7 @@ all:
   sf_admin_theme_jroller_plugin:
     use_jquery:  false
     theme_dir:   /css/lib/jquery-ui-themes
-    theme:       overcast
+    theme:       redmond
     ui_css_file: jquery-ui.css #default is jquery-ui.custom.css
 
 dev:
