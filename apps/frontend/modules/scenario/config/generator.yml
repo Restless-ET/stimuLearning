@@ -21,6 +21,15 @@ generator:
       fields:
         started: { renderer: 'FieldRendererHelper::plainBoolean' }
         finished: { renderer: 'FieldRendererHelper::plainBoolean' }
+      # Quality Vector Weights
+        number_of_services_weight: { help: 'Small explanation here...' }
+        download_weight: { help: 'Small explanation here...' }
+        upload_weight: { help: 'Small explanation here...' }
+        rate_weight: { help: 'Small explanation here...' }
+        fee_weight: { label: 'Change weight', help: 'Small explanation here...' }
+        occupation_rate_weight: { help: 'Small explanation here...' }
+        containment_factor_weight: { help: 'Small explanation here...' }
+        reference_occupation_rate: { help: 'Small explanation here...' }
 
       list:
         title: 'Scenarios'
