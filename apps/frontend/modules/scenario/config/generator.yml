@@ -76,6 +76,8 @@ generator:
             - interest_rate
             - elasticity
             - bankrupcy_limit
+          Operators:
+            - _operators
           Quality Vector:
             - number_of_services_weight
             - download_weight
@@ -121,6 +123,8 @@ generator:
             - interest_rate
             - elasticity
             - bankrupcy_limit
+          Operators:
+            - _operators
           Quality Vector:
             - number_of_services_weight
             - download_weight

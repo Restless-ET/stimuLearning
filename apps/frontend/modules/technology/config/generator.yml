@@ -20,7 +20,7 @@ generator:
 
       list:
         title: 'Technologies'
-        display: [ name, description, first_tick_available, decline_A, decline_B, Architecture ]
+        display: [ name, description, first_tick_available, decline_A, decline_B, Architecture, Scenario ]
         actions:
           _new:
             credentials: [manager]
@@ -35,6 +35,7 @@ generator:
 
       filter:
         class: false
+        #display: [ name, scenario_id ]
 
       form:    ~
       edit:

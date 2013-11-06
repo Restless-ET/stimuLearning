@@ -36,6 +36,7 @@ generator:
 
       filter:
         class: false
+        #display: [ name, technology_id ]
 
       form:    ~
       edit:    ~
