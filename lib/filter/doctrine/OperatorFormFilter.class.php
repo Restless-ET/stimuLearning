@@ -16,7 +16,7 @@ class OperatorFormFilter extends BaseOperatorFormFilter
      */
     public function configure()
     {
-        if (!sfContext::getInstance()->getUser()->hasCredential('manager')) {
+        if (!sfContext::getInstance()->getUser()->hasCredential('admin')) {
             unset($this['user_id']);
         }
     }
