@@ -38,6 +38,7 @@ generator:
           total_clients: { renderer: 'number_format', renderer_arguments: [0, ',', '.'] }
           total_decision_points: { label: '# decision pts'}
           ticks_between_decision_points: { label: 'Ticks between decision pts'}
+        table_method: filterByCredential
         actions:
           _new:
             credentials: [manager]
