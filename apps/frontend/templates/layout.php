@@ -54,7 +54,7 @@
       </div>
 
       <div id="footer">
-        powered by <a href="http://gsbl.det.ua.pt">
+        powered by <a href="http://gsbl.det.ua.pt" target="_blank">
         <?php echo image_tag('gsbl_logo.png', array('alt' => 'GSBL', 'height' => '20px')) ?></a>
       </div>
     </div>
