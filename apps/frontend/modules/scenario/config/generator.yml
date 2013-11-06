@@ -1,27 +1,35 @@
 generator:
-  class: sfDoctrineGenerator #jRollerDoctrineGenerator
+  class: jRollerDoctrineGenerator #extends sfDoctrineGenerator
   param:
-    model_class:           Scenario
-    theme:                 admin #jroller
-    non_verbose_templates: true
-    with_show:             false
-    singular:              ~
-    plural:                ~
-    route_prefix:          scenario
-    with_doctrine_route:   true
-    actions_base_class:    sfActions
+    model_class:            Scenario
+    theme:                  jroller
+    non_verbose_templates:  true
+    with_show:              false
+    singular:               ~
+    plural:                 ~
+    route_prefix:           scenario
+    with_doctrine_route:    true
+    actions_base_class:     sfActions
 
     config:
       actions:
-        nextStep: { credentials: [manager] }
-        nextDecision: { credentials: [manager] }
-        finish: { credentials: [manager] }
-        edit: { credentials: [manager] }
-        delete: { credentials: [manager] }
+        startSimulation: { action: startSimulation, credentials: [manager] }
+        nextStep: { action: advanceSimulation, credentials: [manager] }
+        nextDecision: { action: advanceSimulation, credentials: [manager] }
+        finish: { action: advanceSimulation, credentials: [manager] }
 
       fields:
         started: { renderer: 'FieldRendererHelper::plainBoolean' }
         finished: { renderer: 'FieldRendererHelper::plainBoolean' }
+      # Quality Vector Weights
+        number_of_services_weight: { help: 'Small explanation here...' }
+        download_weight: { help: 'Small explanation here...' }
+        upload_weight: { help: 'Small explanation here...' }
+        rate_weight: { help: 'Small explanation here...' }
+        fee_weight: { label: 'Weight of change', help: 'Small explanation here...' }
+        occupation_rate_weight: { help: 'Small explanation here...' }
+        containment_factor_weight: { help: 'Small explanation here...' }
+        reference_occupation_rate: { help: 'Small explanation here...' }
 
       list:
         title: 'Scenarios'
@@ -30,14 +38,13 @@ generator:
           total_clients: { renderer: 'number_format', renderer_arguments: [0, ',', '.'] }
           total_decision_points: { label: '# decision pts'}
           ticks_between_decision_points: { label: 'Ticks between decision pts'}
+        table_method: filterByCredential
         actions:
           _new:
             credentials: [manager]
         object_actions: # _list_td_actions.php has been overridden
-          show:
-            action: show
-          _edit:
-            credentials: [manager]
+          _show: ~
+          _edit: { credentials: [manager] }
           _delete:
             credentials: [manager]
             confirm: 'This removal is irreversible! Are you sure you want to proceed?'
@@ -47,11 +54,37 @@ generator:
 
       form:
         display:
-          Graph: [_market_penetration_chart]
-          Basic: [description,total_clients,tick_alias,lifespan,total_decision_points,ticks_between_decision_points]
-          Market Share Evolution: [starting_level,saturation_level,alpha,beta]
-          Financial: [packages_erosion_rate,depreciation_rate,interest_rate,elasticity,bankrupcy_limit]
-          Quality Vector: [number_of_services_weight,download_weight,upload_weight,rate_weight,fee_weight,occupation_rate_weight,containment_factor_weight,reference_occupation_rate]
+          #Graph:
+          #  - _market_penetration_chart
+          Basic:
+            - _market_penetration_chart
+            - description
+            - total_clients
+            - tick_alias
+            - lifespan
+            - total_decision_points
+            - ticks_between_decision_points
+            - responsible_id
+          Market Share Evolution:
+            - starting_level
+            - saturation_level
+            - alpha
+            - beta
+          Financial:
+            - packages_erosion_rate
+            - depreciation_rate
+            - interest_rate
+            - elasticity
+            - bankrupcy_limit
+          Quality Vector:
+            - number_of_services_weight
+            - download_weight
+            - upload_weight
+            - rate_weight
+            - fee_weight
+            - occupation_rate_weight
+            - containment_factor_weight
+            - reference_occupation_rate
 
       edit:
         title: 'Edit Scenario - %%description%%'
@@ -63,3 +96,46 @@ generator:
             credentials: [manager]
 
       new: ~
+      show:
+        #title: 'View Scenario - %%description%%'
+        display:
+          Basic:
+            #- _market_penetration_chart
+            - description
+            - total_clients
+            - tick_alias
+            - lifespan
+            - total_decision_points
+            - ticks_between_decision_points
+            - _responsible
+          Graph:
+            - _market_penetration_chart
+          Market Share Evolution:
+            - starting_level
+            - saturation_level
+            - alpha
+            - beta
+          Financial:
+            - packages_erosion_rate
+            - depreciation_rate
+            - interest_rate
+            - elasticity
+            - bankrupcy_limit
+          Quality Vector:
+            - number_of_services_weight
+            - download_weight
+            - upload_weight
+            - rate_weight
+            - fee_weight
+            - occupation_rate_weight
+            - containment_factor_weight
+            - reference_occupation_rate
+#        actions: # check _show_actions.php
+#          _list: ~
+#          startSimulation: { credentials: [manager] }
+#          _edit: { credentials: [manager] }
+#          _delete: { credentials: [manager] }
+#          nextStep: { credentials: [manager] }
+#          nextDecision: { credentials: [manager] }
+#          finish: { credentials: [manager] }
+

@@ -16,5 +16,8 @@ class ScenarioFormFilter extends BaseScenarioFormFilter
      */
     public function configure()
     {
+        if (!sfContext::getInstance()->getUser()->hasCredential('admin')) {
+            //$this->setDefault('user_id', sfContext::getInstance()->getUser()->getAttribute('id'));
+        }
     }
 }

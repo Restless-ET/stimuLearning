@@ -25,6 +25,7 @@ abstract class BaseUserForm extends BaseFormDoctrine
       'last_login' => new sfWidgetFormInputText(),
       'created_at' => new sfWidgetFormDateTime(),
       'updated_at' => new sfWidgetFormDateTime(),
+      'deleted'    => new sfWidgetFormInputCheckbox(),
     ));
 
     $this->setValidators(array(
@@ -38,6 +39,7 @@ abstract class BaseUserForm extends BaseFormDoctrine
       'last_login' => new sfValidatorPass(array('required' => false)),
       'created_at' => new sfValidatorDateTime(),
       'updated_at' => new sfValidatorDateTime(),
+      'deleted'    => new sfValidatorBoolean(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('user[%s]');

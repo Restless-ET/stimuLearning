@@ -4,6 +4,9 @@ User:
       filter: false
   actAs:
     Timestampable: ~
+    SoftDelete:
+      name: deleted
+      type: boolean
   columns:
     name: { type: string(150), notnull: true }
     username: { type: string(50), notnull: true }

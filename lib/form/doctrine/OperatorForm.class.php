@@ -21,7 +21,6 @@ class OperatorForm extends BaseOperatorForm
     public function configure()
     {
         unset($this['created_at'], $this['updated_at']);
-        unset($this['current_market_size']);
 
         $this->getWidget('user_id')->setOption('add_empty', true);
     }

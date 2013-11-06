@@ -1,5 +1,5 @@
 generator:
-  class: sfDoctrineGenerator #jRollerDoctrineGenerator
+  class: jRollerDoctrineGenerator #extends sfDoctrineGenerator
   param:
     model_class:           Operator
     theme:                 jroller
@@ -43,7 +43,18 @@ generator:
 
       edit:    ~
       new:     ~
-      #show:
-      #  display:
-      #    Operator Simulated Data: [_simulated_data_chart]
-      #    Market Share Evolution: [_market_share_evolution_chart]
+      show:
+        display:
+          Details:
+            - name
+            - _scenario
+            - starting_market_size
+            - current_market_size
+            - net_present_value
+            - internal_rate_of_return
+            - payback_period
+            - _user
+          Simulated Data:
+            - _simulated_data_chart
+          Market Share Evolution:
+            - _market_share_evolution_chart

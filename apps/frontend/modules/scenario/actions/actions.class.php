@@ -13,25 +13,6 @@ require_once dirname(__FILE__).'/../lib/scenarioGeneratorHelper.class.php';
 class ScenarioActions extends autoScenarioActions
 {
     /**
-     * Executes show action for scenario
-     *
-     * @param sfWebRequest $request A request object
-     *
-     * @return void
-     */
-    public function executeShow(sfWebRequest $request)
-    {
-        //parent::executeShow($request);
-        $this->scenario = Doctrine::getTable('Scenario')->find($request->getParameter('id'));
-        $this->forward404Unless($this->scenario);
-        $this->form = $this->configuration->getForm($this->scenario);
-
-        $this->getUser()->setAttribute('scenarioId', $this->scenario->id);
-
-        $this->helper = new scenarioGeneratorHelper();
-    }
-
-    /**
      * Override edit action for extra validations
      *
      * @param sfWebRequest $request A request object

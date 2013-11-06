@@ -3,8 +3,8 @@
   <br />
   <ul id="sdc_choices"></ul>
 </div>
-<?php //$ajaxUrl = url_for('operator/getSimulatedDataDatasets?id='.$operator->id);
-      //$tickAlias = $operator->Scenario->getTickAlias(); ?>
+<?php $ajaxUrl = url_for('operator/getSimulatedDataDatasets?id='.$operator->id);
+      $tickAlias = $operator->Scenario->getTickAlias(); ?>
 <div id="simulated_data_chart"></div>
 
 <script type="text/javascript">

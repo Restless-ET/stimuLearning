@@ -3,8 +3,8 @@
   <br />
   <ul id="msec_choices"></ul>
 </div>
-<?php //$ajaxUrl = url_for('scenario/getMarketShareEvolutionDatasets?id='.$operator->scenario_id);
-      //$tickAlias = $operator->Scenario->getTickAlias(); ?>
+<?php $ajaxUrl = url_for('scenario/getMarketShareEvolutionDatasets?id='.$operator->scenario_id);
+      $tickAlias = $operator->Scenario->getTickAlias(); ?>
 <div id="market_share_evolution_chart"></div>
 
 <script type="text/javascript">

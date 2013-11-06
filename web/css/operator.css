@@ -1,9 +1,17 @@
 @CHARSET "UTF-8";
 
+.ui-tabs-vertical ul.ui-tabs-nav {
+  width: 17%;
+}
+
+div.ui-tabs-vertical .ui-tabs-panel {
+  width: 80% !important;
+}
+
 div#simulated_data_chart,
 div#market_share_evolution_chart {
   margin: 10px 0px 0px 5px;
-  width: 760px;
+  width: 650px;
   height: 350px;
 }
 
@@ -11,7 +19,7 @@ div#sdc_miniature,
 div#msec_miniature {
   float: right;
   margin: 10px 5px 0px 2px;
-  width: 150px;
+  width: 120px;
 }
 
 ul#sdc_choices,
@@ -21,7 +29,7 @@ ul#msec_choices {
 
 div#sdc_overview,
 div#msec_overview {
-  width: 150px;
+  width: 120px;
   height: 70px;
 }
 

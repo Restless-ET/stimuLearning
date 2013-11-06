@@ -23,6 +23,8 @@ class ScenarioForm extends BaseScenarioForm
         unset($this['created_at'], $this['updated_at']);
         unset($this['status'], $this['current_tick'], $this['available_technologies_list']);
 
+        $this->setDefault('responsible_id', sfContext::getInstance()->getUser()->getAttribute('id'));
+
         $this->setWidget('lifespan', new amWidgetFormSlider(array(
           'min' => '1',
           'default' => '36',

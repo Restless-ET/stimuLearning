@@ -38,8 +38,15 @@ Scenario:
     occupation_rate_weight: { type: decimal, notnull: true }
     containment_factor_weight: { type: decimal, notnull: true }
     reference_occupation_rate: { type: decimal, notnull: true }
+
+    responsible_id: { type: integer } #, notnull: true }
   ## Relations ##
   relations:
+    Responsible:
+      class: User
+      local: responsible_id
+      foreign: id
+      foreignAlias: Scenarios
     Technologies:
       type: many
       class: Technology
