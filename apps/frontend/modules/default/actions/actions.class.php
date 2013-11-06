@@ -17,7 +17,7 @@ class DefaultActions extends sfActions
     public function executeIndex()
     {
         if ($this->getUser()->isAuthenticated()) {
-            $this->redirect('@operator');
+            $this->redirect('@scenario');
         }
 
         //$this->forward('default', 'error404');
