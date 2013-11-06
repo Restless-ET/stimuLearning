@@ -13,6 +13,7 @@
  * @property boolean $is_admin
  * @property datetime $last_login
  * @property Doctrine_Collection $Operators
+ * @property Doctrine_Collection $Scenarios
  * 
  * @method string              getName()       Returns the current record's "name" value
  * @method string              getUsername()   Returns the current record's "username" value
@@ -22,6 +23,7 @@
  * @method boolean             getIsAdmin()    Returns the current record's "is_admin" value
  * @method datetime            getLastLogin()  Returns the current record's "last_login" value
  * @method Doctrine_Collection getOperators()  Returns the current record's "Operators" collection
+ * @method Doctrine_Collection getScenarios()  Returns the current record's "Scenarios" collection
  * @method User                setName()       Sets the current record's "name" value
  * @method User                setUsername()   Sets the current record's "username" value
  * @method User                setPassword()   Sets the current record's "password" value
@@ -30,6 +32,7 @@
  * @method User                setIsAdmin()    Sets the current record's "is_admin" value
  * @method User                setLastLogin()  Sets the current record's "last_login" value
  * @method User                setOperators()  Sets the current record's "Operators" collection
+ * @method User                setScenarios()  Sets the current record's "Scenarios" collection
  * 
  * @package    stimuLearning
  * @subpackage model
@@ -84,6 +87,10 @@ abstract class BaseUser extends sfDoctrineRecord
         $this->hasMany('Operator as Operators', array(
              'local' => 'id',
              'foreign' => 'user_id'));
+
+        $this->hasMany('Scenario as Scenarios', array(
+             'local' => 'id',
+             'foreign' => 'responsible_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

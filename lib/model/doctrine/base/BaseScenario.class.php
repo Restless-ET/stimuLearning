@@ -31,6 +31,8 @@
  * @property decimal $occupation_rate_weight
  * @property decimal $containment_factor_weight
  * @property decimal $reference_occupation_rate
+ * @property integer $responsible_id
+ * @property User $Responsible
  * @property Doctrine_Collection $Technologies
  * @property Doctrine_Collection $Operators
  * @property Doctrine_Collection $Ticks
@@ -61,6 +63,8 @@
  * @method decimal             getOccupationRateWeight()          Returns the current record's "occupation_rate_weight" value
  * @method decimal             getContainmentFactorWeight()       Returns the current record's "containment_factor_weight" value
  * @method decimal             getReferenceOccupationRate()       Returns the current record's "reference_occupation_rate" value
+ * @method integer             getResponsibleId()                 Returns the current record's "responsible_id" value
+ * @method User                getResponsible()                   Returns the current record's "Responsible" value
  * @method Doctrine_Collection getTechnologies()                  Returns the current record's "Technologies" collection
  * @method Doctrine_Collection getOperators()                     Returns the current record's "Operators" collection
  * @method Doctrine_Collection getTicks()                         Returns the current record's "Ticks" collection
@@ -90,6 +94,8 @@
  * @method Scenario            setOccupationRateWeight()          Sets the current record's "occupation_rate_weight" value
  * @method Scenario            setContainmentFactorWeight()       Sets the current record's "containment_factor_weight" value
  * @method Scenario            setReferenceOccupationRate()       Sets the current record's "reference_occupation_rate" value
+ * @method Scenario            setResponsibleId()                 Sets the current record's "responsible_id" value
+ * @method Scenario            setResponsible()                   Sets the current record's "Responsible" value
  * @method Scenario            setTechnologies()                  Sets the current record's "Technologies" collection
  * @method Scenario            setOperators()                     Sets the current record's "Operators" collection
  * @method Scenario            setTicks()                         Sets the current record's "Ticks" collection
@@ -220,11 +226,18 @@ abstract class BaseScenario extends sfDoctrineRecord
              'type' => 'decimal',
              'notnull' => true,
              ));
+        $this->hasColumn('responsible_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
     }
 
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('User as Responsible', array(
+             'local' => 'responsible_id',
+             'foreign' => 'id'));
+
         $this->hasMany('Technology as Technologies', array(
              'local' => 'id',
              'foreign' => 'scenario_id',
