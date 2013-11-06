@@ -27,4 +27,5 @@ Scenario:
     occupation_rate_weight: <?php echo rand(1, 5)."\n"; ?>
     containment_factor_weight: <?php echo rand(1, 5)."\n"; ?>
     reference_occupation_rate: <?php echo rand(1, 25)."\n"; ?>
+    Responsible: <?php echo 'User_'.($i % 3 + 1)."\n"; ?>
 <?php endfor; ?>

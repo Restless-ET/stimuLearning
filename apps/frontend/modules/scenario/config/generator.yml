@@ -64,6 +64,7 @@ generator:
             - lifespan
             - total_decision_points
             - ticks_between_decision_points
+            - responsible_id
           Market Share Evolution:
             - starting_level
             - saturation_level
