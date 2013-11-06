@@ -93,6 +93,11 @@ abstract class BaseUser extends sfDoctrineRecord
              'foreign' => 'responsible_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
+        $softdelete0 = new Doctrine_Template_SoftDelete(array(
+             'name' => 'deleted',
+             'type' => 'boolean',
+             ));
         $this->actAs($timestampable0);
+        $this->actAs($softdelete0);
     }
 }

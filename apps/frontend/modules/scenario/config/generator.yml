@@ -107,6 +107,7 @@ generator:
             - lifespan
             - total_decision_points
             - ticks_between_decision_points
+            - _responsible
           Graph:
             - _market_penetration_chart
           Market Share Evolution:
