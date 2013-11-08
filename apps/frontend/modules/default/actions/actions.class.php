@@ -16,11 +16,18 @@ class DefaultActions extends sfActions
      */
     public function executeIndex()
     {
-        if ($this->getUser()->isAuthenticated()) {
-            $this->redirect('@scenario');
-        }
+        $user = $this->getUser();
+        if ($user->isAuthenticated()) {
+            $this->myScenarios = Doctrine_Core::getTable('Scenario')
+                                  ->createQuery('s')
+                                  ->where('s.responsible_id = ?', $user->getAttribute('id'))
+                                  ->execute();
 
-        //$this->forward('default', 'error404');
+            $this->myOperators = Doctrine_Core::getTable('Operator')
+                                  ->createQuery('o')
+                                  ->where('o.user_id = ?', $user->getAttribute('id'))
+                                  ->execute();
+        }
     }
 
     /**

@@ -6,7 +6,7 @@
 #content {
     margin-left: auto;
     margin-right: auto;
-    min-width: 1004px;  /* for 1024px min-width page */
+    min-width: 904px;  /* for 1024px min-width page */
     padding: 0px 10px 15px 10px;
 }
 
@@ -32,16 +32,17 @@ div.ui-tabs-vertical .ui-tabs-panel {
     color: black;
 }
 
-ul {
-    margin: 0px;
-}
-
 #menu {
     padding: 7px;
+    padding-left: 15px;
     margin-bottom: 10px;
     background-color: #444;
-    text-align: right;
+    text-align: left;
     font-size: 13px;
+}
+
+#menu ul {
+    margin: 0px;
 }
 
 #menu li
@@ -67,7 +68,7 @@ ul {
 
 .sub-menu {
     padding-top: 5px;
-    padding-left: 20px;
+    padding-left: 40px;
     font-size: 12px;
     text-align: left;
 }
@@ -120,19 +121,19 @@ th
 #header {
     padding: 5px 5px 0px 5px;
     background: url("../images/banner_gsbl_v7.jpg") repeat-x scroll left top #EEEEEE;
-    height: 90px;
+    height: 75px;
 }
 
 .sitelogo {
     float: left;
-    margin: 13px 13px;
+    margin: 7px 13px;
     position: relative;
 }
 
 #system_info {
   position: absolute;
   right: 25px;
-  top: 25px;
+  top: 7px;
   color: #272727;
   text-align: right;
   font-weight: bold;

@@ -44,6 +44,10 @@
           <?php endif; ?>
           <?php echo date('Y-m-d') ?>
           <span id="clock"><?php echo date('H:i:s')?></span>
+          <?php if($sf_user->isAuthenticated()): ?>
+          <br/>
+          <a style="margin-left: 45px;" class="fg-button ui-state-default" href="<?php echo url_for('@logout'); ?>">Logout</a>
+          <?php endif; ?>
         </div>
       </div>
 

@@ -1,14 +1,34 @@
 <?php if ($sf_user->isAuthenticated()): ?>
 <h2>Welcome, <?php echo $sf_user->getAttribute('username') ?>!!</h2>
-<br /><br />
-<p>This page is still under construction!!</p>
-<br /><br />
-<a href="<?php echo url_for('@operator'); ?>">Go to my Operators</a>
 
+  <h3>My Scenarios</h3>
+  <?php if (isset($myScenarios) && count($myScenarios)) :?>
+    <ul>
+    <?php foreach ($myScenarios as $scenario): ?>
+      <li>
+        <a class="fg-button ui-state-default" href="<?php echo url_for('scenario/show?id='.$scenario['id']); ?>">
+          <?php echo $scenario['description'];?></a>
+      </li>
+    <?php endforeach; ?>
+    </ul>
+  <?php endif; ?>
+  <br/>
+  <h3>My Operators</h3>
+  <?php if (isset($myOperators) && count($myOperators)) :?>
+    <ul>
+    <?php foreach ($myOperators as $operator): ?>
+      <li>
+        <a class="fg-button ui-state-default" href="<?php echo url_for('operator/show?id='.$operator['id']); ?>">
+          <?php echo $operator['name'];?></a>
+      </li>
+    <?php endforeach; ?>
+    </ul>
+  <?php endif; ?>
 <?php else: ?>
 <h2>Welcome!!</h2>
 
 <a href="<?php echo url_for('@login'); ?>">Login</a>
+<?php endif; ?>
 <br /><br />
 <p>This application is an educational tool intended to reflect the market dynamics on the telecom industry.<br />
    This tool is aimed to help telecom engineering students to learn how the technical decisions affect the ecnonomical outcomes, on telecom business models.<br />
@@ -25,4 +45,3 @@
     better suits his offer and to change his options along the simulation time.<br />
    The main goal is to achieve the greater market share in the end of the
     simulation.</p>
-<?php endif; ?>

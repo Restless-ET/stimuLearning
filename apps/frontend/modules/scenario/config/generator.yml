@@ -26,7 +26,7 @@ generator:
         download_weight: { help: 'Small explanation here...' }
         upload_weight: { help: 'Small explanation here...' }
         rate_weight: { help: 'Small explanation here...' }
-        fee_weight: { label: 'Weight of change', help: 'Small explanation here...' }
+        fee_weight: { label: 'Fee weight', help: 'Small explanation here...' }
         occupation_rate_weight: { help: 'Small explanation here...' }
         containment_factor_weight: { help: 'Small explanation here...' }
         reference_occupation_rate: { help: 'Small explanation here...' }

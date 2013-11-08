@@ -13,6 +13,20 @@ require_once dirname(__FILE__).'/../lib/scenarioGeneratorHelper.class.php';
 class ScenarioActions extends autoScenarioActions
 {
     /**
+     * Override show action for extra settings
+     *
+     * @param sfWebRequest $request A request object
+     *
+     * @return nothing
+     */
+    public function executeShow(sfWebRequest $request)
+    {
+        parent::executeShow($request);
+
+        $this->getUser()->setAttribute('scenarioId', $this->getRoute()->getObject()->getId());
+    }
+
+    /**
      * Override edit action for extra validations
      *
      * @param sfWebRequest $request A request object
@@ -25,6 +39,8 @@ class ScenarioActions extends autoScenarioActions
             $this->getUser()->setFlash('error', 'You cannot edit a scenario with a started simulation!');
             $this->redirect('@scenario');
         }
+
+        $this->getUser()->setAttribute('scenarioId', $this->getRoute()->getObject()->getId());
 
         parent::executeEdit($request);
     }
@@ -42,6 +58,8 @@ class ScenarioActions extends autoScenarioActions
             $user->setFlash('error', 'You cannot delete a scenario with a started simulation!');
             $this->redirect('@scenario');
         }
+
+        $this->getUser()->setAttribute('scenarioId', false);
 
         parent::executeDelete($request);
     }
