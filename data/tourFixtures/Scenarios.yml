@@ -7,17 +7,17 @@ Scenario:
     lifespan: <?php $ls = 36; echo $ls."\n"; ?>
     total_decision_points: <?php $tdp = 5; echo $tdp."\n"; ?>
     ticks_between_decision_points: <?php echo ($ls / ($tdp + 1))."\n"; ?> # hidden
+  ## Market Share Evolution Parameters ##
+    starting_level: 5
+    saturation_level: 40
+    alpha: 120
+    beta: -0.3
   ## Financial Parameters ##
     packages_erosion_rate: '0.035'
     depreciation_rate: '0.1'
     interest_rate: '0.1'
     elasticity: '1.0'
     bankrupcy_limit: <?php echo rand(1, 100)."\n"; ?>
-  ## Market Share Evolution Parameters ##
-    starting_level: 5
-    saturation_level: 40
-    alpha: 120
-    beta: -0.3
   ## Quality Vector Weights ##
     number_of_services_weight: <?php echo rand(5, 50)."\n"; ?>
     download_weight: <?php echo rand(5, 60)."\n"; ?>
@@ -36,17 +36,17 @@ Scenario:
     lifespan: <?php $ls = 36; echo $ls."\n"; ?>
     total_decision_points: <?php $tdp = 5; echo $tdp."\n"; ?>
     ticks_between_decision_points: <?php echo ($ls / ($tdp + 1))."\n"; ?> # hidden
+  ## Market Share Evolution Parameters ##
+    starting_level: 5
+    saturation_level: 60
+    alpha: 80
+    beta: -0.36
   ## Financial Parameters ##
     packages_erosion_rate: '0.02'
     depreciation_rate: '0.1'
     interest_rate: '0.1'
     elasticity: '1.0'
     bankrupcy_limit: <?php echo rand(1, 100)."\n"; ?>
-  ## Market Share Evolution Parameters ##
-    starting_level: 5
-    saturation_level: 60
-    alpha: 80
-    beta: -0.36
   ## Quality Vector Weights ##
     number_of_services_weight: <?php echo rand(5, 50)."\n"; ?>
     download_weight: <?php echo rand(5, 60)."\n"; ?>
@@ -65,17 +65,17 @@ Scenario:
     lifespan: <?php $ls = 36; echo $ls."\n"; ?>
     total_decision_points: <?php $tdp = 2; echo $tdp."\n"; ?>
     ticks_between_decision_points: <?php echo ($ls / ($tdp + 1))."\n"; ?> # hidden
+  ## Market Share Evolution Parameters ##
+    starting_level: 5
+    saturation_level: 40
+    alpha: 120
+    beta: -0.30
   ## Financial Parameters ##
     packages_erosion_rate: '0.02'
     depreciation_rate: '0.1'
     interest_rate: '0.1'
     elasticity: '1.0'
     bankrupcy_limit: <?php echo rand(1, 100)."\n"; ?>
-  ## Market Share Evolution Parameters ##
-    starting_level: 5
-    saturation_level: 40
-    alpha: 120
-    beta: -0.30
   ## Quality Vector Weights ##
     number_of_services_weight: 30.00
     download_weight: 3.00

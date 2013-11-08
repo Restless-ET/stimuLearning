@@ -54,8 +54,6 @@ generator:
 
       form:
         display:
-          #Graph:
-          #  - _market_penetration_chart
           Basic:
             - _market_penetration_chart
             - description
@@ -70,6 +68,8 @@ generator:
             - saturation_level
             - alpha
             - beta
+          #Graph:
+          #  - _market_penetration_chart
           Financial:
             - packages_erosion_rate
             - depreciation_rate

@@ -29,7 +29,7 @@ class ScenarioForm extends BaseScenarioForm
           'min' => '1',
           'default' => '36',
           'strict_limits' => false,
-          'js_on_slide' => 'configAndInitiateGraphDraw();setTicksBetweenDP();',
+          'js_on_slide' => 'configAndInitiateGraphDraw(); setTicksBetweenDP();',
         )));
         $this->setWidget('total_decision_points', new amWidgetFormSlider(array(
           'max' => '15',
@@ -46,12 +46,12 @@ class ScenarioForm extends BaseScenarioForm
           'js_on_slide' => 'configAndInitiateGraphDraw();',
         )));
         $this->setWidget('alpha', new amWidgetFormSlider(array(
-          'max' => 300,
+          'max' => 500,
           'strict_limits' => false,
           'js_on_slide' => 'configAndInitiateGraphDraw();',
         )));
         $this->setWidget('beta', new amWidgetFormSlider(array(
-          'min' => -1,
+          'min' => -2,
           'max' => 0,
           'step' => 0.02,
           'js_on_slide' => 'configAndInitiateGraphDraw();',

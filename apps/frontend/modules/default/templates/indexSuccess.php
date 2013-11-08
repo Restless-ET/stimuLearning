@@ -1,7 +1,7 @@
 <?php if ($sf_user->isAuthenticated()): ?>
 <h2>Welcome, <?php echo $sf_user->getAttribute('username') ?>!!</h2>
 
-  <h3>My Scenarios</h3>
+  <h3>My Scenarios<?php //echo link_to('My Scenarios', '@scenario')?></h3>
   <?php if (isset($myScenarios) && count($myScenarios)) :?>
     <ul>
     <?php foreach ($myScenarios as $scenario): ?>
@@ -13,13 +13,13 @@
     </ul>
   <?php endif; ?>
   <br/>
-  <h3>My Operators</h3>
-  <?php if (isset($myOperators) && count($myOperators)) :?>
+  <h3>Player Scenarios</h3>
+  <?php if (isset($playerScenarios) && count($playerScenarios)) :?>
     <ul>
-    <?php foreach ($myOperators as $operator): ?>
+    <?php foreach ($playerScenarios as $pScenario): ?>
       <li>
-        <a class="fg-button ui-state-default" href="<?php echo url_for('operator/show?id='.$operator['id']); ?>">
-          <?php echo $operator['name'];?></a>
+        <a class="fg-button ui-state-default" href="<?php echo url_for('scenario/show?id='.$pScenario['id']); ?>">
+          <?php echo $pScenario['description'];?></a>
       </li>
     <?php endforeach; ?>
     </ul>

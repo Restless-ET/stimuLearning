@@ -18,17 +18,19 @@ Scenario:
     lifespan: { type: integer, notnull: true }
     total_decision_points: { type: integer, notnull: true }
     ticks_between_decision_points: { type: integer, notnull: true } # readonly
+  ## Market Share Evolution Parameters ##
+    starting_level: { type: decimal, notnull: true }
+    saturation_level: { type: decimal, notnull: true }
+    alpha: { type: integer, notnull: true }
+    beta: { type: float, notnull: true }
+  ## Demography ##
+
   ## Financial Parameters ##
     packages_erosion_rate: { type: decimal, scale: 4, notnull: true }
     depreciation_rate: { type: decimal, scale: 4, notnull: true }
     interest_rate: { type: decimal, scale: 4, notnull: true }
     elasticity: { type: decimal, notnull: true }
     bankrupcy_limit: { type: decimal, notnull: true }
-  ## Market Share Evolution Parameters ##
-    starting_level: { type: decimal, notnull: true }
-    saturation_level: { type: decimal, notnull: true }
-    alpha: { type: integer, notnull: true }
-    beta: { type: float, notnull: true }
   ## Quality Vector Weights ##
     number_of_services_weight: { type: decimal, notnull: true }
     download_weight: { type: decimal, notnull: true }

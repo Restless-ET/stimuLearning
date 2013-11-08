@@ -20,14 +20,19 @@ class DefaultActions extends sfActions
         if ($user->isAuthenticated()) {
             $this->myScenarios = Doctrine_Core::getTable('Scenario')
                                   ->createQuery('s')
+                                  ->select('s.description')
                                   ->where('s.responsible_id = ?', $user->getAttribute('id'))
                                   ->where('s.finished = ?', false)
                                   ->execute();
 
-            $this->myOperators = Doctrine_Core::getTable('Operator')
-                                  ->createQuery('o')
-                                  ->where('o.user_id = ?', $user->getAttribute('id'))
-                                  ->execute();
+            $this->playerScenarios = Doctrine_Core::getTable('Scenario')
+                                      ->createQuery('s')
+                                      ->select('s.description')
+                                      ->innerJoin('s.Operators o')
+                                      ->where('s.responsible_id != ?', $user->getAttribute('id'))
+                                      ->andWhere('s.finished = ?', false)
+                                      ->andWhere('o.user_id = ?', $user->getAttribute('id'))
+                                      ->execute();
         }
     }
 
