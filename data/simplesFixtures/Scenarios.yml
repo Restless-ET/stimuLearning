@@ -1,0 +1,30 @@
+Scenario:
+## E.E.Simples ##
+  Scenario_0:
+    description: 'Exercício Económico Simples'
+    total_clients: 15000
+    tick_alias: Year
+    lifespan: <?php $ls = 15; echo $ls."\n"; ?>
+    total_decision_points: <?php $tdp = 0; echo $tdp."\n"; ?>
+    ticks_between_decision_points: <?php echo ($ls / ($tdp + 1))."\n"; ?> # hidden
+  ## Financial Parameters ##
+    packages_erosion_rate: '0.05'
+    depreciation_rate: '0.1'
+    interest_rate: '0.1'
+    elasticity: '1.0'
+    bankrupcy_limit: <?php echo rand(1, 100)."\n"; ?>
+  ## Market Share Evolution Parameters ##
+    starting_level: 10
+    saturation_level: 70
+    alpha: 900
+    beta: -1.5
+  ## Quality Vector Weights ##
+    number_of_services_weight: <?php echo rand(5, 50)."\n"; ?>
+    download_weight: <?php echo rand(5, 60)."\n"; ?>
+    upload_weight: <?php echo rand(5, 30)."\n"; ?>
+    rate_weight: <?php echo rand(5, 20)."\n"; ?>
+    fee_weight: <?php echo rand(5, 40)."\n"; ?>
+    occupation_rate_weight: <?php echo rand(1, 5)."\n"; ?>
+    containment_factor_weight: <?php echo rand(1, 5)."\n"; ?>
+    reference_occupation_rate: <?php echo rand(1, 25)."\n"; ?>
+

@@ -1,0 +1,7 @@
+Operator:
+  Operator_0:
+    name: 'Operador Único'
+    starting_market_size: 1500
+    market_share: 100.00
+    User: User_3
+    Scenario: Scenario_0
