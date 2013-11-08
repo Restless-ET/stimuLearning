@@ -21,6 +21,7 @@ class DefaultActions extends sfActions
             $this->myScenarios = Doctrine_Core::getTable('Scenario')
                                   ->createQuery('s')
                                   ->where('s.responsible_id = ?', $user->getAttribute('id'))
+                                  ->where('s.finished = ?', false)
                                   ->execute();
 
             $this->myOperators = Doctrine_Core::getTable('Operator')
@@ -69,9 +70,10 @@ class DefaultActions extends sfActions
                     return sfView::ERROR;
                 }
 
-                if ($userFromDb->is_manager) { // It's a game manager
-                    $user->addCredential('manager');
-                }
+                //TODO Force 'manager' credential for now
+                //if ($userFromDb->is_manager) { // It's a game manager
+                $user->addCredential('manager');
+                //}
                 if ($userFromDb->is_admin) { // It's an administrator
                     $user->addCredential('admin');
                 }
