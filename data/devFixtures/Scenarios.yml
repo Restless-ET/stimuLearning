@@ -2,7 +2,7 @@ Scenario:
 <?php for ($i=1; $i<=5; $i++): ?>
   Scenario_<?php echo $i; ?>:
     description: <?php echo 'Cenário '.$i."\n"; ?>
-    total_clients: <?php echo (rand(1000, 3000)*100)."\n"; ?> # auto-generated
+    total_clients: <?php $clients = (rand(1000, 3000)*100); echo $clients."\n"; ?> # auto-generated
     tick_alias: Month
     lifespan: <?php $ls = rand(15, 60); echo $ls."\n"; ?>
     total_decision_points: <?php $tdp = rand(2, 5); echo $tdp."\n"; ?>
@@ -12,10 +12,15 @@ Scenario:
     saturation_level: <?php echo rand(65, 95)."\n"; ?>
     alpha: <?php echo rand(1, 300)."\n"; ?>
     beta: <?php echo ((rand(0, 100) - 100) / 100)."\n"; ?>
+  ## Demography / Population ##
+    dense_urban_population: <?php echo round($clients / 4)."\n"; ?>
+    urban_population: <?php echo round($clients / 4)."\n"; ?>
+    suburban_population: <?php echo round($clients / 4)."\n"; ?>
+    rural_population: <?php echo round($clients / 4)."\n"; ?>
   ## Financial Parameters ##
-    packages_erosion_rate: '0.01'
-    depreciation_rate: '0.1'
-    interest_rate: '0.1'
+    packages_erosion_rate: 1
+    depreciation_rate: 10
+    interest_rate: 10
     elasticity: '1.0'
     bankrupcy_limit: <?php echo rand(1, 100)."\n"; ?>
   ## Quality Vector Weights ##

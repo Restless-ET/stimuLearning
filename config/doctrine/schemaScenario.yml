@@ -23,12 +23,29 @@ Scenario:
     saturation_level: { type: decimal, notnull: true }
     alpha: { type: integer, notnull: true }
     beta: { type: float, notnull: true }
-  ## Demography ##
-
+  ## Geography / Territory ##
+    total_area: { type: decimal, notnull: true, default: 500 }
+    dense_urban_territory: { type: decimal, notnull: true, default: 25 }
+    dense_urban_area: { type: decimal, notnull: true, default: 125 } # readonly
+    urban_territory: { type: decimal, notnull: true, default: 25 }
+    urban_area: { type: decimal, notnull: true, default: 125 } # readonly
+    suburban_territory: { type: decimal, notnull: true, default: 25 }
+    suburban_area: { type: decimal, notnull: true, default: 125 } # readonly
+    rural_territory: { type: decimal, notnull: true, default: 25 }
+    rural_area: { type: decimal, notnull: true, default: 125 } # readonly
+  ## Demography / Population ##
+    dense_urban_distribution: { type: decimal, notnull: true, default: 25 }
+    dense_urban_population: { type: integer, notnull: true } # readonly
+    urban_distribution: { type: decimal, notnull: true, default: 25 }
+    urban_population: { type: integer, notnull: true } # readonly
+    suburban_distribution: { type: decimal, notnull: true, default: 25 }
+    suburban_population: { type: integer, notnull: true } # readonly
+    rural_distribution: { type: decimal, notnull: true, default: 25 }
+    rural_population: { type: integer, notnull: true } # readonly
   ## Financial Parameters ##
-    packages_erosion_rate: { type: decimal, scale: 4, notnull: true }
-    depreciation_rate: { type: decimal, scale: 4, notnull: true }
-    interest_rate: { type: decimal, scale: 4, notnull: true }
+    packages_erosion_rate: { type: decimal, notnull: true }
+    depreciation_rate: { type: decimal, notnull: true }
+    interest_rate: { type: decimal, notnull: true }
     elasticity: { type: decimal, notnull: true }
     bankrupcy_limit: { type: decimal, notnull: true }
   ## Quality Vector Weights ##

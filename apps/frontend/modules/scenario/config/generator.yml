@@ -68,6 +68,25 @@ generator:
             - beta
           #Graph:
           #  - _market_penetration_chart
+          "Geography / Territory":
+            - total_area
+            - dense_urban_territory
+            - dense_urban_area
+            - urban_territory
+            - urban_area
+            - suburban_territory
+            - suburban_area
+            - rural_territory
+            - rural_area
+          "Demography / Population":
+            - dense_urban_distribution
+            - dense_urban_population
+            - urban_distribution
+            - urban_population
+            - suburban_distribution
+            - suburban_population
+            - rural_distribution
+            - rural_population
           Financial:
             - packages_erosion_rate
             - depreciation_rate
@@ -113,6 +132,25 @@ generator:
             - saturation_level
             - alpha
             - beta
+          "Geography / Territory":
+            - total_area
+            - dense_urban_territory
+            - dense_urban_area
+            - urban_territory
+            - urban_area
+            - suburban_territory
+            - suburban_area
+            - rural_territory
+            - rural_area
+          "Demography / Population":
+            - dense_urban_distribution
+            - dense_urban_population
+            - urban_distribution
+            - urban_population
+            - suburban_distribution
+            - suburban_population
+            - rural_distribution
+            - rural_population
           Financial:
             - packages_erosion_rate
             - depreciation_rate

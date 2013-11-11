@@ -12,10 +12,15 @@ Scenario:
     saturation_level: 70
     alpha: 900
     beta: -1.5
+  ## Demography / Population ##
+    dense_urban_population: 3750
+    urban_population: 3750
+    suburban_population: 3750
+    rural_population: 3750
   ## Financial Parameters ##
-    packages_erosion_rate: '0.05'
-    depreciation_rate: '0.1'
-    interest_rate: '0.1'
+    packages_erosion_rate: 5
+    depreciation_rate: 10
+    interest_rate: 10
     elasticity: '1.0'
     bankrupcy_limit: <?php echo rand(1, 100)."\n"; ?>
   ## Quality Vector Weights ##

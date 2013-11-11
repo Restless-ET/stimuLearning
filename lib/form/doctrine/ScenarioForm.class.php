@@ -36,15 +36,6 @@ class ScenarioForm extends BaseScenarioForm
           'default' => '3',
           'js_on_slide' => 'setTicksBetweenDP();',
         )));
-        $this->getWidget('ticks_between_decision_points')->setAttribute('readonly', true);
-        $this->setWidget('starting_level', new amWidgetFormSlider(array(
-          'units' => '%',
-          'js_on_slide' => 'configAndInitiateGraphDraw();',
-        )));
-        $this->setWidget('saturation_level', new amWidgetFormSlider(array(
-          'units' => '%',
-          'js_on_slide' => 'configAndInitiateGraphDraw();',
-        )));
         $this->setWidget('alpha', new amWidgetFormSlider(array(
           'max' => 1000,
           'strict_limits' => false,
@@ -54,7 +45,61 @@ class ScenarioForm extends BaseScenarioForm
           'min' => -2,
           'max' => 0,
           'step' => 0.02,
+          'strict_limits' => false,
           'js_on_slide' => 'configAndInitiateGraphDraw();',
         )));
+
+        $this->setReadonlyFields();
+
+        $this->setPercentageFields();
+    }
+
+    /**
+     * Update the widgets for readonly fields properly
+     *
+     * @return void
+     */
+    private function setReadonlyFields()
+    {
+        $readonlyFields = array('ticks_between_decision_points',
+            'dense_urban_area', 'urban_area', 'suburban_area', 'rural_area',
+            //'dense_urban_population', 'urban_population', 'suburban_population', 'rural_population'
+        );
+
+        foreach ($readonlyFields as $readonly) {
+            $this->getWidget($readonly)->setAttribute('readonly', true);
+        }
+    }
+
+    /**
+     * Update the widgets for percentage fields in order to use the jQuery-UI slider
+     *
+     * @return void
+     */
+    private function setPercentageFields()
+    {
+        $simplePercentageFields = array(
+            'starting_level' => 'configAndInitiateGraphDraw();',
+            'saturation_level' => 'configAndInitiateGraphDraw();',
+            'dense_urban_territory' => '',
+            'urban_territory' => '',
+            'suburban_territory' => '',
+            'rural_territory' => '',
+            'dense_urban_distribution' => '',
+            'urban_distribution' => '',
+            'suburban_distribution' => '',
+            'rural_distribution' => '',
+            'packages_erosion_rate' => '',
+            'depreciation_rate' => '',
+            'interest_rate' => '',
+        );
+
+        foreach ($simplePercentageFields as $percentageField => $jsOnSlide) {
+            $this->setWidget($percentageField, new amWidgetFormSlider(array(
+                'units' => '%',
+                'step' => 0.5,
+                'js_on_slide' => $jsOnSlide,
+            )));
+        }
     }
 }

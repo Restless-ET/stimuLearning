@@ -240,11 +240,11 @@ class Scenario extends BaseScenario
                     $opex -= $servClients * $service['cost_per_user'];
 
                     $ticksFromTechStart = $this['current_tick'] - $technology['first_tick_available'];
-                    $updatedRate = pow((1 - $this['packages_erosion_rate']), $ticksFromTechStart);
+                    $updatedRate = pow((1 - $this['packages_erosion_rate'] / 100), $ticksFromTechStart);
                     $revenue += $servClients * $service['periodic_fee'] * $updatedRate;
                 }
             }
-            $accumCapex = $operator['accumulated_CAPEX'] * (1 - $this['depreciation_rate']) + $capex;
+            $accumCapex = $operator['accumulated_CAPEX'] * (1 - $this['depreciation_rate'] / 100) + $capex;
             // Some CAPEX percentage as OPEX
             //$opex -= $targetTotal * $currentPrice * $service['CAPEX_percentage'];
             // Em cada instante retirar como opex 5% do capex acumulado e actualizado!?
@@ -277,8 +277,8 @@ class Scenario extends BaseScenario
                                   ->execute(array(), Doctrine_Core::HYDRATE_SINGLE_SCALAR);
 
                 $financial = new Financial();
-                $npv = $financial->NPV($this['interest_rate'], $cashflows);
-                $irr = $financial->IRR($cashflows, $this['interest_rate']);
+                $npv = $financial->NPV(($this['interest_rate'] / 100), $cashflows);
+                $irr = $financial->IRR($cashflows, ($this['interest_rate'] / 100));
 
                 $operator->setNetPresentValue($npv);
                 $operator->setInternalRateOfReturn($irr * 100);

@@ -18,6 +18,23 @@
  * @property decimal $saturation_level
  * @property integer $alpha
  * @property float $beta
+ * @property decimal $total_area
+ * @property decimal $dense_urban_territory
+ * @property decimal $dense_urban_area
+ * @property decimal $urban_territory
+ * @property decimal $urban_area
+ * @property decimal $suburban_territory
+ * @property decimal $suburban_area
+ * @property decimal $rural_territory
+ * @property decimal $rural_area
+ * @property decimal $dense_urban_distribution
+ * @property integer $dense_urban_population
+ * @property decimal $urban_distribution
+ * @property integer $urban_population
+ * @property decimal $suburban_distribution
+ * @property integer $suburban_population
+ * @property decimal $rural_distribution
+ * @property integer $rural_population
  * @property decimal $packages_erosion_rate
  * @property decimal $depreciation_rate
  * @property decimal $interest_rate
@@ -50,6 +67,23 @@
  * @method decimal             getSaturationLevel()               Returns the current record's "saturation_level" value
  * @method integer             getAlpha()                         Returns the current record's "alpha" value
  * @method float               getBeta()                          Returns the current record's "beta" value
+ * @method decimal             getTotalArea()                     Returns the current record's "total_area" value
+ * @method decimal             getDenseUrbanTerritory()           Returns the current record's "dense_urban_territory" value
+ * @method decimal             getDenseUrbanArea()                Returns the current record's "dense_urban_area" value
+ * @method decimal             getUrbanTerritory()                Returns the current record's "urban_territory" value
+ * @method decimal             getUrbanArea()                     Returns the current record's "urban_area" value
+ * @method decimal             getSuburbanTerritory()             Returns the current record's "suburban_territory" value
+ * @method decimal             getSuburbanArea()                  Returns the current record's "suburban_area" value
+ * @method decimal             getRuralTerritory()                Returns the current record's "rural_territory" value
+ * @method decimal             getRuralArea()                     Returns the current record's "rural_area" value
+ * @method decimal             getDenseUrbanDistribution()        Returns the current record's "dense_urban_distribution" value
+ * @method integer             getDenseUrbanPopulation()          Returns the current record's "dense_urban_population" value
+ * @method decimal             getUrbanDistribution()             Returns the current record's "urban_distribution" value
+ * @method integer             getUrbanPopulation()               Returns the current record's "urban_population" value
+ * @method decimal             getSuburbanDistribution()          Returns the current record's "suburban_distribution" value
+ * @method integer             getSuburbanPopulation()            Returns the current record's "suburban_population" value
+ * @method decimal             getRuralDistribution()             Returns the current record's "rural_distribution" value
+ * @method integer             getRuralPopulation()               Returns the current record's "rural_population" value
  * @method decimal             getPackagesErosionRate()           Returns the current record's "packages_erosion_rate" value
  * @method decimal             getDepreciationRate()              Returns the current record's "depreciation_rate" value
  * @method decimal             getInterestRate()                  Returns the current record's "interest_rate" value
@@ -81,6 +115,23 @@
  * @method Scenario            setSaturationLevel()               Sets the current record's "saturation_level" value
  * @method Scenario            setAlpha()                         Sets the current record's "alpha" value
  * @method Scenario            setBeta()                          Sets the current record's "beta" value
+ * @method Scenario            setTotalArea()                     Sets the current record's "total_area" value
+ * @method Scenario            setDenseUrbanTerritory()           Sets the current record's "dense_urban_territory" value
+ * @method Scenario            setDenseUrbanArea()                Sets the current record's "dense_urban_area" value
+ * @method Scenario            setUrbanTerritory()                Sets the current record's "urban_territory" value
+ * @method Scenario            setUrbanArea()                     Sets the current record's "urban_area" value
+ * @method Scenario            setSuburbanTerritory()             Sets the current record's "suburban_territory" value
+ * @method Scenario            setSuburbanArea()                  Sets the current record's "suburban_area" value
+ * @method Scenario            setRuralTerritory()                Sets the current record's "rural_territory" value
+ * @method Scenario            setRuralArea()                     Sets the current record's "rural_area" value
+ * @method Scenario            setDenseUrbanDistribution()        Sets the current record's "dense_urban_distribution" value
+ * @method Scenario            setDenseUrbanPopulation()          Sets the current record's "dense_urban_population" value
+ * @method Scenario            setUrbanDistribution()             Sets the current record's "urban_distribution" value
+ * @method Scenario            setUrbanPopulation()               Sets the current record's "urban_population" value
+ * @method Scenario            setSuburbanDistribution()          Sets the current record's "suburban_distribution" value
+ * @method Scenario            setSuburbanPopulation()            Sets the current record's "suburban_population" value
+ * @method Scenario            setRuralDistribution()             Sets the current record's "rural_distribution" value
+ * @method Scenario            setRuralPopulation()               Sets the current record's "rural_population" value
  * @method Scenario            setPackagesErosionRate()           Sets the current record's "packages_erosion_rate" value
  * @method Scenario            setDepreciationRate()              Sets the current record's "depreciation_rate" value
  * @method Scenario            setInterestRate()                  Sets the current record's "interest_rate" value
@@ -171,19 +222,97 @@ abstract class BaseScenario extends sfDoctrineRecord
              'type' => 'float',
              'notnull' => true,
              ));
+        $this->hasColumn('total_area', 'decimal', null, array(
+             'type' => 'decimal',
+             'notnull' => true,
+             'default' => 500,
+             ));
+        $this->hasColumn('dense_urban_territory', 'decimal', null, array(
+             'type' => 'decimal',
+             'notnull' => true,
+             'default' => 25,
+             ));
+        $this->hasColumn('dense_urban_area', 'decimal', null, array(
+             'type' => 'decimal',
+             'notnull' => true,
+             'default' => 125,
+             ));
+        $this->hasColumn('urban_territory', 'decimal', null, array(
+             'type' => 'decimal',
+             'notnull' => true,
+             'default' => 25,
+             ));
+        $this->hasColumn('urban_area', 'decimal', null, array(
+             'type' => 'decimal',
+             'notnull' => true,
+             'default' => 125,
+             ));
+        $this->hasColumn('suburban_territory', 'decimal', null, array(
+             'type' => 'decimal',
+             'notnull' => true,
+             'default' => 25,
+             ));
+        $this->hasColumn('suburban_area', 'decimal', null, array(
+             'type' => 'decimal',
+             'notnull' => true,
+             'default' => 125,
+             ));
+        $this->hasColumn('rural_territory', 'decimal', null, array(
+             'type' => 'decimal',
+             'notnull' => true,
+             'default' => 25,
+             ));
+        $this->hasColumn('rural_area', 'decimal', null, array(
+             'type' => 'decimal',
+             'notnull' => true,
+             'default' => 125,
+             ));
+        $this->hasColumn('dense_urban_distribution', 'decimal', null, array(
+             'type' => 'decimal',
+             'notnull' => true,
+             'default' => 25,
+             ));
+        $this->hasColumn('dense_urban_population', 'integer', null, array(
+             'type' => 'integer',
+             'notnull' => true,
+             ));
+        $this->hasColumn('urban_distribution', 'decimal', null, array(
+             'type' => 'decimal',
+             'notnull' => true,
+             'default' => 25,
+             ));
+        $this->hasColumn('urban_population', 'integer', null, array(
+             'type' => 'integer',
+             'notnull' => true,
+             ));
+        $this->hasColumn('suburban_distribution', 'decimal', null, array(
+             'type' => 'decimal',
+             'notnull' => true,
+             'default' => 25,
+             ));
+        $this->hasColumn('suburban_population', 'integer', null, array(
+             'type' => 'integer',
+             'notnull' => true,
+             ));
+        $this->hasColumn('rural_distribution', 'decimal', null, array(
+             'type' => 'decimal',
+             'notnull' => true,
+             'default' => 25,
+             ));
+        $this->hasColumn('rural_population', 'integer', null, array(
+             'type' => 'integer',
+             'notnull' => true,
+             ));
         $this->hasColumn('packages_erosion_rate', 'decimal', null, array(
              'type' => 'decimal',
-             'scale' => 4,
              'notnull' => true,
              ));
         $this->hasColumn('depreciation_rate', 'decimal', null, array(
              'type' => 'decimal',
-             'scale' => 4,
              'notnull' => true,
              ));
         $this->hasColumn('interest_rate', 'decimal', null, array(
              'type' => 'decimal',
-             'scale' => 4,
              'notnull' => true,
              ));
         $this->hasColumn('elasticity', 'decimal', null, array(

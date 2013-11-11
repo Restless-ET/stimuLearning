@@ -12,10 +12,15 @@ Scenario:
     saturation_level: 40
     alpha: 120
     beta: -0.3
+  ## Demography / Population ##
+    dense_urban_population: 75000
+    urban_population: 75000
+    suburban_population: 75000
+    rural_population: 75000
   ## Financial Parameters ##
-    packages_erosion_rate: '0.035'
-    depreciation_rate: '0.1'
-    interest_rate: '0.1'
+    packages_erosion_rate: 3.5
+    depreciation_rate: 10
+    interest_rate: 10
     elasticity: '1.0'
     bankrupcy_limit: <?php echo rand(1, 100)."\n"; ?>
   ## Quality Vector Weights ##
@@ -43,9 +48,9 @@ Scenario:
     alpha: 80
     beta: -0.36
   ## Financial Parameters ##
-    packages_erosion_rate: '0.02'
-    depreciation_rate: '0.1'
-    interest_rate: '0.1'
+    packages_erosion_rate: 2
+    depreciation_rate: 10
+    interest_rate: 10
     elasticity: '1.0'
     bankrupcy_limit: <?php echo rand(1, 100)."\n"; ?>
   ## Quality Vector Weights ##
@@ -73,9 +78,9 @@ Scenario:
     alpha: 120
     beta: -0.30
   ## Financial Parameters ##
-    packages_erosion_rate: '0.02'
-    depreciation_rate: '0.1'
-    interest_rate: '0.1'
+    packages_erosion_rate: 2
+    depreciation_rate: 10
+    interest_rate: 10
     elasticity: '1.0'
     bankrupcy_limit: <?php echo rand(1, 100)."\n"; ?>
   ## Quality Vector Weights ##
