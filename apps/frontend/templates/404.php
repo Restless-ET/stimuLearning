@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="/favicon.ico" />
   </head>
   <body>
-  <div id="center">
+  <div id="error_404">
     <a href="http://<?php echo $_SERVER['HTTP_HOST'] ?>" >
       <?php echo image_tag('gsbl_v7.png',array('alt'=>'gsbl', 'title'=>'gsbl')); ?>
     </a>

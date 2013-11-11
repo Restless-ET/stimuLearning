@@ -6,6 +6,10 @@ login:
 logout:
   url: /logout
   param: { module: default, action: logout }
+
+about:
+  url: /about
+  param: { module: default, action: about }
 ### END: General user rules ###
 
 scenario:

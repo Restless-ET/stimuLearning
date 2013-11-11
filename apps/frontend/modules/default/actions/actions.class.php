@@ -37,6 +37,16 @@ class DefaultActions extends sfActions
     }
 
     /**
+     * Executes about action
+     *
+     * @return nothing
+     */
+    public function executeAbout()
+    {
+
+    }
+
+    /**
      * Executes login action
      *
      * @param sfRequest $request A request object

@@ -7,7 +7,7 @@
       <?php echo link_to('Home', '@homepage') ?>
     </li>
     <li>
-      <?php echo link_to('About', '@scenario') ?>
+      <?php echo link_to('About', '@about') ?>
     </li>
     <?php if ($scenarioId): ?>
       <li<?php if($currentModule == 'scenario'): ?> class="active"<?php endif; ?>>
