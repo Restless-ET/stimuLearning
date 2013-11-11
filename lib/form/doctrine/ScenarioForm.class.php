@@ -46,7 +46,7 @@ class ScenarioForm extends BaseScenarioForm
           'js_on_slide' => 'configAndInitiateGraphDraw();',
         )));
         $this->setWidget('alpha', new amWidgetFormSlider(array(
-          'max' => 500,
+          'max' => 1000,
           'strict_limits' => false,
           'js_on_slide' => 'configAndInitiateGraphDraw();',
         )));

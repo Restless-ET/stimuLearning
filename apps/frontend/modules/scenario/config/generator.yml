@@ -33,7 +33,7 @@ generator:
 
       list:
         title: 'Scenarios'
-        display: [_description,started,total_clients, current_tick, lifespan,tick_alias,total_decision_points,ticks_between_decision_points,finished]
+        display: [_description,started,total_clients, current_tick, lifespan,tick_alias,total_decision_points,finished]
         fields:
           total_clients: { renderer: 'number_format', renderer_arguments: [0, ',', '.'] }
           total_decision_points: { label: '# decision pts'}
