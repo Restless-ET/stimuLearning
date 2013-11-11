@@ -13,10 +13,10 @@ generator:
 
     config:
       actions:
-        startSimulation: { action: startSimulation, credentials: [manager] }
-        nextStep: { action: advanceSimulation, credentials: [manager] }
-        nextDecision: { action: advanceSimulation, credentials: [manager] }
-        finish: { action: advanceSimulation, credentials: [manager] }
+        startSimulation: { action: startSimulation }
+        nextStep: { action: advanceSimulation }
+        nextDecision: { action: advanceSimulation }
+        finish: { action: advanceSimulation }
 
       fields:
         started: { renderer: 'FieldRendererHelper::plainBoolean' }
@@ -40,13 +40,11 @@ generator:
           ticks_between_decision_points: { label: 'Ticks between decision pts'}
         table_method: filterByCredential
         actions:
-          _new:
-            credentials: [manager]
+          _new: ~
         object_actions: # _list_td_actions.php has been overridden
           _show: ~
-          _edit: { credentials: [manager] }
+          _edit: ~
           _delete:
-            credentials: [manager]
             confirm: 'This removal is irreversible! Are you sure you want to proceed?'
 
       filter:
@@ -91,11 +89,9 @@ generator:
       edit:
         title: 'Edit Scenario - %%description%%'
         actions:
-          _delete:
-            credentials: [manager]
+          _delete: ~
           _list:
-          _save:
-            credentials: [manager]
+          _save: ~
 
       new: ~
       show:
@@ -136,10 +132,10 @@ generator:
             - reference_occupation_rate
 #        actions: # check _show_actions.php
 #          _list: ~
-#          startSimulation: { credentials: [manager] }
-#          _edit: { credentials: [manager] }
-#          _delete: { credentials: [manager] }
-#          nextStep: { credentials: [manager] }
-#          nextDecision: { credentials: [manager] }
-#          finish: { credentials: [manager] }
+#          startSimulation: ~
+#          _edit: ~
+#          _delete: ~
+#          nextStep: ~
+#          nextDecision: ~
+#          finish: ~
 

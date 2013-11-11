@@ -14,15 +14,15 @@
  * @property integer $lifespan
  * @property integer $total_decision_points
  * @property integer $ticks_between_decision_points
+ * @property decimal $starting_level
+ * @property decimal $saturation_level
+ * @property integer $alpha
+ * @property float $beta
  * @property decimal $packages_erosion_rate
  * @property decimal $depreciation_rate
  * @property decimal $interest_rate
  * @property decimal $elasticity
  * @property decimal $bankrupcy_limit
- * @property decimal $starting_level
- * @property decimal $saturation_level
- * @property integer $alpha
- * @property float $beta
  * @property decimal $number_of_services_weight
  * @property decimal $download_weight
  * @property decimal $upload_weight
@@ -46,15 +46,15 @@
  * @method integer             getLifespan()                      Returns the current record's "lifespan" value
  * @method integer             getTotalDecisionPoints()           Returns the current record's "total_decision_points" value
  * @method integer             getTicksBetweenDecisionPoints()    Returns the current record's "ticks_between_decision_points" value
+ * @method decimal             getStartingLevel()                 Returns the current record's "starting_level" value
+ * @method decimal             getSaturationLevel()               Returns the current record's "saturation_level" value
+ * @method integer             getAlpha()                         Returns the current record's "alpha" value
+ * @method float               getBeta()                          Returns the current record's "beta" value
  * @method decimal             getPackagesErosionRate()           Returns the current record's "packages_erosion_rate" value
  * @method decimal             getDepreciationRate()              Returns the current record's "depreciation_rate" value
  * @method decimal             getInterestRate()                  Returns the current record's "interest_rate" value
  * @method decimal             getElasticity()                    Returns the current record's "elasticity" value
  * @method decimal             getBankrupcyLimit()                Returns the current record's "bankrupcy_limit" value
- * @method decimal             getStartingLevel()                 Returns the current record's "starting_level" value
- * @method decimal             getSaturationLevel()               Returns the current record's "saturation_level" value
- * @method integer             getAlpha()                         Returns the current record's "alpha" value
- * @method float               getBeta()                          Returns the current record's "beta" value
  * @method decimal             getNumberOfServicesWeight()        Returns the current record's "number_of_services_weight" value
  * @method decimal             getDownloadWeight()                Returns the current record's "download_weight" value
  * @method decimal             getUploadWeight()                  Returns the current record's "upload_weight" value
@@ -77,15 +77,15 @@
  * @method Scenario            setLifespan()                      Sets the current record's "lifespan" value
  * @method Scenario            setTotalDecisionPoints()           Sets the current record's "total_decision_points" value
  * @method Scenario            setTicksBetweenDecisionPoints()    Sets the current record's "ticks_between_decision_points" value
+ * @method Scenario            setStartingLevel()                 Sets the current record's "starting_level" value
+ * @method Scenario            setSaturationLevel()               Sets the current record's "saturation_level" value
+ * @method Scenario            setAlpha()                         Sets the current record's "alpha" value
+ * @method Scenario            setBeta()                          Sets the current record's "beta" value
  * @method Scenario            setPackagesErosionRate()           Sets the current record's "packages_erosion_rate" value
  * @method Scenario            setDepreciationRate()              Sets the current record's "depreciation_rate" value
  * @method Scenario            setInterestRate()                  Sets the current record's "interest_rate" value
  * @method Scenario            setElasticity()                    Sets the current record's "elasticity" value
  * @method Scenario            setBankrupcyLimit()                Sets the current record's "bankrupcy_limit" value
- * @method Scenario            setStartingLevel()                 Sets the current record's "starting_level" value
- * @method Scenario            setSaturationLevel()               Sets the current record's "saturation_level" value
- * @method Scenario            setAlpha()                         Sets the current record's "alpha" value
- * @method Scenario            setBeta()                          Sets the current record's "beta" value
  * @method Scenario            setNumberOfServicesWeight()        Sets the current record's "number_of_services_weight" value
  * @method Scenario            setDownloadWeight()                Sets the current record's "download_weight" value
  * @method Scenario            setUploadWeight()                  Sets the current record's "upload_weight" value
@@ -155,6 +155,22 @@ abstract class BaseScenario extends sfDoctrineRecord
              'type' => 'integer',
              'notnull' => true,
              ));
+        $this->hasColumn('starting_level', 'decimal', null, array(
+             'type' => 'decimal',
+             'notnull' => true,
+             ));
+        $this->hasColumn('saturation_level', 'decimal', null, array(
+             'type' => 'decimal',
+             'notnull' => true,
+             ));
+        $this->hasColumn('alpha', 'integer', null, array(
+             'type' => 'integer',
+             'notnull' => true,
+             ));
+        $this->hasColumn('beta', 'float', null, array(
+             'type' => 'float',
+             'notnull' => true,
+             ));
         $this->hasColumn('packages_erosion_rate', 'decimal', null, array(
              'type' => 'decimal',
              'scale' => 4,
@@ -176,22 +192,6 @@ abstract class BaseScenario extends sfDoctrineRecord
              ));
         $this->hasColumn('bankrupcy_limit', 'decimal', null, array(
              'type' => 'decimal',
-             'notnull' => true,
-             ));
-        $this->hasColumn('starting_level', 'decimal', null, array(
-             'type' => 'decimal',
-             'notnull' => true,
-             ));
-        $this->hasColumn('saturation_level', 'decimal', null, array(
-             'type' => 'decimal',
-             'notnull' => true,
-             ));
-        $this->hasColumn('alpha', 'integer', null, array(
-             'type' => 'integer',
-             'notnull' => true,
-             ));
-        $this->hasColumn('beta', 'float', null, array(
-             'type' => 'float',
              'notnull' => true,
              ));
         $this->hasColumn('number_of_services_weight', 'decimal', null, array(

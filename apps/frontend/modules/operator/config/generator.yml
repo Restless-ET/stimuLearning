@@ -22,8 +22,6 @@ generator:
           net_present_value: { label: 'N.P.V.', renderer: 'FieldRendererHelper::euro'}
           internal_rate_of_return: { label: 'I.R.R.', renderer: 'FieldRendererHelper::perc' }
           payback_period: { label: 'Payback', renderer: 'number_format', renderer_arguments: [2, ',', '.'] }
-          User:
-            credentials: [manager]
         max_per_page: 15
         title: 'Operators'
         sort: [scenario_id, asc]
@@ -31,15 +29,17 @@ generator:
         table_method: filterByCredential
         object_actions:
           _show: ~
-          _edit: { credentials: [manager] }
-          _delete:
-            credentials: [manager]
+          _edit: ~
+          _delete: ~
 
       filter:
         display: [user_id, scenario_id]
 
       form:
         display: [name, starting_market_size, user_id, scenario_id]
+        fields:
+          user_id: { credentials: [admin] }
+          scenario_id: { credentials: [admin] }
 
       edit:    ~
       new:     ~

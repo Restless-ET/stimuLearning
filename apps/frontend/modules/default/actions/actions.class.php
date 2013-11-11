@@ -75,10 +75,6 @@ class DefaultActions extends sfActions
                     return sfView::ERROR;
                 }
 
-                //TODO Force 'manager' credential for now
-                //if ($userFromDb->is_manager) { // It's a game manager
-                $user->addCredential('manager');
-                //}
                 if ($userFromDb->is_admin) { // It's an administrator
                     $user->addCredential('admin');
                 }

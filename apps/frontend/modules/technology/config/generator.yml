@@ -22,16 +22,14 @@ generator:
         title: 'Technologies'
         display: [ name, description, first_tick_available, Architecture, Scenario ]
         actions:
-          _new:
-            credentials: [manager]
+          _new: ~
         object_actions:
           _show: ~
-          _edit: { credentials: [manager] }
+          _edit: ~
           _delete:
-            credentials: [manager]
             confirm: 'This removal is irreversible! Are you sure you want to proceed?'
         batch_actions:
-          _delete: { credentials: [manager] }
+          _delete: ~
 
       filter:
         class: false

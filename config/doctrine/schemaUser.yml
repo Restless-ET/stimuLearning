@@ -12,6 +12,5 @@ User:
     username: { type: string(50), notnull: true }
     password: { type: string(255), notnull: true }
     email: { type: string(255), email: true }
-    is_manager: { type: boolean, default: false }
     is_admin: { type: boolean, default: false }
     last_login: datetime

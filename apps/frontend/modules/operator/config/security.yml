@@ -1,7 +1,0 @@
-default:
-  credentials: [manager]
-
-index:
-  credentials: []
-show:
-  credentials: []

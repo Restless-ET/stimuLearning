@@ -25,16 +25,14 @@ generator:
           life_expectation: { label: 'Lifespan', renderer: 'FieldRendererHelper::append', renderer_arguments: ['ticks'] }
           equipment_type: { label: Type }
         actions:
-          _new:
-            credentials: [manager]
+          _new: ~
         object_actions:
           _show: ~
-          _edit: { credentials: [manager] }
+          _edit: ~
           _delete:
-            credentials: [manager]
             confirm: 'This removal is irreversible! Are you sure you want to proceed?'
         batch_actions:
-          _delete: { credentials: [manager] }
+          _delete: ~
 
       filter:
         display: [ architecture_id, equipment_type, nature_or_purpose, tecnology_age, setup_speed ]

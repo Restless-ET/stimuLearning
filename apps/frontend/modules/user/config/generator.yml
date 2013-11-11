@@ -15,13 +15,12 @@ generator:
     config:
       actions: ~
       fields:
-        is_manager: { renderer: 'FieldRendererHelper::plainBoolean' }
         is_admin: { renderer: 'FieldRendererHelper::plainBoolean' }
         last_login: { date_format: 'dd/MM/yyyy HH:mm:ss' }
 
       list:
         title: 'Users'
-        display: [ name, username, email, is_manager, is_admin, last_login ]
+        display: [ name, username, email, is_admin, last_login ]
 
       filter:
         class: false
@@ -31,4 +30,4 @@ generator:
       new:     ~
 
       show:
-        display: [ name, username, email, is_manager, is_admin, last_login ]
+        display: [ name, username, email, is_admin, last_login ]
