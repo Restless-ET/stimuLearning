@@ -125,9 +125,21 @@ th
 }
 
 .sitelogo {
+    text-decoration: none;
+    color: red;
     float: left;
     margin: 7px 13px;
     position: relative;
+}
+.sitelogo:hover{
+    color: red;
+}
+.sitelogo span {
+    font-family: serif;
+    font-style:  italic;
+    font-size:   44px;
+    position: relative;
+    top: -15px;
 }
 
 #system_info {

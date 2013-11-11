@@ -35,6 +35,7 @@
     <div id="container">
       <div id="header">
         <a class="sitelogo" href="<?php echo url_for('@homepage') ?>">
+          <span>Stimu-Learning</span>&nbsp;by&nbsp;
           <?php echo image_tag('gsbl_v7.png') ?>
         </a>
         <div id="system_info">
