@@ -122,6 +122,12 @@ th {
   font-weight: bold;
 }
 
+input[disabled="disabled"],
+input[readonly="1"],
+input[readonly="readonly"] {
+    background-color: gainsboro;
+}
+
 /*div.label {
     display: inline-block;
 }*/
