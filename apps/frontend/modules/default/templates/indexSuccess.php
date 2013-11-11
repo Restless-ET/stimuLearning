@@ -30,6 +30,7 @@
 <a href="<?php echo url_for('@login'); ?>">Login</a>
 <?php endif; ?>
 <br /><br />
+<div id="screenshot" style="float: right;"><img src="/images/operator_data.png"/></diV>
 <p>This application is an educational tool intended to reflect the market dynamics on the telecom industry.<br />
    This tool is aimed to help telecom engineering students to learn how the technical decisions affect the ecnonomical outcomes, on telecom business models.<br />
    The development of this tool is based on years of real-world analysis on telecom business models and their influences on the engineering decisions of a telecom operator.</p>
