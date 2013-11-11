@@ -43,7 +43,6 @@ class DefaultActions extends sfActions
      */
     public function executeAbout()
     {
-
     }
 
     /**

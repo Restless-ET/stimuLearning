@@ -1,5 +1,5 @@
 <?php if ($sf_user->isAuthenticated()): ?>
-<h2>Welcome, <?php echo $sf_user->getAttribute('username') ?>!!</h2>
+  <h2>Welcome, <?php echo $sf_user->getAttribute('username') ?>!!</h2>
 
   <h3>My Scenarios<?php //echo link_to('My Scenarios', '@scenario')?></h3>
   <?php if (isset($myScenarios) && count($myScenarios)) :?>
@@ -12,7 +12,6 @@
     <?php endforeach; ?>
     </ul>
   <?php endif; ?>
-  <br/>
   <h3>Player Scenarios</h3>
   <?php if (isset($playerScenarios) && count($playerScenarios)) :?>
     <ul>
@@ -27,9 +26,10 @@
 <?php else: ?>
 <h2>Welcome!!</h2>
 
-<a href="<?php echo url_for('@login'); ?>">Login</a>
+<a href="<?php echo url_for('@login'); ?>">Login</a><br />
 <?php endif; ?>
-<br /><br />
+<br />
+<hr>
 <div id="screenshot" style="float: right;"><img src="/images/operator_data.png"/></diV>
 <p>This application is an educational tool intended to reflect the market dynamics on the telecom industry.<br />
    This tool is aimed to help telecom engineering students to learn how the technical decisions affect the ecnonomical outcomes, on telecom business models.<br />
