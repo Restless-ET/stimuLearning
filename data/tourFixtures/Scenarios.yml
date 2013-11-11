@@ -27,6 +27,7 @@ Scenario:
     occupation_rate_weight: <?php echo rand(1, 5)."\n"; ?>
     containment_factor_weight: <?php echo rand(1, 5)."\n"; ?>
     reference_occupation_rate: <?php echo rand(1, 25)."\n"; ?>
+    Responsible: User_0
 
 ## Hipotese C ##
   Scenario_1:
@@ -56,6 +57,7 @@ Scenario:
     occupation_rate_weight: <?php echo rand(1, 5)."\n"; ?>
     containment_factor_weight: <?php echo rand(1, 5)."\n"; ?>
     reference_occupation_rate: <?php echo rand(1, 25)."\n"; ?>
+    Responsible: User_0
 
 ## Hipotese 3 operadores ##
   Scenario_2:
@@ -85,3 +87,4 @@ Scenario:
     occupation_rate_weight: <?php echo rand(1, 5)."\n"; ?>
     containment_factor_weight: <?php echo rand(1, 5)."\n"; ?>
     reference_occupation_rate: <?php echo rand(1, 25)."\n"; ?>
+    Responsible: User_0
