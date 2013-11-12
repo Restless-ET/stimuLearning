@@ -20,7 +20,7 @@ class ArchitectureForm extends BaseArchitectureForm
      */
     public function configure()
     {
-        unset($this['created_at'], $this['updated_at']);
+        unset($this['created_at'], $this['updated_at'], $this['scenario_id']);
 
         //show upload selection and file removal option
         $anchorStart = '<a href="%file%" target="_blank">';

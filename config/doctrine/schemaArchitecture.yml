@@ -7,8 +7,11 @@ Architecture:
     upload_bandwidth: { type: integer, notnull: true }
     image: { type: string(255) }
     technology_id: { type: integer, notnull: true }
+    scenario_id: { type: integer } # hidden
   relations:
     Technology:
       foreignAlias: Architecture
       type: one
       foreignType: one
+    Scenario:
+      foreignAlias: Architectures

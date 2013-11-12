@@ -46,6 +46,8 @@ class Equipment extends BaseEquipment
             $this->deltaT = StringHelper::getStringBetween($this->setup_speed, '(', ')');
         }
 
+        $this->scenario_id = $this->Architecture->scenario_id;
+
         parent::save($conn);
     }
 }

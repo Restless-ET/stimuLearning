@@ -19,7 +19,9 @@
  * @property integer $deltaT
  * @property integer $maximum_clients
  * @property integer $architecture_id
+ * @property integer $scenario_id
  * @property Architecture $Architecture
+ * @property Scenario $Scenario
  * @property Doctrine_Collection $AcquiredEquipment
  * 
  * @method string              getName()              Returns the current record's "name" value
@@ -36,7 +38,9 @@
  * @method integer             getDeltaT()            Returns the current record's "deltaT" value
  * @method integer             getMaximumClients()    Returns the current record's "maximum_clients" value
  * @method integer             getArchitectureId()    Returns the current record's "architecture_id" value
+ * @method integer             getScenarioId()        Returns the current record's "scenario_id" value
  * @method Architecture        getArchitecture()      Returns the current record's "Architecture" value
+ * @method Scenario            getScenario()          Returns the current record's "Scenario" value
  * @method Doctrine_Collection getAcquiredEquipment() Returns the current record's "AcquiredEquipment" collection
  * @method Equipment           setName()              Sets the current record's "name" value
  * @method Equipment           setStartingPrice()     Sets the current record's "starting_price" value
@@ -52,7 +56,9 @@
  * @method Equipment           setDeltaT()            Sets the current record's "deltaT" value
  * @method Equipment           setMaximumClients()    Sets the current record's "maximum_clients" value
  * @method Equipment           setArchitectureId()    Sets the current record's "architecture_id" value
+ * @method Equipment           setScenarioId()        Sets the current record's "scenario_id" value
  * @method Equipment           setArchitecture()      Sets the current record's "Architecture" value
+ * @method Equipment           setScenario()          Sets the current record's "Scenario" value
  * @method Equipment           setAcquiredEquipment() Sets the current record's "AcquiredEquipment" collection
  * 
  * @package    stimuLearning
@@ -151,6 +157,9 @@ abstract class BaseEquipment extends sfDoctrineRecord
              'type' => 'integer',
              'notnull' => true,
              ));
+        $this->hasColumn('scenario_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
     }
 
     public function setUp()
@@ -158,6 +167,10 @@ abstract class BaseEquipment extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Architecture', array(
              'local' => 'architecture_id',
+             'foreign' => 'id'));
+
+        $this->hasOne('Scenario', array(
+             'local' => 'scenario_id',
              'foreign' => 'id'));
 
         $this->hasMany('AcquiredEquipment', array(

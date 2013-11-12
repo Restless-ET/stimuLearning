@@ -43,6 +43,9 @@ Equipment:
     maximum_clients: { type: integer } #show only on 'Other'
   ## For the relations ##
     architecture_id: { type: integer, notnull: true }
+    scenario_id: { type: integer } # hidden
   relations:
     Architecture:
+      foreignAlias: Equipments
+    Scenario:
       foreignAlias: Equipments

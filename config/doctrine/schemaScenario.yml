@@ -73,3 +73,15 @@ Scenario:
       onDelete: CASCADE
       local: id
       foreign: scenario_id
+    Architectures:
+      type: many
+      class: Architecture
+      onDelete: CASCADE
+      local: id
+      foreign: scenario_id
+    Equipments:
+      type: many
+      class: Equipment
+      onDelete: CASCADE
+      local: id
+      foreign: scenario_id

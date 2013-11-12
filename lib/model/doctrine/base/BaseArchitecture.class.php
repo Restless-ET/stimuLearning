@@ -10,7 +10,9 @@
  * @property integer $upload_bandwidth
  * @property string $image
  * @property integer $technology_id
+ * @property integer $scenario_id
  * @property Technology $Technology
+ * @property Scenario $Scenario
  * @property Doctrine_Collection $Equipments
  * 
  * @method string              getName()               Returns the current record's "name" value
@@ -18,14 +20,18 @@
  * @method integer             getUploadBandwidth()    Returns the current record's "upload_bandwidth" value
  * @method string              getImage()              Returns the current record's "image" value
  * @method integer             getTechnologyId()       Returns the current record's "technology_id" value
+ * @method integer             getScenarioId()         Returns the current record's "scenario_id" value
  * @method Technology          getTechnology()         Returns the current record's "Technology" value
+ * @method Scenario            getScenario()           Returns the current record's "Scenario" value
  * @method Doctrine_Collection getEquipments()         Returns the current record's "Equipments" collection
  * @method Architecture        setName()               Sets the current record's "name" value
  * @method Architecture        setDownloadBandwidth()  Sets the current record's "download_bandwidth" value
  * @method Architecture        setUploadBandwidth()    Sets the current record's "upload_bandwidth" value
  * @method Architecture        setImage()              Sets the current record's "image" value
  * @method Architecture        setTechnologyId()       Sets the current record's "technology_id" value
+ * @method Architecture        setScenarioId()         Sets the current record's "scenario_id" value
  * @method Architecture        setTechnology()         Sets the current record's "Technology" value
+ * @method Architecture        setScenario()           Sets the current record's "Scenario" value
  * @method Architecture        setEquipments()         Sets the current record's "Equipments" collection
  * 
  * @package    stimuLearning
@@ -59,6 +65,9 @@ abstract class BaseArchitecture extends sfDoctrineRecord
              'type' => 'integer',
              'notnull' => true,
              ));
+        $this->hasColumn('scenario_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
     }
 
     public function setUp()
@@ -66,6 +75,10 @@ abstract class BaseArchitecture extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Technology', array(
              'local' => 'technology_id',
+             'foreign' => 'id'));
+
+        $this->hasOne('Scenario', array(
+             'local' => 'scenario_id',
              'foreign' => 'id'));
 
         $this->hasMany('Equipment as Equipments', array(

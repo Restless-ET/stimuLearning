@@ -18,7 +18,6 @@ default:
     - admin.css
 
   javascripts:    [lib/jquery-1.5.1.min.js, lib/jquery-ui.custom.min.js] #, /sfAdminThemejRollerPlugin/js/jquery-ui.custom.min.js]
-  #javascripts:    [lib/jquery-1.9.1.min.js, lib/jquery-ui.1.10.3.min.js]
 
   has_layout:     true
   layout:         layout

@@ -20,7 +20,7 @@ class EquipmentForm extends BaseEquipmentForm
     public function configure()
     {
         unset($this['maximum_clients'], $this['created_at'], $this['updated_at']);
-        unset($this['valK'], $this['NrIni'], $this['deltaT']);
+        unset($this['valK'], $this['NrIni'], $this['deltaT'], $this['scenario_id']);
 
         //TODO Forçar a registo ordenado do nivel na rede?!?
         // $this->getWidget('network_level')->setOptions(array('readonly' => true, 'default' => 'XX'))

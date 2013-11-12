@@ -11,6 +11,20 @@
  */
 class Architecture extends BaseArchitecture
 {
+    /**
+     * Overrided to set the values on some hidden/support fields.
+     *
+     * @param Doctrine_Connection $conn Optional connection parameter
+     *
+     * @return void
+     */
+    public function save(Doctrine_Connection $conn = null)
+    {
+        $this->scenario_id = $this->Technology->scenario_id;
+
+        parent::save($conn);
+    }
+
   /**
    * Generates a proper name for the uploaded file through the widget "image".
    * If it's detected a file with the same name on the general uploads directory,

@@ -21,6 +21,7 @@ abstract class BaseArchitectureForm extends BaseFormDoctrine
       'upload_bandwidth'   => new sfWidgetFormInputText(),
       'image'              => new sfWidgetFormInputText(),
       'technology_id'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Technology'), 'add_empty' => false)),
+      'scenario_id'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Scenario'), 'add_empty' => true)),
       'created_at'         => new sfWidgetFormDateTime(),
       'updated_at'         => new sfWidgetFormDateTime(),
     ));
@@ -32,6 +33,7 @@ abstract class BaseArchitectureForm extends BaseFormDoctrine
       'upload_bandwidth'   => new sfValidatorInteger(),
       'image'              => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'technology_id'      => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Technology'))),
+      'scenario_id'        => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Scenario'), 'required' => false)),
       'created_at'         => new sfValidatorDateTime(),
       'updated_at'         => new sfValidatorDateTime(),
     ));

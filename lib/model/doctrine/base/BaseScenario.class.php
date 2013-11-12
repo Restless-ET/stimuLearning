@@ -51,6 +51,8 @@
  * @property integer $responsible_id
  * @property User $Responsible
  * @property Doctrine_Collection $Technologies
+ * @property Doctrine_Collection $Architectures
+ * @property Doctrine_Collection $Equipments
  * @property Doctrine_Collection $Operators
  * @property Doctrine_Collection $Ticks
  * 
@@ -100,6 +102,8 @@
  * @method integer             getResponsibleId()                 Returns the current record's "responsible_id" value
  * @method User                getResponsible()                   Returns the current record's "Responsible" value
  * @method Doctrine_Collection getTechnologies()                  Returns the current record's "Technologies" collection
+ * @method Doctrine_Collection getArchitectures()                 Returns the current record's "Architectures" collection
+ * @method Doctrine_Collection getEquipments()                    Returns the current record's "Equipments" collection
  * @method Doctrine_Collection getOperators()                     Returns the current record's "Operators" collection
  * @method Doctrine_Collection getTicks()                         Returns the current record's "Ticks" collection
  * @method Scenario            setDescription()                   Sets the current record's "description" value
@@ -148,6 +152,8 @@
  * @method Scenario            setResponsibleId()                 Sets the current record's "responsible_id" value
  * @method Scenario            setResponsible()                   Sets the current record's "Responsible" value
  * @method Scenario            setTechnologies()                  Sets the current record's "Technologies" collection
+ * @method Scenario            setArchitectures()                 Sets the current record's "Architectures" collection
+ * @method Scenario            setEquipments()                    Sets the current record's "Equipments" collection
  * @method Scenario            setOperators()                     Sets the current record's "Operators" collection
  * @method Scenario            setTicks()                         Sets the current record's "Ticks" collection
  * 
@@ -372,6 +378,16 @@ abstract class BaseScenario extends sfDoctrineRecord
              'foreign' => 'scenario_id',
              'onDelete' => 'CASCADE',
              'orderBy' => 'first_tick_available ASC'));
+
+        $this->hasMany('Architecture as Architectures', array(
+             'local' => 'id',
+             'foreign' => 'scenario_id',
+             'onDelete' => 'CASCADE'));
+
+        $this->hasMany('Equipment as Equipments', array(
+             'local' => 'id',
+             'foreign' => 'scenario_id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasMany('Operator as Operators', array(
              'local' => 'id',
