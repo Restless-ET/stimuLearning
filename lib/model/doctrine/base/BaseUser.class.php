@@ -48,6 +48,7 @@ abstract class BaseUser extends sfDoctrineRecord
              ));
         $this->hasColumn('username', 'string', 50, array(
              'type' => 'string',
+             'unique' => true,
              'notnull' => true,
              'length' => 50,
              ));
@@ -58,6 +59,7 @@ abstract class BaseUser extends sfDoctrineRecord
              ));
         $this->hasColumn('email', 'string', 255, array(
              'type' => 'string',
+             'unique' => true,
              'email' => true,
              'length' => 255,
              ));
@@ -67,10 +69,6 @@ abstract class BaseUser extends sfDoctrineRecord
              ));
         $this->hasColumn('last_login', 'datetime', null, array(
              'type' => 'datetime',
-             ));
-
-        $this->option('symfony', array(
-             'filter' => false,
              ));
     }
 

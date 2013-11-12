@@ -17,15 +17,17 @@ generator:
       fields:
         is_admin: { renderer: 'FieldRendererHelper::plainBoolean' }
         last_login: { date_format: 'dd/MM/yyyy HH:mm:ss' }
+        deleted: { renderer: 'FieldRendererHelper::plainBoolean' }
 
       list:
         title: 'Users'
         display: [ name, username, email, is_admin, last_login ]
 
       filter:
-        class: false
+        display: [is_admin, deleted ]
 
-      form:    ~
+      form:
+        display: [ name, username, email, is_admin ]
       edit:    ~
       new:     ~
 

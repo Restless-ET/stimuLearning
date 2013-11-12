@@ -11,6 +11,20 @@
  */
 class User extends BaseUser
 {
+    /**
+     * Default string identifier for a User object
+     *
+     * @return void
+     */
+    public function __toString()
+    {
+        $string = $this->getName();
+        if ($this->deleted) {
+            $string .= ' (deleted)';
+        }
+
+        return $string;
+    }
 
     /**
      * This method will return true if the given passord is correct and false otherwise

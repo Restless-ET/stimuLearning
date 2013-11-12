@@ -40,6 +40,13 @@ abstract class BaseUserForm extends BaseFormDoctrine
       'deleted'    => new sfValidatorBoolean(array('required' => false)),
     ));
 
+    $this->validatorSchema->setPostValidator(
+      new sfValidatorAnd(array(
+        new sfValidatorDoctrineUnique(array('model' => 'User', 'column' => array('username'))),
+        new sfValidatorDoctrineUnique(array('model' => 'User', 'column' => array('email'))),
+      ))
+    );
+
     $this->widgetSchema->setNameFormat('user[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);

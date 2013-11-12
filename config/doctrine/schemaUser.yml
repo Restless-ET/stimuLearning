@@ -1,7 +1,4 @@
 User:
-  options:
-    symfony:
-      filter: false
   actAs:
     Timestampable: ~
     SoftDelete:
@@ -9,8 +6,8 @@ User:
       type: boolean
   columns:
     name: { type: string(150), notnull: true }
-    username: { type: string(50), notnull: true }
+    username: { type: string(50), unique: true, notnull: true }
     password: { type: string(255), notnull: true }
-    email: { type: string(255), email: true }
+    email: { type: string(255), unique: true, email: true }
     is_admin: { type: boolean, default: false }
     last_login: datetime
