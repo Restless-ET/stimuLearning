@@ -49,6 +49,9 @@ class ScenarioForm extends BaseScenarioForm
           'js_on_slide' => 'configAndInitiateGraphDraw();',
         )));
 
+        $this->getWidget('total_clients')->setAttribute('onchange', 'javascript: setDemographyPopulation();');
+        $this->getWidget('total_area')->setAttribute('onchange', 'javascript: setGeographyAreas();');
+
         $this->setReadonlyFields();
 
         $this->setPercentageFields();
@@ -63,7 +66,7 @@ class ScenarioForm extends BaseScenarioForm
     {
         $readonlyFields = array('ticks_between_decision_points',
             'dense_urban_area', 'urban_area', 'suburban_area', 'rural_area',
-            //'dense_urban_population', 'urban_population', 'suburban_population', 'rural_population'
+            'dense_urban_population', 'urban_population', 'suburban_population', 'rural_population'
         );
 
         foreach ($readonlyFields as $readonly) {
@@ -81,14 +84,14 @@ class ScenarioForm extends BaseScenarioForm
         $simplePercentageFields = array(
             'starting_level' => 'configAndInitiateGraphDraw();',
             'saturation_level' => 'configAndInitiateGraphDraw();',
-            'dense_urban_territory' => '',
-            'urban_territory' => '',
-            'suburban_territory' => '',
-            'rural_territory' => '',
-            'dense_urban_distribution' => '',
-            'urban_distribution' => '',
-            'suburban_distribution' => '',
-            'rural_distribution' => '',
+            'dense_urban_territory' => 'setGeographyAreas();',
+            'urban_territory' => 'setGeographyAreas();',
+            'suburban_territory' => 'setGeographyAreas();',
+            'rural_territory' => 'setGeographyAreas();',
+            'dense_urban_distribution' => 'setDemographyPopulation();',
+            'urban_distribution' => 'setDemographyPopulation();',
+            'suburban_distribution' => 'setDemographyPopulation();',
+            'rural_distribution' => 'setDemographyPopulation();',
             'packages_erosion_rate' => '',
             'depreciation_rate' => '',
             'interest_rate' => '',
