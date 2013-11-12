@@ -53,8 +53,15 @@ class ScenarioForm extends BaseScenarioForm
         $this->getWidget('total_area')->setAttribute('onchange', 'javascript: setGeographyAreas();');
 
         $this->setReadonlyFields();
-
         $this->setPercentageFields();
+
+        // We should do a server-side validation for territory areas and population distribution values
+        $this->mergePostValidator(new sfValidatorCallback(array(
+            'callback' => array($this, 'validateTerritoryAreas'))
+        ));
+        $this->mergePostValidator(new sfValidatorCallback(array(
+            'callback' => array($this, 'validatePopulationDistribution'))
+        ));
     }
 
     /**
@@ -106,4 +113,77 @@ class ScenarioForm extends BaseScenarioForm
             )));
         }
     }
+
+  /**
+   * Checks if the total of territory areas are equal to 100%
+   *
+   * @param mixed $validator Validator
+   * @param mixed $values    Values
+   *
+   * @return $values
+   */
+  public function validateTerritoryAreas($validator, $values)
+  {
+    // The list of fields that have failed validation (initially none)
+    $failed = array();
+
+    $sum = $values['dense_urban_territory'] + $values['urban_territory']
+          + $values['suburban_territory'] + $values['rural_territory'];
+
+    if ($sum !== 100.00) {
+      $tempError = new sfValidatorError($validator,
+          'Total percentage for territory sections has to be 100%. Adjust this value if needed.');
+      $failed = array(
+          'dense_urban_territory' => $tempError,
+          'urban_territory' => $tempError,
+          'suburban_territory' => $tempError,
+          'rural_territory' => $tempError,
+      );
+    }
+
+    // If any failed, we need to throw a schema of errors
+    if (count($failed) > 0) {
+      throw new sfValidatorErrorSchema($validator, $failed);
+    }
+
+    // If everything is OK, we must return the values, that could have been "cleaned" if we wanted to
+    return $values;
+  }
+
+/**
+   * Checks if the total from the population distributions are equal to 100%
+   *
+   * @param mixed $validator Validator
+   * @param mixed $values    Values
+   *
+   * @return $values
+   */
+  public function validatePopulationDistribution($validator, $values)
+  {
+    // The list of fields that have failed validation (initially none)
+    $failed = array();
+
+    $sum = $values['dense_urban_distribution'] + $values['urban_distribution']
+          + $values['suburban_distribution'] + $values['rural_distribution'];
+
+    if ($sum !== 100.00) {
+      $tempError = new sfValidatorError($validator,
+          'Total percentage for population distribution has to be 100%. Adjust this value if needed.');
+      $failed = array(
+          'dense_urban_distribution' => $tempError,
+          'urban_distribution' => $tempError,
+          'suburban_distribution' => $tempError,
+          'rural_distribution' => $tempError,
+      );
+    }
+
+    // If any failed, we need to throw a schema of errors
+    if (count($failed) > 0) {
+      throw new sfValidatorErrorSchema($validator, $failed);
+    }
+
+    // If everything is OK, we must return the values, that could have been "cleaned" if we wanted to
+    return $values;
+  }
+
 }
