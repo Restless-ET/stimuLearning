@@ -58,3 +58,5 @@ generator:
             - _simulated_data_chart
           Market Share Evolution:
             - _market_share_evolution_chart
+          Acquired Equipments:
+            - _acquired_equipments
