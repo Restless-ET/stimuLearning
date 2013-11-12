@@ -1,7 +1,6 @@
 cache
 #log
 web/output
-web/uploads
 
 #Vagrant
 .vagrant
