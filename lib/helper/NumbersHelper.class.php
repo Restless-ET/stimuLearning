@@ -183,61 +183,6 @@ abstract class NumbersHelper
   }
 
   /**
-   * Extension for the use of external class GExtenso since this one only supports numbers with max value of 999.999.999
-   * Supports integer numbers up to 999.999.999.999.999.999
-   *
-   * @param integer $number The number for which we want the ordinal.
-   * @param boolean $gender Indicates the name gender. Possible values are GENERO_MASC(default) and GENERO_FEM.
-   *
-   * @return The ordinal number name.
-   */
-  public static function bigNumberExtended($number, $gender = self::GENERO_MASC)
-  {
-    if ($number == null || $number == '') {
-      $number = '0';
-    }
-    if ($number > GExtenso::VALOR_MAXIMO) {
-      if (strlen($number) > 18) {
-        throw new Exception('[Excepção em numbersHelper::bigNumberExtended] Valor inserido demasiado grande!');
-      }
-      $higher = substr($number, 0, -9);
-      $lower = substr($number, -9);
-
-      $ext_high = '';
-      if (strlen($higher) <= 9 && strlen($higher) > 6) {
-        $check = substr($higher, 0, -6);
-        $higher = substr($higher, -6);
-        $ext_high .= GExtenso::numero($check, $gender);
-        if ($check > 1) {
-          $ext_high .= ' triliões, ';
-        } elseif ($check == 1) {
-          $ext_high .= ' trilião, ';
-        }
-      }
-      if (strlen($higher) > 3) {
-        $check = substr($higher, 0, -3);
-        $higher = substr($higher, -3);
-        $ext_high .= GExtenso::numero($check, $gender);
-        if ($check > 1) {
-          $ext_high .= ' biliões, ';
-        } elseif ($check == 1) {
-          $ext_high .= ' bilião, ';
-        }
-      }
-      $ext_high .= GExtenso::numero($higher, $gender);
-      if ($higher > 1) {
-        $ext_high .= ' milhares de milhão, ';
-      } elseif ($higher == 1) {
-        $ext_high .= ' milhar de milhão, ';
-      }
-
-      return $ext_high.GExtenso::numero($lower, $gender);
-    } else {
-      return GExtenso::numero($number, $gender);
-    }
-  }
-
-  /**
    * Helper function to apply the format "1.000.000,00" to currency values
    *
    * @param float  $value        Currency value to be formated
