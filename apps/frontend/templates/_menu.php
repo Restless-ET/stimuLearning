@@ -1,42 +1,48 @@
-<div id="menu" class="main-menu">
+<div id="menu">
 <?php if($sf_user->isAuthenticated()): ?>
   <?php $currentModule = sfContext::getInstance()->getModuleName();
         $scenarioId = $sf_user->getAttribute('scenarioId', 0); ?>
-  <ul>
-    <li<?php if($currentModule == 'default'): ?> class="active"<?php endif; ?>>
-      <?php echo link_to('Home', '@homepage') ?>
-    </li>
-    <li>
-      <?php echo link_to('About', '@about') ?>
-    </li>
-    <?php if ($scenarioId): ?>
-      <li<?php if($currentModule == 'scenario'): ?> class="active"<?php endif; ?>>
-        <?php echo link_to('Scenario', 'scenario/show?id='.$scenarioId); ?>
-      </li>
-      <li<?php if(in_array($currentModule, array('technology','architecture','equipment'))): ?> class="active"<?php endif; ?>>
-        <?php echo link_to('Network', '@technology') ?>
-      </li>
-      <li<?php if($currentModule == 'operator'): ?> class="active"<?php endif; ?>>
-        <?php echo link_to('Operators', '@operator') ?>
+  <div class="admin-menu">
+    <ul>
+    <?php if($sf_user->hasCredential('admin')): ?>
+      <li<?php if($currentModule == 'user'): ?> class="active"<?php endif; ?>>
+        <?php echo link_to('Users', '@user') ?>
       </li>
     <?php else: ?>
-      <li<?php if($currentModule == 'scenario'): ?> class="active"<?php endif; ?>>
-        <?php echo link_to('Scenarios', '@scenario'); ?>
+      <li<?php if($currentModule == 'user'): ?> class="active"<?php endif; ?>>
+        <?php echo link_to('My profile', 'user/edit?id='.$sf_user->getAttribute('id')); ?>
       </li>
     <?php endif; ?>
-
-  <?php if($sf_user->hasCredential('admin')): ?>
-    <li<?php if($currentModule == 'user'): ?> class="active"<?php endif; ?>>
-      <?php echo link_to('Users', '@user') ?>
-    </li>
-  <?php else: ?>
-    <li<?php if($currentModule == 'user'): ?> class="active"<?php endif; ?>>
-      <?php echo link_to('My profile', 'user/edit?id='.$sf_user->getAttribute('id')); ?>
-    </li>
-  <?php endif; ?>
-  </ul>
+    </ul>
+  </div>
+  <div class="main-menu">
+    <ul>
+      <li<?php if($currentModule == 'default'): ?> class="active"<?php endif; ?>>
+        <?php echo link_to('Home', '@homepage') ?>
+      </li>
+      <li>
+        <?php echo link_to('About', '@about') ?>
+      </li>
+      <?php if ($scenarioId): ?>
+        <li<?php if($currentModule == 'scenario'): ?> class="active"<?php endif; ?>>
+          <?php echo link_to('Scenario', 'scenario/show?id='.$scenarioId); ?>
+        </li>
+        <li<?php if(in_array($currentModule, array('technology','architecture','equipment'))): ?> class="active"<?php endif; ?>>
+          <?php echo link_to('Network', '@technology') ?>
+        </li>
+        <li<?php if($currentModule == 'operator'): ?> class="active"<?php endif; ?>>
+          <?php echo link_to('Operators', '@operator') ?>
+        </li>
+      <?php else: ?>
+        <li<?php if($currentModule == 'scenario'): ?> class="active"<?php endif; ?>>
+          <?php echo link_to('Scenarios', '@scenario'); ?>
+        </li>
+      <?php endif; ?>
+    </ul>
+  </div>
+  <div id="sub-menu">
   <?php if ($scenarioId && in_array($currentModule, array('technology','architecture','equipment'))): ?>
-    <div id="sub-menu" class="sub-menu">
+    <div class="sub-main">
       <ul>
         <li<?php if($currentModule == 'technology'): ?> class="active"<?php endif; ?>>
           <?php echo link_to('Technologies', '@technology') ?>
@@ -50,7 +56,7 @@
       </ul>
     </div>
   <?php elseif ($scenarioId && in_array($currentModule, array('operator','service'))): ?>
-    <div id="sub-menu" class="sub-menu">
+    <div class="sub-main">
       <ul>
         <li<?php if($currentModule == 'service'): ?> class="active"<?php endif; ?>>
           <?php echo link_to('Services', '@service') ?>
@@ -58,5 +64,6 @@
       </ul>
     </div>
   <?php endif; ?>
+  </div>
 <?php endif; ?>
 </div>

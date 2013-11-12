@@ -41,7 +41,7 @@ body {
 
 #system_info {
     position: absolute;
-    right: 25px;
+    right: 10px;
     top: 7px;
     color: #272727;
     text-align: right;
@@ -52,8 +52,7 @@ body {
 
 /* ********** MENU ********** */
 #menu {
-    padding: 7px;
-    padding-left: 15px;
+    padding: 7px 0px 7px 15px;
     margin-bottom: 10px;
     background-color: #444;
     text-align: left;
@@ -64,8 +63,7 @@ body {
     margin: 0px;
 }
 
-#menu li
-{
+#menu li {
     margin-right: 15px;
     display: inline;
 }
@@ -84,11 +82,14 @@ body {
     text-decoration: underline;
 }
 
-.sub-menu {
+.admin-menu {
+    float: right;
+}
+
+.sub-main {
     padding-top: 5px;
     padding-left: 40px;
     font-size: 12px;
-    text-align: left;
 }
 /* *** ****************** *** */
 
