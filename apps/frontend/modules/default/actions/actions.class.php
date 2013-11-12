@@ -22,7 +22,7 @@ class DefaultActions extends sfActions
                                   ->createQuery('s')
                                   ->select('s.description')
                                   ->where('s.responsible_id = ?', $user->getAttribute('id'))
-                                  ->where('s.finished = ?', false)
+                                  ->andWhere('s.finished = ?', false)
                                   ->execute();
 
             $this->playerScenarios = Doctrine_Core::getTable('Scenario')

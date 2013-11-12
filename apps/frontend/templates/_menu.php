@@ -29,6 +29,10 @@
     <li<?php if($currentModule == 'user'): ?> class="active"<?php endif; ?>>
       <?php echo link_to('Users', '@user') ?>
     </li>
+  <?php else: ?>
+    <li<?php if($currentModule == 'user'): ?> class="active"<?php endif; ?>>
+      <?php echo link_to('My profile', 'user/edit?id='.$sf_user->getAttribute('id')); ?>
+    </li>
   <?php endif; ?>
   </ul>
   <?php if ($scenarioId && in_array($currentModule, array('technology','architecture','equipment'))): ?>

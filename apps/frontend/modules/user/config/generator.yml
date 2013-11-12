@@ -27,7 +27,7 @@ generator:
         display: [is_admin, deleted ]
 
       form:
-        display: [ name, username, email, is_admin ]
+        display: [ name, username, email, is_admin, new_password, confirm_new_password ]
       edit:    ~
       new:     ~
 
