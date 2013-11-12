@@ -1,5 +1,4 @@
-<?php use_helper('JavascriptBase');
-      use_helper('jQuery'); ?>
+<?php use_helper('JavascriptBase'); ?>
 <?php $loggedUser = $sf_user->getAttribute('id');
       $operators = $scenario->Operators; ?>
 

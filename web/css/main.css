@@ -9,6 +9,7 @@ body {
 
 #container {
     width: 100%;
+    min-width: 970px;
 }
 
 /* ********** HEADER ********** */

@@ -21,7 +21,6 @@ class ProjectConfiguration extends sfProjectConfiguration
     {
         $this->enablePlugins('sfDoctrinePlugin');
         $this->enablePlugins('sfFormExtraPlugin');
-        $this->enablePlugins('sfJqueryReloadedPlugin');
         $this->enablePlugins('sfAdminThemejRollerPlugin');
     }
 }

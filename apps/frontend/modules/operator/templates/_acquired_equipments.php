@@ -1,5 +1,3 @@
-<?php use_helper('JavascriptBase');
-      use_helper('jQuery'); ?>
 <?php $acquired = Doctrine_Core::getTable('AcquiredEquipment')->createQuery('ae')
                             ->innerJoin('ae.Tick t')
                             ->innerJoin('ae.Equipment e')
