@@ -128,6 +128,15 @@ input[readonly="readonly"] {
     background-color: gainsboro;
 }
 
+.support-table a {
+    text-decoration: none;
+}
+.support-table span {
+    float: left;
+    position: relative;
+    top: -2px;
+}
+
 /*div.label {
     display: inline-block;
 }*/

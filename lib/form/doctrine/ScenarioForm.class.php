@@ -98,6 +98,7 @@ class ScenarioForm extends BaseScenarioForm
             $this->setWidget($percentageField, new amWidgetFormSlider(array(
                 'units' => '%',
                 'step' => 0.5,
+                //'strict_limits' => false, // Set to false to allow proper edition of input
                 'js_on_slide' => $jsOnSlide,
             )));
         }
