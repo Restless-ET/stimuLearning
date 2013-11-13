@@ -87,9 +87,14 @@ body {
 }
 
 .sub-main {
-    padding-top: 5px;
-    padding-left: 40px;
+    margin-top: 5px;
+    margin-left: 40px;
     font-size: 12px;
+}
+
+.sub-admin {
+    float: right;
+    margin-right: 15px;
 }
 /* *** ****************** *** */
 
