@@ -1,11 +1,12 @@
-<div id="market_penetration_chart"></div>
-
 <div id="miniature">
-  <p id="overviewLegend"></p>
   <div id="overview"></div>
+  <br/>
+  <p id="overviewLegend"></p>
 
   <p id="hoverdata" style="margin-left:5px"><br><br>Mouse at (<span id="x">0</span>, <span id="y">0</span>)</p>
 </div>
+
+<div id="market_penetration_chart"></div>
 
 <?php if (isset($scenario)): ?>
   <input id="scenario_tick_alias" style="display: none;" type="text" value="<?php echo $scenario->getTickAlias(); ?>">
