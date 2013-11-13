@@ -10,9 +10,10 @@ div.ui-tabs-vertical .ui-tabs-panel {
 
 div#simulated_data_chart,
 div#market_share_evolution_chart {
-    margin: 10px 0px 0px 5px;
     width: 650px;
     height: 350px;
+    position: relative;
+    margin: 10px 0px 0px 5px;
 }
 
 div#sdc_miniature,
@@ -24,7 +25,7 @@ div#msec_miniature {
 
 ul#sdc_choices,
 ul#msec_choices {
-    margin-left: 10px
+    margin-left: 10px;
 }
 
 div#sdc_overview,

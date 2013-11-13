@@ -96,7 +96,7 @@ function configAndInitiateGraphDraw() {
 
     $("#overview").bind("dblclick", resetZoom);
     //colorIndex = colorIndex + 1;
-}
+};
 
 function setNeededValuesFromInput() {
     numTicks = parseInt(jQuery(lifespanId).val());
@@ -105,13 +105,13 @@ function setNeededValuesFromInput() {
     saturationLevel = parseFloat(jQuery(saturationId).val());
     alpha = parseInt(jQuery(alphaId).val());
     beta = parseFloat(jQuery(betaId).val());
-}
+};
 
 function getGraphOptions() {
     var graphOptions = {
         legend: { show: false },
         series: {
-          color: colorIndex,
+            color: colorIndex,
             lines: { show: true },
             points: { show: true }
         },
@@ -126,7 +126,7 @@ function getGraphOptions() {
     };
 
     return graphOptions;
-}
+};
 
 //setup plot data
 function getPlotData() {
