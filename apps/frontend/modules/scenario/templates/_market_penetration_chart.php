@@ -8,7 +8,7 @@
 
 <div id="market_penetration_chart"></div>
 
-<?php if (isset($scenario)): ?>
+<?php if (isset($scenario) && $sf_context->getActionName() == 'show'): ?>
   <input id="scenario_tick_alias" style="display: none;" type="text" value="<?php echo $scenario->getTickAlias(); ?>">
   <input id="scenario_lifespan" style="display: none;" type="text" value="<?php echo $scenario->getLifespan(); ?>">
   <input id="scenario_starting_level" style="display: none;" type="text" value="<?php echo $scenario->getStartingLevel(); ?>">
