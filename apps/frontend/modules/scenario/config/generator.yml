@@ -46,6 +46,7 @@ generator:
           _edit: ~
           _delete:
             confirm: 'This removal is irreversible! Are you sure you want to proceed?'
+        batch_actions: {}
 
       filter:
         display: [started, tick_alias, finished]

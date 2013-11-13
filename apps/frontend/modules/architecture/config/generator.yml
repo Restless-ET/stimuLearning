@@ -29,8 +29,7 @@ generator:
           _edit: ~
           _delete:
             confirm: 'This removal is irreversible! Are you sure you want to proceed?'
-        batch_actions:
-          _delete: ~
+        batch_actions: {}
 
       filter:
         class: false

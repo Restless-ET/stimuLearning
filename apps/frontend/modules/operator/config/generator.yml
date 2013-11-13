@@ -31,6 +31,7 @@ generator:
           _show: ~
           _edit: ~
           _delete: ~
+        batch_actions: {}
 
       filter:
         display: [user_id, scenario_id]

@@ -22,6 +22,7 @@ generator:
       list:
         title: 'Users'
         display: [ name, username, email, is_admin, last_login ]
+        batch_actions: {}
 
       filter:
         display: [is_admin, deleted ]

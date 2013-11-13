@@ -21,6 +21,7 @@ generator:
       list:
         title: 'Services'
         display: [ name, setup_fee, cost_per_user, CAPEX_percentage, tick_to_edit ]
+        batch_actions: {}
 
       filter:
         class: false
