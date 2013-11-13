@@ -25,7 +25,32 @@ class ScenarioForm extends BaseScenarioForm
 
         $this->setDefault('responsible_id', sfContext::getInstance()->getUser()->getAttribute('id'));
 
-        $this->setWidget('lifespan', new amWidgetFormSlider(array(
+        $this->getWidget('total_clients')->setAttribute('onchange', 'javascript: setDemographyPopulation();');
+        $this->getWidget('total_area')->setAttribute('onchange', 'javascript: setGeographyAreas();');
+
+        $this->setCustomSliderFields();
+
+        $this->setPercentageFields();
+
+        $this->setReadonlyFields();
+
+        // We should do a server-side validation for territory areas and population distribution values
+        $this->mergePostValidator(new sfValidatorCallback(array(
+            'callback' => array($this, 'validateTerritoryAreas'))
+        ));
+        $this->mergePostValidator(new sfValidatorCallback(array(
+            'callback' => array($this, 'validatePopulationDistribution'))
+        ));
+    }
+
+    /**
+     * Change the widgets for some fields in order to use the jQuery-UI slider
+     *
+     * @return void
+     */
+    private function setCustomSliderFields()
+    {
+       $this->setWidget('lifespan', new amWidgetFormSlider(array(
           'min' => '1',
           'default' => '36',
           'strict_limits' => false,
@@ -48,37 +73,6 @@ class ScenarioForm extends BaseScenarioForm
           'strict_limits' => false,
           'js_on_slide' => 'configAndInitiateGraphDraw();',
         )));
-
-        $this->getWidget('total_clients')->setAttribute('onchange', 'javascript: setDemographyPopulation();');
-        $this->getWidget('total_area')->setAttribute('onchange', 'javascript: setGeographyAreas();');
-
-        $this->setReadonlyFields();
-        $this->setPercentageFields();
-
-        // We should do a server-side validation for territory areas and population distribution values
-        $this->mergePostValidator(new sfValidatorCallback(array(
-            'callback' => array($this, 'validateTerritoryAreas'))
-        ));
-        $this->mergePostValidator(new sfValidatorCallback(array(
-            'callback' => array($this, 'validatePopulationDistribution'))
-        ));
-    }
-
-    /**
-     * Update the widgets for readonly fields properly
-     *
-     * @return void
-     */
-    private function setReadonlyFields()
-    {
-        $readonlyFields = array('ticks_between_decision_points',
-            'dense_urban_area', 'urban_area', 'suburban_area', 'rural_area',
-            'dense_urban_population', 'urban_population', 'suburban_population', 'rural_population'
-        );
-
-        foreach ($readonlyFields as $readonly) {
-            $this->getWidget($readonly)->setAttribute('readonly', true);
-        }
     }
 
     /**
@@ -114,76 +108,92 @@ class ScenarioForm extends BaseScenarioForm
         }
     }
 
-  /**
-   * Checks if the total of territory areas are equal to 100%
-   *
-   * @param mixed $validator Validator
-   * @param mixed $values    Values
-   *
-   * @return $values
-   */
-  public function validateTerritoryAreas($validator, $values)
-  {
-    // The list of fields that have failed validation (initially none)
-    $failed = array();
+    /**
+     * Update the widgets for readonly fields properly
+     *
+     * @return void
+     */
+    private function setReadonlyFields()
+    {
+        $readonlyFields = array('ticks_between_decision_points',
+            'dense_urban_area', 'urban_area', 'suburban_area', 'rural_area',
+            'dense_urban_population', 'urban_population', 'suburban_population', 'rural_population'
+        );
 
-    $sum = $values['dense_urban_territory'] + $values['urban_territory']
-          + $values['suburban_territory'] + $values['rural_territory'];
-
-    if ($sum !== 100.00) {
-      $tempError = new sfValidatorError($validator,
-          'Total percentage for territory sections has to be 100%. Adjust this value if needed.');
-      $failed = array(
-          'dense_urban_territory' => $tempError,
-          'urban_territory' => $tempError,
-          'suburban_territory' => $tempError,
-          'rural_territory' => $tempError,
-      );
+        foreach ($readonlyFields as $readonly) {
+            $this->getWidget($readonly)->setAttribute('readonly', true);
+        }
     }
 
-    // If any failed, we need to throw a schema of errors
-    if (count($failed) > 0) {
-      throw new sfValidatorErrorSchema($validator, $failed);
+    /**
+     * Checks if the total of territory areas are equal to 100%
+     *
+     * @param mixed $validator Validator
+     * @param mixed $values    Values
+     *
+     * @return $values
+     */
+    public function validateTerritoryAreas($validator, $values)
+    {
+        // The list of fields that have failed validation (initially none)
+        $failed = array();
+
+        $sum = $values['dense_urban_territory'] + $values['urban_territory']
+              + $values['suburban_territory'] + $values['rural_territory'];
+
+        if ($sum !== 100.00) {
+            $tempError = new sfValidatorError($validator,
+                'Total percentage for territory sections has to be 100%. Adjust this value if needed.');
+            $failed = array(
+                'dense_urban_territory' => $tempError,
+                'urban_territory' => $tempError,
+                'suburban_territory' => $tempError,
+                'rural_territory' => $tempError,
+            );
+        }
+
+        // If any failed, we need to throw a schema of errors
+        if (count($failed) > 0) {
+            throw new sfValidatorErrorSchema($validator, $failed);
+        }
+
+        // If everything is OK, we must return the values, that could have been "cleaned" if we wanted to
+        return $values;
     }
 
-    // If everything is OK, we must return the values, that could have been "cleaned" if we wanted to
-    return $values;
-  }
+    /**
+     * Checks if the total from the population distributions are equal to 100%
+     *
+     * @param mixed $validator Validator
+     * @param mixed $values    Values
+     *
+     * @return $values
+     */
+    public function validatePopulationDistribution($validator, $values)
+    {
+        // The list of fields that have failed validation (initially none)
+        $failed = array();
 
-/**
-   * Checks if the total from the population distributions are equal to 100%
-   *
-   * @param mixed $validator Validator
-   * @param mixed $values    Values
-   *
-   * @return $values
-   */
-  public function validatePopulationDistribution($validator, $values)
-  {
-    // The list of fields that have failed validation (initially none)
-    $failed = array();
+        $sum = $values['dense_urban_distribution'] + $values['urban_distribution']
+              + $values['suburban_distribution'] + $values['rural_distribution'];
 
-    $sum = $values['dense_urban_distribution'] + $values['urban_distribution']
-          + $values['suburban_distribution'] + $values['rural_distribution'];
+        if ($sum !== 100.00) {
+            $tempError = new sfValidatorError($validator,
+                'Total percentage for population distribution has to be 100%. Adjust this value if needed.');
+            $failed = array(
+                'dense_urban_distribution' => $tempError,
+                'urban_distribution' => $tempError,
+                'suburban_distribution' => $tempError,
+                'rural_distribution' => $tempError,
+            );
+        }
 
-    if ($sum !== 100.00) {
-      $tempError = new sfValidatorError($validator,
-          'Total percentage for population distribution has to be 100%. Adjust this value if needed.');
-      $failed = array(
-          'dense_urban_distribution' => $tempError,
-          'urban_distribution' => $tempError,
-          'suburban_distribution' => $tempError,
-          'rural_distribution' => $tempError,
-      );
+        // If any failed, we need to throw a schema of errors
+        if (count($failed) > 0) {
+            throw new sfValidatorErrorSchema($validator, $failed);
+        }
+
+        // If everything is OK, we must return the values, that could have been "cleaned" if we wanted to
+        return $values;
     }
-
-    // If any failed, we need to throw a schema of errors
-    if (count($failed) > 0) {
-      throw new sfValidatorErrorSchema($validator, $failed);
-    }
-
-    // If everything is OK, we must return the values, that could have been "cleaned" if we wanted to
-    return $values;
-  }
-
 }
