@@ -96,7 +96,7 @@ generator:
             - bankrupcy_limit
           Operators:
             - _operators
-          Quality Vector:
+          #Quality Vector:
             - number_of_services_weight
             - download_weight
             - upload_weight
@@ -133,7 +133,7 @@ generator:
             - saturation_level
             - alpha
             - beta
-          "Geography / Territory":
+          'Geography / Territory':
             - total_area
             - dense_urban_territory
             - dense_urban_area
@@ -143,7 +143,7 @@ generator:
             - suburban_area
             - rural_territory
             - rural_area
-          "Demography / Population":
+          'Demography / Population':
             - dense_urban_distribution
             - dense_urban_population
             - urban_distribution
@@ -160,7 +160,6 @@ generator:
             - bankrupcy_limit
           Operators:
             - _operators
-          Quality Vector:
             - number_of_services_weight
             - download_weight
             - upload_weight

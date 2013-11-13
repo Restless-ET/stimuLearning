@@ -34,6 +34,22 @@ class ScenarioForm extends BaseScenarioForm
 
         $this->setReadonlyFields();
 
+        $qualityVector = array('number_of_services_weight', 'download_weight', 'upload_weight', 'rate_weight',
+            'fee_weight', 'occupation_rate_weight', 'containment_factor_weight', 'reference_occupation_rate');
+        if ($this->getObject()->Operators->count() > 1) {
+            foreach ($qualityVector as $weightField) {
+                $this->setWidget($weightField, new amWidgetFormSlider(array(
+                    'units' => '%',
+                    'step' => 0.5,
+                )));
+            }
+        } else {
+            foreach ($qualityVector as $weight) {
+                $this->setWidget($weight, new sfWidgetFormInputHidden());
+                //unset($this[$weight]);
+            }
+        }
+
         // We should do a server-side validation for territory areas and population distribution values
         $this->mergePostValidator(new sfValidatorCallback(array(
             'callback' => array($this, 'validateTerritoryAreas'))

@@ -46,8 +46,18 @@
     No operators have been created for this scenario yet!
   </div>
 <?php endif; ?>
-<br/>
-<?php echo link_to(ImagesHelper::jQueryUIImageTag('plus', 'alt_title=New Operator').' New Operator', 'operator/new', array('class' => 'fg-button ui-state-default fg-button-icon-left')); ?>
+
+<?php if ($loggedUser = $scenario->responsible_id || $sf_user->hasCredential('admin')): ?>
+  <br/>
+  <?php echo link_to(ImagesHelper::jQueryUIImageTag('plus', 'alt_title=New Operator').' New Operator', 'operator/new', array('class' => 'fg-button ui-state-default fg-button-icon-left')); ?>
+<?php endif; ?>
+
+<?php if(count($operators) > 1): ?>
+  <br/>
+  <br/>
+  <hr>
+  <h1>Weights for Quality Vector</h1>
+<?php endif; ?>
 
 <script type="text/javascript">
 $(document).ready(function(){
