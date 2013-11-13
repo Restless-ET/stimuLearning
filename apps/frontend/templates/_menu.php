@@ -1,8 +1,9 @@
+<?php $currentModule = sfContext::getInstance()->getModuleName();
+      $currentAction = sfContext::getInstance()->getActionName();
+      $scenarioId = $sf_user->getAttribute('scenarioId', 0); ?>
 <div id="menu">
-<?php if($sf_user->isAuthenticated()): ?>
-  <?php $currentModule = sfContext::getInstance()->getModuleName();
-        $scenarioId = $sf_user->getAttribute('scenarioId', 0); ?>
   <div class="admin-menu">
+  <?php if($sf_user->isAuthenticated()): ?>
     <ul>
     <?php if($sf_user->hasCredential('admin')): ?>
       <li<?php if($currentModule == 'user'): ?> class="active"<?php endif; ?>>
@@ -14,15 +15,17 @@
       </li>
     <?php endif; ?>
     </ul>
+  <?php endif; ?>
   </div>
   <div class="main-menu">
     <ul>
-      <li<?php if($currentModule == 'default'): ?> class="active"<?php endif; ?>>
+      <li<?php if ($currentModule == 'default' && $currentAction == 'index'): ?> class="active"<?php endif; ?>>
         <?php echo link_to('Home', '@homepage') ?>
       </li>
-      <li>
+      <li<?php if ($currentModule == 'default' && $currentAction == 'about'): ?> class="active"<?php endif; ?>>
         <?php echo link_to('About', '@about') ?>
       </li>
+    <?php if($sf_user->isAuthenticated()): ?>
       <?php if ($scenarioId): ?>
         <li<?php if($currentModule == 'scenario'): ?> class="active"<?php endif; ?>>
           <?php echo link_to('Scenario', 'scenario/show?id='.$scenarioId); ?>
@@ -38,6 +41,7 @@
           <?php echo link_to('Scenarios', '@scenario'); ?>
         </li>
       <?php endif; ?>
+    <?php endif; ?>
     </ul>
   </div>
   <div id="sub-menu">
@@ -65,5 +69,4 @@
     </div>
   <?php endif; ?>
   </div>
-<?php endif; ?>
 </div>
