@@ -6,6 +6,11 @@
     width: 17em;
 }
 
+div.ui-tabs-vertical .ui-tabs-panel {
+    width: 72.5%;
+    margin: 0px;
+}
+
 #sf_admin_container th {
     text-align: left;
 }
@@ -13,4 +18,8 @@
 #sf_admin_container .sf_admin_form_row {
     clear: both;
     border-bottom: 1px solid #ddd;
+}
+
+ul.sf_admin_actions_form {
+    height: 22px;
 }

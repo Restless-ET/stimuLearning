@@ -115,11 +115,6 @@ body {
     background-color: #ccf;
 }
 
-div.ui-tabs-vertical .ui-tabs-panel {
-  width: 72%;
-  margin: 0px;
-}
-
 td, th {
   border: 0px;
   padding: 5px;

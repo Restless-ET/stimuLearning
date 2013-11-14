@@ -43,9 +43,19 @@ generator:
           _new: ~
         object_actions: # _list_td_actions.php has been overridden
           _show: ~
-          _edit: ~
+          _edit:
+            credentials: [[admin, responsible]]
+            condition:
+              variable: started
+              check: [ false ]
+              invert: false
           _delete:
+            credentials: [[admin, responsible]]
             confirm: 'This removal is irreversible! Are you sure you want to proceed?'
+            condition:
+              variable: started
+              check: [ false ]
+              invert: false
         batch_actions: {}
 
       filter:
@@ -109,9 +119,11 @@ generator:
       edit:
         title: 'Edit Scenario - %%description%%'
         actions:
-          _delete: ~
-          _list:
-          _save: ~
+          _list: ~
+          _save:
+            credentials: [[admin, responsible]]
+          _delete:
+            credentials: [[admin, responsible]]
 
       new: ~
       show:
@@ -170,10 +182,10 @@ generator:
             - reference_occupation_rate
 #        actions: # check _show_actions.php
 #          _list: ~
-#          startSimulation: ~
-#          _edit: ~
-#          _delete: ~
-#          nextStep: ~
-#          nextDecision: ~
-#          finish: ~
+#          startSimulation: { credentials: [[admin, responsible]] }
+#          _edit:  { credentials: [[admin, responsible]] }
+#          _delete:  { credentials: [[admin, responsible]] }
+#          nextStep:  { credentials: [[admin, responsible]] }
+#          nextDecision:  { credentials: [[admin, responsible]] }
+#          finish:  { credentials: [[admin, responsible]] }
 
