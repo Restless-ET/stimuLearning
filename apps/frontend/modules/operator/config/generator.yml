@@ -36,7 +36,7 @@ generator:
         batch_actions: {}
 
       filter:
-        display: [user_id, scenario_id]
+        class: false
 
       form:
         display: [name, starting_market_size, user_id, scenario_id]

@@ -21,6 +21,7 @@ generator:
       list:
         title: 'Equipments'
         display: [ name, starting_price, number_of_ports, network_level, life_expectation, equipment_type, nature_or_purpose, tecnology_age, setup_speed ]
+        table_method: filterByScenario
         fields:
           number_of_ports: { label: '# of ports'}
           network_level: { label: 'Net. lvl' }

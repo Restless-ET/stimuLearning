@@ -21,6 +21,7 @@ generator:
       list:
         title: 'Architectures'
         display: [ name, download_bandwidth, upload_bandwidth, Technology ]
+        table_method: filterByScenario
         fields: # because 'renderer' only works on list
           download_bandwidth: { renderer: 'FieldRendererHelper::append', renderer_arguments: ['Mbps'] }
           upload_bandwidth: { renderer: 'FieldRendererHelper::append', renderer_arguments: ['Kbps'] }
@@ -36,8 +37,7 @@ generator:
         batch_actions: {}
 
       filter:
-        class: false
-        #display: [ name, technology_id ]
+        display: [ technology_id ]
 
       form:    ~
       edit:    ~

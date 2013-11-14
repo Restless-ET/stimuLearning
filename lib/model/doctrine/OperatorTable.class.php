@@ -32,9 +32,13 @@ class OperatorTable extends Doctrine_Table
     {
         $user = sfContext::getInstance()->getUser();
 
+        $q->leftJoin('r.Scenario s')->leftJoin('r.User u')
+          ->select('r.*, s.description, u.name');
+
         if (!$user->hasCredential('admin')) {
-            $q->andWhere('user_id = ?', $user->getAttribute('id'));
+            //$q->andWhere('user_id = ?', $user->getAttribute('id'));
         }
+        $q->andWhere('scenario_id = ?', $user->getAttribute('scenarioId', 0));
 
         return $q;
     }

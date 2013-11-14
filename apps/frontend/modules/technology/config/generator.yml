@@ -22,7 +22,8 @@ generator:
 
       list:
         title: 'Technologies'
-        display: [ name, description, first_tick_available, Architecture, Scenario ]
+        display: [ name, description, first_tick_available, decline_A, decline_B, Architecture ]
+        table_method: filterByScenario
         actions:
           _new: ~
         object_actions:
@@ -36,7 +37,6 @@ generator:
 
       filter:
         class: false
-        #display: [ name, scenario_id ]
 
       form:    ~
       edit:
@@ -45,4 +45,4 @@ generator:
         display: [ name, description, decline_A, decline_B, scenario_id ]
 
       show:
-        display: [ name, description, first_tick_available, decline_A, decline_B ]
+        display: [ name, description, first_tick_available, decline_A, decline_B, _scenario ]

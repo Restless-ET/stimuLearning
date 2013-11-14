@@ -20,4 +20,20 @@ class EquipmentTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Equipment');
     }
+
+    /**
+     * Auxiliar method to create a query to filter Equipment by current chosen scenario only
+     *
+     * @param Doctrine_Query $q A Doctrine_Query object
+     *
+     * @return the built query
+     */
+    public static function filterByScenario(Doctrine_Query $q)
+    {
+        $user = sfContext::getInstance()->getUser();
+
+        $q->andWhere('scenario_id = ?', $user->getAttribute('scenarioId', 0));
+
+        return $q;
+    }
 }

@@ -332,34 +332,42 @@ abstract class BaseScenario extends sfDoctrineRecord
         $this->hasColumn('number_of_services_weight', 'decimal', null, array(
              'type' => 'decimal',
              'notnull' => true,
+             'default' => 10,
              ));
         $this->hasColumn('download_weight', 'decimal', null, array(
              'type' => 'decimal',
              'notnull' => true,
+             'default' => 10,
              ));
         $this->hasColumn('upload_weight', 'decimal', null, array(
              'type' => 'decimal',
              'notnull' => true,
+             'default' => 10,
              ));
         $this->hasColumn('rate_weight', 'decimal', null, array(
              'type' => 'decimal',
              'notnull' => true,
+             'default' => 10,
              ));
         $this->hasColumn('fee_weight', 'decimal', null, array(
              'type' => 'decimal',
              'notnull' => true,
+             'default' => 10,
              ));
         $this->hasColumn('occupation_rate_weight', 'decimal', null, array(
              'type' => 'decimal',
              'notnull' => true,
+             'default' => 10,
              ));
         $this->hasColumn('containment_factor_weight', 'decimal', null, array(
              'type' => 'decimal',
              'notnull' => true,
+             'default' => 10,
              ));
         $this->hasColumn('reference_occupation_rate', 'decimal', null, array(
              'type' => 'decimal',
              'notnull' => true,
+             'default' => 10,
              ));
         $this->hasColumn('responsible_id', 'integer', null, array(
              'type' => 'integer',
