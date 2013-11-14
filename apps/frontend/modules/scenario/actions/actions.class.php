@@ -23,7 +23,13 @@ class ScenarioActions extends autoScenarioActions
     {
         parent::executeShow($request);
 
-        $this->getUser()->setAttribute('scenarioId', $this->scenario->getId());
+        $user = $this->getUser();
+        $user->setAttribute('scenarioId', $this->scenario->getId());
+        if ($this->scenario->responsible_id == $user->getAttribute('id', false)) {
+            //$user->addCredential('responsible');
+        } else {
+            $user->removeCredential('responsible');
+        }
     }
 
     /**
@@ -35,12 +41,19 @@ class ScenarioActions extends autoScenarioActions
      */
     public function executeEdit(sfWebRequest $request)
     {
-        if ($this->getRoute()->getObject()->getStarted()) {
-            $this->getUser()->setFlash('error', 'You cannot edit a scenario with a started simulation!');
+        $user = $this->getUser();
+        $scenario = $this->getRoute()->getObject();
+        if ($scenario->getStarted()) {
+            $user->setFlash('error', 'You cannot edit a scenario with a started simulation!');
             $this->redirect('@scenario');
         }
 
-        $this->getUser()->setAttribute('scenarioId', $this->getRoute()->getObject()->getId());
+        $user->setAttribute('scenarioId', $scenario->getId());
+        if ($scenario->responsible_id == $user->getAttribute('id', false)) {
+            //$user->addCredential('responsible');
+        } else {
+            $user->removeCredential('responsible');
+        }
 
         parent::executeEdit($request);
     }
@@ -54,12 +67,15 @@ class ScenarioActions extends autoScenarioActions
      */
     public function executeDelete(sfWebRequest $request)
     {
-        if ($this->getRoute()->getObject()->getStarted()) {
+        $user = $this->getUser();
+        $scenario = $this->getRoute()->getObject();
+        if ($scenario->getStarted()) {
             $user->setFlash('error', 'You cannot delete a scenario with a started simulation!');
             $this->redirect('@scenario');
         }
 
-        $this->getUser()->setAttribute('scenarioId', false);
+        $user->setAttribute('scenarioId', false);
+        $user->removeCredential('responsible');
 
         parent::executeDelete($request);
     }
