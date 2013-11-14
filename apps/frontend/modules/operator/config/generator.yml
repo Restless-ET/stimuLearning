@@ -12,7 +12,9 @@ generator:
     actions_base_class:    sfActions
 
     config:
-      actions: ~
+      actions:
+        _edit: { credentials: [[admin, responsible]] }
+        _delete: { credentials: [[admin, responsible]] }
       fields: ~
 
       list:
@@ -29,8 +31,8 @@ generator:
         table_method: filterByCredential
         object_actions:
           _show: ~
-          _edit: ~
-          _delete: ~
+          _edit: { credentials: [[admin, responsible]] }
+          _delete: { credentials: [[admin, responsible]] }
         batch_actions: {}
 
       filter:
