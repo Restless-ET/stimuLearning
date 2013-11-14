@@ -29,7 +29,8 @@
 <?php else: ?>
 <h2>Welcome!!</h2>
 
-<a href="<?php echo url_for('@login'); ?>">Login</a><br />
+<a class="fg-button ui-state-default ui-corner-all" href="<?php echo url_for('@login'); ?>">Login</a><br />
+<br />
 <?php endif; ?>
 <br />
 <hr>

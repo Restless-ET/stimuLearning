@@ -5,7 +5,7 @@
         <?php echo $form ?>
       <tr>
         <td colspan="2">
-          <input type="submit" value="Log On"/>
+          <input class="fg-button ui-state-default ui-corner-all" type="submit" value="Log On"/>
         </td>
       </tr>
     </table>
