@@ -5,24 +5,27 @@
   <?php if (isset($myScenarios) && count($myScenarios)) :?>
     <ul>
     <?php foreach ($myScenarios as $scenario): ?>
-      <li>
-        <a class="fg-button ui-state-default" href="<?php echo url_for('scenario/show?id='.$scenario['id']); ?>">
+      <li style="display: inline;">
+        <a class="fg-button ui-state-default ui-corner-all" href="<?php echo url_for('scenario/show?id='.$scenario['id']); ?>">
           <?php echo $scenario['description'];?></a>
       </li>
     <?php endforeach; ?>
     </ul>
   <?php endif; ?>
+  <br/>
+  <br/>
   <h3>Player Scenarios</h3>
   <?php if (isset($playerScenarios) && count($playerScenarios)) :?>
     <ul>
     <?php foreach ($playerScenarios as $pScenario): ?>
-      <li>
-        <a class="fg-button ui-state-default" href="<?php echo url_for('scenario/show?id='.$pScenario['id']); ?>">
+      <li style="display: inline;">
+        <a class="fg-button ui-state-default ui-corner-all" href="<?php echo url_for('scenario/show?id='.$pScenario['id']); ?>">
           <?php echo $pScenario['description'];?></a>
       </li>
     <?php endforeach; ?>
     </ul>
   <?php endif; ?>
+  <br/>
 <?php else: ?>
 <h2>Welcome!!</h2>
 

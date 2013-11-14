@@ -47,9 +47,9 @@
   </div>
 <?php endif; ?>
 
-<?php if ($loggedUser = $scenario->responsible_id || $sf_user->hasCredential('admin')): ?>
+<?php if (!$scenario->started && ($loggedUser = $scenario->responsible_id || $sf_user->hasCredential('admin'))): ?>
   <br/>
-  <?php echo link_to(ImagesHelper::jQueryUIImageTag('plus', 'alt_title=New Operator').' New Operator', 'operator/new', array('class' => 'fg-button ui-state-default fg-button-icon-left')); ?>
+  <?php echo link_to(ImagesHelper::jQueryUIImageTag('plus', 'alt_title=New Operator').' New Operator', 'operator/new', array('class' => 'fg-button ui-state-default ui-corner-all fg-button-icon-left')); ?>
 <?php endif; ?>
 
 <?php if(count($operators) > 1): ?>

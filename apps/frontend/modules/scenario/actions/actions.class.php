@@ -23,7 +23,7 @@ class ScenarioActions extends autoScenarioActions
     {
         parent::executeShow($request);
 
-        $this->getUser()->setAttribute('scenarioId', $this->getRoute()->getObject()->getId());
+        $this->getUser()->setAttribute('scenarioId', $this->scenario->getId());
     }
 
     /**

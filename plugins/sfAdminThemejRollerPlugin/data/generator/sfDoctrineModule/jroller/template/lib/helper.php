@@ -54,7 +54,7 @@ class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorHelper extends s
   public function linkToSave($object, $params)
   {
     $params['ui-icon'] = $this->getIcon('save', $params);
-    return '<li class="sf_admin_action_save"><button type="submit" class="fg-button ui-state-default fg-button-icon-left">'. UIHelper::addIcon($params) . __($params['label'], array(), 'sf_admin').'</button></li>';
+    return '<li class="sf_admin_action_save"><button type="submit" class="fg-button ui-state-default ui-corner-all fg-button-icon-left">'. UIHelper::addIcon($params) . __($params['label'], array(), 'sf_admin').'</button></li>';
   }
 
   public function linkToSaveAndAdd($object, $params)
@@ -66,7 +66,7 @@ class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorHelper extends s
       return '';
     }
 
-    return '<li class="sf_admin_action_save_and_add"><button type="submit" name="_save_and_add" class="fg-button ui-state-default fg-button-icon-left"/>'. UIHelper::addIcon($params) . __($params['label'], array(), 'sf_admin').'</button></li>';
+    return '<li class="sf_admin_action_save_and_add"><button type="submit" name="_save_and_add" class="fg-button ui-state-default ui-corner-all fg-button-icon-left"/>'. UIHelper::addIcon($params) . __($params['label'], array(), 'sf_admin').'</button></li>';
   }
 
   public function getUrlForAction($action)

@@ -23,3 +23,7 @@ div.ui-tabs-vertical .ui-tabs-panel {
 ul.sf_admin_actions_form {
     height: 22px;
 }
+
+.sf_admin_actions_form li {
+    margin: 0px 5px 0px 5px;
+}

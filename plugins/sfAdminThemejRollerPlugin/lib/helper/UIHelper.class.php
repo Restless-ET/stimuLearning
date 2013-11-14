@@ -1,6 +1,6 @@
 <?php
 
-class UIHelper 
+class UIHelper
 {
   /**
    * @var array $icons an array containing plugin icons configuration
@@ -19,7 +19,7 @@ class UIHelper
   static public function addClasses(array $params, $extra = '')
   {
     $iconClass = (isset($params['ui-icon'])) ? 'fg-button-icon-left' : '';
-    $uiClasses = sprintf('%s fg-button ui-state-default %s', $extra, $iconClass);
+    $uiClasses = sprintf('%s fg-button ui-state-default ui-corner-all %s', $extra, $iconClass);
     $uiParams  = is_array($params['params']) ? $params['params'] : sfToolkit::stringToArray($params['params']);
     $uiParams['class'] = $uiClasses;
 
