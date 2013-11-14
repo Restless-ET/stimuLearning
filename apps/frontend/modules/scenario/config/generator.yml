@@ -13,10 +13,10 @@ generator:
 
     config:
       actions:
-        startSimulation: { action: startSimulation }
-        nextStep: { action: advanceSimulation }
-        nextDecision: { action: advanceSimulation }
-        finish: { action: advanceSimulation }
+        startSimulation: { ui-icon: 'play', action: startSimulation, credentials: [[admin, responsible]] }
+        nextStep: { ui-icon: 'triangle-1-e', action: advanceSimulation, credentials: [[admin, responsible]] }
+        nextDecision: { ui-icon: 'seek-next', action: advanceSimulation, credentials: [[admin, responsible]] }
+        finish: { ui-icon: 'seek-end', action: advanceSimulation, credentials: [[admin, responsible]] }
 
       fields:
         started: { renderer: 'FieldRendererHelper::plainBoolean' }
@@ -182,10 +182,10 @@ generator:
             - reference_occupation_rate
 #        actions: # check _show_actions.php
 #          _list: ~
-#          startSimulation: { credentials: [[admin, responsible]] }
-#          _edit:  { credentials: [[admin, responsible]] }
-#          _delete:  { credentials: [[admin, responsible]] }
-#          nextStep:  { credentials: [[admin, responsible]] }
-#          nextDecision:  { credentials: [[admin, responsible]] }
-#          finish:  { credentials: [[admin, responsible]] }
+#          startSimulation: ~
+#          _edit: { credentials: [[admin, responsible]] }
+#          _delete: { credentials: [[admin, responsible]] }
+#          nextStep: ~
+#          nextDecision: ~
+#          finish: ~
 
