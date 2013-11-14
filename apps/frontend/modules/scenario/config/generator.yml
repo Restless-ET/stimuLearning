@@ -120,10 +120,8 @@ generator:
         title: 'Edit Scenario - %%description%%'
         actions:
           _list: ~
-          _save:
-            credentials: [[admin, responsible]]
-          _delete:
-            credentials: [[admin, responsible]]
+          _save: ~
+          _delete: ~
 
       new: ~
       show:
@@ -183,8 +181,8 @@ generator:
 #        actions: # check _show_actions.php
 #          _list: ~
 #          startSimulation: ~
-#          _edit: { credentials: [[admin, responsible]] }
-#          _delete: { credentials: [[admin, responsible]] }
+#          _edit: ~
+#          _delete: ~
 #          nextStep: ~
 #          nextDecision: ~
 #          finish: ~

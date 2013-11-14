@@ -12,7 +12,9 @@ generator:
     actions_base_class:    sfActions
 
     config:
-      actions: ~
+      actions:
+        _edit: { credentials: [[admin, responsible]] }
+        _delete: { credentials: [[admin, responsible]] }
       fields:
         starting_price: { renderer: 'FieldRendererHelper::euro' }
 
@@ -28,8 +30,10 @@ generator:
           _new: ~
         object_actions:
           _show: ~
-          _edit: ~
+          _edit:
+            credentials: [[admin, responsible]]
           _delete:
+            credentials: [[admin, responsible]]
             confirm: 'This removal is irreversible! Are you sure you want to proceed?'
         batch_actions: {}
 
