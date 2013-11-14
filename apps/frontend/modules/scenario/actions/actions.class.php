@@ -41,8 +41,10 @@ class ScenarioActions extends autoScenarioActions
      */
     public function executeEdit(sfWebRequest $request)
     {
-        $user = $this->getUser();
         $scenario = $this->getRoute()->getObject();
+        $this->forward404Unless($scenario);
+
+        $user = $this->getUser();
         if ($scenario->getStarted()) {
             $user->setFlash('error', 'You cannot edit a scenario with a started simulation!');
             $this->redirect('@scenario');
@@ -63,12 +65,14 @@ class ScenarioActions extends autoScenarioActions
      *
      * @param sfWebRequest $request A request object
      *
-     * @return nothing
+     * @return void
      */
     public function executeDelete(sfWebRequest $request)
     {
-        $user = $this->getUser();
         $scenario = $this->getRoute()->getObject();
+        $this->forward404Unless($scenario);
+
+        $user = $this->getUser();
         if ($scenario->getStarted()) {
             $user->setFlash('error', 'You cannot delete a scenario with a started simulation!');
             $this->redirect('@scenario');
@@ -83,7 +87,7 @@ class ScenarioActions extends autoScenarioActions
     /**
      * Initializes the simulation scenario.
      *
-     * @return nothing
+     * @return void
      */
     public function executeStartSimulation()
     {
