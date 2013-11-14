@@ -13,7 +13,7 @@
           <th>User / Controller</th>
           <th>Created At</th>
         <?php if (!$scenario->started): ?>
-          <?php if ($loggedUser = $scenario->responsible_id || $sf_user->hasCredential('admin')): ?>
+          <?php if ($loggedUser == $scenario->responsible_id || $sf_user->hasCredential('admin')): ?>
             <th></th>
           <?php endif; ?>
         <?php endif; ?>
@@ -32,8 +32,6 @@
             <td class="options">
               <?php echo link_to(ImagesHelper::jQueryUIImageTag('pencil', 'alt_title=Edit'), 'operator/edit?id='.$op->id); ?>
             </td>
-          <?php elseif($removePresent): ?>
-            <td></td>
           <?php endif; ?>
         <?php endif; ?>
         </tr>
@@ -47,7 +45,7 @@
   </div>
 <?php endif; ?>
 
-<?php if (!$scenario->started && ($loggedUser = $scenario->responsible_id || $sf_user->hasCredential('admin'))): ?>
+<?php if (!$scenario->started && ($loggedUser == $scenario->responsible_id || $sf_user->hasCredential('admin'))): ?>
   <br/>
   <?php echo link_to(ImagesHelper::jQueryUIImageTag('plus', 'alt_title=New Operator').' New Operator', 'operator/new', array('class' => 'fg-button ui-state-default ui-corner-all fg-button-icon-left')); ?>
 <?php endif; ?>
