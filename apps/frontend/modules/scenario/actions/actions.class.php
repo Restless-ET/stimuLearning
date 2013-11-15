@@ -26,7 +26,7 @@ class ScenarioActions extends autoScenarioActions
         $user = $this->getUser();
         $user->setAttribute('scenarioId', $this->scenario->getId());
         if ($this->scenario->responsible_id == $user->getAttribute('id', false)) {
-            //$user->addCredential('responsible');
+            $user->addCredential('responsible');
         } else {
             $user->removeCredential('responsible');
         }
@@ -52,7 +52,7 @@ class ScenarioActions extends autoScenarioActions
 
         $user->setAttribute('scenarioId', $scenario->getId());
         if ($scenario->responsible_id == $user->getAttribute('id', false)) {
-            //$user->addCredential('responsible');
+            $user->addCredential('responsible');
         } else {
             $user->removeCredential('responsible');
         }
