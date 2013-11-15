@@ -37,7 +37,7 @@ generator:
         batch_actions: {}
 
       filter:
-        display: [ technology_id ]
+        class: false
 
       form:    ~
       edit:    ~

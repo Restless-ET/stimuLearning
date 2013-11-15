@@ -68,6 +68,10 @@ abstract class BaseArchitecture extends sfDoctrineRecord
         $this->hasColumn('scenario_id', 'integer', null, array(
              'type' => 'integer',
              ));
+
+        $this->option('symfony', array(
+             'filter' => false,
+             ));
     }
 
     public function setUp()
