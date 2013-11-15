@@ -75,6 +75,33 @@ user:
     column:               id
     with_wildcard_routes: true
 
+libTech:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                LibTech
+    module:               lib_tech
+    prefix_path:          /libTech
+    column:               id
+    with_wildcard_routes: true
+
+libArch:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                LibArch
+    module:               lib_arch
+    prefix_path:          /libArch
+    column:               id
+    with_wildcard_routes: true
+
+libEquip:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                LibEquip
+    module:               lib_equip
+    prefix_path:          /libEquip
+    column:               id
+    with_wildcard_routes: true
+
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 

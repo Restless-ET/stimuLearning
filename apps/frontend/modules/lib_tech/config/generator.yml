@@ -1,0 +1,45 @@
+generator:
+  class: jRollerDoctrineGenerator
+  param:
+    model_class:           LibTech
+    theme:                 jroller
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          libTech
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        created_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
+        updated_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
+
+      list:
+        title: 'Library - Technologies'
+        display: [ name, description, decline_A, decline_B, Architecture ]
+        actions:
+          _new: ~
+        object_actions:
+          _show: ~
+          _edit: ~
+          _delete:
+            confirm: 'This removal is irreversible! Are you sure you want to proceed?'
+        batch_actions: {}
+
+      filter:
+        class: false
+
+      form:    ~
+      edit:
+        title: 'Edit Library Technology - %%name%%'
+        display: [ name, description, decline_A, decline_B ]
+      new:
+        title: 'New Library Technology'
+        display: [ name, description, decline_A, decline_B ]
+
+      show:
+        title: 'Library Technology Details'
+        display: [ name, description, decline_A, decline_B ] #, _architecture ]

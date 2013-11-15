@@ -6,8 +6,8 @@
   <?php if($sf_user->isAuthenticated()): ?>
     <ul>
     <?php if ($sf_user->hasCredential('admin')): ?>
-      <li<?php if(in_array($currentModule, array('libTech','libArch','libEquip'))): ?> class="active"<?php endif; ?>>
-        <?php echo link_to('Library', '@user') ?>
+      <li<?php if(in_array($currentModule, array('lib_tech','lib_arch','lib_equip'))): ?> class="active"<?php endif; ?>>
+        <?php echo link_to('Library', '@libTech') ?>
       </li>
       <li<?php if($currentModule == 'user'): ?> class="active"<?php endif; ?>>
         <?php echo link_to('Users', '@user') ?>
@@ -47,26 +47,29 @@
     <?php endif; ?>
     </ul>
   </div>
+
+<?php if ($sf_user->hasCredential('admin')): ?>
+  <?php if (in_array($currentModule, array('lib_tech','lib_arch','lib_equip'))): ?>
   <div id="sub-menu">
-  <?php if ($sf_user->hasCredential('admin')): ?>
-    <?php if (in_array($currentModule, array('libTech','libArch','libEquip'))): ?>
     <div class="sub-admin">
       <ul>
         <li<?php if ($currentModule == 'libTech'): ?> class="active"<?php endif; ?>>
-          <?php echo link_to('Technologies', '@technology') ?>
+          <?php echo link_to('Technologies', '@libTech') ?>
         </li>
         <li<?php if ($currentModule == 'libArch'): ?> class="active"<?php endif; ?>>
-          <?php echo link_to('Architectures', '@architecture') ?>
+          <?php echo link_to('Architectures', '@libArch') ?>
         </li>
         <li<?php if ($currentModule == 'libEquip'): ?> class="active"<?php endif; ?>>
-          <?php echo link_to('Equipments', '@equipment') ?>
+          <?php echo link_to('Equipments', '@libEquip') ?>
         </li>
       </ul>
     </div>
-    <?php endif; ?>
+  </div>
   <?php endif; ?>
-  <?php if ($scenarioId): ?>
-    <?php if (in_array($currentModule, array('technology','architecture','equipment'))): ?>
+<?php endif; ?>
+<?php if ($scenarioId): ?>
+  <?php if (in_array($currentModule, array('technology','architecture','equipment'))): ?>
+  <div id="sub-menu">
     <div class="sub-main">
       <ul>
         <li<?php if ($currentModule == 'technology'): ?> class="active"<?php endif; ?>>
@@ -80,7 +83,9 @@
         </li>
       </ul>
     </div>
-    <?php elseif (in_array($currentModule, array('operator','service'))): ?>
+  </div>
+  <?php elseif (in_array($currentModule, array('operator','service'))): ?>
+  <div id="sub-menu">
     <div class="sub-main">
       <ul>
         <li<?php if ($currentModule == 'service'): ?> class="active"<?php endif; ?>>
@@ -88,7 +93,7 @@
         </li>
       </ul>
     </div>
-    <?php endif; ?>
-  <?php endif;?>
   </div>
+  <?php endif; ?>
+<?php endif;?>
 </div>

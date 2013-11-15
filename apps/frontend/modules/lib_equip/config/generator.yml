@@ -1,0 +1,47 @@
+generator:
+  class: jRollerDoctrineGenerator
+  param:
+    model_class:           LibEquip
+    theme:                 jroller
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          libEquip
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        starting_price: { renderer: 'FieldRendererHelper::euro' }
+        arch_id: { label: 'Architecture' }
+
+      list:
+        title: 'Library - Equipments'
+        display: [ name, starting_price, number_of_ports, network_level, life_expectation, equipment_type, nature_or_purpose, tecnology_age, setup_speed ]
+        fields:
+          number_of_ports: { label: '# of ports'}
+          network_level: { label: 'Net. lvl' }
+          life_expectation: { label: 'Lifespan', renderer: 'FieldRendererHelper::append', renderer_arguments: ['ticks'] }
+          equipment_type: { label: Type }
+        actions:
+          _new: ~
+        object_actions:
+          _show: ~
+          _edit: ~
+          _delete:
+            confirm: 'This removal is irreversible! Are you sure you want to proceed?'
+        batch_actions: {}
+
+      filter:
+        display: [ arch_id, equipment_type, nature_or_purpose, tecnology_age, setup_speed ]
+
+      form:
+        display: [ arch_id, name, starting_price, number_of_ports, network_level, life_expectation, equipment_type, nature_or_purpose, tecnology_age, setup_speed ]
+      edit:    ~
+      new:
+        title: 'New Library Equipment'
+
+      show:
+        display: [ name, starting_price, number_of_ports, network_level, life_expectation, equipment_type, nature_or_purpose, tecnology_age, setup_speed ] #, _architecture ]

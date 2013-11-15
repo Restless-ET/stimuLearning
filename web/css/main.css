@@ -82,12 +82,17 @@ body {
     text-decoration: underline;
 }
 
+#sub-menu {
+    height: 14px;
+    margin-top: 5px;
+}
+
 .admin-menu {
     float: right;
 }
 
 .sub-main {
-    margin-top: 5px;
+
     margin-left: 40px;
     font-size: 12px;
 }
