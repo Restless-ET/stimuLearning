@@ -33,9 +33,17 @@ generator:
           _show: ~
           _edit:
             credentials: [[admin, responsible]]
+            condition:
+              variable: Scenario->finished
+              check: [ false ]
+              invert: false
           _delete:
             credentials: [[admin, responsible]]
             confirm: 'This removal is irreversible! Are you sure you want to proceed?'
+            condition:
+              variable: Scenario->finished
+              check: [ false ]
+              invert: false
         batch_actions: {}
 
       filter:
@@ -48,3 +56,4 @@ generator:
 
       show:
         display: [ name, starting_price, number_of_ports, network_level, life_expectation, equipment_type, nature_or_purpose, tecnology_age, setup_speed ]
+        #actions: ~ # check _show_actions.php

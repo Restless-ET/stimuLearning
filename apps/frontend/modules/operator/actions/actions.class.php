@@ -37,8 +37,6 @@ class OperatorActions extends autoOperatorActions
      */
     public function executeNew(sfWebRequest $request)
     {
-
-
         parent::executeNew($request);
     }
 
@@ -57,15 +55,8 @@ class OperatorActions extends autoOperatorActions
 
         $user = $this->getUser();
         if ($scenario->getStarted()) {
-            $user->setFlash('error', 'You cannot edit a scenario with a started simulation!');
-            $this->redirect('@scenario');
-        }
-
-        $user->setAttribute('scenarioId', $scenario->getId());
-        if ($scenario->responsible_id == $user->getAttribute('id', false)) {
-            //$user->addCredential('responsible');
-        } else {
-            $user->removeCredential('responsible');
+            $user->setFlash('error', 'You cannot edit an operator from a scenario with a started simulation!');
+            $this->redirect('@operator');
         }
 
         parent::executeEdit($request);
@@ -82,15 +73,13 @@ class OperatorActions extends autoOperatorActions
     {
         $operator = $this->getRoute()->getObject();
         $this->forward404Unless($operator);
+        $scenario = $operator->Scenario;
 
         $user = $this->getUser();
         if ($scenario->getStarted()) {
-            $user->setFlash('error', 'You cannot delete a scenario with a started simulation!');
-            $this->redirect('@scenario');
+            $user->setFlash('error', 'You cannot delete an operator from a scenario with a started simulation!');
+            $this->redirect('@operator');
         }
-
-        $user->setAttribute('scenarioId', false);
-        $user->removeCredential('responsible');
 
         parent::executeDelete($request);
     }

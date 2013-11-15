@@ -31,8 +31,18 @@ generator:
         table_method: filterByCredential
         object_actions:
           _show: ~
-          _edit: { credentials: [[admin, responsible]] }
-          _delete: { credentials: [[admin, responsible]] }
+          _edit:
+            credentials: [[admin, responsible]]
+            condition:
+              variable: Scenario->started
+              check: [ true ]
+              invert: false
+          _delete:
+            credentials: [[admin, responsible]]
+            condition:
+              variable: Scenario->started
+              check: [ true ]
+              invert: false
         batch_actions: {}
 
       filter:
@@ -63,3 +73,4 @@ generator:
             - _market_share_evolution_chart
           Acquired Equipments:
             - _acquired_equipments
+        #actions: ~ # check _show_actions.php

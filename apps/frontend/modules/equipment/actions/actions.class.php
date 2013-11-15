@@ -27,4 +27,48 @@ class EquipmentActions extends autoEquipmentActions
 
         parent::executeIndex($request);
     }
+
+    /**
+     * Override edit action for extra validations
+     *
+     * @param sfWebRequest $request A request object
+     *
+     * @return void
+     */
+    public function executeEdit(sfWebRequest $request)
+    {
+        $equipment = $this->getRoute()->getObject();
+        $this->forward404Unless($equipment);
+        $scenario = $equipment->Scenario;
+
+        $user = $this->getUser();
+        if ($scenario->getFinished()) {
+            $user->setFlash('error', 'You cannot edit an equipment from a scenario with a finished simulation!');
+            $this->redirect('@equipment');
+        }
+
+        parent::executeEdit($request);
+    }
+
+    /**
+     * Override delete action for extra validations
+     *
+     * @param sfWebRequest $request A request object
+     *
+     * @return void
+     */
+    public function executeDelete(sfWebRequest $request)
+    {
+        $equipment = $this->getRoute()->getObject();
+        $this->forward404Unless($equipment);
+        $scenario = $equipment->Scenario;
+
+        $user = $this->getUser();
+        if ($scenario->getFinished()) {
+            $user->setFlash('error', 'You cannot delete an equipment from a scenario with a started simulation!');
+            $this->redirect('@equipment');
+        }
+
+        parent::executeDelete($request);
+    }
 }

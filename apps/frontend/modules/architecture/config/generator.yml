@@ -31,8 +31,16 @@ generator:
           _show: ~
           _edit:
             credentials: [[admin, responsible]]
+            condition:
+              variable: Scenario->finished
+              check: [ false ]
+              invert: false
           _delete:
             credentials: [[admin, responsible]]
+            condition:
+              variable: Scenario->finished
+              check: [ false ]
+              invert: false
             confirm: 'This removal is irreversible! Are you sure you want to proceed?'
         batch_actions: {}
 
@@ -45,3 +53,4 @@ generator:
 
       show:
         display: [ name, download_bandwidth, upload_bandwidth, image, technology_id ]
+        #actions: ~ # check _show_actions.php
