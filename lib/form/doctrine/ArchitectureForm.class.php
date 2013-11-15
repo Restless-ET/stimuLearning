@@ -20,6 +20,7 @@ class ArchitectureForm extends BaseArchitectureForm
     public function configure()
     {
         unset($this['created_at'], $this['updated_at'], $this['scenario_id']);
+        $user = sfContext::getInstance()->getUser();
 
         //show upload selection and file removal option
         $anchorStart = '<a href="%file%" target="_blank">';
@@ -44,5 +45,11 @@ class ArchitectureForm extends BaseArchitectureForm
         )));
 
         $this->setValidator('image_delete', new sfValidatorPass());
+
+        $currentTech = $currentData->technology_id;
+        $query = Doctrine_Core::getTable('Technology')->createQuery('t')
+                    ->where('t.id = ?', $currentTech)
+                    ->orWhere('t.id NOT IN (SELECT a.technology_id FROM Architecture a WHERE a.scenario_id = ?)', $user->getAttribute('scenarioId', 0));
+        $this->getWidget('technology_id')->setOption('query', $query);
     }
 }
