@@ -49,3 +49,50 @@ Equipment:
       foreignAlias: Equipments
     Scenario:
       foreignAlias: Equipments
+
+LibEquip:
+  actAs:
+    Timestampable: ~
+  columns:
+    name: { type: string(150), notnull: true }
+    starting_price: { type: decimal, notnull: true } #Preço inicial
+    number_of_ports: { type: integer, notnull: true, unsigned: true } #Capacidade
+    network_level: { type: integer, notnull: true, unsigned: true } #Nível na rede
+    life_expectation: { type: integer, notnull: true, unsigned: true } #Esperança de vida
+    equipment_type: { type: enum, values: [~,Wired,Wireless], notnull: true }
+    nature_or_purpose:
+      type: enum
+      values:
+        - ~
+        - Building/Construction (1) #Construção civil (1)
+        - Copper cables (1) #Cabos de cobre (1)
+        - Fiber cables (0.8) #Cabos de fibra (0.8)
+        - Electronics (0.9) #Electrónica (0.9)
+        - Advanced Optical Components (0.7) #Componentes ópticos avançados (0.7)
+        - Passive Optical Components (0.8) #Componentes ópticos passivos (0.8)
+    tecnology_age:
+      type: enum
+      values:
+        - ~
+        - Old (0.5) #Velha (0.5)
+        - Mature (0.1) #Madura (0.1)
+        - New (0.01) #Nova (0.01)
+        - Emerging (0.001) #Emergente (0.001)
+    setup_speed:
+      type: enum
+      values:
+        - ~
+        - Very fast (5) #Muito rápida (5)
+        - Fast (10) #Rápida (10)
+        - Slow (20) #Lenta (20)
+        - Very slow (40) #Muito lenta (40)
+  ## For the relations ##
+    arch_id: { type: integer, notnull: true }
+  relations:
+    Architecture:
+      class: LibArch
+      foreignAlias: Equipments
+      type: one
+      foreignType: many
+      local: arch_id
+      foreign: id

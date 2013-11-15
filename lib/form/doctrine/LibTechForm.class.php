@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Technology form.
+ * LibTech form.
  *
  * @package    stimuLearning
  * @subpackage form
  * @author     Artur Melo <adsmelo@ua.pt>
  */
-class TechnologyForm extends BaseTechnologyForm
+class LibTechForm extends BaseLibTechForm
 {
     /**
      * Apply the proper widget configurations and validators for this form

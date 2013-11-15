@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Architecture form.
+ * LibArch form.
  *
  * @package    stimuLearning
  * @subpackage form
  * @author     Artur Melo <adsmelo@ua.pt>
  */
-class ArchitectureForm extends BaseArchitectureForm
+class LibArchForm extends BaseLibArchForm
 {
     /**
      * Apply the proper widget configurations and validators for this form
@@ -19,7 +19,7 @@ class ArchitectureForm extends BaseArchitectureForm
      */
     public function configure()
     {
-        unset($this['created_at'], $this['updated_at'], $this['scenario_id']);
+        unset($this['created_at'], $this['updated_at']);
 
         //show upload selection and file removal option
         $anchorStart = '<a href="%file%" target="_blank">';

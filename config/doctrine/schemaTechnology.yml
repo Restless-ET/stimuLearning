@@ -15,3 +15,15 @@ Technology:
   relations:
     Scenario:
       foreignAlias: Technologies
+
+LibTech:
+  options:
+    symfony:
+      filter: false
+  actAs:
+    Timestampable: ~
+  columns:
+    name: { type: string(100), notnull: true }
+    description: { type: string(500) }
+    decline_A: { type: decimal, scale: 3, notnull: true }
+    decline_B: { type: decimal, scale: 3, notnull: true }

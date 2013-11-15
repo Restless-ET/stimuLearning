@@ -18,3 +18,24 @@ Architecture:
       foreignType: one
     Scenario:
       foreignAlias: Architectures
+
+LibArch:
+  options:
+    symfony:
+      filter: false
+  actAs:
+    Timestampable: ~
+  columns:
+    name: { type: string(100), notnull: true }
+    download_bandwidth: { type: integer, notnull: true }
+    upload_bandwidth: { type: integer, notnull: true }
+    image: { type: string(255) }
+    tech_id: { type: integer, notnull: true }
+  relations:
+    Technology:
+      class: LibTech
+      foreignAlias: Architecture
+      type: one
+      foreignType: one
+      local: tech_id
+      foreign: id
