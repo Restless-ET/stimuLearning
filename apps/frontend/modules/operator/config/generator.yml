@@ -35,13 +35,13 @@ generator:
             credentials: [[admin, responsible]]
             condition:
               variable: Scenario->started
-              check: [ true ]
+              check: [ false ]
               invert: false
           _delete:
             credentials: [[admin, responsible]]
             condition:
               variable: Scenario->started
-              check: [ true ]
+              check: [ false ]
               invert: false
         batch_actions: {}
 
