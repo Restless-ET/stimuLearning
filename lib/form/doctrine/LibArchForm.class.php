@@ -44,5 +44,12 @@ class LibArchForm extends BaseLibArchForm
         )));
 
         $this->setValidator('image_delete', new sfValidatorPass());
+
+        $currentTech = $currentData->tech_id;
+        $query = Doctrine_Core::getTable('LibTech')->createQuery('lt')
+                  ->where('lt.id = ?', $currentTech)
+                  ->orWhere('lt.id NOT IN (SELECT la.tech_id FROM LibArch la WHERE la.tech_id IS NOT NULL OR la.tech_id > ?)', 0);
+        $this->getWidget('tech_id')->setOption('query', $query);
+        $this->getWidget('tech_id')->setOption('add_empty', true);
     }
 }

@@ -25,6 +25,8 @@ class EquipmentForm extends BaseEquipmentForm
         //TODO Forçar a registo ordenado do nivel na rede?!?
         // $this->getWidget('network_level')->setOptions(array('readonly' => true, 'default' => 'XX'))
         // Seria necessário ao utilizador conhecer a arquitectura de antemão
+
+        $this->getWidget('architecture_id')->setOption('add_empty', true);
     }
 
     /**

@@ -20,5 +20,11 @@ class TechnologyForm extends BaseTechnologyForm
     public function configure()
     {
         unset($this['created_at'], $this['updated_at']);
+        $user = sfContext::getInstance()->getUser();
+
+        if ($user->getAttribute('scenarioId', 0)) {
+            $this->setDefault('scenario_id', $user->getAttribute('scenarioId', 0));
+        }
+        $this->setWidget('scenario_id', new sfWidgetFormInputHidden());
     }
 }

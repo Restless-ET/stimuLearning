@@ -21,5 +21,7 @@ class LibEquipForm extends BaseLibEquipForm
     public function configure()
     {
         unset($this['created_at'], $this['updated_at']);
+
+        $this->getWidget('arch_id')->setOption('add_empty', true);
     }
 }

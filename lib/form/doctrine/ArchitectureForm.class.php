@@ -47,9 +47,11 @@ class ArchitectureForm extends BaseArchitectureForm
         $this->setValidator('image_delete', new sfValidatorPass());
 
         $currentTech = $currentData->technology_id;
+        $scId = $user->getAttribute('scenarioId', 0);
         $query = Doctrine_Core::getTable('Technology')->createQuery('t')
-                    ->where('t.id = ?', $currentTech)
-                    ->orWhere('t.id NOT IN (SELECT a.technology_id FROM Architecture a WHERE a.scenario_id = ?)', $user->getAttribute('scenarioId', 0));
+                  ->where('t.id = ?', $currentTech)
+                  ->orWhere('t.id NOT IN (SELECT a.technology_id FROM Architecture a WHERE a.scenario_id = ?)', $scId);
         $this->getWidget('technology_id')->setOption('query', $query);
+        $this->getWidget('technology_id')->setOption('add_empty', true);
     }
 }

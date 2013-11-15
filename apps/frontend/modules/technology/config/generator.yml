@@ -46,11 +46,11 @@ generator:
       filter:
         class: false
 
-      form:    ~
-      edit:
-        display: [ name, description, decline_A, decline_B, scenario_id ]
-      new:
-        display: [ name, description, decline_A, decline_B, scenario_id ]
+      form:
+        display: [ name, description, decline_A, decline_B ]
+
+      edit: ~
+      new: ~
 
       show:
         display: [ name, description, first_tick_available, decline_A, decline_B, _scenario ]
