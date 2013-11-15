@@ -12,5 +12,19 @@ require_once dirname(__FILE__).'/../lib/architectureGeneratorHelper.class.php';
  */
 class ArchitectureActions extends autoArchitectureActions
 {
-    //Check security.yml for credentials details
+    /**
+     * Override index action for extra validations
+     *
+     * @param sfWebRequest $request A request object
+     *
+     * @return void
+     */
+    public function executeIndex(sfWebRequest $request)
+    {
+        if (!$this->getUser()->getAttribute('scenarioId', 0)) {
+            $this->redirect('@homepage'); // @scenario
+        }
+
+        parent::executeIndex($request);
+    }
 }

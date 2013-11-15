@@ -13,6 +13,89 @@ require_once dirname(__FILE__).'/../lib/operatorGeneratorHelper.class.php';
 class OperatorActions extends autoOperatorActions
 {
     /**
+     * Override index action for extra validations
+     *
+     * @param sfWebRequest $request A request object
+     *
+     * @return void
+     */
+    public function executeIndex(sfWebRequest $request)
+    {
+        if (!$this->getUser()->getAttribute('scenarioId', 0)) {
+            $this->redirect('@homepage'); // @scenario
+        }
+
+        parent::executeIndex($request);
+    }
+
+    /**
+     * Override new action for extra validations
+     *
+     * @param sfWebRequest $request A request object
+     *
+     * @return void
+     */
+    public function executeNew(sfWebRequest $request)
+    {
+
+
+        parent::executeNew($request);
+    }
+
+    /**
+     * Override edit action for extra validations
+     *
+     * @param sfWebRequest $request A request object
+     *
+     * @return void
+     */
+    public function executeEdit(sfWebRequest $request)
+    {
+        $operator = $this->getRoute()->getObject();
+        $this->forward404Unless($operator);
+        $scenario = $operator->Scenario;
+
+        $user = $this->getUser();
+        if ($scenario->getStarted()) {
+            $user->setFlash('error', 'You cannot edit a scenario with a started simulation!');
+            $this->redirect('@scenario');
+        }
+
+        $user->setAttribute('scenarioId', $scenario->getId());
+        if ($scenario->responsible_id == $user->getAttribute('id', false)) {
+            //$user->addCredential('responsible');
+        } else {
+            $user->removeCredential('responsible');
+        }
+
+        parent::executeEdit($request);
+    }
+
+    /**
+     * Override delete action for extra validations
+     *
+     * @param sfWebRequest $request A request object
+     *
+     * @return void
+     */
+    public function executeDelete(sfWebRequest $request)
+    {
+        $operator = $this->getRoute()->getObject();
+        $this->forward404Unless($operator);
+
+        $user = $this->getUser();
+        if ($scenario->getStarted()) {
+            $user->setFlash('error', 'You cannot delete a scenario with a started simulation!');
+            $this->redirect('@scenario');
+        }
+
+        $user->setAttribute('scenarioId', false);
+        $user->removeCredential('responsible');
+
+        parent::executeDelete($request);
+    }
+
+    /**
      * Gets operator simulated data from ticks related with the given Operator in order
      *  to provide that data in JSON format for graphs that need it.
      *

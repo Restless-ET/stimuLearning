@@ -9,5 +9,19 @@
  */
 class ServiceActions extends autoServiceActions
 {
-    // Accessible by all logged-in users.
+    /**
+     * Override index action for extra validations
+     *
+     * @param sfWebRequest $request A request object
+     *
+     * @return void
+     */
+    public function executeIndex(sfWebRequest $request)
+    {
+        if (!$this->getUser()->getAttribute('scenarioId', 0)) {
+            $this->redirect('@homepage'); // @scenario
+        }
+
+        parent::executeIndex($request);
+    }
 }

@@ -34,6 +34,10 @@ class DefaultActions extends sfActions
                                       ->andWhere('o.user_id = ?', $user->getAttribute('id'))
                                       ->execute();
         }
+
+        // Should this really be cleaned every time we access the homepage??
+        $user->setAttribute('scenarioId', false);
+        $user->removeCredential('responsible');
     }
 
     /**
