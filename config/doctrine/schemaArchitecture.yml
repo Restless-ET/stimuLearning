@@ -16,8 +16,16 @@ Architecture:
       foreignAlias: Architecture
       type: one
       foreignType: one
+      onDelete: CASCADE
     Scenario:
       foreignAlias: Architectures
+      onDelete: CASCADE
+    Equipments:
+      type: many
+      class: Equipment
+      orderBy: network_level ASC
+      local: id
+      foreign: architecture_id
 
 LibArch:
   options:
@@ -39,3 +47,4 @@ LibArch:
       foreignType: one
       local: tech_id
       foreign: id
+      onDelete: CASCADE

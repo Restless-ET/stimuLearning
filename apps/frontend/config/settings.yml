@@ -30,20 +30,26 @@ all:
 
     secure_module:          default   # To be called when a user doesn't have
     secure_action:          index     # The credentials required for an action
-  
+
     error_404_module:       default   # To be called when a 404 error is raised
     error_404_action:       error404  # Or when the requested URL doesn't match any route
-  
+
   .settings:
     # Form security secret (CSRF protection)
-    csrf_secret:            dfbdc5e6c31a2e106225b57c219fec491be1d009
+    csrf_secret:            false #our$ecretP4ss    # Unique secret to enable CSRF protection or false to disable
+#dfbdc5e6c31a2e106225b57c219fec491be1d009
 
     # Output escaping settings
-    escaping_strategy:      true
-    escaping_method:        ESC_SPECIALCHARS
-    
+    escaping_strategy:      true             # Determines how variables are made available to templates. Accepted values: on, off.
+    escaping_method:        ESC_SPECIALCHARS # Function or helper used for escaping. Accepted values: ESC_RAW, ESC_ENTITIES, ESC_JS, ESC_JS_NO_ENTITIES, and ESC_SPECIALCHARS.
+
+    # Cache settings
+    lazy_cache_key:         true        # Delays creation of a cache key until after checking whether an action or partial is cacheable
+
     i18n:                   true
-    default_culture:        en        # Default user culture
+    default_culture:        pt_PT        # Default user culture
+
+    check_lock:             true
 
     # Enable the database manager
     use_database:           true

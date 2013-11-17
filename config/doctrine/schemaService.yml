@@ -19,5 +19,7 @@ Service:
   relations:
     Operator:
       foreignAlias: Services
+      onDelete: CASCADE
     Technology:
       foreignAlias: Services
+      onDelete: CASCADE

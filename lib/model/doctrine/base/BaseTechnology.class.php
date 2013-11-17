@@ -83,7 +83,8 @@ abstract class BaseTechnology extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Scenario', array(
              'local' => 'scenario_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasOne('Architecture', array(
              'local' => 'id',

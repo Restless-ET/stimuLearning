@@ -107,11 +107,13 @@ abstract class BaseService extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Operator', array(
              'local' => 'operator_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasOne('Technology', array(
              'local' => 'technology_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

@@ -384,18 +384,15 @@ abstract class BaseScenario extends sfDoctrineRecord
         $this->hasMany('Technology as Technologies', array(
              'local' => 'id',
              'foreign' => 'scenario_id',
-             'onDelete' => 'CASCADE',
              'orderBy' => 'first_tick_available ASC'));
 
         $this->hasMany('Architecture as Architectures', array(
              'local' => 'id',
-             'foreign' => 'scenario_id',
-             'onDelete' => 'CASCADE'));
+             'foreign' => 'scenario_id'));
 
         $this->hasMany('Equipment as Equipments', array(
              'local' => 'id',
-             'foreign' => 'scenario_id',
-             'onDelete' => 'CASCADE'));
+             'foreign' => 'scenario_id'));
 
         $this->hasMany('Operator as Operators', array(
              'local' => 'id',

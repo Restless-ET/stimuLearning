@@ -70,7 +70,8 @@ abstract class BaseLibArch extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('LibTech as Technology', array(
              'local' => 'tech_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasMany('LibEquip as Equipments', array(
              'local' => 'id',

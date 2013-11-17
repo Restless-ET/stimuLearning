@@ -130,7 +130,8 @@ abstract class BaseLibEquip extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('LibArch as Architecture', array(
              'local' => 'arch_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

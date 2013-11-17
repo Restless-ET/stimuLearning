@@ -79,15 +79,18 @@ abstract class BaseArchitecture extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Technology', array(
              'local' => 'technology_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasOne('Scenario', array(
              'local' => 'scenario_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasMany('Equipment as Equipments', array(
              'local' => 'id',
-             'foreign' => 'architecture_id'));
+             'foreign' => 'architecture_id',
+             'orderBy' => 'network_level ASC'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

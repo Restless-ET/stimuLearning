@@ -167,11 +167,13 @@ abstract class BaseEquipment extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Architecture', array(
              'local' => 'architecture_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasOne('Scenario', array(
              'local' => 'scenario_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasMany('AcquiredEquipment', array(
              'local' => 'id',

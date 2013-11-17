@@ -15,6 +15,7 @@ Technology:
   relations:
     Scenario:
       foreignAlias: Technologies
+      onDelete: CASCADE
 
 LibTech:
   options:

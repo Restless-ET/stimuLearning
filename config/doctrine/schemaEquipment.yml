@@ -47,8 +47,10 @@ Equipment:
   relations:
     Architecture:
       foreignAlias: Equipments
+      onDelete: CASCADE
     Scenario:
       foreignAlias: Equipments
+      onDelete: CASCADE
 
 LibEquip:
   actAs:
@@ -96,3 +98,4 @@ LibEquip:
       foreignType: many
       local: arch_id
       foreign: id
+      onDelete: CASCADE
