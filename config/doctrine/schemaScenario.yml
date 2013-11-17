@@ -49,14 +49,14 @@ Scenario:
     elasticity: { type: decimal, notnull: true }
     bankrupcy_limit: { type: decimal, notnull: true }
   ## Quality Vector Weights ##
-    number_of_services_weight: { type: decimal, notnull: true, default: 10 }
-    download_weight: { type: decimal, notnull: true, default: 10 }
-    upload_weight: { type: decimal, notnull: true, default: 10 }
-    rate_weight: { type: decimal, notnull: true, default: 10 }
-    fee_weight: { type: decimal, notnull: true, default: 10 }
-    occupation_rate_weight: { type: decimal, notnull: true, default: 10 }
-    containment_factor_weight: { type: decimal, notnull: true, default: 10 }
-    reference_occupation_rate: { type: decimal, notnull: true, default: 10 }
+    number_of_services_weight: { type: decimal, notnull: true, default: 14 }
+    download_weight: { type: decimal, notnull: true, default: 14 }
+    upload_weight: { type: decimal, notnull: true, default: 14 }
+    rate_weight: { type: decimal, notnull: true, default: 14 }
+    fee_weight: { type: decimal, notnull: true, default: 14 }
+    occupation_rate_weight: { type: decimal, notnull: true, default: 14 }
+    containment_factor_weight: { type: decimal, notnull: true, default: 14 }
+    reference_occupation_rate: { type: decimal, notnull: true, default: 14 }
 
     responsible_id: { type: integer } #, notnull: true }
   ## Relations ##

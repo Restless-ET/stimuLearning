@@ -69,22 +69,22 @@ function setDemographyPopulation() {
     }
 
     if (duDistribution > 0.00) {
-        duPopulation = parseFloat(total_clients * duDistribution / 100).toFixed(2);
+        duPopulation = parseFloat(total_clients * duDistribution / 100).toFixed(0);
     }
     jQuery('#scenario_dense_urban_population').val(duPopulation);
 
     if (uDistribution > 0.00) {
-        uPopulation = parseFloat(total_clients * uDistribution / 100).toFixed(2);
+        uPopulation = parseFloat(total_clients * uDistribution / 100).toFixed(0);
     }
     jQuery('#scenario_urban_population').val(uPopulation);
 
     if (suDistribution > 0.00) {
-        suPopulation = parseFloat(total_clients * suDistribution / 100).toFixed(2);
+        suPopulation = parseFloat(total_clients * suDistribution / 100).toFixed(0);
     }
     jQuery('#scenario_suburban_population').val(suPopulation);
 
     if (rDistribution > 0.00) {
-        rPopulation = parseFloat(total_clients * rDistribution / 100).toFixed(2);
+        rPopulation = parseFloat(total_clients * rDistribution / 100).toFixed(0);
     }
     jQuery('#scenario_rural_population').val(rPopulation);
 };

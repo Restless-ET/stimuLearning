@@ -37,8 +37,8 @@ class OperatorTable extends Doctrine_Table
         $q->leftJoin($alias.'.Scenario s')->leftJoin($alias.'.User u')
           ->select($alias.'.*, s.description, u.name');
 
-        if (!$user->hasCredential('admin')) {
-            //$q->andWhere('user_id = ?', $user->getAttribute('id'));
+        if (!$user->hasCredential('admin') && !$user->hasCredential('responsible')) {
+            $q->andWhere('user_id = ?', $user->getAttribute('id'));
         }
         $q->andWhere('scenario_id = ?', $user->getAttribute('scenarioId', 0));
 

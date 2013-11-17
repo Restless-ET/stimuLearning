@@ -25,7 +25,7 @@
           <td><?php echo link_to(ImagesHelper::jQueryUIImageTag('search', 'alt_title=Show').$op['name'], 'operator/show?id='.$op->id); ?></td>
           <td><?php echo $scenario->started ? number_format($op['current_market_size'], 0, ',', '.') : number_format($op['starting_market_size'], 0, ',', '.'); ?></td>
           <td><?php echo NumbersHelper::taxes($op['market_share'], 2).' %'; ?></td>
-          <td><?php echo $op->getUser()->getName(); ?></td>
+          <td><?php echo $op->getUser(); ?></td>
           <td><?php echo DateTimeHelper::dateFormatWithTime($op->getCreatedAt()); ?></td>
         <?php if (!$scenario->started): ?>
           <?php if($loggedUser == $scenario->responsible_id || $sf_user->hasCredential('admin')): ?>
@@ -67,5 +67,9 @@ $(document).ready(function(){
     } else {
         $(tabElement).append('<span class="counter"> (' + $(objectToCount).length + ')</span>');
     }
+
+    // Take vantage of this to call the methods from calculos.js on document ready
+    setGeographyAreas();
+    setDemographyPopulation();
 });
 </script>

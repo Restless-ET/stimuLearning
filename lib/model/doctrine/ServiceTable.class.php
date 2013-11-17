@@ -20,4 +20,28 @@ class ServiceTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Service');
     }
+
+    /**
+     * Auxiliar method to create a query to fetch Services filtered properly for the current user
+     *
+     * @param Doctrine_Query $q A Doctrine_Query object
+     *
+     * @return the built query
+     */
+    public static function filterByCredential(Doctrine_Query $q)
+    {
+        $user = sfContext::getInstance()->getUser();
+
+        $alias = $q->getRootAlias();
+
+        $q->leftJoin($alias.'.Operator o')
+          ->select($alias.'.*, o.name');
+
+        if (!$user->hasCredential('admin')) {
+            $q->andWhere('o.user_id = ?', $user->getAttribute('id'));
+        }
+        $q->andWhere('o.scenario_id = ?', $user->getAttribute('scenarioId', 0));
+
+        return $q;
+    }
 }

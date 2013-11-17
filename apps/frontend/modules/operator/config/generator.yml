@@ -21,6 +21,7 @@ generator:
       list:
         fields:
           starting_market_size: { renderer: 'number_format', renderer_arguments: [0, ',', '.'] }
+          market_share: { label: 'Market Share', renderer: 'FieldRendererHelper::perc' }
           current_market_size: { renderer: 'number_format', renderer_arguments: [0, ',', '.'] }
           net_present_value: { label: 'N.P.V.', renderer: 'FieldRendererHelper::euro'}
           internal_rate_of_return: { label: 'I.R.R.', renderer: 'FieldRendererHelper::perc' }
@@ -28,7 +29,7 @@ generator:
         max_per_page: 15
         title: 'Operators'
         sort: [scenario_id, asc]
-        display: [name, starting_market_size, current_market_size, net_present_value, internal_rate_of_return, payback_period, User, Scenario]
+        display: [name, starting_market_size, market_share, current_market_size, net_present_value, internal_rate_of_return, payback_period, User]
         table_method: filterByCredential
         object_actions:
           _show: ~
