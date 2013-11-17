@@ -72,7 +72,7 @@ class ServiceActions extends autoServiceActions
         }
         $scenario = $operator->Scenario;
         if ($scenario->getFinished())  {
-            $user->setFlash('error', 'You cannot edit a Service from a scenario with a finished simulation!');
+            $user->setFlash('error', 'You cannot delete a Service from a scenario with a finished simulation!');
             $this->redirect('@service');
         }
 
