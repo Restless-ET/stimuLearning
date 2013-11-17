@@ -1,9 +1,11 @@
-default:
-  stylesheets: [scenario.css]
-
 newSuccess:
+  stylesheets: [scenario.css]
   javascripts: [flot/jquery.flot.js, flot/jquery.flot.selection.js, marketPenetrationChart.js, calculos.js]
+
 editSuccess:
+  stylesheets: [scenario.css]
   javascripts: [flot/jquery.flot.js, flot/jquery.flot.selection.js, marketPenetrationChart.js, calculos.js]
+
 showSuccess:
+  stylesheets: [scenario.css]
   javascripts: [flot/jquery.flot.js, flot/jquery.flot.selection.js, marketPenetrationChart.js]

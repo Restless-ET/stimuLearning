@@ -120,6 +120,13 @@ body {
     background-color: #ccf;
 }
 
+ul li { /* override base-min.css*/
+    list-style: none;
+}
+input[type=text], input[type=password], textarea { /* override base-min.css*/
+    width: 26.6em;
+}
+
 td, th {
   border: 0px;
   padding: 5px;

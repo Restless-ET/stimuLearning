@@ -1,5 +1,3 @@
-default:
-  stylesheets: [operator.css]
-
 showSuccess:
+  stylesheets: [operator.css]
   javascripts: [flot/jquery.flot.js, flot/jquery.flot.selection.js, flot/jquery.flot.axislabels.js, calculos.js]
