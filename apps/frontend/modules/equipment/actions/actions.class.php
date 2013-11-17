@@ -29,6 +29,29 @@ class EquipmentActions extends autoEquipmentActions
     }
 
     /**
+     * Override new action for extra validations
+     *
+     * @param sfWebRequest $request A request object
+     *
+     * @return void
+     */
+    public function executeNew(sfWebRequest $request)
+    {
+        $user = $this->getUser();
+        $scenario = Doctrine_Core::getTable('Scenario')
+                      ->find($user->getAttribute('scenarioId', 0));
+        if ($scenario === false) {
+            $user->setFlash('error', 'No scenario found in session!');
+            $this->redirect('@equipment');
+        } elseif ($scenario->getFinished()) {
+            $user->setFlash('error', 'You cannot create a new equipment for a scenario with a finished simulation!');
+            $this->redirect('@equipment');
+        }
+
+        parent::executeNew($request);
+    }
+
+    /**
      * Override edit action for extra validations
      *
      * @param sfWebRequest $request A request object

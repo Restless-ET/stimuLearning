@@ -13,6 +13,7 @@ generator:
 
     config:
       actions:
+        _new: { credentials: [[admin, responsible]] }
         _edit: { credentials: [[admin, responsible]] }
         _delete: { credentials: [[admin, responsible]] }
       fields: ~

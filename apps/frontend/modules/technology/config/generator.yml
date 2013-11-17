@@ -13,6 +13,7 @@ generator:
 
     config:
       actions:
+        _new: { credentials: [[admin, responsible]] }
         _edit: { credentials: [[admin, responsible]] }
         _delete: { credentials: [[admin, responsible]] }
       fields:
@@ -24,8 +25,6 @@ generator:
         title: 'Technologies'
         display: [ name, description, first_tick_available, decline_A, decline_B, Architecture ]
         table_method: filterByScenario
-        actions:
-          _new: ~
         object_actions:
           _show: ~
           _edit:

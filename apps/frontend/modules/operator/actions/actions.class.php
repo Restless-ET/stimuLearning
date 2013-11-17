@@ -37,6 +37,18 @@ class OperatorActions extends autoOperatorActions
      */
     public function executeNew(sfWebRequest $request)
     {
+        $user = $this->getUser();
+        $scenario = Doctrine_Core::getTable('Scenario')
+                      ->find($user->getAttribute('scenarioId', 0));
+        if ($scenario === false) {
+            $user->setFlash('error', 'No scenario found in session!');
+            $this->redirect('@operator');
+        } elseif ($scenario->getStarted()) {
+            $user->setFlash('error',
+                'You cannot create a new operator for a scenario with an already started simulation!');
+            $this->redirect('@operator');
+        }
+
         parent::executeNew($request);
     }
 

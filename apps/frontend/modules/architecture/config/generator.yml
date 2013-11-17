@@ -13,6 +13,7 @@ generator:
 
     config:
       actions:
+        _new: { credentials: [[admin, responsible]] }
         _edit: { credentials: [[admin, responsible]] }
         _delete: { credentials: [[admin, responsible]] }
       fields:
@@ -25,8 +26,6 @@ generator:
         fields: # because 'renderer' only works on list
           download_bandwidth: { renderer: 'FieldRendererHelper::append', renderer_arguments: ['Mbps'] }
           upload_bandwidth: { renderer: 'FieldRendererHelper::append', renderer_arguments: ['Kbps'] }
-        actions:
-          _new: ~
         object_actions:
           _show: ~
           _edit:
