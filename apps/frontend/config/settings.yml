@@ -46,7 +46,7 @@ all:
     # Cache settings
     lazy_cache_key:         true        # Delays creation of a cache key until after checking whether an action or partial is cacheable
 
-    i18n:                   true
+    i18n:                   false
     default_culture:        en        # Default user culture
 
     check_lock:             true
