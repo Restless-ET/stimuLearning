@@ -1,7 +1,10 @@
 <?php if ($sf_user->isAuthenticated()): ?>
   <h2>Welcome, <?php echo $sf_user->getAttribute('username') ?>!!</h2>
-
+  <div class="help">
+    <span class="ui-icon ui-icon-info" style="float: left;"></span>Only scenarios with an unfinished simulation are shown below...
+  </div>
   <h3>My Scenarios<?php //echo link_to('My Scenarios', '@scenario')?></h3>
+
   <?php if (isset($myScenarios) && count($myScenarios)) :?>
     <ul>
     <?php foreach ($myScenarios as $scenario): ?>
@@ -11,7 +14,10 @@
       </li>
     <?php endforeach; ?>
     </ul>
+    <br/>
+    <br/>
   <?php endif; ?>
+  <a style="color: #00850F; text-decoration: none;" href="<?php echo url_for('scenario/new'); ?>">Create new scenario...</a>
   <br/>
   <br/>
   <h3>Player Scenarios</h3>
@@ -24,8 +30,8 @@
       </li>
     <?php endforeach; ?>
     </ul>
+    <br/>
   <?php endif; ?>
-  <br/>
 <?php else: ?>
 <h2>Welcome!!</h2>
 
