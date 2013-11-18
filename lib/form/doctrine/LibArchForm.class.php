@@ -39,7 +39,7 @@ class LibArchForm extends BaseLibArchForm
         $this->setValidator('image', new sfValidatorFile(array(
           'required' => false,
           'path' => sfConfig::get('sf_upload_dir').'/architecture/',
-          'max_size' => 1024, // Allowed size in bytes
+          'max_size' => 1024 * 1024, // Allowed size in bytes
           'mime_types' => 'web_images',
         )));
 
