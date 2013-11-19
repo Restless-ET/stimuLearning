@@ -138,6 +138,7 @@ Equipment:
     #deltaT: 40
     maximum_clients: 2048
     Architecture: Architecture_3
+    #Operator: Operator_2
   Equipment_10:
     name: 'Intermédio'
     starting_price: 30000
@@ -151,6 +152,7 @@ Equipment:
     setup_speed: 'Very slow (40)'
     maximum_clients: 64
     Architecture: Architecture_3
+    #Operator: Operator_2
   Equipment_11:
     name: 'Terminal'
     starting_price: 20
@@ -164,3 +166,94 @@ Equipment:
     setup_speed: 'Very slow (40)'
     maximum_clients: 1
     Architecture: Architecture_3
+    #Operator: Operator_2
+
+  Equipment_12:
+    name: 'Base'
+    starting_price: 1000000
+    number_of_ports: 32
+    network_level: 0
+    life_expectation: 5
+    equipment_type: 'Wired'
+    nature_or_purpose: 'Other'
+    valK: 0.95
+    tecnology_age: 'Emerging (0.001)'
+    #NrIni: 0.001
+    setup_speed: 'Very slow (40)'
+    #deltaT: 40
+    maximum_clients: 2048
+    Architecture: Architecture_4
+    #Operator: Operator_3
+  Equipment_13:
+    name: 'Intermédio'
+    starting_price: 30000
+    number_of_ports: 64
+    network_level: 1
+    life_expectation: 15
+    equipment_type: 'Wired'
+    nature_or_purpose: 'Other'
+    valK: 0.85
+    tecnology_age: 'Emerging (0.001)'
+    setup_speed: 'Very slow (40)'
+    maximum_clients: 64
+    Architecture: Architecture_4
+    #Operator: Operator_3
+  Equipment_14:
+    name: 'Terminal'
+    starting_price: 20
+    number_of_ports: 1
+    network_level: 2
+    life_expectation: 4
+    equipment_type: 'Wired'
+    nature_or_purpose: 'Other'
+    valK: 0.85
+    tecnology_age: 'Emerging (0.001)'
+    setup_speed: 'Very slow (40)'
+    maximum_clients: 1
+    Architecture: Architecture_4
+    #Operator: Operator_3
+
+  Equipment_15:
+    name: 'Base'
+    starting_price: 1000000
+    number_of_ports: 32
+    network_level: 0
+    life_expectation: 5
+    equipment_type: 'Wired'
+    nature_or_purpose: 'Other'
+    valK: 0.95
+    tecnology_age: 'Emerging (0.001)'
+    #NrIni: 0.001
+    setup_speed: 'Very slow (40)'
+    #deltaT: 40
+    maximum_clients: 2048
+    Architecture: Architecture_5
+    #Operator: Operator_4
+  Equipment_16:
+    name: 'Intermédio'
+    starting_price: 30000
+    number_of_ports: 64
+    network_level: 1
+    life_expectation: 15
+    equipment_type: 'Wired'
+    nature_or_purpose: 'Other'
+    valK: 0.85
+    tecnology_age: 'Emerging (0.001)'
+    setup_speed: 'Very slow (40)'
+    maximum_clients: 64
+    Architecture: Architecture_5
+    #Operator: Operator_4
+  Equipment_17:
+    name: 'Terminal'
+    starting_price: 20
+    number_of_ports: 1
+    network_level: 2
+    life_expectation: 4
+    equipment_type: 'Wired'
+    nature_or_purpose: 'Other'
+    valK: 0.85
+    tecnology_age: 'Emerging (0.001)'
+    setup_speed: 'Very slow (40)'
+    maximum_clients: 1
+    Architecture: Architecture_5
+    #Operator: Operator_4

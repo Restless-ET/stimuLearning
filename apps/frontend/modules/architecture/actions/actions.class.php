@@ -63,8 +63,14 @@ class ArchitectureActions extends autoArchitectureActions
         $architecture = $this->getRoute()->getObject();
         $this->forward404Unless($architecture);
         $scenario = $architecture->Scenario;
-
+        $operator = $architecture->Operator;
         $user = $this->getUser();
+
+        if ($operator->user_id != $user->getAttribute('id')) {
+            $user->setFlash('error', 'That architecture is not yours to edit!');
+            $this->redirect('@architecture');
+        }
+
         if ($scenario->getFinished()) {
             $user->setFlash('error', 'You cannot edit an architecture from a scenario with a finished simulation!');
             $this->redirect('@architecture');
@@ -85,8 +91,13 @@ class ArchitectureActions extends autoArchitectureActions
         $architecture = $this->getRoute()->getObject();
         $this->forward404Unless($architecture);
         $scenario = $architecture->Scenario;
-
+        $operator = $architecture->Operator;
         $user = $this->getUser();
+
+        if ($operator->user_id != $user->getAttribute('id')) {
+            $user->setFlash('error', 'That architecture is not yours to delete!');
+            $this->redirect('@architecture');
+        }
         if ($scenario->getFinished()) {
             $user->setFlash('error', 'You cannot delete an architecture from a scenario with a started simulation!');
             $this->redirect('@architecture');

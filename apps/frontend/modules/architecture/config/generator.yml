@@ -12,16 +12,16 @@ generator:
     actions_base_class:    sfActions
 
     config:
-      actions:
-        _new: { credentials: [[admin, responsible]] }
-        _edit: { credentials: [[admin, responsible]] }
-        _delete: { credentials: [[admin, responsible]] }
+      actions: ~
+        #_new: { credentials: [[admin, responsible]] }
+        #_edit: { credentials: [[admin, responsible]] }
+        #_delete: { credentials: [[admin, responsible]] }
       fields:
         technology_id: { label: 'Technology' }
 
       list:
         title: 'Architectures'
-        display: [ name, download_bandwidth, upload_bandwidth, Technology ]
+        display: [ name, download_bandwidth, upload_bandwidth, Operator, Technology ]
         table_method: filterByScenario
         fields: # because 'renderer' only works on list
           download_bandwidth: { renderer: 'FieldRendererHelper::append', renderer_arguments: ['Mbps'] }
@@ -29,13 +29,13 @@ generator:
         object_actions:
           _show: ~
           _edit:
-            credentials: [[admin, responsible]]
+            #credentials: [[admin, responsible]]
             condition:
               variable: Scenario->finished
               check: [ false ]
               invert: false
           _delete:
-            credentials: [[admin, responsible]]
+            #credentials: [[admin, responsible]]
             condition:
               variable: Scenario->finished
               check: [ false ]
@@ -51,5 +51,5 @@ generator:
       new:     ~
 
       show:
-        display: [ name, download_bandwidth, upload_bandwidth, image, technology_id ]
+        display: [ name, download_bandwidth, upload_bandwidth, image, _operator, _technology ]
         #actions: ~ # check _show_actions.php
