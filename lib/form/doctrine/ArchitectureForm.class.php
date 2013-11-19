@@ -48,10 +48,14 @@ class ArchitectureForm extends BaseArchitectureForm
 
         $scId = $user->getAttribute('scenarioId', 0);
         $currentTech = $currentData->technology_id;
+        $archSelectPart = 'SELECT a.technology_id FROM Architecture a INNER JOIN a.Operator o ON a.operator_id = o.id';
         $query = Doctrine_Core::getTable('Technology')->createQuery('t')
                   ->where('t.scenario_id = ?', $scId)
                   ->andWhere('(t.id = ?', $currentTech)
-                  ->orWhere('t.id NOT IN (SELECT a.technology_id FROM Architecture a WHERE a.scenario_id = ?))', $scId);
+                  ->orWhere(
+                      't.id NOT IN ('.$archSelectPart." WHERE a.scenario_id = '".$scId."' AND o.user_id = ?))",
+                      $user->getAttribute('id')
+                   );
         $this->getWidget('technology_id')->setOption('query', $query);
         $this->getWidget('technology_id')->setOption('add_empty', true);
 
@@ -65,43 +69,5 @@ class ArchitectureForm extends BaseArchitectureForm
         if ($operatorId) {
             $this->setDefault('operator_id', $operatorId);
         }
-
-        //$this->mergePostValidator(new sfValidatorCallback(array(
-        //    'callback' => array($this, 'validateSingleArchitecturePerOperator'))
-        //));
-    }
-
-    /**
-     * Checks if the select technology does not have an associated architecture for this operator already
-     *
-     * @param mixed $validator Validator
-     * @param mixed $values    Values
-     *
-     * @return $values
-     */
-    public function validateSingleArchitecturePerOperator($validator, $values)
-    {
-        // The list of fields that have failed validation (initially none)
-        $failed = array();
-
-        //TODO finish this
-        if ($sum !== 100.00) {
-            $tempError = new sfValidatorError($validator,
-                'Total percentage for territory sections has to be 100%. Adjust this value if needed.');
-            $failed = array(
-                'dense_urban_territory' => $tempError,
-                'urban_territory' => $tempError,
-                'suburban_territory' => $tempError,
-                'rural_territory' => $tempError,
-            );
-        }
-
-        // If any failed, we need to throw a schema of errors
-        if (count($failed) > 0) {
-            throw new sfValidatorErrorSchema($validator, $failed);
-        }
-
-        // If everything is OK, we must return the values, that could have been "cleaned" if we wanted to
-        return $values;
     }
 }
