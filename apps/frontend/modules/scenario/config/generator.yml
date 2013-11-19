@@ -38,7 +38,6 @@ generator:
           total_clients: { renderer: 'number_format', renderer_arguments: [0, ',', '.'] }
           total_decision_points: { label: '# decision pts'}
           ticks_between_decision_points: { label: 'Ticks between decision pts'}
-        table_method: filterByCredential
         actions:
           _new: ~
         object_actions: # _list_td_actions.php has been overridden
@@ -59,7 +58,9 @@ generator:
         batch_actions: {}
 
       filter:
-        display: [started, tick_alias, finished]
+        display: [my_role, started, tick_alias, finished]
+        fields:
+          my_role: { label: 'My role'}
 
       form:
         display:

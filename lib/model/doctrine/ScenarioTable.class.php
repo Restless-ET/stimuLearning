@@ -20,22 +20,4 @@ class ScenarioTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Scenario');
     }
-
-   /**
-     * Auxiliar method to create a query to fetch Scenarios filtered properly for the current user
-     *
-     * @param Doctrine_Query $q A Doctrine_Query object
-     *
-     * @return the built query
-     */
-    public static function filterByCredential(Doctrine_Query $q)
-    {
-        $user = sfContext::getInstance()->getUser();
-
-        //if (!$user->hasCredential('admin')) {
-        //    $q->andWhere('user_id = ?', $user->getAttribute('id'));
-        //}
-
-        return $q;
-    }
 }
