@@ -28,7 +28,10 @@ class EquipmentForm extends BaseEquipmentForm
         // Seria necessário ao utilizador conhecer a arquitectura de antemão
 
         $query = Doctrine_Core::getTable('Architecture')->createQuery('a')
-                  ->where('a.scenario_id = ?', $user->getAttribute('scenarioId', 0));
+                  ->innerJoin('a.Operator o')
+                  ->select('a.name, o.id')
+                  ->where('a.scenario_id = ?', $user->getAttribute('scenarioId', 0))
+                  ->andWhere('o.user_id = ?', $user->getAttribute('id'));
         $this->getWidget('architecture_id')->setOption('query', $query);
         $this->getWidget('architecture_id')->setOption('add_empty', true);
     }

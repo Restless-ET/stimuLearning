@@ -43,9 +43,13 @@ Equipment:
     maximum_clients: { type: integer } #show only on 'Other'
   ## For the relations ##
     architecture_id: { type: integer, notnull: true }
+    operator_id: { type: integer } # hidden
     scenario_id: { type: integer } # hidden
   relations:
     Architecture:
+      foreignAlias: Equipments
+      onDelete: CASCADE
+    Operator:
       foreignAlias: Equipments
       onDelete: CASCADE
     Scenario:

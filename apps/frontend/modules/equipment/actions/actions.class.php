@@ -72,8 +72,14 @@ class EquipmentActions extends autoEquipmentActions
         $equipment = $this->getRoute()->getObject();
         $this->forward404Unless($equipment);
         $scenario = $equipment->Scenario;
-
+        $operator = $equipment->Operator;
         $user = $this->getUser();
+
+        if ($operator->user_id != $user->getAttribute('id')) {
+            $user->setFlash('error', 'That equipment is not yours to edit!');
+            $this->redirect('@equipment');
+        }
+
         if ($scenario->getFinished()) {
             $user->setFlash('error', 'You cannot edit an equipment from a scenario with a finished simulation!');
             $this->redirect('@equipment');
@@ -94,8 +100,14 @@ class EquipmentActions extends autoEquipmentActions
         $equipment = $this->getRoute()->getObject();
         $this->forward404Unless($equipment);
         $scenario = $equipment->Scenario;
-
+        $operator = $equipment->Operator;
         $user = $this->getUser();
+
+        if ($operator->user_id != $user->getAttribute('id')) {
+            $user->setFlash('error', 'That equipment is not yours to delete!');
+            $this->redirect('@equipment');
+        }
+
         if ($scenario->getFinished()) {
             $user->setFlash('error', 'You cannot delete an equipment from a scenario with a started simulation!');
             $this->redirect('@equipment');

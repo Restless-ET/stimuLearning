@@ -12,16 +12,16 @@ generator:
     actions_base_class:    sfActions
 
     config:
-      actions:
-        _new: { credentials: [[admin, responsible]] }
-        _edit: { credentials: [[admin, responsible]] }
-        _delete: { credentials: [[admin, responsible]] }
+      actions: ~
+        #_new: { credentials: [[admin, responsible]] }
+        #_edit: { credentials: [[admin, responsible]] }
+        #_delete: { credentials: [[admin, responsible]] }
       fields:
         starting_price: { renderer: 'FieldRendererHelper::euro' }
 
       list:
         title: 'Equipments'
-        display: [ name, starting_price, number_of_ports, network_level, life_expectation, equipment_type, nature_or_purpose, tecnology_age, setup_speed ]
+        display: [ name, starting_price, number_of_ports, network_level, life_expectation, equipment_type, nature_or_purpose, tecnology_age, setup_speed, Architecture ]
         table_method: filterByScenario
         fields:
           number_of_ports: { label: '# of ports'}
@@ -31,13 +31,13 @@ generator:
         object_actions:
           _show: ~
           _edit:
-            credentials: [[admin, responsible]]
+            #credentials: [[admin, responsible]]
             condition:
               variable: Scenario->finished
               check: [ false ]
               invert: false
           _delete:
-            credentials: [[admin, responsible]]
+            #credentials: [[admin, responsible]]
             confirm: 'This removal is irreversible! Are you sure you want to proceed?'
             condition:
               variable: Scenario->finished
@@ -54,5 +54,5 @@ generator:
       new:     ~
 
       show:
-        display: [ name, starting_price, number_of_ports, network_level, life_expectation, equipment_type, nature_or_purpose, tecnology_age, setup_speed ]
+        display: [ _architecture, name, starting_price, number_of_ports, network_level, life_expectation, equipment_type, nature_or_purpose, tecnology_age, setup_speed ]
         #actions: ~ # check _show_actions.php

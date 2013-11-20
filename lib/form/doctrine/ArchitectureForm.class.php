@@ -65,9 +65,6 @@ class ArchitectureForm extends BaseArchitectureForm
         $this->getWidget('operator_id')->setOption('query', $query);
         $this->getWidget('operator_id')->setOption('add_empty', true);
 
-        $operatorId = $user->getAttribute('operatorId', 0);
-        if ($operatorId) {
-            $this->setDefault('operator_id', $operatorId);
-        }
+        $this->setDefault('operator_id', $user->getAttribute('operatorId', ''));
     }
 }

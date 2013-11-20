@@ -33,8 +33,10 @@ class ArchitectureTable extends Doctrine_Table
         $user = sfContext::getInstance()->getUser();
 
         $rootAlias = $q->getRootAlias();
-        $q->innerJoin($rootAlias.'.Operator o')
-          ->innerJoin($rootAlias.'.Technology t')
+        $q->innerJoin($rootAlias.'.Technology t')
+          ->innerJoin($rootAlias.'.Operator o')
+          ->innerJoin($rootAlias.'.Scenario s')
+          ->select($rootAlias.'.*, t.name, o.name, o.user_id, s.finished')
           ->andWhere('scenario_id = ?', $user->getAttribute('scenarioId', 0));
 
         if (!$user->hasCredential('admin') && !$user->hasCredential('responsible')) {
