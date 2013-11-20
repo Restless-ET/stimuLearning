@@ -34,8 +34,13 @@ class ServiceForm extends BaseServiceForm
         $this->getWidget('operator_id')->setOption('query', $query);
         $this->getWidget('operator_id')->setOption('add_empty', true);
 
+        $archSelectPart = 'SELECT a.technology_id FROM Architecture a INNER JOIN a.Operator o ON a.operator_id = o.id';
         $query = Doctrine_Core::getTable('Technology')->createQuery('t')
-                  ->where('t.scenario_id = ?', $scenarioId);
+                  ->where('t.scenario_id = ?', $scenarioId)
+                  ->andWhere(
+                      't.id IN ('.$archSelectPart." WHERE a.scenario_id = '".$scenarioId."' AND o.user_id = ?)",
+                      $user->getAttribute('id')
+                   );
         $this->getWidget('technology_id')->setOption('query', $query);
         $this->getWidget('technology_id')->setOption('add_empty', true);
     }
