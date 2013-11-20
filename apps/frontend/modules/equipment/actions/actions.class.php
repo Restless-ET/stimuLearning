@@ -47,6 +47,15 @@ class EquipmentActions extends autoEquipmentActions
             $user->setFlash('error', 'You cannot create a new equipment for a scenario with a finished simulation!');
             $this->redirect('@equipment');
         }
+        $userHasOperator = Doctrine_Core::getTable('Operator')->createQuery('o')
+                              ->select('o.id')
+                              ->where('o.scenario_id = ?', $scenario->getId())
+                              ->andWhere('o.user_id = ?', $user->getAttribute('id'))
+                              ->count();
+        if (!$userHasOperator) {
+            $user->setFlash('error', 'You do not control any operator on this scenario!');
+            $this->redirect('@equipment');
+        }
 
         parent::executeNew($request);
     }

@@ -47,6 +47,15 @@ class ArchitectureActions extends autoArchitectureActions
             $user->setFlash('error', 'You cannot create a new architecture for a scenario with a finished simulation!');
             $this->redirect('@architecture');
         }
+        $userHasOperator = Doctrine_Core::getTable('Operator')->createQuery('o')
+                              ->select('o.id')
+                              ->where('o.scenario_id = ?', $scenario->getId())
+                              ->andWhere('o.user_id = ?', $user->getAttribute('id'))
+                              ->count();
+        if (!$userHasOperator) {
+            $user->setFlash('error', 'You do not control any operator on this scenario!');
+            $this->redirect('@architecture');
+        }
 
         parent::executeNew($request);
     }
