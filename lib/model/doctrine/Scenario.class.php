@@ -37,14 +37,17 @@ class Scenario extends BaseScenario
         // validate that this scenario has operators
         if (!count($this->Operators)) {
             $msg = 'This scenario has no associated operators!';
+            return $msg;
         }
         // validate that this scenario has technologies available
         $techsAvailable = count($this->Technologies);
         if (!$techsAvailable) {
             $msg = 'This scenario has no technologies available!';
-        } elseif ($techsAvailable > 2) { // backend safeguard
-            $msg = 'Technology transition on this scenario is only possible to a maximum of two right now!';
+            return $msg;
         }
+
+        //TODO Validate at least 1 tech, arch, equip and service by operator
+        // use doctrine queries with distinct and/or count
 
         $marketClients = $this['total_clients'] * ($this['starting_level'] / 100);
 
@@ -53,6 +56,11 @@ class Scenario extends BaseScenario
             if (!count($operator->Services)) {
                 $msg = 'One or more of the Operators does not have any Service registered yet!';
                 break;
+            }
+            // TODO after updating the tech penetration calculation
+            if (count($operator->Technologies) > 2) { // backend safeguard
+                $msg = 'Technology transition is only possible to a maximum of two right now!';
+                return $msg;
             }
 
             $totalClients = $operator['starting_market_size'];
@@ -79,7 +87,6 @@ class Scenario extends BaseScenario
                 if ($tech['first_tick_available'] == $this['current_tick']) { // Equals 0
                     $architecture = Doctrine_Core::getTable('Architecture')->createQuery('a')
                                       ->where('a.technology_id = ?', $tech['id'])
-                                      ->andWhere('a.operator_id = ?', $operator['id'])
                                       ->fetchOne();
                     if ($architecture !== false) {
                         //$equipments = Doctrine_Core::getTable('Equipment')->createQuery('e')
@@ -161,23 +168,6 @@ class Scenario extends BaseScenario
         $marketPenetration = $this->getPenetrationRate($this['current_tick']);
         $marketClients = $this['total_clients'] * $marketPenetration;
 
-        $techsPenetration = array();
-        $singleTech = (count($this['Technologies']) == 1) ? true : false;
-        $lastPenetr = false;
-        foreach ($this['Technologies'] as $tech) {
-            if ($this['current_tick'] >= $tech['first_tick_available']) {
-                if ($singleTech) {
-                    $techsPenetration['t'.$tech['id']] = $marketPenetration;
-                } elseif ($lastPenetr !== false) {
-                    $techsPenetration['t'.$tech['id']] = $marketPenetration - $lastPenetr;
-                } else {
-                    $techPenetrRatio = 1 + $tech['decline_A'] * exp($tech['decline_B'] * $this['current_tick']);
-                    $lastPenetr = $marketPenetration / $techPenetrRatio;
-                    $techsPenetration['t'.$tech['id']] = $lastPenetr;
-                }
-            }
-        }
-
         foreach ($this['Operators'] as $operator) {
             $totalClients = $marketClients * $operator['market_share'] / 100; // TODO calculate for the operator correctly
             $clientsDiff = $totalClients - $operator['current_market_size'];
@@ -195,6 +185,24 @@ class Scenario extends BaseScenario
             $opTick->setOperator($operator);
             $opTick->setScenario($this);
             $opTick->save();
+
+            // Do this by operator
+            $techsPenetration = array();
+            $singleTech = (count($operator['Technologies']) == 1) ? true : false;
+            $lastPenetr = false;
+            foreach ($operator['Technologies'] as $tech) {
+                if ($this['current_tick'] >= $tech['first_tick_available']) {
+                    if ($singleTech) {
+                        $techsPenetration['t'.$tech['id']] = $marketPenetration;
+                    } elseif ($lastPenetr !== false) {
+                        $techsPenetration['t'.$tech['id']] = $marketPenetration - $lastPenetr;
+                    } else {
+                        $techPenetrRatio = 1 + $tech['decline_A'] * exp($tech['decline_B'] * $this['current_tick']);
+                        $lastPenetr = $marketPenetration / $techPenetrRatio;
+                        $techsPenetration['t'.$tech['id']] = $lastPenetr;
+                    }
+                }
+            }
 
             foreach ($operator['Services'] as $service) {
                 $technology = $service['Technology'];
@@ -255,12 +263,13 @@ class Scenario extends BaseScenario
                         $revenue += $servClients * $service['periodic_fee'] * $updatedRate;
                     }
                 }
+
+                $accumCapex = $operator['accumulated_CAPEX'] * (1 - $this['depreciation_rate'] / 100) + $capex;
+                // Some CAPEX percentage as OPEX
+                //$opex -= $targetTotal * $currentPrice * $service['CAPEX_percentage'];
+                // Em cada instante retirar como opex 5% do capex acumulado e actualizado!?
+                $opex += $accumCapex * ($service['CAPEX_percentage'] / 100); // CAPEX is already negative
             }
-            $accumCapex = $operator['accumulated_CAPEX'] * (1 - $this['depreciation_rate'] / 100) + $capex;
-            // Some CAPEX percentage as OPEX
-            //$opex -= $targetTotal * $currentPrice * $service['CAPEX_percentage'];
-            // Em cada instante retirar como opex 5% do capex acumulado e actualizado!?
-            $opex += $accumCapex * ($service['CAPEX_percentage'] / 100); // CAPEX is already negative
 
             //Update the remaining details of a Tick
             $opTick->setCAPEX($capex);
