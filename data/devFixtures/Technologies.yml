@@ -6,5 +6,6 @@ Technology:
     #first_tick_available: <?php echo ($i % 3 * 5)."\n"; ?>
     decline_A: <?php echo ((400 - rand(100, 300)) / 100)."\n"; ?>
     decline_B: <?php echo ((500 - rand(0, 500)) / 100)."\n"; ?>
+    Operator: <?php echo 'Operator_'.$i."\n"; ?>
     Scenario: <?php echo 'Scenario_'.($i % 5 + 1)."\n"; ?>
 <?php endfor; ?>

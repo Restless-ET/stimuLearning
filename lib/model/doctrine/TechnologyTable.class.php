@@ -32,7 +32,16 @@ class TechnologyTable extends Doctrine_Table
     {
         $user = sfContext::getInstance()->getUser();
 
-        $q->andWhere('scenario_id = ?', $user->getAttribute('scenarioId', 0));
+        $rootAlias = $q->getRootAlias();
+        $q->innerJoin($rootAlias.'.Architectures arch')
+          ->innerJoin($rootAlias.'.Operator o')
+          ->innerJoin($rootAlias.'.Scenario s')
+          ->select($rootAlias.'.*, arch.name, o.name, o.user_id, s.finished')
+          ->andWhere('scenario_id = ?', $user->getAttribute('scenarioId', 0));
+
+        if (!$user->hasCredential('admin') && !$user->hasCredential('responsible')) {
+            $q->andWhere('o.user_id = ?', $user->getAttribute('id', 0));
+        }
 
         return $q;
     }

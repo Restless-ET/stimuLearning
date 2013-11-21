@@ -19,7 +19,7 @@ class ArchitectureForm extends BaseArchitectureForm
      */
     public function configure()
     {
-        unset($this['created_at'], $this['updated_at'], $this['scenario_id']);
+        unset($this['created_at'], $this['updated_at'], $this['operator_id'], $this['scenario_id']);
         $user = sfContext::getInstance()->getUser();
 
         //show upload selection and file removal option
@@ -58,13 +58,5 @@ class ArchitectureForm extends BaseArchitectureForm
                    );
         $this->getWidget('technology_id')->setOption('query', $query);
         $this->getWidget('technology_id')->setOption('add_empty', true);
-
-        $query = Doctrine_Core::getTable('Operator')->createQuery('o')
-                  ->where('o.scenario_id = ?', $scId)
-                  ->andWhere('o.user_id = ?', $user->getAttribute('id'));
-        $this->getWidget('operator_id')->setOption('query', $query);
-        $this->getWidget('operator_id')->setOption('add_empty', true);
-
-        $this->setDefault('operator_id', $user->getAttribute('operatorId', ''));
     }
 }

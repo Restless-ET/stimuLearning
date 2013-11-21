@@ -79,7 +79,6 @@ class ArchitectureActions extends autoArchitectureActions
             $user->setFlash('error', 'That architecture is not yours to edit!');
             $this->redirect('@architecture');
         }
-
         if ($scenario->getFinished()) {
             $user->setFlash('error', 'You cannot edit an architecture from a scenario with a finished simulation!');
             $this->redirect('@architecture');

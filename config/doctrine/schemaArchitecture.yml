@@ -9,14 +9,14 @@ Architecture:
     download_bandwidth: { type: integer, notnull: true }
     upload_bandwidth: { type: integer, notnull: true }
     image: { type: string(255) }
-    operator_id: { type: integer, notnull: true }
     technology_id: { type: integer, notnull: true }
+    operator_id: { type: integer }
     scenario_id: { type: integer } # hidden
   relations:
-    Operator:
+    Technology:
       foreignAlias: Architectures
       onDelete: CASCADE
-    Technology:
+    Operator:
       foreignAlias: Architectures
       onDelete: CASCADE
     Scenario:

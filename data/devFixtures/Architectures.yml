@@ -5,5 +5,4 @@ Architecture:
     download_bandwidth: <?php $exp = rand(0, 6); echo pow(2, $exp)."\n"; ?>
     upload_bandwidth: <?php $exp = rand(8, 12); echo pow(2, $exp)."\n"; ?>
     Technology: [<?php echo 'Technology_'.$i; ?>]
-    Operator: [<?php echo 'Operator_'.$i; ?>]
 <?php endfor; ?>

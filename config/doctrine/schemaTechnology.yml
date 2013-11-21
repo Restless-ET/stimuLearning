@@ -11,8 +11,12 @@ Technology:
     decline_A: { type: decimal, scale: 3, notnull: true }
     decline_B: { type: decimal, scale: 3, notnull: true }
   ## For the relations ##
+    operator_id: { type: integer, notnull: true }
     scenario_id: { type: integer, notnull: true }
   relations:
+    Operator:
+      foreignAlias: Technologies
+      onDelete: CASCADE
     Scenario:
       foreignAlias: Technologies
       onDelete: CASCADE

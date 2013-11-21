@@ -11,5 +11,4 @@ Equipment:
     tecnology_age: <?php $age = array('Old (0.5)','Mature (0.1)','New (0.01)','Emerging (0.001)'); echo $age[rand(0,3)]."\n"; ?>
     setup_speed: <?php $speed = array('Very fast (5)','Fast (10)','Slow (20)','Very slow (40)'); echo $speed[rand(0,3)]."\n"; ?>
     Architecture: [<?php echo 'Architecture_'.($i % 15 + 1); ?>]
-    #Operator: [<?php echo 'Operator_'.($i % 15 + 1); ?>]
 <?php endfor; ?>

@@ -5,7 +5,6 @@ Architecture:
     download_bandwidth: <?php $exp = rand(0, 6); echo pow(2, $exp)."\n"; ?>
     upload_bandwidth: <?php $exp = rand(8, 12); echo pow(2, $exp)."\n"; ?>
     Technology: Technology_0
-    Operator: Operator_0
 
 ## Hipotese C ##
   Architecture_1:
@@ -13,30 +12,25 @@ Architecture:
     download_bandwidth: <?php $exp = rand(0, 6); echo pow(2, $exp)."\n"; ?>
     upload_bandwidth: <?php $exp = rand(8, 12); echo pow(2, $exp)."\n"; ?>
     Technology: Technology_1
-    Operator: Operator_1
   Architecture_2:
     name: 'LTE Arch.'
     download_bandwidth: <?php $exp = rand(0, 6); echo pow(2, $exp)."\n"; ?>
     upload_bandwidth: <?php $exp = rand(8, 12); echo pow(2, $exp)."\n"; ?>
     Technology: Technology_2
-    Operator: Operator_1
 
 ## Hipotese 3 operadores ##
   Architecture_3:
-    name: 'FTTH2'
+    name: 'FTTX3'
     download_bandwidth: <?php $exp = rand(0, 6); echo pow(2, $exp)."\n"; ?>
     upload_bandwidth: <?php $exp = rand(8, 12); echo pow(2, $exp)."\n"; ?>
     Technology: Technology_3
-    Operator: Operator_2
   Architecture_4:
-    name: 'FTTH3'
+    name: 'FTTX4'
     download_bandwidth: <?php $exp = rand(0, 6); echo pow(2, $exp)."\n"; ?>
     upload_bandwidth: <?php $exp = rand(8, 12); echo pow(2, $exp)."\n"; ?>
-    Technology: Technology_3
-    Operator: Operator_3
+    Technology: Technology_4
   Architecture_5:
-    name: 'FTTH4'
+    name: 'FTTX5'
     download_bandwidth: <?php $exp = rand(0, 6); echo pow(2, $exp)."\n"; ?>
     upload_bandwidth: <?php $exp = rand(8, 12); echo pow(2, $exp)."\n"; ?>
-    Technology: Technology_3
-    Operator: Operator_4
+    Technology: Technology_5

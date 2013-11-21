@@ -4,4 +4,5 @@ Technology:
     description: 'Fiber To The Home'
     decline_A: <?php echo rand(100, 300)."\n"; ?>
     decline_B: <?php echo ((500 - rand(0, 500)) / 100)."\n"; ?>
+    Operator: Operator_0
     Scenario: Scenario_0
