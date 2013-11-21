@@ -5,6 +5,7 @@
 [?php else: ?]
   <div class="[?php echo $class ?][?php $form[$name]->hasError() and print ' ui-state-error ui-corner-all' ?]">
     <div class="label ui-helper-clearfix">
+      [?php //$label = $form->getValidator($name)->getOption('required') ? $label.' *' : $label ?]
       [?php echo $form[$name]->renderLabel($label) ?]
 
       [?php if ($help || $help = $form[$name]->renderHelp()): ?]

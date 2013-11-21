@@ -9,6 +9,8 @@
  * @property string $username
  * @property string $password
  * @property string $email
+ * @property string $filiation
+ * @property string $department
  * @property boolean $is_admin
  * @property datetime $last_login
  * @property Doctrine_Collection $Operators
@@ -18,6 +20,8 @@
  * @method string              getUsername()   Returns the current record's "username" value
  * @method string              getPassword()   Returns the current record's "password" value
  * @method string              getEmail()      Returns the current record's "email" value
+ * @method string              getFiliation()  Returns the current record's "filiation" value
+ * @method string              getDepartment() Returns the current record's "department" value
  * @method boolean             getIsAdmin()    Returns the current record's "is_admin" value
  * @method datetime            getLastLogin()  Returns the current record's "last_login" value
  * @method Doctrine_Collection getOperators()  Returns the current record's "Operators" collection
@@ -26,6 +30,8 @@
  * @method User                setUsername()   Sets the current record's "username" value
  * @method User                setPassword()   Sets the current record's "password" value
  * @method User                setEmail()      Sets the current record's "email" value
+ * @method User                setFiliation()  Sets the current record's "filiation" value
+ * @method User                setDepartment() Sets the current record's "department" value
  * @method User                setIsAdmin()    Sets the current record's "is_admin" value
  * @method User                setLastLogin()  Sets the current record's "last_login" value
  * @method User                setOperators()  Sets the current record's "Operators" collection
@@ -61,6 +67,16 @@ abstract class BaseUser extends sfDoctrineRecord
              'type' => 'string',
              'unique' => true,
              'email' => true,
+             'length' => 255,
+             ));
+        $this->hasColumn('filiation', 'string', 255, array(
+             'type' => 'string',
+             'notnull' => true,
+             'length' => 255,
+             ));
+        $this->hasColumn('department', 'string', 255, array(
+             'type' => 'string',
+             'notnull' => true,
              'length' => 255,
              ));
         $this->hasColumn('is_admin', 'boolean', null, array(

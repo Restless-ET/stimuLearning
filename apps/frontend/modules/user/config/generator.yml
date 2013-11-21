@@ -15,22 +15,24 @@ generator:
     config:
       actions: ~
       fields:
+        filiation: { label: 'Filiation (University)' }
+        department: { label: 'Department / Faculty / School'}
         is_admin: { renderer: 'FieldRendererHelper::plainBoolean' }
         last_login: { date_format: 'dd/MM/yyyy HH:mm:ss' }
         deleted: { renderer: 'FieldRendererHelper::plainBoolean' }
 
       list:
         title: 'Users'
-        display: [ name, username, email, is_admin, last_login ]
+        display: [ name, username, email, filiation, is_admin, last_login ]
         batch_actions: {}
 
       filter:
         display: [is_admin, deleted ]
 
       form:
-        display: [ name, username, email, is_admin, new_password, confirm_new_password ]
+        display: [ name, username, email, filiation, department, is_admin, new_password, confirm_new_password ]
       edit:    ~
       new:     ~
 
       show:
-        display: [ name, username, email, is_admin, last_login ]
+        display: [ name, username, email, filiation, department, is_admin, last_login ]
