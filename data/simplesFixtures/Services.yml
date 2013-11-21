@@ -7,5 +7,4 @@ Service:
     CAPEX_percentage: 10.00
     periodic_fee: 480.00
     clients_quota: 100.00 # Simplify this by using a single service
-    Operator: Operator_0
     Technology: Technology_0

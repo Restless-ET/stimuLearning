@@ -24,8 +24,8 @@ abstract class BaseServiceForm extends BaseFormDoctrine
       'periodic_fee'       => new sfWidgetFormInputText(),
       'clients_quota'      => new sfWidgetFormInputText(),
       'tick_to_edit'       => new sfWidgetFormInputText(),
-      'operator_id'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Operator'), 'add_empty' => false)),
       'technology_id'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Technology'), 'add_empty' => false)),
+      'operator_id'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Operator'), 'add_empty' => true)),
       'created_at'         => new sfWidgetFormDateTime(),
       'updated_at'         => new sfWidgetFormDateTime(),
     ));
@@ -40,8 +40,8 @@ abstract class BaseServiceForm extends BaseFormDoctrine
       'periodic_fee'       => new sfValidatorNumber(),
       'clients_quota'      => new sfValidatorNumber(),
       'tick_to_edit'       => new sfValidatorInteger(array('required' => false)),
-      'operator_id'        => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Operator'))),
       'technology_id'      => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Technology'))),
+      'operator_id'        => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Operator'), 'required' => false)),
       'created_at'         => new sfValidatorDateTime(),
       'updated_at'         => new sfValidatorDateTime(),
     ));

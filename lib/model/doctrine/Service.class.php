@@ -11,4 +11,18 @@
  */
 class Service extends BaseService
 {
+    /**
+     * Overrided to set the values on some hidden/support fields.
+     *
+     * @param Doctrine_Connection $conn Optional connection parameter
+     *
+     * @return void
+     */
+    public function save(Doctrine_Connection $conn = null)
+    {
+        $technology = $this->Technology;
+        $this->operator_id = $technology->operator_id;
+
+        parent::save($conn);
+    }
 }

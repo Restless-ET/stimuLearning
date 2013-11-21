@@ -20,7 +20,7 @@ generator:
 
       list:
         title: 'Services'
-        display: [ name, setup_fee, cost_per_user, CAPEX_percentage, tick_to_edit, Operator ]
+        display: [ name, setup_fee, cost_per_user, CAPEX_percentage, tick_to_edit, Technology, Operator ]
         table_method: filterByCredential
         batch_actions: {}
 
@@ -32,4 +32,4 @@ generator:
       new:     ~
 
       show:
-        display: [ name, setup_fee, cost_per_user, CAPEX_percentage, tick_to_edit ]
+        display: [ name, setup_fee, cost_per_user, CAPEX_percentage, tick_to_edit, _technology, _operator ]

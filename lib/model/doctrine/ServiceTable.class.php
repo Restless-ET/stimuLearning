@@ -33,14 +33,14 @@ class ServiceTable extends Doctrine_Table
         $user = sfContext::getInstance()->getUser();
 
         $alias = $q->getRootAlias();
-
-        $q->leftJoin($alias.'.Operator o')
-          ->select($alias.'.*, o.name');
+        $q->innerJoin($alias.'.Technology t')
+          ->innerJoin($alias.'.Operator o')
+          ->select($alias.'.*, t.name, o.name')
+          ->andWhere('o.scenario_id = ?', $user->getAttribute('scenarioId', 0));
 
         if (!$user->hasCredential('admin')) {
             $q->andWhere('o.user_id = ?', $user->getAttribute('id'));
         }
-        $q->andWhere('o.scenario_id = ?', $user->getAttribute('scenarioId', 0));
 
         return $q;
     }

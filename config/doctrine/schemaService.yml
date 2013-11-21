@@ -14,12 +14,12 @@ Service:
     clients_quota: { type: decimal, notnull: true }
     tick_to_edit: { type: integer, default: 0, notnull: true } #hidden
   ## For the relations ##
-    operator_id: { type: integer, notnull: true }
     technology_id: { type: integer, notnull: true }
+    operator_id: { type: integer } #hidden
   relations:
-    Operator:
+    Technology:
       foreignAlias: Services
       onDelete: CASCADE
-    Technology:
+    Operator:
       foreignAlias: Services
       onDelete: CASCADE
