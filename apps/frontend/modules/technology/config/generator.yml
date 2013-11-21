@@ -20,11 +20,10 @@ generator:
         scenarios_list: { label: Available for scenarios, help: Press "Ctrl" to select multiple items }
         created_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
         updated_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
-        architectures_list: { label: Architectures }
 
       list:
         title: 'Technologies'
-        display: [ name, description, first_tick_available, decline_A, decline_B, Operator, _architectures_list ]
+        display: [ name, description, first_tick_available, decline_A, decline_B, Operator, Architecture ]
         table_method: filterByScenario
         object_actions:
           _show: ~
@@ -53,5 +52,5 @@ generator:
       new: ~
 
       show:
-        display: [ name, description, first_tick_available, decline_A, decline_B, _architectures, _operator, _scenario ]
+        display: [ name, description, first_tick_available, decline_A, decline_B, _architecture, _operator, _scenario ]
         #actions: ~ # check _show_actions.php

@@ -14,7 +14,9 @@ Architecture:
     scenario_id: { type: integer } # hidden
   relations:
     Technology:
-      foreignAlias: Architectures
+      foreignAlias: Architecture
+      type: one
+      foreignType: one
       onDelete: CASCADE
     Operator:
       foreignAlias: Architectures

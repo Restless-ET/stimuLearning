@@ -33,7 +33,7 @@ class TechnologyTable extends Doctrine_Table
         $user = sfContext::getInstance()->getUser();
 
         $rootAlias = $q->getRootAlias();
-        $q->innerJoin($rootAlias.'.Architectures arch')
+        $q->innerJoin($rootAlias.'.Architecture arch')
           ->innerJoin($rootAlias.'.Operator o')
           ->innerJoin($rootAlias.'.Scenario s')
           ->select($rootAlias.'.*, arch.name, o.name, o.user_id, s.finished')

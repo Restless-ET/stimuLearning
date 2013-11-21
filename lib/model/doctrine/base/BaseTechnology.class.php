@@ -14,7 +14,7 @@
  * @property integer $scenario_id
  * @property Operator $Operator
  * @property Scenario $Scenario
- * @property Doctrine_Collection $Architectures
+ * @property Architecture $Architecture
  * @property Doctrine_Collection $Services
  * 
  * @method string              getName()                 Returns the current record's "name" value
@@ -26,7 +26,7 @@
  * @method integer             getScenarioId()           Returns the current record's "scenario_id" value
  * @method Operator            getOperator()             Returns the current record's "Operator" value
  * @method Scenario            getScenario()             Returns the current record's "Scenario" value
- * @method Doctrine_Collection getArchitectures()        Returns the current record's "Architectures" collection
+ * @method Architecture        getArchitecture()         Returns the current record's "Architecture" value
  * @method Doctrine_Collection getServices()             Returns the current record's "Services" collection
  * @method Technology          setName()                 Sets the current record's "name" value
  * @method Technology          setDescription()          Sets the current record's "description" value
@@ -37,7 +37,7 @@
  * @method Technology          setScenarioId()           Sets the current record's "scenario_id" value
  * @method Technology          setOperator()             Sets the current record's "Operator" value
  * @method Technology          setScenario()             Sets the current record's "Scenario" value
- * @method Technology          setArchitectures()        Sets the current record's "Architectures" collection
+ * @method Technology          setArchitecture()         Sets the current record's "Architecture" value
  * @method Technology          setServices()             Sets the current record's "Services" collection
  * 
  * @package    stimuLearning
@@ -101,7 +101,7 @@ abstract class BaseTechnology extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasMany('Architecture as Architectures', array(
+        $this->hasOne('Architecture', array(
              'local' => 'id',
              'foreign' => 'technology_id'));
 
