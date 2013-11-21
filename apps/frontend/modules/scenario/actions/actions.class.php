@@ -108,7 +108,7 @@ class ScenarioActions extends autoScenarioActions
         } else {
             $user->setFlash('error', 'The simulation for this scenario had already been started!');
         }
-        $this->redirect('@scenario');
+        $this->redirect('scenario/show?id='.$scenario->getId());
     }
 
     /**
@@ -126,7 +126,7 @@ class ScenarioActions extends autoScenarioActions
         $user = $this->getUser();
         if (!$scenario->getStarted() || $scenario->getFinished()) {
             $user->setFlash('notice', 'The simulation for this scenario is either: not started or already finished!');
-            $this->redirect('@scenario');
+            $this->redirect('scenario/show?id='.$scenario->getId());
         }
 
         $ticks = $request->getParameter('ticks', 0);
@@ -140,7 +140,7 @@ class ScenarioActions extends autoScenarioActions
         } else {
             $user->setFlash('error', 'No valid number of ticks indicated!');
         }
-        $this->redirect('@scenario');
+        $this->redirect('scenario/show?id='.$scenario->getId());
     }
 
     /**

@@ -47,6 +47,15 @@ class EquipmentActions extends autoEquipmentActions
             $user->setFlash('error', 'You cannot create a new equipment for a scenario with a finished simulation!');
             $this->redirect('@equipment');
         }
+        $userHasOperator = Doctrine_Core::getTable('Operator')->createQuery('o')
+                              ->select('o.id')
+                              ->where('o.scenario_id = ?', $scenario->getId())
+                              ->andWhere('o.user_id = ?', $user->getAttribute('id'))
+                              ->count();
+        if (!$userHasOperator) {
+            $user->setFlash('error', 'You do not control any operator on this scenario!');
+            $this->redirect('@equipment');
+        }
 
         parent::executeNew($request);
     }
@@ -63,8 +72,14 @@ class EquipmentActions extends autoEquipmentActions
         $equipment = $this->getRoute()->getObject();
         $this->forward404Unless($equipment);
         $scenario = $equipment->Scenario;
-
+        $operator = $equipment->Operator;
         $user = $this->getUser();
+
+        if ($operator->user_id != $user->getAttribute('id')) {
+            $user->setFlash('error', 'That equipment is not yours to edit!');
+            $this->redirect('@equipment');
+        }
+
         if ($scenario->getFinished()) {
             $user->setFlash('error', 'You cannot edit an equipment from a scenario with a finished simulation!');
             $this->redirect('@equipment');
@@ -85,8 +100,14 @@ class EquipmentActions extends autoEquipmentActions
         $equipment = $this->getRoute()->getObject();
         $this->forward404Unless($equipment);
         $scenario = $equipment->Scenario;
-
+        $operator = $equipment->Operator;
         $user = $this->getUser();
+
+        if ($operator->user_id != $user->getAttribute('id')) {
+            $user->setFlash('error', 'That equipment is not yours to delete!');
+            $this->redirect('@equipment');
+        }
+
         if ($scenario->getFinished()) {
             $user->setFlash('error', 'You cannot delete an equipment from a scenario with a started simulation!');
             $this->redirect('@equipment');

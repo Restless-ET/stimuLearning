@@ -37,14 +37,17 @@ class Scenario extends BaseScenario
         // validate that this scenario has operators
         if (!count($this->Operators)) {
             $msg = 'This scenario has no associated operators!';
+            return $msg;
         }
         // validate that this scenario has technologies available
         $techsAvailable = count($this->Technologies);
         if (!$techsAvailable) {
             $msg = 'This scenario has no technologies available!';
-        } elseif ($techsAvailable > 2) { // backend safeguard
-            $msg = 'Technology transition on this scenario is only possible to a maximum of two right now!';
+            return $msg;
         }
+
+        //TODO Validate at least 1 tech, arch, equip and service by operator
+        // use doctrine queries with distinct and/or count
 
         $marketClients = $this['total_clients'] * ($this['starting_level'] / 100);
 
@@ -53,6 +56,11 @@ class Scenario extends BaseScenario
             if (!count($operator->Services)) {
                 $msg = 'One or more of the Operators does not have any Service registered yet!';
                 break;
+            }
+            // TODO after updating the tech penetration calculation
+            if (count($operator->Technologies) > 2) { // backend safeguard
+                $msg = 'Technology transition is only possible to a maximum of two right now!';
+                return $msg;
             }
 
             $totalClients = $operator['starting_market_size'];
@@ -77,32 +85,37 @@ class Scenario extends BaseScenario
                 $tech = $service['Technology'];
                 $clients = round($service['clients_quota'] / 100 * $totalClients);
                 if ($tech['first_tick_available'] == $this['current_tick']) { // Equals 0
-                    $equipments = Doctrine_Core::getTable('Equipment')->createQuery('e')
-                                      ->where('e.architecture_id = ?', $tech['Architecture']['id'])
-                                      ->orderBy('e.network_level ASC')
-                                      ->fetchArray();
-                    foreach ($equipments as $equipment) {
-                        $targetTotal = ceil($clients / $equipment['maximum_clients']);
-                        $currentTotal = 0; // Because this is the initialization
+                    $architecture = Doctrine_Core::getTable('Architecture')->createQuery('a')
+                                      ->where('a.technology_id = ?', $tech['id'])
+                                      ->fetchOne();
+                    if ($architecture !== false) {
+                        //$equipments = Doctrine_Core::getTable('Equipment')->createQuery('e')
+                        //                  ->where('e.architecture_id = ?', $architecture['id'])
+                        //                  ->orderBy('e.network_level ASC')
+                        //                  ->fetchArray();
+                        foreach ($architecture->Equipments as $equipment) {
+                            $targetTotal = ceil($clients / $equipment['maximum_clients']);
+                            $currentTotal = 0; // Because this is the initialization
 
-                        if ($targetTotal > $currentTotal) {
-                            $acquired = new AcquiredEquipment();
-                            $acquired->setQuantity($targetTotal - $currentTotal);
-                            $acquired->setPrice($equipment['starting_price']); // Just for indication really
-                            $acquired->setAvailableUntil($this['current_tick'] + $equipment['life_expectation']);
-                            $acquired->setEquipmentId($equipment['id']);
-                            $acquired->setTick($opTick);
-                            $acquired->save();
+                            if ($targetTotal > $currentTotal) {
+                                $acquired = new AcquiredEquipment();
+                                $acquired->setQuantity($targetTotal - $currentTotal);
+                                $acquired->setPrice($equipment['starting_price']); // Just for indication really
+                                $acquired->setAvailableUntil($this['current_tick'] + $equipment['life_expectation']);
+                                $acquired->setEquipmentId($equipment['id']);
+                                $acquired->setTick($opTick);
+                                $acquired->save();
 
-                            $capex -= ($targetTotal - $currentTotal) * $equipment['starting_price'];
+                                $capex -= ($targetTotal - $currentTotal) * $equipment['starting_price'];
+                            }
                         }
+                        if ($clientsDiff > 0) {
+                            $newClients = round($service['clients_quota'] / 100 * $clientsDiff);
+                            $revenue += $newClients * $service['setup_fee'];
+                        }
+                        $opex -= $clients * $service['cost_per_user'];
+                        $revenue += $clients * $service['periodic_fee'];
                     }
-                    if ($clientsDiff > 0) {
-                        $newClients = round($service['clients_quota'] / 100 * $clientsDiff);
-                        $revenue += $newClients * $service['setup_fee'];
-                    }
-                    $opex -= $clients * $service['cost_per_user'];
-                    $revenue += $clients * $service['periodic_fee'];
                 }
             }
             // Some CAPEX percentage as OPEX
@@ -155,23 +168,6 @@ class Scenario extends BaseScenario
         $marketPenetration = $this->getPenetrationRate($this['current_tick']);
         $marketClients = $this['total_clients'] * $marketPenetration;
 
-        $techsPenetration = array();
-        $singleTech = (count($this['Technologies']) == 1) ? true : false;
-        $lastPenetr = false;
-        foreach ($this['Technologies'] as $tech) {
-            if ($this['current_tick'] >= $tech['first_tick_available']) {
-                if ($singleTech) {
-                    $techsPenetration['t'.$tech['id']] = $marketPenetration;
-                } elseif ($lastPenetr !== false) {
-                    $techsPenetration['t'.$tech['id']] = $marketPenetration - $lastPenetr;
-                } else {
-                    $techPenetrRatio = 1 + $tech['decline_A'] * exp($tech['decline_B'] * $this['current_tick']);
-                    $lastPenetr = $marketPenetration / $techPenetrRatio;
-                    $techsPenetration['t'.$tech['id']] = $lastPenetr;
-                }
-            }
-        }
-
         foreach ($this['Operators'] as $operator) {
             $totalClients = $marketClients * $operator['market_share'] / 100; // TODO calculate for the operator correctly
             $clientsDiff = $totalClients - $operator['current_market_size'];
@@ -190,65 +186,90 @@ class Scenario extends BaseScenario
             $opTick->setScenario($this);
             $opTick->save();
 
+            // Do this by operator
+            $techsPenetration = array();
+            $singleTech = (count($operator['Technologies']) == 1) ? true : false;
+            $lastPenetr = false;
+            foreach ($operator['Technologies'] as $tech) {
+                if ($this['current_tick'] >= $tech['first_tick_available']) {
+                    if ($singleTech) {
+                        $techsPenetration['t'.$tech['id']] = $marketPenetration;
+                    } elseif ($lastPenetr !== false) {
+                        $techsPenetration['t'.$tech['id']] = $marketPenetration - $lastPenetr;
+                    } else {
+                        $techPenetrRatio = 1 + $tech['decline_A'] * exp($tech['decline_B'] * $this['current_tick']);
+                        $lastPenetr = $marketPenetration / $techPenetrRatio;
+                        $techsPenetration['t'.$tech['id']] = $lastPenetr;
+                    }
+                }
+            }
+
             foreach ($operator['Services'] as $service) {
                 $technology = $service['Technology'];
                 if (isset($techsPenetration['t'.$technology['id']])) {
                     $techClients = $totalClients * $techsPenetration['t'.$technology['id']] / $marketPenetration;
                     $servClients = round($service['clients_quota'] / 100 * $techClients);
 
-                    $equipments = Doctrine_Core::getTable('Equipment')->createQuery('e')
-                                      ->where('e.architecture_id = ?', $technology['Architecture']['id'])
-                                      ->orderBy('e.network_level ASC')
-                                      ->execute();
-                    foreach ($equipments as $equipment) {
-                        // Mark obsolete equipments
-                        Doctrine_Core::getTable('AcquiredEquipment')->createQuery('ae')
-                            ->update()
-                            ->set('ae.is_obsolete', '1')
-                            ->where('ae.equipment_id = ?', $equipment['id'])
-                            ->andWhere('ae.available_until = ?', $this['current_tick'])
-                            ->andWhere('ae.is_obsolete = ?', false) // safe only
-                            ->execute();
+                    $architecture = Doctrine_Core::getTable('Architecture')->createQuery('a')
+                                      ->where('a.technology_id = ?', $tech['id'])
+                                      ->andWhere('a.operator_id = ?', $operator['id'])
+                                      ->fetchOne();
+                    if ($architecture !== false) {
+                        //$equipments = Doctrine_Core::getTable('Equipment')->createQuery('e')
+                        //                  ->where('e.architecture_id = ?', $architecture['id'])
+                        //                  ->orderBy('e.network_level ASC')
+                        //                  ->fetchArray();
+                        foreach ($architecture->Equipments as $equipment) {
+                            // Mark obsolete equipments
+                            Doctrine_Core::getTable('AcquiredEquipment')->createQuery('ae')
+                                ->update()
+                                ->set('ae.is_obsolete', '1')
+                                ->where('ae.equipment_id = ?', $equipment['id'])
+                                ->andWhere('ae.available_until = ?', $this['current_tick'])
+                                ->andWhere('ae.is_obsolete = ?', false) // safe only
+                                ->execute();
 
-                        $targetTotal = ceil($servClients / $equipment['maximum_clients']);
-                        // Get currently existing equipments of this type
-                        $currentTotal = Doctrine_Core::getTable('AcquiredEquipment')->createQuery('ae')
-                            ->select('SUM(ae.quantity)')
-                            ->where('ae.equipment_id = ?', $equipment['id'])
-                            ->andWhere('ae.is_obsolete = ?', false)
-                            ->execute(array(), Doctrine_Core::HYDRATE_SINGLE_SCALAR);
+                            $targetTotal = ceil($servClients / $equipment['maximum_clients']);
+                            // Get currently existing equipments of this type
+                            $currentTotal = Doctrine_Core::getTable('AcquiredEquipment')->createQuery('ae')
+                                ->select('SUM(ae.quantity)')
+                                ->where('ae.equipment_id = ?', $equipment['id'])
+                                ->andWhere('ae.is_obsolete = ?', false)
+                                ->execute(array(), Doctrine_Core::HYDRATE_SINGLE_SCALAR);
 
-                        if ($targetTotal > $currentTotal) {
-                            $currentPrice = $equipment->getPriceByTick($this['current_tick']);
+                            if ($targetTotal > $currentTotal) {
+                                $currentPrice = $equipment->getPriceByTick($this['current_tick']);
 
-                            $acquired = new AcquiredEquipment();
-                            $quantity = $targetTotal - $currentTotal;
-                            $acquired->setQuantity($quantity);
-                            $acquired->setPrice($currentPrice);
-                            $acquired->setAvailableUntil($this['current_tick'] + $equipment['life_expectation']);
-                            $acquired->setEquipmentId($equipment['id']);
-                            $acquired->setTick($opTick);
-                            $acquired->save();
+                                $acquired = new AcquiredEquipment();
+                                $quantity = $targetTotal - $currentTotal;
+                                $acquired->setQuantity($quantity);
+                                $acquired->setPrice($currentPrice);
+                                $acquired->setAvailableUntil($this['current_tick'] + $equipment['life_expectation']);
+                                $acquired->setEquipmentId($equipment['id']);
+                                $acquired->setTick($opTick);
+                                $acquired->save();
 
-                            $capex -= $quantity * $currentPrice;
+                                $capex -= $quantity * $currentPrice;
+                            }
                         }
-                    }
-                    if ($clientsDiff > 0) {
-                        $newClients = round($service['clients_quota'] / 100 * $clientsDiff);
-                        $revenue += $newClients * $service['setup_fee'];
-                    }
-                    $opex -= $servClients * $service['cost_per_user'];
+                        if ($clientsDiff > 0) {
+                            $newClients = round($service['clients_quota'] / 100 * $clientsDiff);
+                            $revenue += $newClients * $service['setup_fee'];
+                        }
+                        $opex -= $servClients * $service['cost_per_user'];
 
-                    $ticksFromTechStart = $this['current_tick'] - $technology['first_tick_available'];
-                    $updatedRate = pow((1 - $this['packages_erosion_rate'] / 100), $ticksFromTechStart);
-                    $revenue += $servClients * $service['periodic_fee'] * $updatedRate;
+                        $ticksFromTechStart = $this['current_tick'] - $technology['first_tick_available'];
+                        $updatedRate = pow((1 - $this['packages_erosion_rate'] / 100), $ticksFromTechStart);
+                        $revenue += $servClients * $service['periodic_fee'] * $updatedRate;
+                    }
                 }
+
+                $accumCapex = $operator['accumulated_CAPEX'] * (1 - $this['depreciation_rate'] / 100) + $capex;
+                // Some CAPEX percentage as OPEX
+                //$opex -= $targetTotal * $currentPrice * $service['CAPEX_percentage'];
+                // Em cada instante retirar como opex 5% do capex acumulado e actualizado!?
+                $opex += $accumCapex * ($service['CAPEX_percentage'] / 100); // CAPEX is already negative
             }
-            $accumCapex = $operator['accumulated_CAPEX'] * (1 - $this['depreciation_rate'] / 100) + $capex;
-            // Some CAPEX percentage as OPEX
-            //$opex -= $targetTotal * $currentPrice * $service['CAPEX_percentage'];
-            // Em cada instante retirar como opex 5% do capex acumulado e actualizado!?
-            $opex += $accumCapex * ($service['CAPEX_percentage'] / 100); // CAPEX is already negative
 
             //Update the remaining details of a Tick
             $opTick->setCAPEX($capex);

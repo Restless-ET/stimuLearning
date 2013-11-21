@@ -41,18 +41,14 @@
 <br />
 <hr>
 <div id="screenshot" style="float: right;"><?php echo image_tag('operator_data.png', array('style' => 'width: 550px;')) ?></div>
-<p>This application is an educational tool intended to reflect the market dynamics on the telecom industry.<br />
-   This tool is aimed to help telecom engineering students to learn how the technical decisions affect the ecnonomical outcomes, on telecom business models.<br />
-   The development of this tool is based on years of real-world analysis on telecom business models and their influences on the engineering decisions of a telecom operator.</p>
+<p>This application is an educational tool that combines telecommunications engineering and economics:<br />
+- It helps to understand the relations between engineering decisions and the economics of telecommunications businesses.<br />
+- It helps to understand the relations between market dynamics and technological choices.<br />
 <br />
-<p>We may say that the market is the main block of this tool.<br />
-   This application takes, as input, the decisions of the telecom operators, the actors. <br />
-   After processing these inputs, the system outputs the economic outcomes of each player.<br />
-   These outcomes can be affected by some parameters which model the behaviour of the market.</p>
+The structure of this tool is depicted in the following figure:<br />
 <br />
-<p>The player becomes a telecom operator, which is challenged to reach customers in
-    a new region, facing some competition during the process.<br />
-   The operator is able to setup subscription packages, to choose the network architecture that
-    better suits his offer and to change his options along the simulation time.<br />
-   The main goal is to achieve the greater market share in the end of the
-    simulation.</p>
+Imagem<br />
+<br />
+The tool can be used in two basic contexts:<br />
+- To study the implications between technologies, architectures, deployment plans, etc on the associated business cases.<br />
+- To study the implications between competition and telecommunication engineering design options.</p>

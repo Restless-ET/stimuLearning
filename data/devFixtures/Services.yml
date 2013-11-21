@@ -7,6 +7,5 @@ Service:
     CAPEX_percentage: <?php echo rand(15, 50)."\n"; ?>
     periodic_fee: <?php echo rand(20, 45)."\n"; ?>
     clients_quota: 100.00 # Simplify this by using a single service
-    Operator: <?php echo 'Operator_'.$i."\n"; ?>
     Technology: <?php echo 'Technology_'.$i."\n"; ?>
 <?php endfor; ?>

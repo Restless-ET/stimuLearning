@@ -20,7 +20,9 @@ class Architecture extends BaseArchitecture
      */
     public function save(Doctrine_Connection $conn = null)
     {
-        $this->scenario_id = $this->Technology->scenario_id;
+        $technology = $this->Technology;
+        $this->operator_id = $technology->operator_id;
+        $this->scenario_id = $technology->scenario_id;
 
         parent::save($conn);
     }

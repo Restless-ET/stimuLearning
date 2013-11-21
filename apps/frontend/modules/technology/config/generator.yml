@@ -12,10 +12,10 @@ generator:
     actions_base_class:    sfActions
 
     config:
-      actions:
-        _new: { credentials: [[admin, responsible]] }
-        _edit: { credentials: [[admin, responsible]] }
-        _delete: { credentials: [[admin, responsible]] }
+      actions: ~
+        #_new: { credentials: [[admin, responsible]] }
+        #_edit: { credentials: [[admin, responsible]] }
+        #_delete: { credentials: [[admin, responsible]] }
       fields:
         scenarios_list: { label: Available for scenarios, help: Press "Ctrl" to select multiple items }
         created_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
@@ -23,18 +23,18 @@ generator:
 
       list:
         title: 'Technologies'
-        display: [ name, description, first_tick_available, decline_A, decline_B, Architecture ]
+        display: [ name, description, first_tick_available, decline_A, decline_B, Operator, Architecture ]
         table_method: filterByScenario
         object_actions:
           _show: ~
           _edit:
-            credentials: [[admin, responsible]]
+            #credentials: [[admin, responsible]]
             condition:
               variable: Scenario->finished
               check: [ false ]
               invert: false
           _delete:
-            credentials: [[admin, responsible]]
+            #credentials: [[admin, responsible]]
             confirm: 'This removal is irreversible! Are you sure you want to proceed?'
             condition:
               variable: Scenario->finished
@@ -52,5 +52,5 @@ generator:
       new: ~
 
       show:
-        display: [ name, description, first_tick_available, decline_A, decline_B, _scenario ]
+        display: [ name, description, first_tick_available, decline_A, decline_B, _architecture, _operator, _scenario ]
         #actions: ~ # check _show_actions.php

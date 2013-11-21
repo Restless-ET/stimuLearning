@@ -5,6 +5,7 @@ Technology:
     description: 'Fiber To The Home'
     decline_A: <?php echo rand(100, 300)."\n"; ?>
     decline_B: <?php echo ((500 - rand(0, 500)) / 100)."\n"; ?>
+    Operator: Operator_0
     Scenario: Scenario_0
 
 ## Hipotese C ##
@@ -13,6 +14,7 @@ Technology:
     description: 'UMTS para cenário a 1 operador'
     decline_A: 0.001
     decline_B: 0.28
+    Operator: Operator_1
     Scenario: Scenario_1
   Technology_2:
     name: 'LTE'
@@ -20,12 +22,28 @@ Technology:
     first_tick_available: 12
     decline_A: 95.00
     decline_B: -0.33
+    Operator: Operator_1
     Scenario: Scenario_1
 
 ## Hipotese 3 operadores ##
   Technology_3:
-    name: 'FTTH'
-    description: 'Fiber To Three Homes'
+    name: 'FTTH3'
+    description: 'Fiber To Three Homes 3'
     decline_A: <?php echo rand(100, 300)."\n"; ?>
     decline_B: <?php echo ((500 - rand(0, 500)) / 100)."\n"; ?>
+    Operator: Operator_2
+    Scenario: Scenario_2
+  Technology_4:
+    name: 'FTTH4'
+    description: 'Fiber To Three Homes 4'
+    decline_A: <?php echo rand(100, 300)."\n"; ?>
+    decline_B: <?php echo ((500 - rand(0, 500)) / 100)."\n"; ?>
+    Operator: Operator_3
+    Scenario: Scenario_2
+  Technology_5:
+    name: 'FTTH5'
+    description: 'Fiber To Three Homes 5'
+    decline_A: <?php echo rand(100, 300)."\n"; ?>
+    decline_B: <?php echo ((500 - rand(0, 500)) / 100)."\n"; ?>
+    Operator: Operator_4
     Scenario: Scenario_2

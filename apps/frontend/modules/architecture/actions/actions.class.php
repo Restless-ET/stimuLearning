@@ -47,6 +47,15 @@ class ArchitectureActions extends autoArchitectureActions
             $user->setFlash('error', 'You cannot create a new architecture for a scenario with a finished simulation!');
             $this->redirect('@architecture');
         }
+        $userHasOperator = Doctrine_Core::getTable('Operator')->createQuery('o')
+                              ->select('o.id')
+                              ->where('o.scenario_id = ?', $scenario->getId())
+                              ->andWhere('o.user_id = ?', $user->getAttribute('id'))
+                              ->count();
+        if (!$userHasOperator) {
+            $user->setFlash('error', 'You do not control any operator on this scenario!');
+            $this->redirect('@architecture');
+        }
 
         parent::executeNew($request);
     }
@@ -63,8 +72,13 @@ class ArchitectureActions extends autoArchitectureActions
         $architecture = $this->getRoute()->getObject();
         $this->forward404Unless($architecture);
         $scenario = $architecture->Scenario;
-
+        $operator = $architecture->Operator;
         $user = $this->getUser();
+
+        if ($operator->user_id != $user->getAttribute('id')) {
+            $user->setFlash('error', 'That architecture is not yours to edit!');
+            $this->redirect('@architecture');
+        }
         if ($scenario->getFinished()) {
             $user->setFlash('error', 'You cannot edit an architecture from a scenario with a finished simulation!');
             $this->redirect('@architecture');
@@ -85,8 +99,13 @@ class ArchitectureActions extends autoArchitectureActions
         $architecture = $this->getRoute()->getObject();
         $this->forward404Unless($architecture);
         $scenario = $architecture->Scenario;
-
+        $operator = $architecture->Operator;
         $user = $this->getUser();
+
+        if ($operator->user_id != $user->getAttribute('id')) {
+            $user->setFlash('error', 'That architecture is not yours to delete!');
+            $this->redirect('@architecture');
+        }
         if ($scenario->getFinished()) {
             $user->setFlash('error', 'You cannot delete an architecture from a scenario with a started simulation!');
             $this->redirect('@architecture');

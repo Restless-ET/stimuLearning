@@ -19,8 +19,10 @@
  * @property integer $deltaT
  * @property integer $maximum_clients
  * @property integer $architecture_id
+ * @property integer $operator_id
  * @property integer $scenario_id
  * @property Architecture $Architecture
+ * @property Operator $Operator
  * @property Scenario $Scenario
  * @property Doctrine_Collection $AcquiredEquipment
  * 
@@ -38,8 +40,10 @@
  * @method integer             getDeltaT()            Returns the current record's "deltaT" value
  * @method integer             getMaximumClients()    Returns the current record's "maximum_clients" value
  * @method integer             getArchitectureId()    Returns the current record's "architecture_id" value
+ * @method integer             getOperatorId()        Returns the current record's "operator_id" value
  * @method integer             getScenarioId()        Returns the current record's "scenario_id" value
  * @method Architecture        getArchitecture()      Returns the current record's "Architecture" value
+ * @method Operator            getOperator()          Returns the current record's "Operator" value
  * @method Scenario            getScenario()          Returns the current record's "Scenario" value
  * @method Doctrine_Collection getAcquiredEquipment() Returns the current record's "AcquiredEquipment" collection
  * @method Equipment           setName()              Sets the current record's "name" value
@@ -56,8 +60,10 @@
  * @method Equipment           setDeltaT()            Sets the current record's "deltaT" value
  * @method Equipment           setMaximumClients()    Sets the current record's "maximum_clients" value
  * @method Equipment           setArchitectureId()    Sets the current record's "architecture_id" value
+ * @method Equipment           setOperatorId()        Sets the current record's "operator_id" value
  * @method Equipment           setScenarioId()        Sets the current record's "scenario_id" value
  * @method Equipment           setArchitecture()      Sets the current record's "Architecture" value
+ * @method Equipment           setOperator()          Sets the current record's "Operator" value
  * @method Equipment           setScenario()          Sets the current record's "Scenario" value
  * @method Equipment           setAcquiredEquipment() Sets the current record's "AcquiredEquipment" collection
  * 
@@ -157,6 +163,9 @@ abstract class BaseEquipment extends sfDoctrineRecord
              'type' => 'integer',
              'notnull' => true,
              ));
+        $this->hasColumn('operator_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
         $this->hasColumn('scenario_id', 'integer', null, array(
              'type' => 'integer',
              ));
@@ -167,6 +176,11 @@ abstract class BaseEquipment extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Architecture', array(
              'local' => 'architecture_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
+
+        $this->hasOne('Operator', array(
+             'local' => 'operator_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 

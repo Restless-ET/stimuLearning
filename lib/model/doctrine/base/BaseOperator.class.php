@@ -18,7 +18,10 @@
  * @property integer $scenario_id
  * @property User $User
  * @property Scenario $Scenario
+ * @property Doctrine_Collection $Architectures
+ * @property Doctrine_Collection $Equipments
  * @property Doctrine_Collection $Services
+ * @property Doctrine_Collection $Technologies
  * @property Doctrine_Collection $Ticks
  * 
  * @method string              getName()                    Returns the current record's "name" value
@@ -34,7 +37,10 @@
  * @method integer             getScenarioId()              Returns the current record's "scenario_id" value
  * @method User                getUser()                    Returns the current record's "User" value
  * @method Scenario            getScenario()                Returns the current record's "Scenario" value
+ * @method Doctrine_Collection getArchitectures()           Returns the current record's "Architectures" collection
+ * @method Doctrine_Collection getEquipments()              Returns the current record's "Equipments" collection
  * @method Doctrine_Collection getServices()                Returns the current record's "Services" collection
+ * @method Doctrine_Collection getTechnologies()            Returns the current record's "Technologies" collection
  * @method Doctrine_Collection getTicks()                   Returns the current record's "Ticks" collection
  * @method Operator            setName()                    Sets the current record's "name" value
  * @method Operator            setStartingMarketSize()      Sets the current record's "starting_market_size" value
@@ -49,7 +55,10 @@
  * @method Operator            setScenarioId()              Sets the current record's "scenario_id" value
  * @method Operator            setUser()                    Sets the current record's "User" value
  * @method Operator            setScenario()                Sets the current record's "Scenario" value
+ * @method Operator            setArchitectures()           Sets the current record's "Architectures" collection
+ * @method Operator            setEquipments()              Sets the current record's "Equipments" collection
  * @method Operator            setServices()                Sets the current record's "Services" collection
+ * @method Operator            setTechnologies()            Sets the current record's "Technologies" collection
  * @method Operator            setTicks()                   Sets the current record's "Ticks" collection
  * 
  * @package    stimuLearning
@@ -127,7 +136,19 @@ abstract class BaseOperator extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
+        $this->hasMany('Architecture as Architectures', array(
+             'local' => 'id',
+             'foreign' => 'operator_id'));
+
+        $this->hasMany('Equipment as Equipments', array(
+             'local' => 'id',
+             'foreign' => 'operator_id'));
+
         $this->hasMany('Service as Services', array(
+             'local' => 'id',
+             'foreign' => 'operator_id'));
+
+        $this->hasMany('Technology as Technologies', array(
              'local' => 'id',
              'foreign' => 'operator_id'));
 

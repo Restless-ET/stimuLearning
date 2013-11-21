@@ -13,10 +13,10 @@
  * @property decimal $periodic_fee
  * @property decimal $clients_quota
  * @property integer $tick_to_edit
- * @property integer $operator_id
  * @property integer $technology_id
- * @property Operator $Operator
+ * @property integer $operator_id
  * @property Technology $Technology
+ * @property Operator $Operator
  * 
  * @method string     getName()               Returns the current record's "name" value
  * @method integer    getNumberOfServices()   Returns the current record's "number_of_services" value
@@ -26,10 +26,10 @@
  * @method decimal    getPeriodicFee()        Returns the current record's "periodic_fee" value
  * @method decimal    getClientsQuota()       Returns the current record's "clients_quota" value
  * @method integer    getTickToEdit()         Returns the current record's "tick_to_edit" value
- * @method integer    getOperatorId()         Returns the current record's "operator_id" value
  * @method integer    getTechnologyId()       Returns the current record's "technology_id" value
- * @method Operator   getOperator()           Returns the current record's "Operator" value
+ * @method integer    getOperatorId()         Returns the current record's "operator_id" value
  * @method Technology getTechnology()         Returns the current record's "Technology" value
+ * @method Operator   getOperator()           Returns the current record's "Operator" value
  * @method Service    setName()               Sets the current record's "name" value
  * @method Service    setNumberOfServices()   Sets the current record's "number_of_services" value
  * @method Service    setSetupFee()           Sets the current record's "setup_fee" value
@@ -38,10 +38,10 @@
  * @method Service    setPeriodicFee()        Sets the current record's "periodic_fee" value
  * @method Service    setClientsQuota()       Sets the current record's "clients_quota" value
  * @method Service    setTickToEdit()         Sets the current record's "tick_to_edit" value
- * @method Service    setOperatorId()         Sets the current record's "operator_id" value
  * @method Service    setTechnologyId()       Sets the current record's "technology_id" value
- * @method Service    setOperator()           Sets the current record's "Operator" value
+ * @method Service    setOperatorId()         Sets the current record's "operator_id" value
  * @method Service    setTechnology()         Sets the current record's "Technology" value
+ * @method Service    setOperator()           Sets the current record's "Operator" value
  * 
  * @package    stimuLearning
  * @subpackage model
@@ -88,13 +88,12 @@ abstract class BaseService extends sfDoctrineRecord
              'default' => 0,
              'notnull' => true,
              ));
-        $this->hasColumn('operator_id', 'integer', null, array(
-             'type' => 'integer',
-             'notnull' => true,
-             ));
         $this->hasColumn('technology_id', 'integer', null, array(
              'type' => 'integer',
              'notnull' => true,
+             ));
+        $this->hasColumn('operator_id', 'integer', null, array(
+             'type' => 'integer',
              ));
 
         $this->option('symfony', array(
@@ -105,13 +104,13 @@ abstract class BaseService extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Operator', array(
-             'local' => 'operator_id',
+        $this->hasOne('Technology', array(
+             'local' => 'technology_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasOne('Technology', array(
-             'local' => 'technology_id',
+        $this->hasOne('Operator', array(
+             'local' => 'operator_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 

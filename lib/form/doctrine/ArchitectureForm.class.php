@@ -19,7 +19,7 @@ class ArchitectureForm extends BaseArchitectureForm
      */
     public function configure()
     {
-        unset($this['created_at'], $this['updated_at'], $this['scenario_id']);
+        unset($this['created_at'], $this['updated_at'], $this['operator_id'], $this['scenario_id']);
         $user = sfContext::getInstance()->getUser();
 
         //show upload selection and file removal option
@@ -46,12 +46,16 @@ class ArchitectureForm extends BaseArchitectureForm
 
         $this->setValidator('image_delete', new sfValidatorPass());
 
-        $currentTech = $currentData->technology_id;
         $scId = $user->getAttribute('scenarioId', 0);
+        $currentTech = $currentData->technology_id;
+        $archSelectPart = 'SELECT a.technology_id FROM Architecture a INNER JOIN a.Operator o ON a.operator_id = o.id';
         $query = Doctrine_Core::getTable('Technology')->createQuery('t')
                   ->where('t.scenario_id = ?', $scId)
                   ->andWhere('(t.id = ?', $currentTech)
-                  ->orWhere('t.id NOT IN (SELECT a.technology_id FROM Architecture a WHERE a.scenario_id = ?))', $scId);
+                  ->orWhere(
+                      't.id NOT IN ('.$archSelectPart." WHERE a.scenario_id = '".$scId."' AND o.user_id = ?))",
+                      $user->getAttribute('id')
+                   );
         $this->getWidget('technology_id')->setOption('query', $query);
         $this->getWidget('technology_id')->setOption('add_empty', true);
     }

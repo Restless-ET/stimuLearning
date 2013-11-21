@@ -47,6 +47,15 @@ class TechnologyActions extends autoTechnologyActions
             $user->setFlash('error', 'You cannot create a new technology for a scenario with a finished simulation!');
             $this->redirect('@technology');
         }
+        $userHasOperator = Doctrine_Core::getTable('Operator')->createQuery('o')
+                              ->select('o.id')
+                              ->where('o.scenario_id = ?', $scenario->getId())
+                              ->andWhere('o.user_id = ?', $user->getAttribute('id'))
+                              ->count();
+        if (!$userHasOperator) {
+            $user->setFlash('error', 'You do not control any operator on this scenario!');
+            $this->redirect('@technology');
+        }
 
         parent::executeNew($request);
     }
@@ -63,8 +72,13 @@ class TechnologyActions extends autoTechnologyActions
         $technology = $this->getRoute()->getObject();
         $this->forward404Unless($technology);
         $scenario = $technology->Scenario;
-
+        $operator = $technology->Operator;
         $user = $this->getUser();
+
+        if ($operator->user_id != $user->getAttribute('id')) {
+            $user->setFlash('error', 'That technology is not yours to edit!');
+            $this->redirect('@technology');
+        }
         if ($scenario->getFinished()) {
             $user->setFlash('error', 'You cannot edit a technology from a scenario with a finished simulation!');
             $this->redirect('@technology');
@@ -85,8 +99,13 @@ class TechnologyActions extends autoTechnologyActions
         $technology = $this->getRoute()->getObject();
         $this->forward404Unless($technology);
         $scenario = $technology->Scenario;
-
+        $operator = $technology->Operator;
         $user = $this->getUser();
+
+        if ($operator->user_id != $user->getAttribute('id')) {
+            $user->setFlash('error', 'That technology is not yours to delete!');
+            $this->redirect('@technology');
+        }
         if ($scenario->getFinished()) {
             $user->setFlash('error', 'You cannot delete a technology from a scenario with a started simulation!');
             $this->redirect('@technology');

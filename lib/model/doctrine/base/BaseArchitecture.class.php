@@ -10,8 +10,10 @@
  * @property integer $upload_bandwidth
  * @property string $image
  * @property integer $technology_id
+ * @property integer $operator_id
  * @property integer $scenario_id
  * @property Technology $Technology
+ * @property Operator $Operator
  * @property Scenario $Scenario
  * @property Doctrine_Collection $Equipments
  * 
@@ -20,8 +22,10 @@
  * @method integer             getUploadBandwidth()    Returns the current record's "upload_bandwidth" value
  * @method string              getImage()              Returns the current record's "image" value
  * @method integer             getTechnologyId()       Returns the current record's "technology_id" value
+ * @method integer             getOperatorId()         Returns the current record's "operator_id" value
  * @method integer             getScenarioId()         Returns the current record's "scenario_id" value
  * @method Technology          getTechnology()         Returns the current record's "Technology" value
+ * @method Operator            getOperator()           Returns the current record's "Operator" value
  * @method Scenario            getScenario()           Returns the current record's "Scenario" value
  * @method Doctrine_Collection getEquipments()         Returns the current record's "Equipments" collection
  * @method Architecture        setName()               Sets the current record's "name" value
@@ -29,8 +33,10 @@
  * @method Architecture        setUploadBandwidth()    Sets the current record's "upload_bandwidth" value
  * @method Architecture        setImage()              Sets the current record's "image" value
  * @method Architecture        setTechnologyId()       Sets the current record's "technology_id" value
+ * @method Architecture        setOperatorId()         Sets the current record's "operator_id" value
  * @method Architecture        setScenarioId()         Sets the current record's "scenario_id" value
  * @method Architecture        setTechnology()         Sets the current record's "Technology" value
+ * @method Architecture        setOperator()           Sets the current record's "Operator" value
  * @method Architecture        setScenario()           Sets the current record's "Scenario" value
  * @method Architecture        setEquipments()         Sets the current record's "Equipments" collection
  * 
@@ -65,6 +71,9 @@ abstract class BaseArchitecture extends sfDoctrineRecord
              'type' => 'integer',
              'notnull' => true,
              ));
+        $this->hasColumn('operator_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
         $this->hasColumn('scenario_id', 'integer', null, array(
              'type' => 'integer',
              ));
@@ -79,6 +88,11 @@ abstract class BaseArchitecture extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Technology', array(
              'local' => 'technology_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
+
+        $this->hasOne('Operator', array(
+             'local' => 'operator_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
