@@ -10,7 +10,7 @@
           <th>Operator</th>
           <th><?php echo $scenario->started ? 'Current' : 'Starting'?> market size</th>
           <th>Market Share</th>
-          <th>User / Controller</th>
+          <th>User (Controller)</th>
           <th>Created At</th>
         <?php if (!$scenario->started): ?>
           <?php if ($loggedUser == $scenario->responsible_id || $sf_user->hasCredential('admin')): ?>

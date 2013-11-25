@@ -1,7 +1,9 @@
 <?php $acquired = Doctrine_Core::getTable('AcquiredEquipment')->createQuery('ae')
                             ->innerJoin('ae.Tick t')
                             ->innerJoin('ae.Equipment e')
-                            ->select('ae.*, t.nbr, e.name')
+                            ->innerJoin('e.Architecture arch')
+                            ->innerJoin('arch.Technology tech')
+                            ->select('ae.*, t.nbr, e.name, arch.name, tech.name')
                             ->where('t.operator_id = ?', $operator['id'])
                             ->orderBy('t.nbr ASC')
                             ->addOrderBy('e.network_level ASC')
@@ -18,6 +20,7 @@
           <th>Quantity</th>
           <th>Price</th>
           <th>Available until</th>
+          <th>Technology / Architecture</th>
         </tr>
       </thead>
       <tbody>
@@ -27,7 +30,8 @@
           <td><?php echo link_to(ImagesHelper::jQueryUIImageTag('search', 'alt_title=Show').$equip['Equipment']['name'], 'equipment/show?id='.$equip->id); ?></td>
           <td><?php echo $equip['quantity']; ?></td>
           <td><?php echo NumbersHelper::currency($equip['price'], 'left'); ?></td>
-          <td><?php echo strtolower($tickAlias).' '.$equip['available_until']; ?>
+          <td><?php echo strtolower($tickAlias).' '.$equip['available_until']; ?></td>
+          <td><?php echo $equip['Equipment']['Architecture']['Technology']['name'].' / '.$equip['Equipment']['Architecture']['name']; ?></td>
         </tr>
       <?php endforeach; ?>
       </tbody>
