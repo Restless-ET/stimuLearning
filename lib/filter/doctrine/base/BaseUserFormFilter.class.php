@@ -16,7 +16,7 @@ abstract class BaseUserFormFilter extends BaseFormFilterDoctrine
       'name'       => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'username'   => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'password'   => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'email'      => new sfWidgetFormFilterInput(),
+      'email'      => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'filiation'  => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'department' => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'is_admin'   => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),

@@ -34,9 +34,11 @@
   <?php endif; ?>
 <?php else: ?>
 <h2>Welcome!!</h2>
-
-<a class="fg-button ui-state-default ui-corner-all" href="<?php echo url_for('@login'); ?>">Login</a><br />
-<br />
+<div id="access_login" style="text-align: right;">
+  <a style="font-size: 16px; padding: 0.8em 2em; margin-right: 35px; float: none;" class="fg-button ui-state-default ui-corner-all" href="<?php echo url_for('@login'); ?>">Login</a><br />
+  <br />
+  <br />Not registered yet? <a href="<?php echo url_for('user/new'); ?>">Click here</a>.
+</div>
 <?php endif; ?>
 <br />
 <hr>

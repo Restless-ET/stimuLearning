@@ -32,7 +32,15 @@ generator:
       form:
         display: [ name, username, email, filiation, department, is_admin, new_password, confirm_new_password ]
       edit:    ~
-      new:     ~
+      new:
+        title: 'Register new user'
+        fields:
+          new_password: { label: Password }
+          confirm_new_password: { label: Confirm password }
+        actions:
+          _list: { credentials: [admin] }
+          _save: ~
+          _save_and_add: { credentials: [admin] }
 
       show:
         display: [ name, username, email, filiation, department, is_admin, last_login ]

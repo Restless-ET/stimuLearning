@@ -8,7 +8,7 @@ User:
     name: { type: string(150), notnull: true }
     username: { type: string(50), unique: true, notnull: true }
     password: { type: string(255), notnull: true }
-    email: { type: string(255), unique: true, email: true }
+    email: { type: string(255), unique: true, notnull: true, email: true }
     filiation: { type: string(255), notnull: true }
     department: { type: string(255), notnull: true }
     is_admin: { type: boolean, default: false }

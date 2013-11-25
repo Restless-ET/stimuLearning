@@ -66,6 +66,7 @@ abstract class BaseUser extends sfDoctrineRecord
         $this->hasColumn('email', 'string', 255, array(
              'type' => 'string',
              'unique' => true,
+             'notnull' => true,
              'email' => true,
              'length' => 255,
              ));
