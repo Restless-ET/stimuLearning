@@ -167,6 +167,11 @@ input[readonly="readonly"] {
     color: #666;
 }
 
+#footer a {
+    text-decoration: none;
+    color: #444;
+}
+
 #footer img {
     vertical-align: bottom;
 }

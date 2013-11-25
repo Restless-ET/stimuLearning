@@ -10,6 +10,10 @@ logout:
 about:
   url: /about
   param: { module: default, action: about }
+
+credits:
+  url: /credits
+  param: { module: default, action: credits }
 ### END: General user rules ###
 
 scenario:

@@ -50,6 +50,15 @@ class DefaultActions extends sfActions
     }
 
     /**
+     * Executes credits action
+     *
+     * @return nothing
+     */
+    public function executeCredits()
+    {
+    }
+
+    /**
      * Executes login action
      *
      * @param sfRequest $request A request object
