@@ -16,7 +16,10 @@ generator:
         _new: { credentials: [[admin, responsible]] }
         _edit: { credentials: [[admin, responsible]] }
         _delete: { credentials: [[admin, responsible]] }
-      fields: ~
+      fields:
+        name: { label: 'Name' }
+        starting_market_size: { label: 'Starting market size' }
+        user_id: { label: 'User (Controller)' }
 
       list:
         fields:

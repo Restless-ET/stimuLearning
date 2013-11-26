@@ -58,7 +58,7 @@ Scenario:
     containment_factor_weight: { type: decimal, notnull: true, default: 14 }
     reference_occupation_rate: { type: decimal, notnull: true, default: 14 }
 
-    responsible_id: { type: integer } #, notnull: true }
+    responsible_id: { type: integer, notnull: true }
   ## Relations ##
   relations:
     Responsible:

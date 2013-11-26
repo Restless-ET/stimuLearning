@@ -19,8 +19,7 @@ class ScenarioForm extends BaseScenarioForm
      */
     public function configure()
     {
-        unset($this['created_at'], $this['updated_at']);
-        unset($this['status'], $this['current_tick'], $this['available_technologies_list']);
+        unset($this['created_at'], $this['updated_at'], $this['current_tick']);
 
         $this->setDefault('responsible_id', sfContext::getInstance()->getUser()->getAttribute('id'));
 

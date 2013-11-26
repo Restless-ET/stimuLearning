@@ -14,9 +14,14 @@ generator:
     config:
       actions: ~
       fields:
-        setup_fee: { renderer: 'FieldRendererHelper::euro' }
-        cost_per_user: { renderer: 'FieldRendererHelper::euro' }
-        CAPEX_percentage: { renderer: 'FieldRendererHelper::perc' }
+        name: { label: 'Name' }
+        number_of_services: { label: 'Number of services' }
+        setup_fee: { label: 'Setup fee', renderer: 'FieldRendererHelper::euro' }
+        cost_per_user: { label: 'Cost per user', renderer: 'FieldRendererHelper::euro' }
+        CAPEX_percentage: { label: 'CAPEX percentage', renderer: 'FieldRendererHelper::perc' }
+        periodic_fee: { label: 'Periodic fee' }
+        clients_quota: { label: 'Clients quota' }
+        technology_id: { label: 'Technology' }
 
       list:
         title: 'Services'

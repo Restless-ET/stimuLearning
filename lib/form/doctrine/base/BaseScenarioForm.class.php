@@ -59,7 +59,7 @@ abstract class BaseScenarioForm extends BaseFormDoctrine
       'occupation_rate_weight'        => new sfWidgetFormInputText(),
       'containment_factor_weight'     => new sfWidgetFormInputText(),
       'reference_occupation_rate'     => new sfWidgetFormInputText(),
-      'responsible_id'                => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Responsible'), 'add_empty' => true)),
+      'responsible_id'                => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Responsible'), 'add_empty' => false)),
       'created_at'                    => new sfWidgetFormDateTime(),
       'updated_at'                    => new sfWidgetFormDateTime(),
     ));
@@ -109,7 +109,7 @@ abstract class BaseScenarioForm extends BaseFormDoctrine
       'occupation_rate_weight'        => new sfValidatorNumber(array('required' => false)),
       'containment_factor_weight'     => new sfValidatorNumber(array('required' => false)),
       'reference_occupation_rate'     => new sfValidatorNumber(array('required' => false)),
-      'responsible_id'                => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Responsible'), 'required' => false)),
+      'responsible_id'                => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Responsible'))),
       'created_at'                    => new sfValidatorDateTime(),
       'updated_at'                    => new sfValidatorDateTime(),
     ));

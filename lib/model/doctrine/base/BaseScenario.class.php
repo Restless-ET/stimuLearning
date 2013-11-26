@@ -371,6 +371,7 @@ abstract class BaseScenario extends sfDoctrineRecord
              ));
         $this->hasColumn('responsible_id', 'integer', null, array(
              'type' => 'integer',
+             'notnull' => true,
              ));
     }
 

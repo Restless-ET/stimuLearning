@@ -17,9 +17,12 @@ generator:
         #_edit: { credentials: [[admin, responsible]] }
         #_delete: { credentials: [[admin, responsible]] }
       fields:
-        scenarios_list: { label: Available for scenarios, help: Press "Ctrl" to select multiple items }
+        name: { label: 'Name' }
+        decline_A: { label: 'Decline A' }
+        decline_B: { label: 'Decline B' }
         created_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
         updated_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
+        operator_id: { label: 'Operator' }
 
       list:
         title: 'Technologies'
@@ -46,7 +49,7 @@ generator:
         class: false
 
       form:
-        display: [ name, description, decline_A, decline_B ]
+        display: [ name, description, decline_A, decline_B, operator_id ]
 
       edit: ~
       new: ~

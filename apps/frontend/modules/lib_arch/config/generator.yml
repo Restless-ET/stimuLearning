@@ -14,6 +14,9 @@ generator:
     config:
       actions: ~
       fields:
+        name: { label: 'Name' }
+        download_bandwidth: { label: 'Download bandwidth' }
+        upload_bandwidth: { label: 'Upload bandwidth' }
         tech_id: { label: 'Technology' }
 
       list:

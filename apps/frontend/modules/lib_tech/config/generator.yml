@@ -14,6 +14,9 @@ generator:
     config:
       actions: ~
       fields:
+        name: { label: 'Name' }
+        decline_A: { label: 'Decline A' }
+        decline_B: { label: 'Decline B' }
         created_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
         updated_at: { date_format: 'dd/MM/yyyy HH:mm:ss' }
 

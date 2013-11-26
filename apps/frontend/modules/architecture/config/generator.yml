@@ -17,6 +17,9 @@ generator:
         #_edit: { credentials: [[admin, responsible]] }
         #_delete: { credentials: [[admin, responsible]] }
       fields:
+        name: { label: 'Name' }
+        download_bandwidth: { label: 'Download bandwidth' }
+        upload_bandwidth: { label: 'Upload bandwidth' }
         technology_id: { label: 'Technology' }
 
       list:

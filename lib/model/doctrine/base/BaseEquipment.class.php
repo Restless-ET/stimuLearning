@@ -113,6 +113,7 @@ abstract class BaseEquipment extends sfDoctrineRecord
              ));
         $this->hasColumn('nature_or_purpose', 'enum', null, array(
              'type' => 'enum',
+             'notnull' => true,
              'values' => 
              array(
               0 => NULL,
@@ -129,6 +130,7 @@ abstract class BaseEquipment extends sfDoctrineRecord
              ));
         $this->hasColumn('tecnology_age', 'enum', null, array(
              'type' => 'enum',
+             'notnull' => true,
              'values' => 
              array(
               0 => NULL,
@@ -144,6 +146,7 @@ abstract class BaseEquipment extends sfDoctrineRecord
              ));
         $this->hasColumn('setup_speed', 'enum', null, array(
              'type' => 'enum',
+             'notnull' => true,
              'values' => 
              array(
               0 => NULL,

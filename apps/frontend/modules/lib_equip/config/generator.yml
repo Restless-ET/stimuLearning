@@ -14,7 +14,15 @@ generator:
     config:
       actions: ~
       fields:
-        starting_price: { renderer: 'FieldRendererHelper::euro' }
+        name: { label: 'Name' }
+        starting_price: { label: 'Starting price', renderer: 'FieldRendererHelper::euro' }
+        number_of_ports: { label: 'Capacity', help: 'On wired devices this is the number of ports.' }
+        network_level: { label: 'Network level' }
+        life_expectation: { label: 'Life expectation' }
+        equipment_type: { label: 'Equipment type' }
+        nature_or_purpose: { label: 'Nature or purpose' }
+        tecnology_age: { label: 'Technology age' }
+        setup_speed: { label: 'Setup speed' }
         arch_id: { label: 'Architecture' }
 
       list:

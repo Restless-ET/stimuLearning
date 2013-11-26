@@ -19,8 +19,33 @@ generator:
         finish: { ui-icon: 'seek-end', action: advanceSimulation, credentials: [[admin, responsible]] }
 
       fields:
+        description: { label: 'Description' }
         started: { renderer: 'FieldRendererHelper::plainBoolean' }
         finished: { renderer: 'FieldRendererHelper::plainBoolean' }
+        total_clients: { label: 'Total clients' }
+        tick_alias: { label: 'Tick alias' }
+        lifespan: { label: 'Lifespan' }
+        total_decision_points: { label: 'Total decision points' }
+        ticks_between_decision_points: { label: 'Ticks between decision points' }
+        responsible_id: { label: 'Responsible' }
+      # Market Share Evolution Parameters
+        starting_level: { label: 'Starting level' }
+        saturation_level: { label: 'Saturation level' }
+        alpha: { label: 'Alpha' }
+        beta: { label: 'Beta' }
+      # Geography / Territory
+        total_area: { label: 'Total area' }
+      # Demography / Population
+        dense_urban_population: { label: 'Dense urban population' }
+        urban_population: { label: 'Urban population' }
+        suburban_population: { label: 'Suburban population' }
+        rural_population: { label: 'Rural population' }
+      # Financial Parameters
+        packages_erosion_rate: { label: 'Packages erosion rate' }
+        depreciation_rate: { label: 'Depreciation rate' }
+        interest_rate: { label: 'Interest rate' }
+        elasticity: { label: 'Elasticity' }
+        bankrupcy_limit: { label: 'Bankrupcy limit' }
       # Quality Vector Weights
         number_of_services_weight: { help: 'Small explanation here...' }
         download_weight: { help: 'Small explanation here...' }
