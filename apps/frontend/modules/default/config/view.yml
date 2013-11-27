@@ -12,6 +12,11 @@ aboutSuccess:
     - <?php echo sfConfig::get('app_sf_admin_theme_jroller_plugin_theme_dir').'/'.sfConfig::get('app_sf_admin_theme_jroller_plugin_theme').'/'.sfConfig::get('app_sf_admin_theme_jroller_plugin_ui_css_file')."\n"; ?>
     - /sfAdminThemejRollerPlugin/css/fg.buttons.css
 
+creditsSuccess:
+  stylesheets:
+    - <?php echo sfConfig::get('app_sf_admin_theme_jroller_plugin_theme_dir').'/'.sfConfig::get('app_sf_admin_theme_jroller_plugin_theme').'/'.sfConfig::get('app_sf_admin_theme_jroller_plugin_ui_css_file')."\n"; ?>
+    - /sfAdminThemejRollerPlugin/css/fg.buttons.css
+
 loginSuccess:
   stylesheets:
     - <?php echo sfConfig::get('app_sf_admin_theme_jroller_plugin_theme_dir').'/'.sfConfig::get('app_sf_admin_theme_jroller_plugin_theme').'/'.sfConfig::get('app_sf_admin_theme_jroller_plugin_ui_css_file')."\n"; ?>

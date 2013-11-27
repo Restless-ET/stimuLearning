@@ -1,11 +1,10 @@
 Customization:
   Single:
-    home_page_content: ""
+    home_page_content: "<p>This application is an educational tool that combines telecommunications engineering and economics:<br />\n- It helps to understand the relations between engineering decisions and the economics of telecommunications businesses.<br />\n- It helps to understand the relations between market dynamics and technological choices.<br />\n<br />\nThe structure of this tool is depicted in the following figure:<br />\n<br />\nImagem<br />\n<br />\nThe tool can be used in two basic contexts:<br />\n- To study the implications between technologies, architectures, deployment plans, etc on the associated business cases.<br />\n- To study the implications between competition and telecommunication engineering design options.</p>"
 
-    about_page_content: ""
+    about_page_content: "<p style=\"color: red;\">This page is still under construction!!!</p>\n<h2>The Problem</h2>\n<p>The player becomes a telecom operator, which is challenged to reach customers in\n a new region, facing some competition during the process.</p>\n<p>The operator is able to setup tariffs, to choose the network architecture that\n better suits his offer and to change his options along the simulation time.</p>\n<p>The main goal is to achieve the greater market share in the end of the simulation.</p>"
 
-    credits_page_content: ""
-
+    credits_page_content: "<h2>Partners</h2>\n<h3 style=\"text-align: left;\">\nStimulating Learning in Engineering Students by Collaborative Entrepreneurship Training</h3>\n <p>This tool is part of project StimuLearning project, that aims to promote improved learning and entrepreneurial spirit among engineering students by resorting to the simulation of real world business cases in a collaborative mobile digital environment.</p>\n<p>This project implements project-based learning combined with an interactive entrepreneurial atmosphere where several industry professionals participate, helping students to create real world business cases, with different teams playing the roles of competing companies in a marketplace.</p>\n<p>Stimulearning is a project from Bandwidth Systems Group (GSBL) of Aveiro University. <a href=\"http://gsbl.det.ua.pt/gsbl_en/hp-stimulearning.aspx\">More info...</a></p>"
 
 MigrationVersion:
   currentVersion:

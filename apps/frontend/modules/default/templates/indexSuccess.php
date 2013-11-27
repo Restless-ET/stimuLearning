@@ -43,14 +43,6 @@
 <br />
 <hr>
 <div id="screenshot" style="float: right;"><?php echo image_tag('operator_data.png', array('style' => 'width: 550px;')) ?></div>
-<p>This application is an educational tool that combines telecommunications engineering and economics:<br />
-- It helps to understand the relations between engineering decisions and the economics of telecommunications businesses.<br />
-- It helps to understand the relations between market dynamics and technological choices.<br />
-<br />
-The structure of this tool is depicted in the following figure:<br />
-<br />
-Imagem<br />
-<br />
-The tool can be used in two basic contexts:<br />
-- To study the implications between technologies, architectures, deployment plans, etc on the associated business cases.<br />
-- To study the implications between competition and telecommunication engineering design options.</p>
+<div id="editable">
+  <?php echo html_entity_decode($editableText); ?>
+</div>
