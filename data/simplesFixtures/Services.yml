@@ -5,6 +5,6 @@ Service:
     setup_fee: 00.00
     cost_per_user: 120.00
     CAPEX_percentage: 10.00
-    periodic_fee: 480.00
+    monthly_fee: 40.00
     clients_quota: 100.00 # Simplify this by using a single service
     Technology: Technology_0

@@ -22,6 +22,16 @@ class Service extends BaseService
     {
         $technology = $this->Technology;
         $this->operator_id = $technology->operator_id;
+        $tickAlias = $technology->Scenario->getTickAlias();
+
+        $periodicFee = $this->getMonthlyFee();
+        if ($tickAlias != 'Month') {
+            $periodicFee = $periodicFee * 12;
+            if ($tickAlias == 'Week') {
+                $periodicFee = $periodicFee / 52;
+            }
+        }
+        $this->setPeriodicFee($periodicFee);
 
         parent::save($conn);
     }

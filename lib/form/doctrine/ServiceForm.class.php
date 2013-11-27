@@ -20,7 +20,7 @@ class ServiceForm extends BaseServiceForm
     public function configure()
     {
         unset($this['created_at'], $this['updated_at'], $this['operator_id']);
-        //unset($this['tick_to_edit']);
+        unset($this['periodic_fee']);
         $this->setWidget('tick_to_edit', new sfWidgetFormInputHidden());
 
         $user = sfContext::getInstance()->getUser();

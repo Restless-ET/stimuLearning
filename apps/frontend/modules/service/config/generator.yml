@@ -19,13 +19,14 @@ generator:
         setup_fee: { label: 'Setup fee', renderer: 'FieldRendererHelper::euro' }
         cost_per_user: { label: 'Cost per user', renderer: 'FieldRendererHelper::euro' }
         CAPEX_percentage: { label: 'CAPEX percentage', renderer: 'FieldRendererHelper::perc' }
+        monthly_fee: { label: 'Monthly fee' }
         periodic_fee: { label: 'Periodic fee' }
         clients_quota: { label: 'Clients quota' }
         technology_id: { label: 'Technology' }
 
       list:
         title: 'Services'
-        display: [ name, setup_fee, cost_per_user, CAPEX_percentage, tick_to_edit, Technology, Operator ]
+        display: [ name, setup_fee, cost_per_user, CAPEX_percentage, monthly_fee, Technology, Operator ]
         table_method: filterByCredential
         batch_actions: {}
 
@@ -37,4 +38,4 @@ generator:
       new:     ~
 
       show:
-        display: [ name, setup_fee, cost_per_user, CAPEX_percentage, tick_to_edit, _technology, _operator ]
+        display: [ name, setup_fee, cost_per_user, CAPEX_percentage, monthly_fee, _technology, _operator ]

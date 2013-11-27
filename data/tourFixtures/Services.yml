@@ -6,7 +6,7 @@ Service:
     setup_fee: 00.00
     cost_per_user: 120.00
     CAPEX_percentage: 5.00
-    periodic_fee: 480.00
+    monthly_fee: 40.00
     clients_quota: 100.00 # Simplify this by using a single service
     Technology: Technology_0
 
@@ -17,7 +17,7 @@ Service:
     setup_fee: 00.00
     cost_per_user: 120.00
     CAPEX_percentage: 5.00
-    periodic_fee: 480.00
+    monthly_fee: 40.00
     clients_quota: 100.00 # Simplify this by using a single service
     Technology: Technology_1
   Service_2:
@@ -26,7 +26,7 @@ Service:
     setup_fee: 00.00
     cost_per_user: 120.00
     CAPEX_percentage: 5.00
-    periodic_fee: 480.00
+    monthly_fee: 40.00
     clients_quota: 100.00 # Simplify this by using a single service
     Technology: Technology_2
 
@@ -37,7 +37,7 @@ Service:
     setup_fee: 25.00
     cost_per_user: 120.00
     CAPEX_percentage: 5.00
-    periodic_fee: 650.00
+    monthly_fee: 55.00
     clients_quota: 75.00
     Technology: Technology_3
   Service_4:
@@ -46,7 +46,7 @@ Service:
     setup_fee: 25.00
     cost_per_user: 120.00
     CAPEX_percentage: 5.00
-    periodic_fee: 600.00
+    monthly_fee: 50.00
     clients_quota: 25.00
     Technology: Technology_3
   Service_5:
@@ -55,33 +55,33 @@ Service:
     setup_fee: 25.00
     cost_per_user: 120.00
     CAPEX_percentage: 5.00
-    periodic_fee: 50.00
+    monthly_fee: 50.00
     clients_quota: 60.00
-    Technology: Technology_3
+    Technology: Technology_4
   Service_6:
     name: 'Triple-play B-2'
     number_of_services: 3
     setup_fee: 25.00
     cost_per_user: 120.00
     CAPEX_percentage: 5.00
-    periodic_fee: 400.00
+    monthly_fee: 35.00
     clients_quota: 40.00
-    Technology: Technology_3
+    Technology: Technology_4
   Service_7:
     name: 'Triple-play A-3'
     number_of_services: 3
     setup_fee: 50.00
     cost_per_user: 120.00
     CAPEX_percentage: 5.00
-    periodic_fee: 600.00
+    monthly_fee: 50.00
     clients_quota: 50.00
-    Technology: Technology_3
+    Technology: Technology_5
   Service_8:
     name: 'Triple-play B-3'
     number_of_services: 3
     setup_fee: 50.00
     cost_per_user: 120.00
     CAPEX_percentage: 5.00
-    periodic_fee: 500.00
+    monthly_fee: 42.00
     clients_quota: 50.00
-    Technology: Technology_3
+    Technology: Technology_5

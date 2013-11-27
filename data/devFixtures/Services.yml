@@ -5,7 +5,7 @@ Service:
     setup_fee: <?php echo rand(30, 70)."\n"; ?>
     cost_per_user: <?php echo rand(3, 15)."\n"; ?>
     CAPEX_percentage: <?php echo rand(15, 50)."\n"; ?>
-    periodic_fee: <?php echo rand(20, 45)."\n"; ?>
+    monthly_fee: <?php echo rand(20, 45)."\n"; ?>
     clients_quota: 100.00 # Simplify this by using a single service
     Technology: <?php echo 'Technology_'.$i."\n"; ?>
 <?php endfor; ?>
