@@ -1,0 +1,24 @@
+Customization:
+  options:
+    symfony:
+      filter: false
+  columns:
+    home_page_content:
+      type: string
+      notnull: true
+    about_page_content:
+      type: string
+      notnull: true
+    credits_page_content:
+      type: string
+      notnull: true
+
+MigrationVersion:
+  options:
+    symfony:
+      form: false
+      filter: false
+  columns:
+    version:
+      type: integer
+      default: 0

@@ -1,0 +1,12 @@
+Customization:
+  Single:
+    home_page_content: ""
+
+    about_page_content: ""
+
+    credits_page_content: ""
+
+
+MigrationVersion:
+  currentVersion:
+    version: 0

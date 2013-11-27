@@ -16,6 +16,9 @@ class DefaultActions extends sfActions
      */
     public function executeIndex()
     {
+        $customize = Doctrine_Core::getTable('Customization')->findAll();
+        $this->editableText = $customize[0]['home_page_content'];
+
         $user = $this->getUser();
         if ($user->isAuthenticated()) {
             $this->myScenarios = Doctrine_Core::getTable('Scenario')
@@ -47,6 +50,8 @@ class DefaultActions extends sfActions
      */
     public function executeAbout()
     {
+        $customize = Doctrine_Core::getTable('Customization')->findAll();
+        $this->editableText = $customize[0]['about_page_content'];
     }
 
     /**
@@ -56,6 +61,8 @@ class DefaultActions extends sfActions
      */
     public function executeCredits()
     {
+        $customize = Doctrine_Core::getTable('Customization')->findAll();
+        $this->editableText = $customize[0]['credits_page_content'];
     }
 
     /**

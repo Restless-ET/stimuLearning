@@ -1,0 +1,32 @@
+generator:
+  class: jRollerDoctrineGenerator
+  param:
+    model_class:           Customization
+    theme:                 jroller
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          customization
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions:
+        _new: { credentials: [disabled] }
+        _delete: { credentials: [disabled] }
+      fields:
+        home_page_content: { label: 'Homepage text' }
+        about_page_content: { label: 'About page content' }
+        credits_page_content: { label: 'Credits page content' }
+
+      list:
+        title: Customization
+      filter:  ~
+      form:    ~
+      edit:
+        title: Customization
+        actions:
+          _save: ~
+      new:
+        title: New customization

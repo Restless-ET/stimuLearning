@@ -70,6 +70,7 @@ service:
     column:               id
     with_wildcard_routes: true
 
+### START: Admins section ###
 user:
   class: sfDoctrineRouteCollection
   options:
@@ -105,6 +106,16 @@ libEquip:
     prefix_path:          /libEquip
     column:               id
     with_wildcard_routes: true
+
+
+customization:
+  class:                    sfDoctrineRouteCollection
+  options:
+    model:                  Customization
+    module:                 customization
+    prefix_path:            customization
+    with_wildcard_routes:   true
+### END: Admins section ###
 
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing

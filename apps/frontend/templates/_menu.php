@@ -9,6 +9,9 @@
       <li<?php if(in_array($currentModule, array('lib_tech','lib_arch','lib_equip'))): ?> class="active"<?php endif; ?>>
         <?php echo link_to('Library', '@libTech') ?>
       </li>
+      <li<?php if($currentModule == 'customization'): ?> class="active"<?php endif; ?>>
+        <?php echo link_to('Customization', '@customization') ?>
+      </li>
       <li<?php if($currentModule == 'user'): ?> class="active"<?php endif; ?>>
         <?php echo link_to('Users', '@user') ?>
       </li>
