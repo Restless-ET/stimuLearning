@@ -39,15 +39,15 @@
   <tr>
     <td style="width: 33%;">
       <div id="access_demo" style="text-align: center;">
-        <a style="font-size: 18px; padding: 0.8em 2em; margin-right: 35px; float: none;" class="fg-button ui-state-default ui-corner-all" href="<?php echo url_for('default/login?demo=true'); ?>">Try now!</a>
-        <br />
-        <br />Not registered yet? <a href="<?php echo url_for('user/new'); ?>">Click here</a>.
+        <a style="font-size: 20px; padding: 0.8em 2em; float: none;" class="fg-button ui-state-default ui-corner-all" href="<?php echo url_for('default/login?demo=true'); ?>">Try now!</a>
+        <br /><br />
+        <p>Not registered yet? <a href="<?php echo url_for('user/new'); ?>">Click here</a>.</p>
       </div>
     </td>
     <td style="width: 33%;"></td>
     <td style="vertical-align: top;">
       <div id="access_login" style="text-align: right;">
-        <a style="font-size: 15px; padding: 0.8em 1.8em; margin-right: 35px; float: none;" class="fg-button ui-state-default ui-corner-all" href="<?php echo url_for('@login'); ?>">Login</a>
+        <a style="font-size: 15px; padding: 0.8em 1.8em; float: none;" class="fg-button ui-state-default ui-corner-all" href="<?php echo url_for('@login'); ?>">Login</a>
       </div>
     </td>
   </tr>
