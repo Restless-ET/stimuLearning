@@ -78,6 +78,7 @@ class DefaultActions extends sfActions
         if ($this->getUser()->isAuthenticated()) {
             $this->redirect('@homepage');
         }
+        $this->isDemo = $request->getParameter('demo', false);
 
         $this->form = new LoginForm();
 
@@ -101,7 +102,10 @@ class DefaultActions extends sfActions
 
                 $userFromDb = Doctrine_Core::getTable('User')->findOneBy('username', $username);
                 if ($userFromDb === false || ! $userFromDb->passwordMatchesPassword($password)) {
-                    return sfView::ERROR;
+                    $user->setFlash('error',
+                        'Invalid authentication! Inserted username and/or password are incorrect.');
+
+                    return sfView::SUCCESS;
                 }
 
                 if ($userFromDb->is_admin) { // It's an administrator

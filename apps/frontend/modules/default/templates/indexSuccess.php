@@ -32,15 +32,27 @@
     </ul>
     <br/>
   <?php endif; ?>
+  <br />
 <?php else: ?>
 <h2>Welcome!!</h2>
-<div id="access_login" style="text-align: right;">
-  <a style="font-size: 16px; padding: 0.8em 2em; margin-right: 35px; float: none;" class="fg-button ui-state-default ui-corner-all" href="<?php echo url_for('@login'); ?>">Login</a><br />
-  <br />
-  <br />Not registered yet? <a href="<?php echo url_for('user/new'); ?>">Click here</a>.
-</div>
+<table style="width: 100%;">
+  <tr>
+    <td style="width: 33%;">
+      <div id="access_demo" style="text-align: center;">
+        <a style="font-size: 18px; padding: 0.8em 2em; margin-right: 35px; float: none;" class="fg-button ui-state-default ui-corner-all" href="<?php echo url_for('default/login?demo=true'); ?>">Try now!</a>
+        <br />
+        <br />Not registered yet? <a href="<?php echo url_for('user/new'); ?>">Click here</a>.
+      </div>
+    </td>
+    <td style="width: 33%;"></td>
+    <td style="vertical-align: top;">
+      <div id="access_login" style="text-align: right;">
+        <a style="font-size: 15px; padding: 0.8em 1.8em; margin-right: 35px; float: none;" class="fg-button ui-state-default ui-corner-all" href="<?php echo url_for('@login'); ?>">Login</a>
+      </div>
+    </td>
+  </tr>
+</table>
 <?php endif; ?>
-<br />
 <hr>
 <div id="screenshot" style="float: right;"><?php echo image_tag('operator_data.png', array('style' => 'width: 550px;')) ?></div>
 <div id="editable">

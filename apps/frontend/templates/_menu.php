@@ -19,6 +19,10 @@
       <li<?php if($currentModule == 'user'): ?> class="active"<?php endif; ?>>
         <?php echo link_to('My profile', 'user/edit?id='.$sf_user->getAttribute('id')); ?>
       </li>
+    <?php else: ?>
+      <li style="padding: 2px; background-color: white; color: olive;">
+        You're on demonstration version! Data reset takes place at 4am (GMT)!
+      </li>
     <?php endif; ?>
     </ul>
   <?php endif; ?>
