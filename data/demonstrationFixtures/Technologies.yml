@@ -1,0 +1,8 @@
+Technology:
+  Demo_Technology:
+    name: 'FTTH'
+    description: 'Fiber To The Home'
+    decline_A: <?php echo rand(100, 300)."\n"; ?>
+    decline_B: <?php echo ((500 - rand(0, 500)) / 100)."\n"; ?>
+    Operator: Demo_Operator
+    Scenario: Demo_Scenario

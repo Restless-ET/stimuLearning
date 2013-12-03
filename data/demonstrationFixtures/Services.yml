@@ -1,0 +1,10 @@
+Service:
+  Demo_Service:
+    name: 'Triple-play'
+    number_of_services: 3
+    setup_fee: 00.00
+    cost_per_user: 120.00
+    CAPEX_percentage: 10.00
+    monthly_fee: 45.00
+    clients_quota: 100.00 # Simplify this by using a single service
+    Technology: Demo_Technology

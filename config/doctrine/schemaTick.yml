@@ -22,6 +22,6 @@ Tick:
   relations:
     Operator:
       foreignAlias: Ticks
+      onDelete: CASCADE
     Scenario:
       foreignAlias: Ticks
-      onDelete: CASCADE

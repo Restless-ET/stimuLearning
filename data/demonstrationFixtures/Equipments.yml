@@ -1,0 +1,37 @@
+Equipment:
+  Demo_Equipment_0:
+    name: 'Base'
+    starting_price: 1000000
+    number_of_ports: 32
+    network_level: 0
+    life_expectation: 20
+    equipment_type: 'Wired'
+    nature_or_purpose: 'Electronics (0.9)'
+    tecnology_age: 'Emerging (0.001)'
+    setup_speed: 'Very slow (40)'
+    maximum_clients: 2048
+    Architecture: Demo_Architecture
+  Demo_Equipment_1:
+    name: 'Intermédio'
+    starting_price: 30000
+    number_of_ports: 64
+    network_level: 1
+    life_expectation: 20
+    equipment_type: 'Wired'
+    nature_or_purpose: 'Fiber cables (0.8)'
+    tecnology_age: 'Emerging (0.001)'
+    setup_speed: 'Very slow (40)'
+    maximum_clients: 64
+    Architecture: Demo_Architecture
+  Demo_Equipment_2:
+    name: 'Terminal'
+    starting_price: 20
+    number_of_ports: 1
+    network_level: 2
+    life_expectation: 20
+    equipment_type: 'Wired'
+    nature_or_purpose: 'Passive Optical Components (0.8)'
+    tecnology_age: 'Emerging (0.001)'
+    setup_speed: 'Very slow (40)'
+    maximum_clients: 1
+    Architecture: Demo_Architecture

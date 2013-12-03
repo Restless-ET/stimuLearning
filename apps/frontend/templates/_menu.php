@@ -15,7 +15,7 @@
       <li<?php if($currentModule == 'user'): ?> class="active"<?php endif; ?>>
         <?php echo link_to('Users', '@user') ?>
       </li>
-    <?php else: ?>
+    <?php elseif ($sf_user->getAttribute('username', 'demonstration') != 'demonstration'): ?>
       <li<?php if($currentModule == 'user'): ?> class="active"<?php endif; ?>>
         <?php echo link_to('My profile', 'user/edit?id='.$sf_user->getAttribute('id')); ?>
       </li>

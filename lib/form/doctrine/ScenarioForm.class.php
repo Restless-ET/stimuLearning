@@ -20,7 +20,13 @@ class ScenarioForm extends BaseScenarioForm
     public function configure()
     {
         unset($this['created_at'], $this['updated_at'], $this['current_tick']);
+        $user = sfContext::getInstance()->getUser();
 
+        if ($user->getAttribute('username', 'demonstration') == 'demonstration') {
+            $query = Doctrine_Core::getTable('User')->createQuery('u')
+                        ->andWhere('u.username = ?', 'demonstration');
+            $this->getWidget('responsible_id')->setOption('query', $query);
+        }
         $this->setDefault('responsible_id', sfContext::getInstance()->getUser()->getAttribute('id'));
 
         $this->getWidget('total_clients')->setAttribute('onchange', 'javascript: setDemographyPopulation();');

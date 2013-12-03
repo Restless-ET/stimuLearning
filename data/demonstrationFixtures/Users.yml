@@ -1,0 +1,8 @@
+User:
+  Demo_User:
+    username: demonstration
+    password: 983e2e250d76af579ec75ca9ebf4f42d  #md5("trythistool")
+    name:     Demonstration User
+    email:    demonstration.gsbl@ua.pt
+    filiation: University of Aveiro
+    department: D.E.T.I.

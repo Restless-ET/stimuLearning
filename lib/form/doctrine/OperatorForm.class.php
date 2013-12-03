@@ -23,10 +23,14 @@ class OperatorForm extends BaseOperatorForm
         $user = sfContext::getInstance()->getUser();
 
         $query = Doctrine_Core::getTable('User')->createQuery('u')
-                  ->where('u.deleted = ?', false)
-                  ->orWhere('u.id = ?', $this->getObject()->user_id);
+                  ->where('(u.deleted = ?', false)
+                  ->orWhere('u.id = ?)', $this->getObject()->user_id);
+        if ($user->getAttribute('username', 'demonstration') == 'demonstration') {
+            $query->andWhere('u.username = ?', 'demonstration');
+        } else {
+            $this->getWidget('user_id')->setOption('add_empty', true);
+        }
         $this->getWidget('user_id')->setOption('query', $query);
-        $this->getWidget('user_id')->setOption('add_empty', true);
         $this->setDefault('user_id', $user->getAttribute('id'));
 
         if ($user->getAttribute('scenarioId', 0)) {

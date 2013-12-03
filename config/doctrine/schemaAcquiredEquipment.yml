@@ -13,4 +13,7 @@ AcquiredEquipment:
   relations:
     Tick:
       foreignAlias: AcquiredEquipments
+      onDelete: CASCADE
     Equipment:
+      foreignAlias: AcquiredEquipments
+      onDelete: CASCADE

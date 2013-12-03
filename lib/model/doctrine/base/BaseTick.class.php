@@ -115,12 +115,12 @@ abstract class BaseTick extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Operator', array(
              'local' => 'operator_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasOne('Scenario', array(
              'local' => 'scenario_id',
-             'foreign' => 'id',
-             'onDelete' => 'CASCADE'));
+             'foreign' => 'id'));
 
         $this->hasMany('AcquiredEquipment as AcquiredEquipments', array(
              'local' => 'id',

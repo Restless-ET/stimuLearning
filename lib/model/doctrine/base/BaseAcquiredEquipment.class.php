@@ -77,10 +77,12 @@ abstract class BaseAcquiredEquipment extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Tick', array(
              'local' => 'tick_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasOne('Equipment', array(
              'local' => 'equipment_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
     }
 }

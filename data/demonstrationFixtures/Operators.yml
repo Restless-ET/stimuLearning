@@ -1,0 +1,7 @@
+Operator:
+  Demo_Operator:
+    name: 'Portugal Telecom'
+    starting_market_size: 1500
+    market_share: 100.00
+    User: Demo_User
+    Scenario: Demo_Scenario

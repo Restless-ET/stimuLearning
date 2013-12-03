@@ -22,6 +22,11 @@ class UserActions extends autoUserActions
     public function executeEdit(sfWebRequest $request)
     {
         $user = $this->getUser();
+        if ($user->getAttribute('username', 'demonstration') == 'demonstration') {
+            $user->setFlash('error', 'This is a demonstration account/user. You cannot edit its details!');
+            $this->redirect('@homepage');
+        }
+
         $dbUser = $this->getRoute()->getObject();
         if (!$user->hasCredential('admin') && $user->getAttribute('id') != $dbUser->getId()) {
             $this->redirect('user/edit?id='.$user->getAttribute('id'));

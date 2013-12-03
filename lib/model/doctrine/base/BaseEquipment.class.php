@@ -24,48 +24,48 @@
  * @property Architecture $Architecture
  * @property Operator $Operator
  * @property Scenario $Scenario
- * @property Doctrine_Collection $AcquiredEquipment
+ * @property Doctrine_Collection $AcquiredEquipments
  * 
- * @method string              getName()              Returns the current record's "name" value
- * @method decimal             getStartingPrice()     Returns the current record's "starting_price" value
- * @method integer             getNumberOfPorts()     Returns the current record's "number_of_ports" value
- * @method integer             getNetworkLevel()      Returns the current record's "network_level" value
- * @method integer             getLifeExpectation()   Returns the current record's "life_expectation" value
- * @method enum                getEquipmentType()     Returns the current record's "equipment_type" value
- * @method enum                getNatureOrPurpose()   Returns the current record's "nature_or_purpose" value
- * @method decimal             getValK()              Returns the current record's "valK" value
- * @method enum                getTecnologyAge()      Returns the current record's "tecnology_age" value
- * @method decimal             getNrIni()             Returns the current record's "NrIni" value
- * @method enum                getSetupSpeed()        Returns the current record's "setup_speed" value
- * @method integer             getDeltaT()            Returns the current record's "deltaT" value
- * @method integer             getMaximumClients()    Returns the current record's "maximum_clients" value
- * @method integer             getArchitectureId()    Returns the current record's "architecture_id" value
- * @method integer             getOperatorId()        Returns the current record's "operator_id" value
- * @method integer             getScenarioId()        Returns the current record's "scenario_id" value
- * @method Architecture        getArchitecture()      Returns the current record's "Architecture" value
- * @method Operator            getOperator()          Returns the current record's "Operator" value
- * @method Scenario            getScenario()          Returns the current record's "Scenario" value
- * @method Doctrine_Collection getAcquiredEquipment() Returns the current record's "AcquiredEquipment" collection
- * @method Equipment           setName()              Sets the current record's "name" value
- * @method Equipment           setStartingPrice()     Sets the current record's "starting_price" value
- * @method Equipment           setNumberOfPorts()     Sets the current record's "number_of_ports" value
- * @method Equipment           setNetworkLevel()      Sets the current record's "network_level" value
- * @method Equipment           setLifeExpectation()   Sets the current record's "life_expectation" value
- * @method Equipment           setEquipmentType()     Sets the current record's "equipment_type" value
- * @method Equipment           setNatureOrPurpose()   Sets the current record's "nature_or_purpose" value
- * @method Equipment           setValK()              Sets the current record's "valK" value
- * @method Equipment           setTecnologyAge()      Sets the current record's "tecnology_age" value
- * @method Equipment           setNrIni()             Sets the current record's "NrIni" value
- * @method Equipment           setSetupSpeed()        Sets the current record's "setup_speed" value
- * @method Equipment           setDeltaT()            Sets the current record's "deltaT" value
- * @method Equipment           setMaximumClients()    Sets the current record's "maximum_clients" value
- * @method Equipment           setArchitectureId()    Sets the current record's "architecture_id" value
- * @method Equipment           setOperatorId()        Sets the current record's "operator_id" value
- * @method Equipment           setScenarioId()        Sets the current record's "scenario_id" value
- * @method Equipment           setArchitecture()      Sets the current record's "Architecture" value
- * @method Equipment           setOperator()          Sets the current record's "Operator" value
- * @method Equipment           setScenario()          Sets the current record's "Scenario" value
- * @method Equipment           setAcquiredEquipment() Sets the current record's "AcquiredEquipment" collection
+ * @method string              getName()               Returns the current record's "name" value
+ * @method decimal             getStartingPrice()      Returns the current record's "starting_price" value
+ * @method integer             getNumberOfPorts()      Returns the current record's "number_of_ports" value
+ * @method integer             getNetworkLevel()       Returns the current record's "network_level" value
+ * @method integer             getLifeExpectation()    Returns the current record's "life_expectation" value
+ * @method enum                getEquipmentType()      Returns the current record's "equipment_type" value
+ * @method enum                getNatureOrPurpose()    Returns the current record's "nature_or_purpose" value
+ * @method decimal             getValK()               Returns the current record's "valK" value
+ * @method enum                getTecnologyAge()       Returns the current record's "tecnology_age" value
+ * @method decimal             getNrIni()              Returns the current record's "NrIni" value
+ * @method enum                getSetupSpeed()         Returns the current record's "setup_speed" value
+ * @method integer             getDeltaT()             Returns the current record's "deltaT" value
+ * @method integer             getMaximumClients()     Returns the current record's "maximum_clients" value
+ * @method integer             getArchitectureId()     Returns the current record's "architecture_id" value
+ * @method integer             getOperatorId()         Returns the current record's "operator_id" value
+ * @method integer             getScenarioId()         Returns the current record's "scenario_id" value
+ * @method Architecture        getArchitecture()       Returns the current record's "Architecture" value
+ * @method Operator            getOperator()           Returns the current record's "Operator" value
+ * @method Scenario            getScenario()           Returns the current record's "Scenario" value
+ * @method Doctrine_Collection getAcquiredEquipments() Returns the current record's "AcquiredEquipments" collection
+ * @method Equipment           setName()               Sets the current record's "name" value
+ * @method Equipment           setStartingPrice()      Sets the current record's "starting_price" value
+ * @method Equipment           setNumberOfPorts()      Sets the current record's "number_of_ports" value
+ * @method Equipment           setNetworkLevel()       Sets the current record's "network_level" value
+ * @method Equipment           setLifeExpectation()    Sets the current record's "life_expectation" value
+ * @method Equipment           setEquipmentType()      Sets the current record's "equipment_type" value
+ * @method Equipment           setNatureOrPurpose()    Sets the current record's "nature_or_purpose" value
+ * @method Equipment           setValK()               Sets the current record's "valK" value
+ * @method Equipment           setTecnologyAge()       Sets the current record's "tecnology_age" value
+ * @method Equipment           setNrIni()              Sets the current record's "NrIni" value
+ * @method Equipment           setSetupSpeed()         Sets the current record's "setup_speed" value
+ * @method Equipment           setDeltaT()             Sets the current record's "deltaT" value
+ * @method Equipment           setMaximumClients()     Sets the current record's "maximum_clients" value
+ * @method Equipment           setArchitectureId()     Sets the current record's "architecture_id" value
+ * @method Equipment           setOperatorId()         Sets the current record's "operator_id" value
+ * @method Equipment           setScenarioId()         Sets the current record's "scenario_id" value
+ * @method Equipment           setArchitecture()       Sets the current record's "Architecture" value
+ * @method Equipment           setOperator()           Sets the current record's "Operator" value
+ * @method Equipment           setScenario()           Sets the current record's "Scenario" value
+ * @method Equipment           setAcquiredEquipments() Sets the current record's "AcquiredEquipments" collection
  * 
  * @package    stimuLearning
  * @subpackage model
@@ -192,7 +192,7 @@ abstract class BaseEquipment extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasMany('AcquiredEquipment', array(
+        $this->hasMany('AcquiredEquipment as AcquiredEquipments', array(
              'local' => 'id',
              'foreign' => 'equipment_id'));
 
