@@ -41,7 +41,7 @@ class ServiceActions extends autoServiceActions
             $user->setFlash('error', 'No scenario found in session!');
             $this->redirect('@service');
         } elseif ($scenario->getFinished()) {
-            $user->setFlash('error', 'You cannot create a new service for a scenario with a finished simulation!');
+            $user->setFlash('error', 'You cannot create a new tariff for a scenario with a finished simulation!');
             $this->redirect('@service');
         }
 

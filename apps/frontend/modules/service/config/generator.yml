@@ -25,7 +25,7 @@ generator:
         technology_id: { label: 'Technology' }
 
       list:
-        title: 'Services'
+        title: 'Tariffs'
         display: [ name, setup_fee, cost_per_user, CAPEX_percentage, monthly_fee, Technology, Operator ]
         table_method: filterByCredential
         batch_actions: {}
@@ -34,8 +34,11 @@ generator:
         class: false
 
       form:    ~
-      edit:    ~
-      new:     ~
+      edit:
+        title: 'Edit Tariff'
+      new:
+        title: 'New Tariff'
 
       show:
+        title: 'Tariff Details'
         display: [ name, setup_fee, cost_per_user, CAPEX_percentage, monthly_fee, _technology, _operator ]

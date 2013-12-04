@@ -96,7 +96,7 @@
     <div class="sub-main">
       <ul>
         <li<?php if ($currentModule == 'service'): ?> class="active"<?php endif; ?>>
-          <?php echo link_to('Services', '@service') ?>
+          <?php echo link_to('Tariffs', '@service') ?>
         </li>
       </ul>
     </div>
