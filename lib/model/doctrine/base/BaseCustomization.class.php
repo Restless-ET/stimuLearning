@@ -8,13 +8,16 @@
  * @property string $home_page_content
  * @property string $about_page_content
  * @property string $credits_page_content
+ * @property enum $jquery_ui_theme
  * 
  * @method string        getHomePageContent()      Returns the current record's "home_page_content" value
  * @method string        getAboutPageContent()     Returns the current record's "about_page_content" value
  * @method string        getCreditsPageContent()   Returns the current record's "credits_page_content" value
+ * @method enum          getJqueryUiTheme()        Returns the current record's "jquery_ui_theme" value
  * @method Customization setHomePageContent()      Sets the current record's "home_page_content" value
  * @method Customization setAboutPageContent()     Sets the current record's "about_page_content" value
  * @method Customization setCreditsPageContent()   Sets the current record's "credits_page_content" value
+ * @method Customization setJqueryUiTheme()        Sets the current record's "jquery_ui_theme" value
  * 
  * @package    stimuLearning
  * @subpackage model
@@ -37,6 +40,37 @@ abstract class BaseCustomization extends sfDoctrineRecord
         $this->hasColumn('credits_page_content', 'string', null, array(
              'type' => 'string',
              'notnull' => true,
+             ));
+        $this->hasColumn('jquery_ui_theme', 'enum', null, array(
+             'type' => 'enum',
+             'default' => 'redmond',
+             'values' => 
+             array(
+              0 => 'black-tie',
+              1 => 'blitzer',
+              2 => 'cupertino',
+              3 => 'dark-hive',
+              4 => 'dot-luv',
+              5 => 'eggplant',
+              6 => 'excite-bike',
+              7 => 'flick',
+              8 => 'hot-sneaks',
+              9 => 'humanity',
+              10 => 'le-frog',
+              11 => 'mint-choc',
+              12 => 'overcast',
+              13 => 'pepper-grinder',
+              14 => 'redmond',
+              15 => 'smoothness',
+              16 => 'south-street',
+              17 => 'start',
+              18 => 'sunny',
+              19 => 'swanky-purse',
+              20 => 'trontastic',
+              21 => 'ui-darkness',
+              22 => 'ui-lightness',
+              23 => 'vader',
+             ),
              ));
 
         $this->option('symfony', array(
