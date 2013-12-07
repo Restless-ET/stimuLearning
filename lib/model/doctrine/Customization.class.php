@@ -11,4 +11,27 @@
  */
 class Customization extends BaseCustomization
 {
+    /**
+     * Overrides parent save method
+     *
+     * @param Doctrine_Connection $conn A Doctrine_Connection object (Default: null)
+     *
+     * @see Doctrine_Record::save()
+     *
+     * @return parent::save()
+     */
+    public function save(Doctrine_Connection $conn = null)
+    {
+        $changes = $this->getModified();
+        if (isset($changes['jquery_ui_theme']) && sfContext::hasInstance()) {
+            $app = sfYaml::load(sfConfig::get('sf_app_config_dir').'/app.yml');
+            $app['all']['sf_admin_theme_jroller_plugin']['theme'] = $changes['jquery_ui_theme'];
+            $yaml = sfYaml::dump($app, 3);
+            file_put_contents(sfConfig::get('sf_app_config_dir').'/app.yml', $yaml);
+
+            exec('php '.sfConfig::get('sf_root_dir').'/symfony cache:clear');
+         }
+
+        parent::save($conn);
+    }
 }
