@@ -1,0 +1,15 @@
+Tick:
+<?php for ($j=1; $j<= 36; $j++): ?>
+  Tick_A_<?php echo $j; ?>:
+    nbr: <?php echo $j."\n"; ?>
+    CAPEX: <?php echo (0 - rand(1000, 3000)*1000)."\n"; ?>
+    OPEX: <?php echo (0 - rand(1000, 3000)*1000)."\n"; ?>
+    revenue: <?php echo (rand(1000, 3000)*1000)."\n"; ?>
+    cashflow: <?php echo (rand(1000, 3000)*1000)."\n"; ?>
+    balance: <?php echo (rand(1000, 3000)*5000)."\n"; ?>
+    market_share: <?php echo (rand(400, 9000)/100)."\n"; ?>
+    
+    Operator: <?php echo 'Operator_'.$i."\n"; ?>
+    Scenario: <?php echo 'Scenario_'.($i % 5 + 1)."\n"; ?>
+<?php endfor; ?>
+<?php endfor; ?>
