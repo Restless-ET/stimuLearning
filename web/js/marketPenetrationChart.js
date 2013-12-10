@@ -119,9 +119,9 @@ function getGraphOptions() {
             //clickable: true,
             hoverable: true
         },
-        yaxis: { min: 0, max: 100 },
+        yaxis: { min: 0, max: 100, label: '%', axisLabel: 'Market Penetration (%)' },
         //yaxis: { ticks: 10 },
-         xaxis: { min: -0.5, max: numTicks + 1 },
+         xaxis: { min: -0.5, max: numTicks + 1, axisLabel: 'Time units' },
         selection: { mode: "xy" }
     };
 
