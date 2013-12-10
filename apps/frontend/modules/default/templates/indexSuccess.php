@@ -46,8 +46,8 @@
     </td>
     <td style="width: 33%;"></td>
     <td style="vertical-align: top;">
-      <div id="access_login" style="text-align: right;">
-        <a style="font-size: 15px; padding: 0.8em 1.8em; float: none;" class="fg-button ui-state-default ui-corner-all" href="<?php echo url_for('@login'); ?>">Login</a>
+      <div id="access_login" style="text-align: center;">
+        <a style="font-size: 15px; padding: 0.7em 1.7em; float: none;" class="fg-button ui-state-default ui-corner-all" href="<?php echo url_for('@login'); ?>">Login</a>
       </div>
     </td>
   </tr>
