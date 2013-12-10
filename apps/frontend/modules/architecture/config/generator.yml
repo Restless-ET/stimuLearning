@@ -28,7 +28,7 @@ generator:
         table_method: filterByScenario
         fields: # because 'renderer' only works on list
           download_bandwidth: { renderer: 'FieldRendererHelper::append', renderer_arguments: ['Mbps'] }
-          upload_bandwidth: { renderer: 'FieldRendererHelper::append', renderer_arguments: ['Kbps'] }
+          upload_bandwidth: { renderer: 'FieldRendererHelper::append', renderer_arguments: ['Mbps'] }
         object_actions:
           _show: ~
           _edit:

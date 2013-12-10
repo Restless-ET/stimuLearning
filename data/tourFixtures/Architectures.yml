@@ -2,35 +2,35 @@ Architecture:
 ## Hipotese A ##
   Architecture_0:
     name: 'FTTX'
-    download_bandwidth: <?php $exp = rand(0, 6); echo pow(2, $exp)."\n"; ?>
-    upload_bandwidth: <?php $exp = rand(8, 12); echo pow(2, $exp)."\n"; ?>
+    download_bandwidth: <?php $exp = rand(1, 6); echo pow(2, $exp)."\n"; ?>
+    upload_bandwidth: <?php $exp = rand(0, 5); echo pow(2, $exp)."\n"; ?>
     Technology: Technology_0
 
 ## Hipotese C ##
   Architecture_1:
     name: 'UMTS Arch.'
-    download_bandwidth: <?php $exp = rand(0, 6); echo pow(2, $exp)."\n"; ?>
-    upload_bandwidth: <?php $exp = rand(8, 12); echo pow(2, $exp)."\n"; ?>
+    download_bandwidth: <?php $exp = rand(1, 6); echo pow(2, $exp)."\n"; ?>
+    upload_bandwidth: <?php $exp = rand(0, 5); echo pow(2, $exp)."\n"; ?>
     Technology: Technology_1
   Architecture_2:
     name: 'LTE Arch.'
-    download_bandwidth: <?php $exp = rand(0, 6); echo pow(2, $exp)."\n"; ?>
-    upload_bandwidth: <?php $exp = rand(8, 12); echo pow(2, $exp)."\n"; ?>
+    download_bandwidth: <?php $exp = rand(1, 6); echo pow(2, $exp)."\n"; ?>
+    upload_bandwidth: <?php $exp = rand(0, 5); echo pow(2, $exp)."\n"; ?>
     Technology: Technology_2
 
 ## Hipotese 3 operadores ##
   Architecture_3:
     name: 'FTTX3'
-    download_bandwidth: <?php $exp = rand(0, 6); echo pow(2, $exp)."\n"; ?>
-    upload_bandwidth: <?php $exp = rand(8, 12); echo pow(2, $exp)."\n"; ?>
+    download_bandwidth: <?php $exp = rand(1, 6); echo pow(2, $exp)."\n"; ?>
+    upload_bandwidth: <?php $exp = rand(0, 5); echo pow(2, $exp)."\n"; ?>
     Technology: Technology_3
   Architecture_4:
     name: 'FTTX4'
-    download_bandwidth: <?php $exp = rand(0, 6); echo pow(2, $exp)."\n"; ?>
-    upload_bandwidth: <?php $exp = rand(8, 12); echo pow(2, $exp)."\n"; ?>
+    download_bandwidth: <?php $exp = rand(1, 6); echo pow(2, $exp)."\n"; ?>
+    upload_bandwidth: <?php $exp = rand(0, 5); echo pow(2, $exp)."\n"; ?>
     Technology: Technology_4
   Architecture_5:
     name: 'FTTX5'
-    download_bandwidth: <?php $exp = rand(0, 6); echo pow(2, $exp)."\n"; ?>
-    upload_bandwidth: <?php $exp = rand(8, 12); echo pow(2, $exp)."\n"; ?>
+    download_bandwidth: <?php $exp = rand(1, 6); echo pow(2, $exp)."\n"; ?>
+    upload_bandwidth: <?php $exp = rand(0, 5); echo pow(2, $exp)."\n"; ?>
     Technology: Technology_5
