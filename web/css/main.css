@@ -40,13 +40,17 @@ body {
 }
 
 #system_info {
-    background-color: lightcyan;
     position: absolute;
     right: 10px;
     top: 7px;
     color: #272727;
     text-align: right;
     font-weight: bold;
+}
+#timer {
+    background-color: lightcyan;
+    padding-right: 2px;
+    margin-bottom: 5px;
 }
 /* *** ****************** *** */
 

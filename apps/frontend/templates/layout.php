@@ -39,16 +39,17 @@
           <?php echo image_tag('gsbl_v7.png') ?>
         </a>
         <div id="system_info">
+          <div id="timer">
           <?php if($sf_user->isAuthenticated()): ?>
-          Hello, <?php echo $sf_user->getAttribute('username') ?>
-          <br />
+            Hello, <?php echo $sf_user->getAttribute('username') ?>
+            <br />
           <?php endif; ?>
-          <?php echo date('Y-m-d') ?>
-          <span id="clock"><?php echo date('H:i:s')?></span>
-          <?php if($sf_user->isAuthenticated()): ?>
-          <br/>
+            <?php echo date('Y-m-d') ?>
+            <span id="clock"><?php echo date('H:i:s')?></span>
+          </div>
+        <?php if($sf_user->isAuthenticated()): ?>
           <a style="margin-left: 45px;" class="fg-button ui-state-default ui-corner-all" href="<?php echo url_for('@logout'); ?>">Logout</a>
-          <?php endif; ?>
+        <?php endif; ?>
         </div>
       </div>
 
