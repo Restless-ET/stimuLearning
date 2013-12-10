@@ -35,7 +35,7 @@
   <br />
 <?php else: ?>
 <h2>Welcome!!</h2>
-<table style="width: 100%;">
+<table style="width: 100%; margin-bottom: 0px;">
   <tr>
     <td style="width: 33%;">
       <div id="access_demo" style="text-align: center;">
